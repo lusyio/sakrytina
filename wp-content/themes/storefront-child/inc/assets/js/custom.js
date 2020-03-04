@@ -1,6 +1,6 @@
 jQuery(function ($) {
     const $page = $('html, body');
-    $('a[href*="#"]').on('click', function () {
+    $('a.link[href*="#"]').on('click', function () {
         let blockId = $.attr(this, 'href').slice(1)
         if ($('.checkbox-toggle').is(':checked')) {
             $('.checkbox-toggle').trigger('click')
@@ -18,4 +18,6 @@ jQuery(function ($) {
             $('body').removeClass('overflow-hidden');
         }
     });
+
+    $('.carousel-item:first-of-type').addClass('active')
 });
