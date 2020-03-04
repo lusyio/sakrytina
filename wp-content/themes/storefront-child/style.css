@@ -305,11 +305,15 @@ header#masthead {
     box-shadow: none;
 }
 
+.overflow-hidden {
+    overflow: hidden;
+}
+
 header#masthead .navbar-brand {
     padding: 0;
 }
 
-header#masthead .navbar-brand img{
+header#masthead .navbar-brand img {
     width: 80px;
 }
 
