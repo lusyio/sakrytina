@@ -9,8 +9,12 @@ Author URI:   https://richbee.ru/
 
 */
 
-html {
-    font-family: 'Roboto', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Caveat:400,700&display=swap&subset=cyrillic-ext');
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700&display=swap&subset=cyrillic-ext');
+
+html header, html body, html footer {
+    font-family: 'Roboto Slab', sans-serif;
 }
 
 body {
@@ -253,8 +257,36 @@ ul.menu li.current-menu-item > a:before {
     border: 0;
 }
 
+.basket-btn {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000000;
+    padding: 12px 22px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    height: 50px;
+    display: block;
+}
+
+.basket-btn img {
+    margin-right: 10px;
+}
+
+header#masthead .navbar .navbar-nav .nav-link {
+    position: relative;
+    padding: 1rem 0 !important;
+    margin: 0 22px;
+    transition: color .1s cubic-bezier(.4, 0, .2, 1);
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 24px;
+    color: #000000 !important;
+
+}
+
 .site-title {
-    color: white;
+    color: #000;
 }
 
 .z-5 {
@@ -264,13 +296,21 @@ ul.menu li.current-menu-item > a:before {
 header#masthead {
     opacity: 1;
     font-family: Roboto, sans-serif;
-    padding: 1.9rem 1rem !important;
-    background-color: #1C1C1C;
+    padding: 5px 0;
+    background-color: #fff;
     color: #EEEEEE;
-    border-bottom: 1px solid #2D2D2D;
+    border-bottom: none;
     z-index: 3;
     position: relative;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+    box-shadow: none;
+}
+
+header#masthead .navbar-brand {
+    padding: 0;
+}
+
+header#masthead .navbar-brand img{
+    width: 80px;
 }
 
 .navbar-dark .navbar-nav .active > .nav-link:before, .navbar-dark .navbar-nav .nav-link.active:before, .navbar-dark .navbar-nav .nav-link.show:before, .navbar-dark .navbar-nav .show > .nav-link:before {
@@ -497,6 +537,334 @@ header#masthead {
 # HEADER
 --------------------------------------------------------------*/
 
+/*--------------------------------------------------------------
+# MAIN_LANDING
+--------------------------------------------------------------*/
+
+.after-header {
+    padding-top: 40px;
+    padding-bottom: 55px;
+    background: #f9f9f9;
+}
+
+.main-info {
+    background: #FEFEFE;
+    padding-top: 30px;
+    padding-bottom: 45px;
+}
+
+.main-info .main-info__img {
+    margin-left: 60px;
+    margin-right: 50px;
+    width: 200px;
+    position: relative;
+}
+
+.main-info .main-info__img > img {
+    display: block;
+    position: absolute;
+    top: -65px;
+}
+
+.main-info p {
+    width: 34.9%;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 22px;
+    color: #000000;
+    margin-bottom: 0;
+}
+
+.main-info h1 {
+    font-family: 'Caveat', sans-serif;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 45px;
+    text-align: center;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    margin-top: 50px;
+}
+
+.main-social {
+    background: #f9f9f9;
+    padding-top: 36px;
+    padding-bottom: 80px;
+}
+
+.main-social .main-social__header {
+    font-family: 'Caveat', sans-serif;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 60px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 36px;
+}
+
+.main-social .main-social__card {
+    background: #FFFFFF;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.main-social__card .main-social__card-title {
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.main-social .main-social__card-body {
+    padding: 30px;
+}
+
+.main-social__card .main-social__card-mes > p {
+    padding: 7px 25px;
+    margin-bottom: 12px;
+    border-radius: 20px;
+    display: table;
+    max-width: 89%;
+
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+}
+
+.main-social__card .main-social__card-mes > p.left {
+    background: #ECEDF1;
+    margin-right: auto;
+}
+
+.main-social__card .main-social__card-mes > p.right {
+    background: #CCE4FE;
+    margin-left: auto;
+}
+
+.main-social__card .main-social__card-mes > p:last-of-type {
+    margin-bottom: 32px;
+}
+
+.main-social__card.inst .main-social__card-title, .main-social__card.fb .main-social__card-title {
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 32px;
+    color: #000000;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.main-social__card.inst > img {
+    position: absolute;
+    right: 30px;
+    bottom: 0;
+}
+
+.main-social__card .btn {
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    max-width: 280px;
+    width: 100%;
+    color: #FFFFFF;
+}
+
+.main-social__card .btn > img {
+    margin-right: 10px;
+    vertical-align: text-top;
+}
+
+.main-social__card .btn:hover {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+}
+
+.main-social__card .btn.btn-inst {
+    background: #E64652;
+}
+
+.main-social__card .btn.btn-vk {
+    background: #597DA3;
+}
+
+.main-social__card .btn.btn-fb {
+    background: #3B5998;
+}
+
+.main-social__card.inst p {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+    margin-bottom: 0;
+}
+
+.main-social__card.inst {
+    margin-bottom: 30px;
+}
+
+.main-social__card.inst p:last-of-type {
+    margin-bottom: 36px;
+}
+
+.main-social__card.fb p {
+    margin-bottom: 0;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+}
+
+.main-social__card.fb p:last-of-type {
+    margin-bottom: 52px;
+}
+
+.main-social__card.fb > img {
+    position: absolute;
+    right: 30px;
+    top: 25px;
+}
+
+.card-muse {
+    background: #FFFFFF;
+    margin-top: 30px;
+}
+
+.card-muse .card-muse__body {
+    padding: 50px 58px 30px 6px;
+    position: relative;
+}
+
+.card-muse__header {
+    font-family: 'Caveat', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 72px;
+    line-height: 140%;
+    margin-bottom: 0;
+    color: #4F4F4F;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+}
+
+.card-muse__right {
+    padding-left: 40px;
+}
+
+.card-muse .card-muse__title {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 140%;
+    color: #000000;
+    margin-bottom: 30px;
+}
+
+.card-muse .card-muse__content {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 140%;
+    color: #000000;
+    margin-bottom: 37px;
+}
+
+.card-muse .card-muse__body img {
+    position: absolute;
+    bottom: -30px;
+}
+
+.card-muse .card-muse__input-group {
+    margin-bottom: 25px;
+    display: flex;
+}
+
+.card-muse .card-muse__footer {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    color: #585858;
+    margin-bottom: 0;
+}
+
+
+/*--------------------------------------------------------------
+# MAIN_LANDING
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# POPULAR
+--------------------------------------------------------------*/
+
+.popular-block {
+    padding-top: 30px;
+    padding-bottom: 80px;
+    background: #40866E;
+}
+
+.popular-block .popular-block__header {
+    font-family: 'Caveat', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 60px;
+    color: #FFFFFF;
+    margin-bottom: 29px;
+}
+
+.popular-block-card {
+    background: #357C64;
+    padding: 22px 24px 20px;
+}
+
+.popular-block-card .popular-block-card__title {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 0;
+}
+
+.popular-block-card__img {
+    margin-bottom: 20px;
+}
+
+.popular-block-card__img > img {
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 0;
+}
+
+.card-muse .card-muse__input-group > input[type='text'] {
+    border: 1px solid #C2C2C2;
+    border-radius: 10px;
+    background: transparent;
+    min-height: 35px;
+    height: 35px;
+    margin-right: 15px;
+    padding: 9px 15px;
+}
+
+.card-muse .card-muse__input-group > button {
+    background: #F53F3B;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    color: #FFFFFF;
+    min-height: 35px;
+    height: 35px;
+    padding: 8px 23px;
+}
+
+/*--------------------------------------------------------------
+# POPULAR
+--------------------------------------------------------------*/
+
 
 /*--------------------------------------------------------------
 # FOOTER
@@ -529,13 +897,73 @@ header#masthead {
     line-height: 24px;
     color: #EEEEEE;
     padding: 0;
-    margin-left: 0;
+    margin: 0;
+    display: flex;
+}
+
+.footer-menu ul > li {
+    margin-right: 40px;
+    margin-bottom: 0;
+}
+
+.footer-menu ul > li:last-of-type {
+    margin-right: 0;
+}
+
+.site-footer .footer-menu ul > li > a {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 21px;
+    color: #ECECEC !important;
+    transition: 200ms ease-in-out;
+    text-decoration: none;
+}
+
+footer.site-footer .site-info .site-title {
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 32px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+footer.site-footer .site-info a > p {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 21px;
+    color: #ECECEC;
+    margin-bottom: 0;
 }
 
 footer.site-footer {
-    padding-top: 80px;
-    padding-bottom: 50px;
-    font-size: 1rem;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-top: 10px solid #484848;
+    background: #3C3C3B;
+}
+
+footer.site-footer hr {
+    margin: 15px 0;
+    border: none;
+    border-bottom: 1px solid #484848;
+}
+
+footer.site-footer .footer-name-p, footer.site-footer .footer-name-p > .footer-name {
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 17px;
+    color: #ECECEC;
+}
+
+footer.site-footer .footer-terms {
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 17px;
+    color: #ECECEC !important;
+}
+
+footer.site-footer p {
+    align-self: center;
 }
 
 /*--------------------------------------------------------------
@@ -820,6 +1248,22 @@ table:not( .has-background ) tbody td {
 # NOTY
 --------------------------------------------------------------*/
 
+
+body .btn.btn-primary {
+    background: #40866E;
+    border-radius: 10px;
+    padding: 14px 23px;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 21px;
+    color: #FFFFFF;
+    height: 50px;
+    border: none;
+}
+
+body .btn.btn-primary > img {
+    margin-right: 10px;
+}
 
 /*--------------------------------------------------------------
 # MEDIA

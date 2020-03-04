@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: main-landing
+Template Name: bibliography
 Template Post Type: post, page, product
 */
 ?>
@@ -11,7 +11,7 @@ Template Post Type: post, page, product
 <div class="container pt-5 pb-5">
     <div class="row">
         <div class="col-12 text-center">
-            <h1>Пример страницы главной</h1>
+            <h1>Библиография</h1>
         </div>
     </div>
 </div>
