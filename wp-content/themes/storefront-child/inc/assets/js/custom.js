@@ -26,8 +26,8 @@ jQuery(function ($) {
         input.attr('checked', true);
         if (input.is(':checked')) {
             $('.card-payment').removeClass('active');
-            $.when($('.card-payment-info__content').fadeOut(100)).done(() => {
-                $(`#${target}`).fadeIn(250);
+            $.when($('.card-payment-info__content').fadeOut(50)).done(() => {
+                $(`#${target}`).fadeIn(150);
             });
             $(this).addClass('active')
         }
