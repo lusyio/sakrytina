@@ -12,6 +12,10 @@
 </div><!-- .row -->
 </div><!-- .container -->
 
+<?php if (is_product()) {
+    get_template_part('template-parts/popular', 'popular');
+} ?>
+
 <?php do_action('storefront_before_footer'); ?>
 
 <footer id="colophon" class="site-footer" role="contentinfo">

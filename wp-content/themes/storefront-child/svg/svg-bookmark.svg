@@ -1,0 +1,8 @@
+<svg width="134" height="662" viewBox="0 0 134 662" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.999756 4.99998C0.999756 2.23856 3.23833 0 5.99976 0H133V596H0.999756V4.99998Z" fill="#EDEDED"/>
+<line x1="4.49976" y1="587" x2="4.49978" y2="4" stroke="#ABABAB" stroke-dasharray="2.2 2.2"/>
+<line x1="4.97213" y1="586.646" x2="66.9721" y2="524.646" stroke="#ABABAB" stroke-dasharray="2.2 2.2"/>
+<line x1="66.3533" y1="524.646" x2="128.353" y2="586.646" stroke="#ABABAB" stroke-dasharray="2.2 2.2"/>
+<line x1="129.5" y1="587" x2="129.5" y2="4" stroke="#ABABAB" stroke-dasharray="2.2 2.2"/>
+<rect x="67" y="529.238" width="93.8772" height="93.8772" transform="rotate(45 67 529.238)" fill="#F9F9F9"/>
+</svg>

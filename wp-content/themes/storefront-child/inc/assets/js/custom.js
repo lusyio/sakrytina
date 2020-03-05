@@ -1,13 +1,14 @@
 jQuery(function ($) {
     const $page = $('html, body');
     $('a.link[href*="#"]').on('click', function () {
-        let blockId = $.attr(this, 'href').slice(1)
+        let blockId = $.attr(this, 'href');
         if ($('.checkbox-toggle').is(':checked')) {
             $('.checkbox-toggle').trigger('click')
         }
+        console.log(blockId)
         $page.animate({
-            scrollTop: $(`${blockId}`).offset().top - 50
-        }, 1500);
+            scrollTop: $(`${blockId}`).offset().top - 30
+        }, 1000);
         return false;
     });
 
@@ -19,5 +20,16 @@ jQuery(function ($) {
         }
     });
 
-    $('.carousel-item:first-of-type').addClass('active')
+    $('.card-payment').on('click', function () {
+        let input = $(this).find('input');
+        let target = input.data('target');
+        input.attr('checked', true);
+        if (input.is(':checked')) {
+            $('.card-payment').removeClass('active');
+            $.when($('.card-payment-info__content').fadeOut(100)).done(() => {
+                $(`#${target}`).fadeIn(250);
+            });
+            $(this).addClass('active')
+        }
+    })
 });

@@ -111,6 +111,80 @@ ul.menu li.current-menu-item > a:before {
     box-shadow: none !important;
 }
 
+.sidebar-cycles {
+    margin-bottom: 40px;
+}
+
+.sidebar-cycles p.sidebar-cycles__header {
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.sidebar-cycles p {
+    margin-bottom: 15px;
+}
+
+.sidebar-cycles p > a {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 24px;
+    color: #000000;
+}
+
+.sidebar-cycles p:last-of-type {
+    margin-bottom: 0;
+}
+
+.sidebar-attention {
+    background: #FFFFFF;
+    border-radius: 5px 0px 0px 0px;
+    padding: 5px;
+}
+
+.sidebar-attention__body {
+    border: 1px dashed #ABABAB;
+    padding: 10px 20px 20px 20px;
+}
+
+.sidebar-attention .sidebar-attention__header {
+    font-size: 18px;
+    line-height: 24px;
+    color: #000000;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.sidebar-attention img {
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.sidebar-attention p {
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 16px;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+.sidebar-attention p:last-of-type {
+    margin-bottom: 0;
+}
+
+.sidebar-attention p > a {
+    font-weight: normal;
+    color: #000000;
+    text-decoration: none;
+}
+
+.sidebar-attention p > a:hover {
+    color: #000000;
+    text-decoration: underline;
+}
+
 /*--------------------------------------------------------------
 # RADIO BTN
 --------------------------------------------------------------*/
@@ -537,6 +611,10 @@ header#masthead .navbar-brand img {
 
 /*меню*/
 
+.site-content, .storefront-breadcrumb {
+    background: #f9f9f9;
+}
+
 /*--------------------------------------------------------------
 # HEADER
 --------------------------------------------------------------*/
@@ -801,9 +879,253 @@ header#masthead .navbar-brand img {
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
-# POPULAR
+# BOOKS
 --------------------------------------------------------------*/
 
+.carousel-books .item-book img {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.35);
+    display: block;
+    margin: auto;
+    margin-bottom: 30px;
+    border-radius: 0;
+}
+
+.carousel-books .woocommerce-loop-product__title {
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 0;
+}
+
+.carousel-books .carousel-item.active, .carousel-books .carousel-item-next, .carousel-books .carousel-item-prev {
+    display: flex;
+}
+
+.carousel-books .item-book {
+    margin-right: 50px;
+}
+
+.carousel-books .item-book:last-of-type {
+    margin-right: 0;
+}
+
+.carousel-books {
+    margin-bottom: 60px;
+}
+
+.woocommerce-loop-category__title {
+    margin-bottom: 20px;
+    font-size: 36px;
+    line-height: 47px;
+    color: #000000;
+    display: flex;
+    justify-content: space-between;
+}
+
+.woocommerce-loop-category__title > mark {
+    display: none;
+}
+
+.carousel-books-control .carousel-books-control-prev {
+    margin-right: 25px;
+}
+
+.single-product .woocommerce-product-gallery .woocommerce-product-gallery__trigger {
+    display: none;
+}
+
+.woocommerce-product-gallery img {
+    display: block;
+    width: 100%;
+    border-radius: 0;
+    margin-top: 40px;
+}
+
+.woocommerce-product-gallery .woocommerce-product-gallery__image {
+    position: relative;
+    z-index: 5;
+}
+
+.woocommerce-product-gallery .woocommerce-product-gallery__wrapper:after {
+    position: absolute;
+    display: block;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    content: url("/wp-content/themes/storefront-child/svg/svg-bookmark.svg");
+}
+
+.product-card {
+    background: #FFFFFF;
+    border-radius: 0px 5px 5px 5px;
+}
+
+.product-card .product-card__main-body {
+    padding: 40px;
+}
+
+.product-card .product-card__secondary-body {
+    padding: 40px 20px;
+}
+
+.product-card .br {
+    border-right: 1px solid #F3F3F3;
+}
+
+.product-card__main-body h1.entry-title {
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 47px;
+    color: #000000;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.product-card__main-body .woocommerce-product-details__short-description > p {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+    margin-bottom: 25px;
+}
+
+.product-card .product-card__award {
+    padding: 19px 35px 25px;
+    border-bottom: 1px solid #F3F3F3;;
+}
+
+.product-card .product-card__award img {
+    display: block;
+    margin: 0 auto 6px;
+}
+
+.product-card .product-card__award p {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 0;
+}
+
+.product-card .product-card__meta {
+    padding: 35px 20px;
+}
+
+.product-card .product-card__meta .product-card__meta-title {
+    font-size: 12px;
+    line-height: 20px;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.product-card .product-card__meta .product-card__meta-content {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 20px;
+    color: #6F6F6F;
+    margin-bottom: 15px;
+}
+
+.product-card .product-card__meta .product-card__meta-content > a {
+    color: #6F6F6F;
+}
+
+.product-card .product-card__meta .product-card__meta-content > a:hover {
+    color: #6F6F6F;
+}
+
+.fragment-link {
+    margin-bottom: 20px;
+}
+
+.fragment-link > a {
+    font-size: 12px;
+    line-height: 16px;
+    color: #000000;
+}
+
+.fragment-link > a > img {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.card-payment {
+    border: 1px solid #DFDFDF;
+    border-radius: 5px;
+    height: 100%;
+}
+
+.mb-payment {
+    margin-bottom: 20px;
+}
+
+.card-payment.active {
+    background: rgba(196, 196, 196, 0.1);
+}
+
+.card-payment .card-payment__body {
+    padding: 25px 35px 15px;
+}
+
+.card-payment .card-payment__body > svg {
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.card-payment .card-payment__body > svg path {
+    fill: #CECECE;
+}
+
+.card-payment.active .card-payment__body > svg path {
+    fill: #626262;
+}
+
+.card-payment .card-payment__body > p {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 0;
+}
+
+.card-payment.active .card-payment__body > p {
+    font-weight: normal;
+}
+
+.card-payment input {
+    display: none;
+    visibility: hidden;
+}
+
+.card-payment-info {
+    background: #F9F9F9;
+    border: 1px solid #DFDFDF;
+    border-radius: 5px;
+}
+
+.card-payment-info .card-payment-info__body {
+    padding: 30px 35px 25px;
+}
+
+.card-payment-info__content#ebookTarget {
+    display: block;
+}
+
+.card-payment-info__content {
+    display: none;
+}
+
+/*--------------------------------------------------------------
+# BOOKS
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# POPULAR
+--------------------------------------------------------------*/
 .popular-block {
     padding-top: 30px;
     padding-bottom: 80px;
@@ -1269,6 +1591,11 @@ body .btn.btn-primary > img {
     margin-right: 10px;
 }
 
+.woocommerce-breadcrumb a:first-of-type::before {
+    content: none;
+    display: none;
+}
+
 /*--------------------------------------------------------------
 # MEDIA
 --------------------------------------------------------------*/
@@ -1282,9 +1609,18 @@ and (min-width: 1200px) {
 
 @media screen
 and (min-width: 768px) {
+    .col-full {
+        max-width: 69.498938em;
+    }
+
+    .storefront-sorting {
+        display: none;
+    }
+
     .storefront-breadcrumb {
-        padding: 3.41575em 0;
-        margin: 0 0 0.706326em;
+        padding-top: 40px;
+        padding-bottom: 30px;
+        margin: 0;
     }
 }
 

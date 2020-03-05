@@ -24,7 +24,7 @@ if (empty($product) || !$product->is_visible()) {
     return;
 }
 ?>
-<div class="carousel-item <?= ($i === 0) ? 'active' : '' ?>" <?php wc_product_class('', $product); ?>>
+<div class="item-book" <?php wc_product_class('', $product); ?>>
     <?php
     /**
      * Hook: woocommerce_before_shop_loop_item.

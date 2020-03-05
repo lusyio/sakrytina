@@ -331,3 +331,59 @@ function jk_related_products_args($args)
     return $args;
 }
 
+remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart');
+
+//change category title templete for carousel controls
+remove_action('woocommerce_shop_loop_subcategory_title', 'woocommerce_template_loop_category_title', 10);
+add_action('woocommerce_shop_loop_subcategory_title', 'custom_woocommerce_template_loop_category_title', 10);
+function custom_woocommerce_template_loop_category_title($category)
+{
+    ?>
+    <h2 id="<?= $category->slug ?>" class="woocommerce-loop-category__title">
+        <?php
+        echo $category->name;
+        if ($category->count > 3) :?>
+            <div class="carousel-books-control">
+                <a class="carousel-books-control-prev" href="#carousel<?= $category->slug ?>" role="button"
+                   data-slide="prev">
+                    <img src="/wp-content/themes/storefront-child/svg/svg-prev.svg" alt="prev">
+                </a>
+                <a class="carousel-books-control-next" href="#carousel<?= $category->slug ?>" role="button"
+                   data-slide="next">
+                    <img src="/wp-content/themes/storefront-child/svg/svg-next.svg" alt="next">
+                </a>
+            </div>
+        <?php endif; ?>
+    </h2>
+    <?php
+}
+
+// remove page title on shop page
+add_filter('woocommerce_show_page_title', 'not_a_shop_page');
+function not_a_shop_page()
+{
+    return boolval(!is_shop());
+}
+
+/**
+ * Change the breadcrumb
+ */
+add_filter('woocommerce_breadcrumb_defaults', 'jk_woocommerce_breadcrumbs', 20);
+function jk_woocommerce_breadcrumbs()
+{
+    return array(
+        'delimiter' => ' / ',
+        'wrap_before' => '<div class="storefront-breadcrumb"><div class="container"><div class="row"><div class="col-12"><nav class="woocommerce-breadcrumb">',
+        'wrap_after' => '</nav></div></div></div></div>',
+        'home' => _x('Home', 'breadcrumb', 'woocommerce'),
+    );
+}
+
+/**
+ * Remove related products output
+ */
+remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
+
+/* Remove product meta */
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
+
