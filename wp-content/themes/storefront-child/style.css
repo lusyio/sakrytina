@@ -78,7 +78,11 @@ header .woocommerce {
 }
 
 h1.entry-title {
-    text-align: center;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 47px;
+    color: #000000;
+    margin-bottom: 50px;
 }
 
 .widget_nav_menu ul li::before {
@@ -401,7 +405,7 @@ header#masthead .navbar-brand img {
 }
 
 .basket-btn__counter {
-    background: #F25E2F;
+    background: #40866E;
     border: 0;
     border-radius: 50%;
     font-weight: normal;
@@ -412,8 +416,8 @@ header#masthead .navbar-brand img {
     padding: 2px;
     min-width: 16px;
     text-align: center;
-    right: -35%;
-    top: -35%;
+    left: 35px;
+    bottom: 5px;
 }
 
 .storefront-sticky-add-to-cart {
@@ -1059,6 +1063,10 @@ header#masthead .navbar-brand img {
     height: 100%;
 }
 
+.card-payment:hover {
+    cursor: pointer;
+}
+
 .mb-payment {
     margin-bottom: 20px;
 }
@@ -1108,10 +1116,6 @@ header#masthead .navbar-brand img {
     border-radius: 5px;
 }
 
-.card-payment-info .card-payment-info__body {
-    padding: 30px 35px 25px;
-}
-
 .card-payment-info__content#ebookTarget {
     display: block;
 }
@@ -1120,9 +1124,336 @@ header#masthead .navbar-brand img {
     display: none;
 }
 
+.card-payment-info__content {
+    padding: 30px 35px 25px;
+}
+
+.card-payment-info__content .price {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 47px;
+    color: #4B4B4B;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.card-payment-info__content .price del {
+    position: absolute;
+    right: -25px;
+    top: -15px;
+    font-size: 18px;
+    line-height: 24px;
+    color: #D86F6F;
+    opacity: 1;
+    font-weight: bold;
+}
+
+.card-payment-info__content hr {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid #DFDFDF;
+}
+
+.card-payment-info__content p {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    color: #5E5E5E;
+    margin-bottom: 12px;
+}
+
+.card-payment-info__content p > span {
+    font-weight: normal;
+}
+
+.card-payment-info__content p:last-of-type {
+    margin-bottom: 0;
+}
+
+#bookTarget {
+    padding: 26px 40px 91px;
+}
+
+#bookTarget p {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 25px;
+}
+
+#bookTarget .bookTarget__where {
+    display: block;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 25px;
+}
+
+#bookTarget .bookTarget__where > p {
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #000000;
+    display: table;
+    padding: 0 40px;
+    background: #f9f9f9;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 0;
+}
+
+#bookTarget .bookTarget__where:before {
+    width: 100%;
+    top: 50%;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    content: '';
+    border-bottom: 1px solid #DFDFDF;;
+}
+
+#bookTarget .bookTarget__links {
+    display: flex;
+    justify-content: center;
+}
+
+#bookTarget .bookTarget__links > a {
+    margin-right: 15px;
+    display: flex;
+    font-size: 12px;
+    line-height: 16px;
+    color: #000000;
+}
+
+#bookTarget .bookTarget__links > a:last-of-type {
+    margin-right: 0;
+}
+
 /*--------------------------------------------------------------
 # BOOKS
 --------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# bibliography
+--------------------------------------------------------------*/
+
+.bibliography .bibliography__header {
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 47px;
+    color: #000000;
+    margin-bottom: 30px;
+}
+
+.bibliography .bibliography__info {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+    margin-bottom: 60px;
+}
+
+.bibliography .bibliography__row {
+    margin-bottom: 30px;
+}
+
+.bibliography .bibliography__thumbnail {
+    padding: 15px;
+    background: #F3F3F3;
+}
+
+.bibliography .bibliography__thumbnail > img {
+    border-radius: 0;
+}
+
+.bibliography .bibliography__card {
+    margin: auto 0;
+}
+
+.bibliography .bibliography__title {
+    font-size: 24px;
+    line-height: 32px;
+    color: #000000;
+    margin-bottom: 0;
+}
+
+.bibliography .bibliography__year {
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 30px;
+}
+
+.bibliography .bibliography__card hr {
+    border: none;
+    margin-top: 9px;
+    margin-bottom: 16px;
+    border-bottom: 2px solid #F3F3F3;;
+}
+
+.bibliography .bibliography__genre {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+    color: #0C0C0C;
+    margin-bottom: 10px;
+}
+
+.bibliography .bibliography__cycle {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+    color: #0C0C0C;
+    margin-bottom: 0;
+}
+
+.bibliography .bibliography__cycle a {
+    color: #0C0C0C;
+}
+
+.bibliography .bibliography__award {
+    display: flex;
+}
+
+.bibliography .bibliography__award img {
+    display: block;
+    margin-right: 25px;
+}
+
+.bibliography .bibliography__award p {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000000;
+    margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# bibliography
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# CART
+--------------------------------------------------------------*/
+
+.cart-card {
+    background: #FFFFFF;
+    border-radius: 0px 5px 5px 5px;
+}
+
+.cart-card__body {
+    padding: 50px 50px 125px 80px;
+}
+
+.product-thumbnail__body {
+    padding: 15px;
+    background: #F3F3F3;
+}
+
+.cart-card .product-name {
+    margin: auto 0;
+}
+
+.cart-card .product-name a {
+    font-size: 24px;
+    line-height: 32px;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+.cart-card .product-price {
+    margin: auto;
+}
+
+.cart-card .product-price span {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 47px;
+    color: #969696;
+}
+
+.cart-card a.remove::before {
+    content: none;
+    display: none;
+}
+
+.cart-card .product-remove {
+    margin: auto;
+}
+
+.cart-card a.remove {
+    text-indent: 0;
+    margin: auto;
+}
+
+.cart-card hr {
+    border: none;
+    margin: 50px 0;
+    border-bottom: 1px solid #F3F3F3;;
+}
+
+.cart-card .cart_item {
+    margin-bottom: 25px;
+}
+
+.cart-card .cart_item:last-of-type {
+    margin-bottom: 0;
+}
+
+.cart-card .wc-proceed-to-checkout .checkout-button {
+    background: #40866E;
+    border-radius: 10px;
+    padding: 14px 23px;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 21px;
+    color: #FFFFFF;
+    height: 50px;
+    border: none;
+    min-height: 50px;
+    margin-bottom: 0;
+}
+
+.cart-card .wc-proceed-to-checkout {
+    margin-bottom: 0;
+}
+
+.cart-card .total {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.cart-card .total p {
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 32px;
+    color: #000000;
+    margin-bottom: 0;
+}
+
+.cart-card .total-price {
+    margin: auto;
+}
+
+.cart-card .total-price p {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 47px;
+    color: #4B4B4B;
+    margin-bottom: 0;
+}
+
+
+/*--------------------------------------------------------------
+# CART
+--------------------------------------------------------------*/
+
 /*--------------------------------------------------------------
 # POPULAR
 --------------------------------------------------------------*/
@@ -1585,6 +1916,7 @@ body .btn.btn-primary {
     color: #FFFFFF;
     height: 50px;
     border: none;
+    min-height: 50px;
 }
 
 body .btn.btn-primary > img {

@@ -387,3 +387,55 @@ remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_re
 /* Remove product meta */
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
 
+/**
+ * @desc Remove in all product type
+ */
+function wc_remove_all_quantity_fields($return, $product)
+{
+    return true;
+}
+
+add_filter('woocommerce_is_sold_individually', 'wc_remove_all_quantity_fields', 10, 2);
+
+remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10);
+
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
+
+/**
+ * Remove breadcrumbs on specific pages
+ */
+add_action('remove_breadcrumbs', 'wcc_remove_woo_wc_breadcrumbs');
+function wcc_remove_woo_wc_breadcrumbs()
+{
+    if (is_product()) {
+        remove_action('woo_main_before', 'woo_display_breadcrumbs', 10);
+    }
+}
+
+/**
+ * Handle a custom 'customvar' query var to get products with the 'customvar' meta.
+ * @param array $query - Args for WP_Query.
+ * @param array $query_vars - Query vars from WC_Product_Query.
+ * @return array modified $query
+ */
+function handle_custom_query_var($query, $query_vars)
+{
+    if (!empty($query_vars['pa_year_publication'])) {
+        $query['meta_query'][] = array(
+            'posts_per_page' => -1,
+            'key' => 'pa_year_publication',
+            'value' => esc_attr($query_vars['pa_year_publication']),
+        );
+        var_dump($query);
+    }
+
+    return $query;
+}
+
+add_filter('woocommerce_product_data_store_cpt_get_products_query', 'handle_custom_query_var', 10, 2);
+
+add_filter('woocommerce_sale_flash', 'lw_hide_sale_flash');
+function lw_hide_sale_flash()
+{
+    return false;
+}

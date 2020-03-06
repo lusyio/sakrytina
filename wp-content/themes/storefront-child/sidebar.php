@@ -21,7 +21,7 @@ if (!is_active_sidebar('sidebar-1')) {
             'number' => $number,
             'orderby' => $orderby,
             'order' => $order,
-            'hide_empty' => $hide_empty,
+            'hide_empty' => true,
             'include' => $ids
         );
         $product_categories = get_terms($args);
@@ -34,11 +34,11 @@ if (!is_active_sidebar('sidebar-1')) {
 
     <div class="sidebar-cycles">
         <p class="sidebar-cycles__header">Сборники рассказов</p>
-<!--        --><?php //foreach ($product_categories as $cat):?>
-<!--            --><?php //if ($cat->slug === 'storybooks'): ?>
-<!--                <p class="sidebar-cycles__item"><a class="link" href="#--><?//= $cat->slug ?><!--">--><?//= $cat->name ?><!--</a</p>-->
-<!--            --><?php //endif; ?>
-<!--        --><?php //endforeach; ?>
+        <?php foreach ($product_categories as $cat):?>
+            <?php if ($cat->slug === 'storybooks'): ?>
+                <p class="sidebar-cycles__item"><a class="link" href="#<?= $cat->slug ?>"><?= $cat->name ?></a</p>
+            <?php endif; ?>
+        <?php endforeach; ?>
     </div>
 
     <div class="sidebar-attention">

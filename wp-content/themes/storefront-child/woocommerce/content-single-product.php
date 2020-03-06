@@ -72,7 +72,7 @@ if (post_password_required()) {
                         if ($tags):
                             ?>
                             <div class="product-card__award">
-                                <img src="/wp-content/themes/storefront-child/images/img-award.png" alt="award">
+                                <img src="/wp-content/themes/storefront-child/images/img-award.jpg" alt="award">
                                 <?php
                                 foreach ($tags as $tag) {
                                     $tagNameList[] = $tag->name;

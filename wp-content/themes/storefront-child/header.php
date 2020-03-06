@@ -67,9 +67,21 @@
                             </a>
                         </div>
                         <div>
-                            <a href="#" class="btn btn-primary">
-                                <img src="/wp-content/themes/storefront-child/svg/svg-your-account.svg" alt="your-account"> Личный кабинет
-                            </a>
+                            <?php if (is_user_logged_in()) { ?>
+                                <a class="btn btn-primary"
+                                   href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>"
+                                   title="<?php _e('My Account', 'woothemes'); ?>"><img
+                                            src="/wp-content/themes/storefront-child/svg/svg-your-account.svg"
+                                            alt="your-account"> Личный кабинет
+                                </a>
+                            <?php } else { ?>
+                                <a class="btn btn-primary"
+                                   href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>"
+                                   title="<?php _e('Login / Register', 'woothemes'); ?>"> <img
+                                            src="/wp-content/themes/storefront-child/svg/svg-your-account.svg"
+                                            alt="your-account"> Личный кабинет
+                                </a>
+                            <?php } ?>
                         </div>
                     <?php endif; ?>
 
@@ -121,3 +133,4 @@
 
 <?php
 do_action('storefront_content_top');
+
