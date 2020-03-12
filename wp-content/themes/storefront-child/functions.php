@@ -439,3 +439,20 @@ function lw_hide_sale_flash()
 {
     return false;
 }
+
+function mytheme_comment($comment, $args, $depth)
+{
+    $GLOBALS['comment'] = $comment;
+    $comments = get_comments();
+    $first_comment_id = $comments[0]->comment_ID;
+    ?>
+    <div class="post <?= $first_comment_id === $comment->comment_ID ? 'active' : '' ?> carousel-item">
+        <p class="comment__title"><?= $comment->comment_author ?><?= get_comment_date($d = ', F jS, Y', $comment) ?> </p>
+        <div class="comment__content">
+            <p><?php comment_text() ?></p>
+            <a href="<?= $comment->comment_author_url ?>">Читать весь отзыв <img
+                        src="/wp-content/themes/storefront-child/svg/svg-review__link.svg" alt="review-link"></a>
+        </div>
+    </div>
+    <?php
+}

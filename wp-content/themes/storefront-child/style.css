@@ -963,6 +963,7 @@ header#masthead .navbar-brand img {
 .product-card {
     background: #FFFFFF;
     border-radius: 0px 5px 5px 5px;
+    margin-bottom: 27px;
 }
 
 .product-card .product-card__main-body {
@@ -1640,6 +1641,34 @@ footer.site-footer p {
     -moz-border-radius: 50%;
     border-radius: 50%;
 }
+
+#comments .comments__img {
+    display: block;
+    margin-bottom: 55px;
+}
+
+.comment__title {
+    font-size: 18px;
+    line-height: 140%;
+    color: #151515;
+    margin-bottom: 20px;
+}
+
+.comment__content > p {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 140%;
+    color: #151515;
+    margin-bottom: 15px;
+}
+
+.comment__content > a {
+    font-size: 14px;
+    line-height: 140%;
+    color: #CFCFCF;
+    display: table;
+}
+
 
 /*--------------------------------------------------------------
 # PRODUCT
