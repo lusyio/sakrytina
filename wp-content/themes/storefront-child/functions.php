@@ -226,6 +226,9 @@ function new_woocommerce_checkout_fields($fields)
         unset($fields['billing']['billing_state']); //удаляем Населённый пункт
         unset($fields['billing']['billing_company']); //удаляем Населённый пункт
         unset($fields['billing']['phone']); //удаляем Населённый пункт
+        unset($fields['order']['order_comments']);
+        unset($fields['billing']['billing_last_name']);
+        unset($fields['billing']['billing_phone']);
 
     }
     return $fields;
@@ -464,3 +467,12 @@ add_filter('woocommerce_available_variation', function ($value, $object = null, 
     }
     return $value;
 }, 10, 3);
+
+remove_action('woocommerce_checkout_order_review', 'woocommerce_order_review', 10);
+
+add_filter( 'woocommerce_checkout_fields' , 'override_billing_checkout_fields', 20, 1 );
+function override_billing_checkout_fields( $fields ) {
+    $fields['billing']['billing_first_name']['placeholder'] = 'Как к вам обращаться?';
+    $fields['billing']['billing_email']['placeholder'] = 'Укажите Email';
+    return $fields;
+}

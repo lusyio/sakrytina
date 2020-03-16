@@ -23,10 +23,6 @@ defined('ABSPATH') || exit;
 
         <h3><?php esc_html_e('Billing &amp; Shipping', 'woocommerce'); ?></h3>
 
-    <?php else : ?>
-
-        <h3><?php esc_html_e('Billing details', 'woocommerce'); ?></h3>
-
     <?php endif; ?>
 
     <?php do_action('woocommerce_before_checkout_billing_form', $checkout); ?>

@@ -28,40 +28,72 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
 }
 
 ?>
-    <div class="col-lg-6 offset-lg-3 col-12 offset-0">
-        <form name="checkout" method="post" class="checkout woocommerce-checkout"
-              action="<?php echo esc_url(wc_get_checkout_url()); ?>" enctype="multipart/form-data">
+<div class="row">
 
-            <?php if ($checkout->get_checkout_fields()) : ?>
+    <div class="col-12">
+        <div class="new-checkout">
+            <div class="new-checkout__body">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <form name="checkout" method="post" class="checkout woocommerce-checkout"
+                              action="<?php echo esc_url(wc_get_checkout_url()); ?>" enctype="multipart/form-data">
 
-                <?php do_action('woocommerce_checkout_before_customer_details'); ?>
+                            <?php if ($checkout->get_checkout_fields()) : ?>
 
-                <div class="row" id="customer_details">
-                    <div class="col-12">
-                        <?php do_action('woocommerce_checkout_billing'); ?>
-                    </div>
+                                <?php do_action('woocommerce_checkout_before_customer_details'); ?>
 
-                    <div class="col-12">
-                        <?php do_action('woocommerce_checkout_shipping'); ?>
+                                <div class="row" id="customer_details">
+                                    <div class="col-12">
+                                        <?php do_action('woocommerce_checkout_billing'); ?>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <?php do_action('woocommerce_checkout_shipping'); ?>
+                                    </div>
+                                </div>
+
+                                <?php do_action('woocommerce_checkout_after_customer_details'); ?>
+
+                            <?php endif; ?>
+
+                            <?php do_action('woocommerce_checkout_before_order_review_heading'); ?>
+
+                            <h3 id="order_review_heading">Выберите способ оплаты</h3>
+
+                            <?php do_action('woocommerce_checkout_before_order_review'); ?>
+
+                            <div id="order_review" class="woocommerce-checkout-review-order">
+                                <?php do_action('woocommerce_checkout_order_review'); ?>
+                            </div>
+
+                            <?php do_action('woocommerce_checkout_after_order_review'); ?>
+
+                        </form>
                     </div>
                 </div>
-
-                <?php do_action('woocommerce_checkout_after_customer_details'); ?>
-
-            <?php endif; ?>
-
-            <?php do_action('woocommerce_checkout_before_order_review_heading'); ?>
-
-            <h3 id="order_review_heading"><?php esc_html_e('Your order', 'woocommerce'); ?></h3>
-
-            <?php do_action('woocommerce_checkout_before_order_review'); ?>
-
-            <div id="order_review" class="woocommerce-checkout-review-order">
-                <?php do_action('woocommerce_checkout_order_review'); ?>
+                <div class="col-lg-6 col-12">
+                    <div class="new-checkout__info">
+                        <p>Нажимая кнопку “Перейти к оплате” вы даете согласие на обработку
+                            своих
+                            персональных данных.</p>
+                        <p>Для оплаты вы будете перенаправлены на страницу сервиса
+                            Яндекс.Кассы,
+                            где
+                            сможете безопасно провести платеж.</p>
+                        <p>После того, как будет произведена оплата, вам на почту придет
+                            письмо,
+                            в
+                            котором будет находиться ссылка на скачивание, а также пароль от личного кабинета.
+                        </p>
+                        <p>В личном кабинете вам будет доступна информация о приобретенных
+                            книгах, а
+                            также постоянный дотуп к их загрузке.</p>
+                    </div>
+                </div>
             </div>
-
-            <?php do_action('woocommerce_checkout_after_order_review'); ?>
-
-        </form>
+        </div>
     </div>
+</div>
+</div>
+
 <?php do_action('woocommerce_after_checkout_form', $checkout); ?>
