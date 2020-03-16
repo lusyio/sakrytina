@@ -23,10 +23,8 @@ if (!comments_open()) {
     return;
 }
 
-$category = get_the_category($post->ID);
-$slug = $category[0]->slug; // try print_r($category); to see everything
+$terms = get_the_terms($product->get_id(), 'product_cat');
 
-var_dump($category);
 ?>
 
 <div class="row">
@@ -50,27 +48,59 @@ var_dump($category);
         <div class="clear"></div>
     </div>
 
-<!--    <div class="col-lg-6 col-12 new-related">-->
-<!--        --><?php
-//        $args = array(
-//            'status' => 'publish',
-//            'category' => $cat,
-//            'limit' => 4,
-//        );
-//        $query = new WC_Product_Query($args);
-//        $products = $query->get_products();
-//        foreach ($products as $product):
-//            ?>
-<!--            <div class="col-3">-->
-<!--                <div class="popular-block-card">-->
-<!--                    <a href="--><?php //echo $product->get_permalink(); ?><!--">-->
-<!--                        <div class="popular-block-card__img">-->
-<!--                            --><?php //echo $product->get_image('medium'); ?>
-<!--                        </div>-->
-<!--                        <p class="popular-block-card__title">--><?php //echo $product->get_name(); ?><!--</p>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        --><?php //endforeach; ?>
-<!--    </div>-->
+    <div class="col-lg-6 col-12 new-related">
+
+        <?php
+        $args = array(
+            'status' => 'publish',
+            'category' => $terms[0]->slug,
+            'limit' => 4,
+        );
+        $query = new WC_Product_Query($args);
+        $products = $query->get_products();
+        $i = 0;
+        ?>
+        <div id="carouselRelated" class="carousel slide" data-ride="carousel">
+            <div class="carouselRelated-control">
+                <a class="carousel-books-control-prev" href="#carouselRelated" role="button"
+                   data-slide="prev">
+                    <img src="/wp-content/themes/storefront-child/svg/svg-prev.svg" alt="prev">
+                </a>
+                <a class="carousel-books-control-next" href="#carouselRelated" role="button"
+                   data-slide="next">
+                    <img src="/wp-content/themes/storefront-child/svg/svg-next.svg" alt="next">
+                </a>
+            </div>
+            <div class="carousel-inner">
+                <?php foreach ($products
+                               as $product):
+                    ?>
+                    <div class="new-related__card carousel-item <?= $i === 0 ? 'active' : '' ?>">
+                        <div class="new-related__card-body">
+                            <div>
+                                <div class="new-related__img">
+                                    <?= $product->get_image('medium'); ?>
+                                </div>
+                                <div>
+                                    <p class="new-related__cycle">Книги из этого цикла</p>
+                                    <p class="new-related__title"><?= $product->get_name(); ?></p>
+                                    <p class="new-related__text">
+                                        <?
+                                        $desc = strip_tags($product->get_short_description());
+                                        $size = 240;
+                                        echo mb_substr($desc, 0, mb_strrpos(mb_substr($desc, 0, $size, 'utf-8'), ' ', 'utf-8'), 'utf-8');
+                                        echo (strlen($desc) > $size) ? '...' : '';
+                                        ?>
+                                    </p>
+                                    <a class="btn btn-primary" href="<?= $product->get_permalink(); ?>">Подробнее</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                    $i++;
+                endforeach; ?>
+            </div>
+        </div>
+    </div>
 </div>

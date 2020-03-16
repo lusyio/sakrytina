@@ -97,23 +97,6 @@ do_action('woocommerce_before_cart'); ?>
                                     ?>
                                 </div>
                             </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-2"></div>
-                                <div class="col-4 total">
-                                    <p>Сумма к оплате</p>
-                                </div>
-                                <div class="col-2 total-price">
-                                    <p>
-                                        <?= WC()->cart->cart_contents_total ?>₽
-                                    </p>
-                                </div>
-                                <div class="col-3 m-auto">
-                                    <div class="wc-proceed-to-checkout">
-                                        <?php do_action('woocommerce_proceed_to_checkout'); ?>
-                                    </div>
-                                </div>
-                            </div>
                             <?php
                         }
                     }
@@ -121,6 +104,23 @@ do_action('woocommerce_before_cart'); ?>
                     <?php do_action('woocommerce_cart_contents'); ?>
 
                     <?php do_action('woocommerce_after_cart_contents'); ?>
+                    <hr>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-4 total">
+                            <p>Сумма к оплате</p>
+                        </div>
+                        <div class="col-2 total-price">
+                            <p>
+                                <?= WC()->cart->cart_contents_total ?>₽
+                            </p>
+                        </div>
+                        <div class="col-3 m-auto">
+                            <div class="wc-proceed-to-checkout">
+                                <?php do_action('woocommerce_proceed_to_checkout'); ?>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <?php do_action('woocommerce_after_cart_table'); ?>

@@ -271,18 +271,18 @@ ul.menu li.current-menu-item > a:before {
     border-radius: 50%;
     width: 16px;
     height: 16px;
-    background-color: #F25E2F;
+    background-color: #40866E;
     transform: translate(5px, 5px) scale(0);
     transition: transform 0.2s;
 }
 
 /* Checked */
 .pure-material-radio > input:checked {
-    background-color: #F25E2F;
+    background-color: #40866E;
 }
 
 .pure-material-radio > input:checked + span::before {
-    border-color: #F25E2F;
+    border-color: #40866E;
 }
 
 .pure-material-radio > input:checked + span::after {
@@ -310,7 +310,7 @@ ul.menu li.current-menu-item > a:before {
 }
 
 .pure-material-radio > input:active + span::before {
-    border-color: #F25E2F;
+    border-color: #40866E;
 }
 
 /* Disabled */
@@ -1064,7 +1064,16 @@ header#masthead .navbar-brand img {
     height: 100%;
 }
 
-.card-payment:hover {
+.card-payment.disabled {
+    opacity: 0.4;
+}
+
+.card-payment.disabled:hover {
+    cursor: not-allowed;
+}
+
+
+.card-payment:not(.disabled):hover {
     cursor: pointer;
 }
 
@@ -1136,6 +1145,11 @@ header#masthead .navbar-brand img {
     color: #4B4B4B;
     margin-bottom: 0;
     position: relative;
+}
+
+.card-payment-info__content .price ins {
+    font-weight: bold;
+    margin: 0;
 }
 
 .card-payment-info__content .price del {
@@ -1642,6 +1656,11 @@ footer.site-footer p {
     border-radius: 50%;
 }
 
+#reviews #comments {
+    padding-left: 30px;
+    padding-right: 60px;
+}
+
 #comments .comments__img {
     display: block;
     margin-bottom: 55px;
@@ -1669,10 +1688,132 @@ footer.site-footer p {
     display: table;
 }
 
+.new-related__card {
+    position: relative;
+    padding-left: 105px;
+}
+
+.new-related__card-body {
+    padding: 30px 30px 30px 0;
+    background: #FFFFFF;
+    border-radius: 0px 5px 5px 5px;
+}
+
+.new-related__card-body > div {
+    display: flex;
+}
+
+.new-related__card-body > div .new-related__img {
+    position: relative;
+    right: 65px;
+    margin-right: -35px;
+    min-width: 200px;
+    width: 200px;
+    height: 300px;
+}
+
+.new-related__card-body > div .new-related__img > img {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 0;
+    object-fit: cover;
+}
+
+.single-product .popular-block {
+    margin-top: 80px;
+}
+
+.new-related__card .new-related__cycle {
+    font-size: 14px;
+    line-height: 18px;
+    color: #40866E;
+    margin-bottom: 17px;
+}
+
+.new-related__card .new-related__title {
+    font-size: 24px;
+    line-height: 32px;
+    color: #000000;
+    margin-bottom: 8px;
+}
+
+.new-related__card .new-related__text {
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 18px;
+    color: #000000;
+    margin-bottom: 0;
+}
+
+.new-related__card .btn-primary {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    max-width: 174px;
+}
+
+.carouselRelated-control {
+    text-align: right;
+    margin-bottom: 18px;
+}
+
+.carouselRelated-control a:first-of-type {
+    margin-right: 25px;
+}
+
 
 /*--------------------------------------------------------------
 # PRODUCT
 --------------------------------------------------------------*/
+
+
+.woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword {
+    background: #FFFFFF;
+    border-radius: 0px 5px 5px 5px;
+    padding: 57px 65px 50px;
+    margin-bottom: 29vh;
+}
+
+.woocommerce-form-login label, .woocommerce-form-register label, .woocommerce-ResetPassword label {
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    color: #1C1C1C;
+    margin-bottom: 10px;
+    padding-left: 25px;
+}
+
+.woocommerce-form-login input[type='text'], .woocommerce-form-login input[type='password'], .woocommerce-form-register input[type='email'], .woocommerce-ResetPassword input[type='text'] {
+    border: 1px solid #D8D8D8 !important;
+    border-radius: 10px !important;
+    background: #fff;
+    padding: 18px 25px;
+    margin-bottom: 20px;
+}
+
+.woocommerce-form-login input[type='password'] {
+    margin-bottom: 40px;
+}
+
+.woocommerce-form-login .pure-material-radio > span {
+    font-weight: normal;
+    font-size: 18px;
+    color: #1C1C1C;
+}
+
+.woocommerce-form-login .login-block {
+    margin-bottom: 65px;
+}
+
+.woocommerce-form-register .sent-email {
+    margin-bottom: 40px;
+}
+
+.woocommerce-form-login .register a, .woocommerce-form-login .woocommerce-LostPassword a, .woocommerce-form-register .already-registered a {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 24px;
+    color: #757575;
+}
 
 /*--------------------------------------------------------------
 # PRODUCT_LIST

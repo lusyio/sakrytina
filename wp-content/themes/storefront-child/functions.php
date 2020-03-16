@@ -456,3 +456,11 @@ function mytheme_comment($comment, $args, $depth)
     </div>
     <?php
 }
+
+// Display variation's price even if min and max prices are the same
+add_filter('woocommerce_available_variation', function ($value, $object = null, $variation = null) {
+    if ($value['price_html'] == '') {
+        $value['price_html'] = '<span class="price">' . $variation->get_price_html() . '</span>';
+    }
+    return $value;
+}, 10, 3);

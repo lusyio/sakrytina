@@ -20,7 +20,9 @@ jQuery(function ($) {
         }
     });
 
-    $('.card-payment').on('click', function () {
+    $('.card-payment:not(".disabled")').on('click', function () {
+        let dataId = $(this).data('id')
+        $('#pa_book-type').val(dataId).trigger('change')
         let input = $(this).find('input');
         let target = input.data('target');
         input.attr('checked', true);

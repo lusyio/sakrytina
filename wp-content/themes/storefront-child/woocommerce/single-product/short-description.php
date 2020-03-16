@@ -33,7 +33,7 @@ if ($short_description) :
 <?php endif; ?>
 <?php
 $link = get_post_meta($post->ID, 'read_fragment_link');
-if ($link !== ''): ?>
+if (!!$link): ?>
     <div class="fragment-link">
         <a target="_blank" href="<?= $link[0] ?>">
             <img src="/wp-content/themes/storefront-child/svg/svg-read-fragment.svg"
