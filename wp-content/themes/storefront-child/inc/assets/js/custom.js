@@ -34,4 +34,18 @@ jQuery(function ($) {
             $(this).addClass('active')
         }
     })
+
+    const bookBlock = $('.popular-block-card');
+    const carouselHover = $('#carouselHover');
+
+    bookBlock.mouseenter(function () {
+        let blockId = $(this).data('active')
+        $(`#${blockId}`).addClass('active')
+        carouselHover.fadeIn(200)
+    })
+
+    carouselHover.mouseleave(function () {
+        $('.popular-hover-card').removeClass('active')
+        carouselHover.fadeOut(350)
+    })
 });

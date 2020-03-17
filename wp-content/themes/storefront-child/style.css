@@ -627,6 +627,109 @@ header#masthead .navbar-brand img {
 # MAIN_LANDING
 --------------------------------------------------------------*/
 
+#sb_instagram.sbi_col_1.sbi_disable_mobile #sbi_images .sbi_item {
+    max-width: 190px;
+    max-height: 190px;
+}
+
+#sb_instagram.sbi_col_1.sbi_disable_mobile #sbi_images .sbi_item a {
+    width: 190px;
+    height: 190px;
+}
+
+#sb_instagram {
+    position: absolute;
+    right: 85px;
+    bottom: 13px;
+}
+
+#sb_instagram.sbi_col_1.sbi_disable_mobile #sbi_images .sbi_item:after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    padding: 10px 5px;
+    background: #fff;
+    border: 1px solid #cfcfcfa6;
+    border-bottom: none;
+    left: -1px;
+    width: 101.5%;
+}
+
+#sb_instagram .sb_instagram_header {
+    position: absolute;
+    z-index: 3;
+    transform: rotate(4deg);
+    float: right;
+    width: unset;
+    right: 9.5%;
+    top: -27px;
+}
+
+#sb_instagram .sb_instagram_header .sbi_header_img {
+    width: 21px;
+    height: 21px;
+}
+
+#sb_instagram .sb_instagram_header .sbi_header_text.sbi_no_bio h3 {
+    padding-top: 0 !important;
+}
+
+#sb_instagram .sb_instagram_header .sbi_header_text .sbi_bio, #sb_instagram .sb_instagram_header .sbi_header_text h3 {
+    font-size: 10px;
+    margin: 0 0 0 30px !important;
+}
+
+#sb_instagram.sbi_col_1.sbi_disable_mobile #sbi_images .sbi_item:before {
+    content: '';
+    position: absolute;
+    top: -31px;
+    padding: 15px 5px;
+    background: #fff;
+    border: 1px solid #cfcfcfa6;
+    border-bottom: none;
+    left: -1px;
+    width: 101.5%;
+    height: 25px;
+}
+
+#sb_instagram .sb_instagram_header .sbi_header_hashtag_icon .sbi_new_logo, #sb_instagram .sb_instagram_header .sbi_header_img_hover .sbi_new_logo {
+    width: 50%;
+    display: block;
+    margin: auto;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: 50%;
+}
+
+#sb_instagram.sbi_col_1.sbi_disable_mobile #sbi_images .sbi_item {
+    border: 1px solid #cfcfcfa6;
+    border-bottom: none;
+    border-top: none;
+    overflow: inherit;
+}
+
+#sb_instagram.sbi_col_1.sbi_disable_mobile #sbi_images .sbi_item:first-of-type {
+    position: relative;
+    z-index: 2;
+    transform: rotate(4deg);
+}
+
+#sb_instagram.sbi_col_1.sbi_disable_mobile #sbi_images .sbi_item:last-of-type {
+    position: absolute;
+    z-index: 1;
+    right: -40px;
+    bottom: -9px;
+    transform: rotate(7.73deg);
+}
+
+#sb_instagram #sbi_images {
+    float: right;
+    width: unset;
+    position: relative;
+}
+
 .after-header {
     padding-top: 40px;
     padding-bottom: 55px;
@@ -747,7 +850,7 @@ header#masthead .navbar-brand img {
 
 .main-social__card.inst > img {
     position: absolute;
-    right: 30px;
+    /*right: 30px;*/
     bottom: 0;
 }
 
@@ -1531,6 +1634,127 @@ header#masthead .navbar-brand img {
     min-height: 35px;
     height: 35px;
     padding: 8px 23px;
+}
+
+.popular-hover-card {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.popular-hover-card .popular-hover-card__body {
+    padding: 36px 80px 41px 0;
+    display: flex;
+}
+
+.popular-hover-card .popular-hover-card__title {
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 47px;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.popular-hover-card .popular-hover-card__author {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 24px;
+    color: #000000;
+    margin-bottom: 30px;
+}
+
+.popular-hover-card .popular-hover-card__desc-header {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+    color: #40866E;
+    margin-bottom: 12px;
+}
+
+.popular-hover-card .popular-hover-card__desc {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000000;
+    margin-bottom: 30px;
+    max-width: 360px;
+}
+
+.popular-hover-card__img {
+    position: relative;
+    right: 30px;
+    margin-right: 57px;
+    min-width: 200px;
+    width: 200px;
+    height: 327px;
+}
+
+.popular-hover-card__img > img {
+    border-radius: 0;
+    object-fit: cover;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+#carouselHover .carousel-inner {
+    overflow: visible;
+}
+
+.popular-hover-card__info {
+    margin-right: 175px;
+    min-width: 360px;
+}
+
+.popular-hover-card__award {
+    display: flex;
+    margin-bottom: 33px;
+}
+
+.popular-hover-card__award > img {
+    width: 80px;
+    margin-right: 10px;
+}
+
+.popular-hover-card__award > p {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 20px;
+    color: #000000;
+    margin-bottom: 0;
+}
+
+.popular-hover-card__meta-title {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+    color: #40866E;
+    margin-bottom: 8px;
+}
+
+.popular-hover-card__meta-content > a {
+    color: #000000;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.popular-hover-card__meta-content {
+    color: #000000;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 32px;
+}
+
+.popular-hover-card__variables > img:not(:last-of-type) {
+    margin-right: 16px;
+}
+
+#carouselHover{
+    position: absolute;
+    top: 14%;
+    width: 100%;
+    display: none;
 }
 
 /*--------------------------------------------------------------
