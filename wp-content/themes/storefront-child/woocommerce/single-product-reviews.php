@@ -85,7 +85,7 @@ $terms = get_the_terms($product->get_id(), 'product_cat');
                                     <p class="new-related__cycle">Книги из этого цикла</p>
                                     <p class="new-related__title"><?= $product->get_name(); ?></p>
                                     <p class="new-related__text">
-                                        <?
+                                        <?php
                                         $desc = strip_tags($product->get_short_description());
                                         $size = 240;
                                         echo mb_substr($desc, 0, mb_strrpos(mb_substr($desc, 0, $size, 'utf-8'), ' ', 'utf-8'), 'utf-8');
