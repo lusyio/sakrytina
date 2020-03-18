@@ -45,10 +45,9 @@ if (!is_active_sidebar('sidebar-1')) {
         <div class="sidebar-attention__body">
             <p class="sidebar-attention__header">Внимание</p>
             <img src="/wp-content/themes/storefront-child/svg/svg-attention.svg" alt="svg-attention">
-            <p><a href="/">sakrytina.ru</a> - официальный сайт писательницы Марии Сакрытиной.</p>
-            <p>Покупая электронные версии книг на данном ресурсе, Вы напрямую поддерживаете автора.</p>
-            <p>При проблемах с использованием магазина пишите на email - <a href="mailto:maria@sakrytina.ru">maria@sakrytina.ru</a>
-            </p>
+            <p>Здесь размещены только полные тексты моих книг.</p>
+            <p>Для скачивания нажмите на книгу и выберите формат. Если что-то пошло не так, пишите на <a href="mailto:maria@sakrytina.ru">maria@sakrytina.ru</a></p>
+            <p>Скачивание моих книг на пиратских сайтах вредит вашей карме и компьютеру. Остерегайтесь мошенников!</p>
         </div>
     </div>
 </aside><!-- #secondary -->
