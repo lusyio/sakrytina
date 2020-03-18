@@ -40,7 +40,10 @@
                             <div id="<?= $product->slug ?>" class="popular-hover-card carousel-item">
                                 <div class="popular-hover-card__body">
                                     <div class="popular-hover-card__img">
-                                        <?php echo $product->get_image('medium'); ?>
+                                        <?php $attachment_ids = $product->get_gallery_image_ids();
+                                        foreach ($attachment_ids as $attachment_id): ?>
+                                            <img src="<?= wp_get_attachment_image_src( $attachment_id, 'full' )[0] ?>"" alt="">
+                                        <?php endforeach; ?>
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <div class="popular-hover-card__info">

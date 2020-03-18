@@ -1729,7 +1729,7 @@ header#masthead .navbar-brand img {
 .popular-hover-card__img > img {
     border-radius: 0;
     object-fit: cover;
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
     height: 100%;
 }
 

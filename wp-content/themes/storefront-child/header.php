@@ -66,7 +66,7 @@
                                 Корзина
                             </a>
                         </div>
-                        <div>
+                        <div class="m-auto">
                             <?php if (is_user_logged_in()) { ?>
                                 <a class="btn btn-primary"
                                    href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>"

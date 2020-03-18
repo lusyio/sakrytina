@@ -520,3 +520,5 @@ function my_theme_wrapper_start()
         </div>
     <?php endif;
 }
+
+remove_action('woocommerce_product_thumbnails', 'woocommerce_show_product_thumbnails', 20);
