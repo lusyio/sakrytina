@@ -33,7 +33,7 @@
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <div id="carouselHover" class="carousel slide" data-ride="carousel">
+                <div id="carouselHover" data-interval="false" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <?php
                         foreach ($products as $product): ?>
@@ -42,7 +42,8 @@
                                     <div class="popular-hover-card__img">
                                         <?php $attachment_ids = $product->get_gallery_image_ids();
                                         foreach ($attachment_ids as $attachment_id): ?>
-                                            <img src="<?= wp_get_attachment_image_src( $attachment_id, 'full' )[0] ?>"" alt="">
+                                            <img src="<?= wp_get_attachment_image_src($attachment_id, 'full')[0] ?>"
+                                                 alt="">
                                         <?php endforeach; ?>
                                     </div>
                                     <div class="d-flex justify-content-between">
@@ -119,15 +120,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a class="carousel-control-next" href="#carouselHover" role="button"
-                                   data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
                             </div>
                         <?php
                         endforeach; ?>
                     </div>
+                    <a class="carousel-control-next carouselHover-slide" href="#carouselHover" role="button"
+                       data-slide="next">
+                        <div>
+                            <img src="/wp-content/themes/storefront-child/svg/svg-next-slide.svg" alt="">
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>

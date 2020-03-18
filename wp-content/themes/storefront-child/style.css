@@ -1470,16 +1470,16 @@ header#masthead .navbar-brand img {
     background: #F3F3F3;
 }
 
-.bibliography__img{
+.bibliography__img {
     padding: 10px;
     background: #f9f9f9;
 }
 
-.bibliography__year{
+.bibliography__year {
     position: relative;
 }
 
-.bibliography__year:after{
+.bibliography__year:after {
     content: '';
     height: 3px;
     width: 100%;
@@ -1724,6 +1724,17 @@ header#masthead .navbar-brand img {
     min-width: 200px;
     width: 200px;
     height: 327px;
+}
+
+.carouselHover-slide div img {
+    box-shadow: none;
+    display: block;
+    margin: auto;
+}
+
+#carouselHover .carousel-control-next, #carouselHover .carousel-control-prev {
+    width: unset;
+    right: 0%;
 }
 
 .popular-hover-card__img > img {
