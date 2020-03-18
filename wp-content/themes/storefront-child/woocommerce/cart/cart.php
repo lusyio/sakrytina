@@ -19,114 +19,113 @@ defined('ABSPATH') || exit;
 
 do_action('woocommerce_before_cart'); ?>
 
-<div class="row">
-    <div class="col-12">
-        <form class="woocommerce-cart-form" action="<?php echo esc_url(wc_get_cart_url()); ?>" method="post">
-            <?php do_action('woocommerce_before_cart_table'); ?>
-            <div class="cart-card">
-                <div class="cart-card__body">
+<form class="woocommerce-cart-form" action="<?php echo esc_url(wc_get_cart_url()); ?>" method="post">
+    <?php do_action('woocommerce_before_cart_table'); ?>
+    <table class="shop_table cart woocommerce-cart-form__contents mt-5 d-none" cellspacing="0">
+    </table>
 
-                    <?php do_action('woocommerce_before_cart_contents'); ?>
-                    <?php
-                    foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
-                        $_product = apply_filters('woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key);
-                        $product_id = apply_filters('woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key);
+    <div class="cart-card shop_table cart">
+        <div class="cart-card__body">
 
-                        if ($_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters('woocommerce_cart_item_visible', true, $cart_item, $cart_item_key)) {
-                            $product_permalink = apply_filters('woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink($cart_item) : '', $cart_item, $cart_item_key);
-                            ?>
-                            <div class="row <?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>">
+            <?php do_action('woocommerce_before_cart_contents'); ?>
+            <?php
+            foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
+                $_product = apply_filters('woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key);
+                $product_id = apply_filters('woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key);
 
-                                <div class="product-thumbnail col-2">
-                                    <?php
-                                    $thumbnail = apply_filters('woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key);
-                                    ?>
-                                    <div class="product-thumbnail__body">
-                                        <?php
-                                        if (!$product_permalink) {
-                                            echo $thumbnail; // PHPCS: XSS ok.
-                                        } else {
-                                            printf('<a href="%s">%s</a>', esc_url($product_permalink), $thumbnail); // PHPCS: XSS ok.
-                                        }
-                                        ?>
-                                    </div>
-
-                                </div>
-
-                                <div class="product-name col-4"
-                                     data-title="<?php esc_attr_e('Product', 'woocommerce'); ?>">
-                                    <?php
-                                    if (!$product_permalink) {
-                                        echo wp_kses_post(apply_filters('woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key) . '&nbsp;');
-                                    } else {
-                                        echo wp_kses_post(apply_filters('woocommerce_cart_item_name', sprintf('<a href="%s">%s</a>', esc_url($product_permalink), $_product->get_name()), $cart_item, $cart_item_key));
-                                    }
-
-                                    do_action('woocommerce_after_cart_item_name', $cart_item, $cart_item_key);
-
-                                    // Meta data.
-                                    echo wc_get_formatted_cart_item_data($cart_item); // PHPCS: XSS ok.
-
-                                    // Backorder notification.
-                                    if ($_product->backorders_require_notification() && $_product->is_on_backorder($cart_item['quantity'])) {
-                                        echo wp_kses_post(apply_filters('woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__('Available on backorder', 'woocommerce') . '</p>', $product_id));
-                                    }
-                                    ?>
-                                </div>
-
-                                <div class="product-price col-2"
-                                     data-title="<?php esc_attr_e('Price', 'woocommerce'); ?>">
-                                    <?php
-                                    echo apply_filters('woocommerce_cart_item_price', WC()->cart->get_product_price($_product), $cart_item, $cart_item_key); // PHPCS: XSS ok.
-                                    ?>
-                                </div>
-
-                                <div class="product-remove col-3">
-                                    <?php
-                                    echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-                                        'woocommerce_cart_item_remove_link',
-                                        sprintf(
-                                            '<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s"><img src="/wp-content/themes/storefront-child/svg/svg-delete.svg" alt=""></a>',
-                                            esc_url(wc_get_cart_remove_url($cart_item_key)),
-                                            esc_html__('Remove this item', 'woocommerce'),
-                                            esc_attr($product_id),
-                                            esc_attr($_product->get_sku())
-                                        ),
-                                        $cart_item_key
-                                    );
-                                    ?>
-                                </div>
-                            </div>
-                            <?php
-                        }
-                    }
+                if ($_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters('woocommerce_cart_item_visible', true, $cart_item, $cart_item_key)) {
+                    $product_permalink = apply_filters('woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink($cart_item) : '', $cart_item, $cart_item_key);
                     ?>
-                    <?php do_action('woocommerce_cart_contents'); ?>
+                    <div class="row <?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>">
 
-                    <?php do_action('woocommerce_after_cart_contents'); ?>
-                    <hr>
-                    <div class="row">
-                        <div class="col-2"></div>
-                        <div class="col-4 total">
-                            <p>Сумма к оплате</p>
-                        </div>
-                        <div class="col-2 total-price">
-                            <p>
-                                <?= WC()->cart->cart_contents_total ?>₽
-                            </p>
-                        </div>
-                        <div class="col-3 m-auto">
-                            <div class="wc-proceed-to-checkout">
-                                <?php do_action('woocommerce_proceed_to_checkout'); ?>
+                        <div class="product-thumbnail col-2">
+                            <?php
+                            $thumbnail = apply_filters('woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key);
+                            ?>
+                            <div class="product-thumbnail__body">
+                                <?php
+                                if (!$product_permalink) {
+                                    echo $thumbnail; // PHPCS: XSS ok.
+                                } else {
+                                    printf('<a href="%s">%s</a>', esc_url($product_permalink), $thumbnail); // PHPCS: XSS ok.
+                                }
+                                ?>
                             </div>
+
                         </div>
+
+                        <div class="product-name col-4"
+                             data-title="<?php esc_attr_e('Product', 'woocommerce'); ?>">
+                            <?php
+                            if (!$product_permalink) {
+                                echo wp_kses_post(apply_filters('woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key) . '&nbsp;');
+                            } else {
+                                echo wp_kses_post(apply_filters('woocommerce_cart_item_name', sprintf('<a href="%s">%s</a>', esc_url($product_permalink), $_product->get_name()), $cart_item, $cart_item_key));
+                            }
+
+                            do_action('woocommerce_after_cart_item_name', $cart_item, $cart_item_key);
+
+                            // Meta data.
+                            echo wc_get_formatted_cart_item_data($cart_item); // PHPCS: XSS ok.
+
+                            // Backorder notification.
+                            if ($_product->backorders_require_notification() && $_product->is_on_backorder($cart_item['quantity'])) {
+                                echo wp_kses_post(apply_filters('woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__('Available on backorder', 'woocommerce') . '</p>', $product_id));
+                            }
+                            ?>
+                        </div>
+
+                        <div class="product-price col-2"
+                             data-title="<?php esc_attr_e('Price', 'woocommerce'); ?>">
+                            <?php
+                            echo apply_filters('woocommerce_cart_item_price', WC()->cart->get_product_price($_product), $cart_item, $cart_item_key); // PHPCS: XSS ok.
+                            ?>
+                        </div>
+
+                        <div class="product-remove col-3">
+                            <?php
+                            echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                                'woocommerce_cart_item_remove_link',
+                                sprintf(
+                                    '<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s"><img src="/wp-content/themes/storefront-child/svg/svg-delete.svg" alt=""></a>',
+                                    esc_url(wc_get_cart_remove_url($cart_item_key)),
+                                    esc_html__('Remove this item', 'woocommerce'),
+                                    esc_attr($product_id),
+                                    esc_attr($_product->get_sku())
+                                ),
+                                $cart_item_key
+                            );
+                            ?>
+                        </div>
+                    </div>
+                    <?php
+                }
+            }
+            ?>
+            <?php do_action('woocommerce_cart_contents'); ?>
+
+            <?php do_action('woocommerce_after_cart_contents'); ?>
+            <hr>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-4 total">
+                    <p>Сумма к оплате</p>
+                </div>
+                <div class="col-2 total-price">
+                    <p>
+                        <?= WC()->cart->cart_contents_total ?>₽
+                    </p>
+                </div>
+                <div class="col-3 m-auto">
+                    <div class="wc-proceed-to-checkout">
+                        <?php do_action('woocommerce_proceed_to_checkout'); ?>
                     </div>
                 </div>
             </div>
-            <?php do_action('woocommerce_after_cart_table'); ?>
-        </form>
+        </div>
     </div>
-</div>
+    <?php do_action('woocommerce_after_cart_table'); ?>
+</form>
 
 
 <?php do_action('woocommerce_after_cart'); ?>

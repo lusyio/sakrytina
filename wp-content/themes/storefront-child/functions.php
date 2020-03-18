@@ -470,19 +470,53 @@ add_filter('woocommerce_available_variation', function ($value, $object = null, 
 
 remove_action('woocommerce_checkout_order_review', 'woocommerce_order_review', 10);
 
-add_filter( 'woocommerce_checkout_fields' , 'override_billing_checkout_fields', 20, 1 );
-function override_billing_checkout_fields( $fields ) {
+add_filter('woocommerce_checkout_fields', 'override_billing_checkout_fields', 20, 1);
+function override_billing_checkout_fields($fields)
+{
     $fields['billing']['billing_first_name']['placeholder'] = 'Как к вам обращаться?';
     $fields['billing']['billing_email']['placeholder'] = 'Укажите Email';
     return $fields;
 }
 
-function rudr_instagram_api_curl_connect( $api_url ){
+function rudr_instagram_api_curl_connect($api_url)
+{
     $connection_c = curl_init(); // initializing
-    curl_setopt( $connection_c, CURLOPT_URL, $api_url ); // API URL to connect
-    curl_setopt( $connection_c, CURLOPT_RETURNTRANSFER, 1 ); // return the result, do not print
-    curl_setopt( $connection_c, CURLOPT_TIMEOUT, 20 );
-    $json_return = curl_exec( $connection_c ); // connect and get json data
-    curl_close( $connection_c ); // close connection
-    return json_decode( $json_return ); // decode and return
+    curl_setopt($connection_c, CURLOPT_URL, $api_url); // API URL to connect
+    curl_setopt($connection_c, CURLOPT_RETURNTRANSFER, 1); // return the result, do not print
+    curl_setopt($connection_c, CURLOPT_TIMEOUT, 20);
+    $json_return = curl_exec($connection_c); // connect and get json data
+    curl_close($connection_c); // close connection
+    return json_decode($json_return); // decode and return
+}
+
+function wpb_woo_my_account_order()
+{
+    $myorder = array(
+        'dashboard' => 'Мой аккаунт',
+        'orders' => __('Orders', 'woocommerce'),
+        'downloads' => 'Загрузки',
+        'edit-account' => 'Настройки',
+        'customer-logout' => __('Logout', 'woocommerce'),
+    );
+    return $myorder;
+}
+
+add_filter('woocommerce_account_menu_items', 'wpb_woo_my_account_order');
+
+add_action('woocommerce_before_shop_loop_item_title', 'my_theme_wrapper_start', 9);
+
+function my_theme_wrapper_start()
+{
+
+    global $product;
+    $tags = wc_get_object_terms($product->get_id(), 'product_tag');
+    $tagSlugList = [];
+    foreach ($tags as $tag) {
+        $tagName = $tag->name;
+    }
+    if ($tagName): ?>
+        <div class="product-label-container" data-toggle="tooltip" data-placement="top" title='<?= $tagName ?>'>
+            <img alt='<?= $tagName ?>' src="/wp-content/themes/storefront-child/images/img-award-products.png"/>
+        </div>
+    <?php endif;
 }

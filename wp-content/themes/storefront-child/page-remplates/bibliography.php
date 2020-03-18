@@ -45,12 +45,15 @@ Template Post Type: post, page, product
                 $sortedProducts = $loop->get_products();
                 ?>
                 <div class="row">
-                    <div class="col-1 mt-auto mb-auto"><p class="bibliography__year"><?= $yearNumber ?></p></div>
+                    <div class="col-1 mb-auto" style="margin-top: 7.5%;"><p
+                                class="bibliography__year"><?= $yearNumber ?></p></div>
                     <div class="col">
-                        <?php foreach ($sortedProducts as $sortedProd): ?>
+                        <?php
+                        $i = 0;
+                        foreach ($sortedProducts as $sortedProd): ?>
                             <div class="row bibliography__row">
                                 <div class="col-1 m-auto">
-                                    <?php if ($yearNumber): ?>
+                                    <?php if ($yearNumber && $i === 0): ?>
                                         <img src="/wp-content/themes/storefront-child/svg/svg-point.svg" alt="point">
                                     <?php else: ?>
                                         <img src="/wp-content/themes/storefront-child/svg/svg-point-outline.svg"
@@ -58,10 +61,12 @@ Template Post Type: post, page, product
                                     <?php endif; ?>
                                 </div>
                                 <div class="col-2">
-                                    <div class="bibliography__thumbnail">
-                                        <img alt="<?= $sortedProd->name ?>"
-                                             src="<?php echo wp_get_attachment_url($sortedProd->get_image_id()); ?>"/>
-                                    </div>
+                                    <a href="<?= $sortedProd->get_permalink() ?>">
+                                        <div class="bibliography__thumbnail">
+                                            <img alt="<?= $sortedProd->name ?>"
+                                                 src="<?php echo wp_get_attachment_url($sortedProd->get_image_id()); ?>"/>
+                                        </div>
+                                    </a>
                                 </div>
                                 <div class="col-6 bibliography__card">
                                     <div>
@@ -80,22 +85,21 @@ Template Post Type: post, page, product
                                 <div class="col-3 mt-auto mb-auto">
                                     <?php
                                     $tags = get_the_terms($sortedProd->get_id(), 'product_tag');
+
                                     if ($tags):
                                         ?>
                                         <div class="bibliography__award">
                                             <img src="/wp-content/themes/storefront-child/images/img-award-bibl.png"
                                                  alt="award">
                                             <?php
-                                            foreach ($tags as $tag) {
-                                                $tagNameList[] = $tag->name;
-                                            }
-                                            ?>
-                                            <p><?php foreach ($tagNameList as $name) echo $name ?></p>
+                                            foreach ($tags as $tag) :?>
+                                                <p><?= $tag->name ?></p>
+                                            <?php endforeach; ?>
                                         </div>
                                     <?php endif; ?>
                                 </div>
                             </div>
-                        <?php endforeach; ?>
+                            <?php $i++; endforeach; ?>
                     </div>
                 </div>
             <?php endforeach; ?>

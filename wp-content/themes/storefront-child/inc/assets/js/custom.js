@@ -48,4 +48,8 @@ jQuery(function ($) {
         $('.popular-hover-card').removeClass('active')
         carouselHover.fadeOut(350)
     })
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 });

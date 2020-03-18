@@ -52,7 +52,6 @@ do_action('woocommerce_before_edit_account_form'); ?>
                     <input type="text" class="form-control"
                            name="account_display_name" id="account_display_name"
                            value="<?php echo esc_attr($user->display_name); ?>"/>
-                    <span><em><?php esc_html_e('This will be how your name will be displayed in the account section and in reviews', 'woocommerce'); ?></em></span>
                 </div>
             </div>
 

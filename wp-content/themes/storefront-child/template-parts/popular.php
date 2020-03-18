@@ -67,12 +67,9 @@
                                                 <div class="popular-hover-card__award">
                                                     <img src="/wp-content/themes/storefront-child/images/img-award.jpg"
                                                          alt="award">
-                                                    <?php
-                                                    foreach ($tags as $tag) {
-                                                        $tagNameList[] = $tag->name;
-                                                    }
-                                                    ?>
-                                                    <p><?php foreach ($tagNameList as $name) echo $name ?></p>
+                                                    <?php foreach ($tags as $tag) : ?>
+                                                        <p><?= $tag->name ?></p>
+                                                    <?php endforeach; ?>
                                                 </div>
                                             <?php endif; ?>
                                             <?php
@@ -125,7 +122,7 @@
                                     <span class="sr-only">Next</span>
                                 </a>
                             </div>
-                            <?php
+                        <?php
                         endforeach; ?>
                     </div>
                 </div>

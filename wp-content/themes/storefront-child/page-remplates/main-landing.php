@@ -85,27 +85,6 @@ Template Post Type: post, page, product
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <!--                --><?php
-                //                $access_token = 'YOUR ACCESS TOKEN';
-                //                $username = 'rudrastyh';
-                //                $user_search = rudr_instagram_api_curl_connect("https://api.instagram.com/v1/users/search?q=" . $username . "&access_token=" . $access_token);
-                //                // $user_search is an array of objects of all found users
-                //                // we need only the object of the most relevant user - $user_search->data[0]
-                //                // $user_search->data[0]->id - User ID
-                //                // $user_search->data[0]->first_name - User First name
-                //                // $user_search->data[0]->last_name - User Last name
-                //                // $user_search->data[0]->profile_picture - User Profile Picture URL
-                //                // $user_search->data[0]->username - Username
-                //
-                //                $user_id = $user_search->data[0]->id; // or use string 'self' to get your own media
-                //                $return = rudr_instagram_api_curl_connect("https://api.instagram.com/v1/users/" . $user_id . "/media/recent?access_token=" . $access_token);
-                //
-                //                //var_dump( $return ); // if you want to display everything the function returns
-                //
-                //                foreach ($return->data as $post) {
-                //                echo '<a href="' . $post->images->standard_resolution->url . '"><img src="' . $post->images->thumbnail->url . '" /></a>';
-                //                }
-                //                ?>
                 <p class="main-social__header">Подписывайся на социальные сети!</p>
             </div>
             <div class="col-4">
@@ -129,7 +108,6 @@ Template Post Type: post, page, product
             <div class="col-8">
                 <div class="main-social__card inst">
                     <?= do_shortcode('[instagram-feed]') ?>
-                    <!--                    <img src="/wp-content/themes/storefront-child/images/img-inst.jpg" alt="image-instagram">-->
                     <div class="main-social__card-body">
                         <p class="main-social__card-title">Аккаунт в Инстаграме</p>
                         <p>- каждый день публикую новые посты</p>

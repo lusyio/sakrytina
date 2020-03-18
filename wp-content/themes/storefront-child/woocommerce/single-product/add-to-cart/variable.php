@@ -58,10 +58,9 @@ do_action('woocommerce_before_add_to_cart_form'); ?>
         <?php endif; ?>
 
         <?php do_action('woocommerce_after_variations_form'); ?>
-        <!--        --><?php //var_dump($available_variations); ?>
         <div class="row">
             <?php foreach ($available_variations as $variation) :
-                $arr[] = $variation['attributes']['attribute_pa_book_type'];
+                $arr[$variation['variation_id']] = $variation['attributes']['attribute_pa_book_type'];
             endforeach; ?>
             <div class="col-lg-4 col-12 pr-unset pr-lg-0 mb-payment">
                 <div data-id="elektronnaya-kniga"
@@ -145,7 +144,21 @@ do_action('woocommerce_before_add_to_cart_form'); ?>
                                 банковской
                                 карты. Книга будет отправлена вам на элекронную почту сразу же после оплаты.
                             </p>
-                            <p>Книга доступна в форматах: ePub, PDF, fb2</p>
+                            <?php
+                            $audioId = array_search('elektronnaya-kniga', $arr);
+                            $productVar = new WC_Product_Variation($audioId);
+                            if ($productVar->is_downloadable('yes') && $productVar->has_file()) {
+                                $item_downloads = $productVar->get_downloads();
+                            }
+                            ?>
+                            <p>Книга доступна в форматах: <?php foreach ($item_downloads as $key => $item_download) {
+                                    echo $item_download->get_name();
+                                    if ($key === array_key_last($item_downloads)) {
+                                        echo '';
+                                    } else {
+                                        echo ', ';
+                                    }
+                                } ?></p>
                         </div>
                         <div id="bookTarget" class="card-payment-info__content">
                             <p>Бумажную версию книги вы можете приобрести в любом
@@ -194,7 +207,21 @@ do_action('woocommerce_before_add_to_cart_form'); ?>
                                 банковской
                                 карты. Книга будет отправлена вам на элекронную почту сразу же после оплаты.
                             </p>
-                            <p>Книга доступна в форматах: mp3</p>
+                            <?php
+                            $audioId = array_search('audiokniga', $arr);
+                            $productVar = new WC_Product_Variation($audioId);
+                            if ($productVar->is_downloadable('yes') && $productVar->has_file()) {
+                                $item_downloads = $productVar->get_downloads();
+                            }
+                            ?>
+                            <p>Книга доступна в форматах: <?php foreach ($item_downloads as $key => $item_download) {
+                                    echo $item_download->get_name();
+                                    if ($key === array_key_last($item_downloads)) {
+                                        echo '';
+                                    } else {
+                                        echo ', ';
+                                    }
+                                } ?></p>
                         </div>
                     </div>
                 </div>

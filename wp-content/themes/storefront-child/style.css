@@ -875,6 +875,8 @@ header#masthead .navbar-brand img {
 
 .main-social__card .btn.btn-inst {
     background: #E64652;
+    z-index: 5;
+    position: relative;
 }
 
 .main-social__card .btn.btn-vk {
@@ -1011,6 +1013,7 @@ header#masthead .navbar-brand img {
 
 .carousel-books .item-book {
     margin-right: 50px;
+    position: relative;
 }
 
 .carousel-books .item-book:last-of-type {
@@ -1442,6 +1445,7 @@ header#masthead .navbar-brand img {
 .bibliography .bibliography__award img {
     display: block;
     margin-right: 25px;
+    max-height: 57px;
 }
 
 .bibliography .bibliography__award p {
@@ -1697,7 +1701,8 @@ header#masthead .navbar-brand img {
 }
 
 #carouselHover .carousel-inner {
-    overflow: visible;
+    margin-left: -30px;
+    padding-left: 30px;
 }
 
 .popular-hover-card__info {
@@ -2185,6 +2190,25 @@ ul.products li.product:hover {
     transform: scale(1.1);
 }
 
+.product-label{
+    display: none;
+}
+
+.item-book .product-label-container > img{
+    box-shadow: none;
+}
+
+.item-book .product-label-container{
+    position: absolute;
+    bottom: -10px;
+    left: -26px;
+}
+
+.carousel-books .carousel-inner{
+    margin-left: -30px;
+    padding-left: 30px;
+}
+
 /*--------------------------------------------------------------
 # PRODUCT_LIST
 --------------------------------------------------------------*/
@@ -2201,6 +2225,7 @@ ul.products li.product:hover {
 
 .navigation-my-account {
     margin: 0;
+    border-right: 1px solid #F3F3F3;;
 }
 
 .navigation-my-account li {
@@ -2209,8 +2234,11 @@ ul.products li.product:hover {
 }
 
 .navigation-my-account li a {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 24px;
+    color: #000000;
     position: relative;
-    color: #000;
 }
 
 .navigation-my-account li.is-active a:before {
@@ -2220,6 +2248,57 @@ ul.products li.product:hover {
     border-bottom: 1px solid #000;
     position: absolute;
     bottom: -3px;
+}
+
+.my-account-card{
+    background: #FFFFFF;
+    border-radius: 0px 5px 5px 5px;
+}
+
+.my-account-card .my-account-card__body{
+    padding: 40px 40px 50px 50px;
+}
+
+.my-account-card a{
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+    color: #40866E;
+}
+
+.my-account-card input[type='text'],.my-account-card input[type='number'],.my-account-card input[type='email'],.my-account-card input[type='tel'],.my-account-card input[type='url'],.my-account-card input[type='password'],.my-account-card input[type='search'],.my-account-card textarea, .input-text{
+    border: 1px solid #D8D8D8 !important;
+    border-radius: 10px !important;
+    background: #fff;
+    padding: 18px 25px;
+    margin-bottom: 20px;
+}
+
+.my-account-card label {
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    color: #1C1C1C;
+    margin-bottom: 10px;
+    padding-left: 25px;
+}
+
+.navigation-my-account .active-header p{
+    font-size: 24px;
+    line-height: 32px;
+    color: #000000;
+    margin-bottom: 0;
+}
+
+.navigation-my-account .active-header{
+    margin-bottom: 20px;
+}
+
+.woocommerce-order-downloads .download-file .button, .woocommerce-order-downloads .button{
+    padding: 0;
+    background: transparent;
+    min-height: unset;
+    color: #40866E;
 }
 
 /*--------------------------------------------------------------
@@ -2315,11 +2394,41 @@ button, input[type='button'], input[type='reset'], input[type='submit'], .button
 }
 
 table:not( .has-background ) th {
-    background-color: #f2f2f2;
+    background: #F9F9F9;
+    border-radius: 5px;
 }
 
 table:not( .has-background ) tbody td {
-    background-color: #fafafa;
+    background-color: #fff;
+}
+
+table:not( .has-background ) tbody tr:nth-child(2n) td, fieldset, fieldset legend{
+    background: #fff;
+}
+
+table.shop_table_responsive tbody tr td a, table.shop_table_responsive tbody tr th a{
+    min-height: unset;
+}
+
+table td, table th{
+    padding-top: 20px;
+    padding-bottom: 0;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000000;
+}
+
+table th{
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 21px;
+    color: #000000;
+}
+
+.my_account_orders .button, .woocommerce-MyAccount-downloads .button{
+    padding: 0;
+    background: transparent;
 }
 
 #payment .payment_methods > li .payment_box, #payment .place-order {
