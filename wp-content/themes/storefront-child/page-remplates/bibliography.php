@@ -47,16 +47,16 @@ Template Post Type: post, page, product
                 <div class="row">
                     <div class="col-1 mb-auto" style="margin-top: 7.5%;"><p
                                 class="bibliography__year"><?= $yearNumber ?></p></div>
-                    <div class="col">
+                    <div class="col bibliography__border">
                         <?php
                         $i = 0;
                         foreach ($sortedProducts as $sortedProd): ?>
                             <div class="row bibliography__row">
                                 <div class="col-1 m-auto">
                                     <?php if ($yearNumber && $i === 0): ?>
-                                        <img src="/wp-content/themes/storefront-child/svg/svg-point.svg" alt="point">
+                                        <img class="bibliography__img" src="/wp-content/themes/storefront-child/svg/svg-point.svg" alt="point">
                                     <?php else: ?>
-                                        <img src="/wp-content/themes/storefront-child/svg/svg-point-outline.svg"
+                                        <img class="bibliography__img" src="/wp-content/themes/storefront-child/svg/svg-point-outline.svg"
                                              alt="point">
                                     <?php endif; ?>
                                 </div>
