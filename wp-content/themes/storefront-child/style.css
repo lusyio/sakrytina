@@ -2184,6 +2184,23 @@ footer.site-footer p {
     color: #4B4B4B;
 }
 
+.woocommerce-order-card{
+    background: #FFFFFF;
+    border-radius: 0px 5px 5px 5px;
+}
+
+.woocommerce-order-card__body{
+    padding: 40px;
+}
+
+.woocommerce-order-card table:not( .has-background ) th{
+    background: #fff;
+}
+
+.woocommerce-order-card tfoot td{
+    background: #fff;
+}
+
 /*--------------------------------------------------------------
 # PRODUCT_LIST
 --------------------------------------------------------------*/

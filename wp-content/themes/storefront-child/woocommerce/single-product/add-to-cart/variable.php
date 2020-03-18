@@ -150,15 +150,19 @@ do_action('woocommerce_before_add_to_cart_form'); ?>
                             if ($productVar->is_downloadable('yes') && $productVar->has_file()) {
                                 $item_downloads = $productVar->get_downloads();
                             }
-                            ?>
-                            <p>Книга доступна в форматах: <?php foreach ($item_downloads as $key => $item_download) {
-                                    echo $item_download->get_name();
-                                    if ($key === array_key_last($item_downloads)) {
-                                        echo '';
-                                    } else {
-                                        echo ', ';
-                                    }
-                                } ?></p>
+                            if ($item_downloads):?>
+                                <p>Книга доступна в форматах:
+                                    <?php foreach ($item_downloads as $key => $item_download) {
+                                        echo $item_download->get_name();
+                                        if ($key === array_key_last($item_downloads)) {
+                                            echo '';
+                                        } else {
+                                            echo ', ';
+                                        }
+                                    } ?></p>
+                            <?php else: ?>
+                            <p>Файлы не загружены</p>
+                            <?php endif; ?>
                         </div>
                         <div id="bookTarget" class="card-payment-info__content">
                             <p>Бумажную версию книги вы можете приобрести в любом
@@ -213,8 +217,9 @@ do_action('woocommerce_before_add_to_cart_form'); ?>
                             if ($productVar->is_downloadable('yes') && $productVar->has_file()) {
                                 $item_downloads = $productVar->get_downloads();
                             }
-                            ?>
-                            <p>Книга доступна в форматах: <?php foreach ($item_downloads as $key => $item_download) {
+                            if ($item_downloads):?>
+                            <p>Книга доступна в форматах:
+                                <?php foreach ($item_downloads as $key => $item_download) {
                                     echo $item_download->get_name();
                                     if ($key === array_key_last($item_downloads)) {
                                         echo '';
@@ -222,6 +227,9 @@ do_action('woocommerce_before_add_to_cart_form'); ?>
                                         echo ', ';
                                     }
                                 } ?></p>
+                            <?php else: ?>
+                            <p>Файлы не загружены</p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
