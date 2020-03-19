@@ -52,17 +52,13 @@
                     ?>
                     <?php if (class_exists('WooCommerce')): ?>
                         <div class="s-header__basket-wr woocommerce mr-1 mr-sm-4 mt-auto mb-auto z-5 position-relative">
-                            <?php
-                            global $woocommerce; ?>
-                            <a href="<?php echo $woocommerce->cart->get_cart_url() ?>"
+                            <a href="<?= esc_url(wc_get_cart_url()) ?>"
                                class="basket-btn basket-btn_fixed-xs text-decoration-none position-relative">
                                 <span class="basket-btn__label">
                                     <img src="/wp-content/themes/storefront-child/svg/svg-cart.svg"
                                          alt="cart">
                                 </span>
-                                <?php if (sprintf($woocommerce->cart->cart_contents_count) != 0): ?>
-                                    <span class="basket-btn__counter"><?php echo sprintf($woocommerce->cart->cart_contents_count); ?></span>
-                                <?php endif; ?>
+                                    <span id="basket-btn__counter"></span>
                                 Корзина
                             </a>
                         </div>
