@@ -627,6 +627,31 @@ header#masthead .navbar-brand img {
 # MAIN_LANDING
 --------------------------------------------------------------*/
 
+#carouselExampleIndicators .carousel-control-next, #carouselExampleIndicators .carousel-control-prev {
+    width: unset;
+}
+
+#carouselExampleIndicators .carousel-control-next {
+    right: -3.4%;
+}
+
+#carouselExampleIndicators .carousel-control-prev {
+    left: -3.4%;
+}
+
+#carouselExampleIndicators .carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    border: none;
+    border: 1px solid #fff;
+    background: transparent;
+    border-radius: 50%;
+}
+
+#carouselExampleIndicators .carousel-indicators li.active {
+    background: #fff;
+}
+
 #sb_instagram.sbi_col_1.sbi_disable_mobile #sbi_images .sbi_item {
     max-width: 190px;
     max-height: 190px;
@@ -2184,20 +2209,20 @@ footer.site-footer p {
     color: #4B4B4B;
 }
 
-.woocommerce-order-card{
+.woocommerce-order-card {
     background: #FFFFFF;
     border-radius: 0px 5px 5px 5px;
 }
 
-.woocommerce-order-card__body{
+.woocommerce-order-card__body {
     padding: 40px;
 }
 
-.woocommerce-order-card table:not( .has-background ) th{
+.woocommerce-order-card table:not( .has-background ) th {
     background: #fff;
 }
 
-.woocommerce-order-card tfoot td{
+.woocommerce-order-card tfoot td {
     background: #fff;
 }
 
