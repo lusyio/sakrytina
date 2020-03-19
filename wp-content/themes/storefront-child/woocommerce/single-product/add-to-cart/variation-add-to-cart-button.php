@@ -7,18 +7,24 @@
  * @version 3.4.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 global $product;
 ?>
-<div class="woocommerce-variation-add-to-cart variations_button">
-	<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
+<?php //if (products_in_cart()): ?>
+<!--    <a href="--><?php //echo get_permalink(wc_get_page_id('cart')); ?><!--"-->
+<!--       class="btn btn-primary">Товар в корзине</a>-->
+<?php //else: ?>
+    <div class="woocommerce-variation-add-to-cart variations_button">
+        <?php do_action('woocommerce_before_add_to_cart_button'); ?>
 
-	<button type="submit" class="btn btn-primary single_add_to_cart_button"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
+        <button type="submit"
+                class="btn btn-primary single_add_to_cart_button"><?php echo esc_html($product->single_add_to_cart_text()); ?></button>
 
-	<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
+        <?php do_action('woocommerce_after_add_to_cart_button'); ?>
 
-	<input type="hidden" name="add-to-cart" value="<?php echo absint( $product->get_id() ); ?>" />
-	<input type="hidden" name="product_id" value="<?php echo absint( $product->get_id() ); ?>" />
-	<input type="hidden" name="variation_id" class="variation_id" value="0" />
-</div>
+        <input type="hidden" name="add-to-cart" value="<?php echo absint($product->get_id()); ?>"/>
+        <input type="hidden" name="product_id" value="<?php echo absint($product->get_id()); ?>"/>
+        <input type="hidden" name="variation_id" class="variation_id" value="0"/>
+    </div>
+<?php //endif; ?>

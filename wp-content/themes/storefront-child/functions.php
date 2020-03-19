@@ -693,3 +693,21 @@ function wc_refresh_mini_cart_count($fragments)
 
 wp_enqueue_style('animate', get_stylesheet_directory_uri() . '/inc/assets/css/animate.css');
 wp_enqueue_script('wow-js', get_stylesheet_directory_uri() . '/inc/assets/js/wow.min.js', array(), '', true);
+
+//function products_in_cart()
+//{
+//    $parent = get_the_id(); // the parent product
+//    $products_in_cart = array();
+//    $cart_items = WC()->cart->get_cart();
+//    foreach ($cart_items as $cart_item) {
+//        if ($cart_item['product_id'] == $parent) {
+//            $products_in_cart[] = $cart_item['variation']; // possibly array('attribute_pa_color'=>'black')
+//
+//        }
+//    }
+//    if (count($products_in_cart) > 0) {
+//        return true;
+//    } else {
+//        return false;
+//    }
+//}
