@@ -632,6 +632,10 @@ header#masthead .navbar-brand img {
     width: unset;
 }
 
+#carouselExampleIndicators .carousel-item img{
+    border-radius: 0;
+}
+
 #carouselHover .carousel-control-next, #carouselHover .carousel-control-prev {
     opacity: 1;
 }

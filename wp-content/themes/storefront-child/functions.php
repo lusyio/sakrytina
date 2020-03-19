@@ -690,3 +690,6 @@ function wc_refresh_mini_cart_count($fragments)
     $fragments['#basket-btn__counter'] = ob_get_clean();
     return $fragments;
 }
+
+wp_enqueue_style('animate', get_stylesheet_directory_uri() . '/inc/assets/css/animate.css');
+wp_enqueue_script('wow-js', get_stylesheet_directory_uri() . '/inc/assets/js/wow.min.js', array(), '', true);
