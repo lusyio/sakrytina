@@ -105,7 +105,7 @@ Template Post Type: post, page, product
                             <p class="left wow fadeInLeft" data-wow-delay="3s">Творческие новости</p>
                             <p class="right wow fadeInRight" data-wow-delay="3.5s">А также! Арты, видео... скандалы, интриги, расследования 😀</p>
                         </div>
-                        <a class="btn btn-vk" href="#"><img
+                        <a class="btn btn-vk" target="_blank" href="https://vk.com/sakrytina_mariya"><img
                                     src="/wp-content/themes/storefront-child/svg/svg-vk-card.svg"
                                     alt="vk-icon">Перейти в вк</a>
                     </div>
@@ -119,7 +119,7 @@ Template Post Type: post, page, product
                         <p>- каждый день новые посты</p>
                         <p>- рассказываю о себе, котомузе и книгах</p>
                         <p><br></p>
-                        <a class="btn btn-inst" href="#">
+                        <a class="btn btn-inst" target="_blank" href="https://www.instagram.com/sakrytina_maria_writer/">
                             <img src="/wp-content/themes/storefront-child/svg/svg-instagram-card.svg"
                                  alt="instagram-icon">Перейти в инстаграм
                         </a>
@@ -132,7 +132,7 @@ Template Post Type: post, page, product
                         <p class="main-social__card-title">Страница на Facebook</p>
                         <p>каждый день - только главные</p>
                         <p>творческие новости</p>
-                        <a class="btn btn-fb" href="#">
+                        <a class="btn btn-fb" target="_blank" href="https://www.facebook.com/sakrytina/">
                             <img src="/wp-content/themes/storefront-child/svg/svg-fb-card.svg"
                                  alt="fb-icon">Перейти в facebook
                         </a>
