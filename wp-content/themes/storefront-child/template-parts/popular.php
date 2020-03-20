@@ -22,7 +22,7 @@
                     foreach ($products as $product):
                         ?>
                         <div class="col-3">
-                            <div data-active="<?= $product->name ?>" class="popular-block-card">
+                            <div data-active="<?= str_replace(" ","",$product->name) ?>" class="popular-block-card">
                                 <a href="<?php echo $product->get_permalink(); ?>">
                                     <div class="popular-block-card__img">
                                         <?php echo $product->get_image('medium'); ?>
@@ -41,11 +41,11 @@
                     <div class="carousel-inner">
                         <?php
                         foreach ($products as $product): ?>
-                            <div id="<?= $product->name ?>" class="popular-hover-card carousel-item">
+                            <div id="<?= str_replace(" ","",$product->name) ?>" class="popular-hover-card carousel-item">
                                 <div class="popular-hover-card__body">
                                     <div class="popular-hover-card__img wow fadeInUp" data-wow-delay="0.2s">
-                                        <img src="<?= wp_get_attachment_url($product->get_image_id()); ?>"
-                                             alt="">
+                                            <img src="<?= wp_get_attachment_url($product->get_image_id()); ?>"
+                                                 alt="">
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <div class="popular-hover-card__info">
