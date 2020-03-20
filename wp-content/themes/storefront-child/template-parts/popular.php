@@ -88,7 +88,7 @@
                                             <?php
                                             $genreTerms = get_the_terms($product->get_id(), 'pa_genre');
                                             $categoryTerms = get_the_terms($product->get_id(), 'pa_book_category');
-                                            $catTerms = wp_get_post_terms($product->get_id(), 'product_cat')
+                                            $catTerms = get_the_terms($product->get_id(), 'product_cat')
                                             ?>
                                             <?php if ($categoryTerms): ?>
                                                 <p class="popular-hover-card__meta-title wow fadeInUp"

@@ -87,7 +87,7 @@ if (post_password_required()) {
                             $genreTerms = get_the_terms($product->get_id(), 'pa_genre');
                             $yearTerms = get_the_terms($product->get_id(), 'pa_year_publication');
                             $timeTerms = get_the_terms($product->get_id(), 'pa_reading_time');
-                            $catTerms = wp_get_post_terms($product->get_id(), 'product_cat')
+                            $catTerms = get_the_terms($product->get_id(), 'product_cat')
                             ?>
                             <?php if ($genreTerms): ?>
                                 <p class="product-card__meta-title">Жанр:</p>
