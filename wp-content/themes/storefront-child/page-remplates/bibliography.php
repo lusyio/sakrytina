@@ -45,7 +45,7 @@ Template Post Type: post, page, product
                 $sortedProducts = $loop->get_products();
                 ?>
                 <div class="row">
-                    <div class="col-1 mb-auto" style="margin-top: 7.5%;"><p
+                    <div class="col-1 mb-auto" style="margin-top: 6.5%;"><p
                                 class="bibliography__year"><?= $yearNumber ?></p></div>
                     <div class="col bibliography__border">
                         <?php
@@ -70,7 +70,7 @@ Template Post Type: post, page, product
                                 </div>
                                 <div class="col-6 bibliography__card">
                                     <div>
-                                        <p class="bibliography__title"><?= $sortedProd->name ?></p>
+                                        <p class="bibliography__title"><a href="<?= $sortedProd->get_permalink() ?>"><?= $sortedProd->name ?></a></p>
                                         <hr>
                                         <?php
                                         $genreTerms = get_the_terms($sortedProd->get_id(), 'pa_genre');

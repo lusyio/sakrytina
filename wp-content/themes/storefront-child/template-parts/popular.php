@@ -27,13 +27,17 @@
                                     <div class="popular-block-card__img">
                                         <?php echo $product->get_image('medium'); ?>
                                     </div>
-                                    <p class="popular-block-card__title"><?php echo $product->get_name(); ?></p>
+                                    <p class="popular-block-card__title"><?php
+                                        $title = $product->get_name();
+                                        echo mb_substr($title, 0, mb_strrpos(mb_substr($title, 0, 27, 'utf-8'), ' ', 'utf-8'), 'utf-8');
+                                        echo (strlen($title) > 27) ? '...' : '';
+                                        ?></p>
                                 </a>
                             </div>
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <div id="carouselHover" data-interval="false" class="carousel slide" data-ride="carousel">
+                <div id="carouselHover" data-interval="false" class="carousel slide carousel-fade" data-ride="carousel">
                     <div class="carousel-inner">
                         <?php
                         foreach ($products as $product): ?>
@@ -48,7 +52,11 @@
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <div class="popular-hover-card__info">
-                                            <p class="popular-hover-card__title"><?php echo $product->get_name(); ?></p>
+                                            <p class="popular-hover-card__title"><?php
+                                                $title = $product->get_name();
+                                                echo mb_substr($title, 0, mb_strrpos(mb_substr($title, 0, 22, 'utf-8'), ' ', 'utf-8'), 'utf-8');
+                                                echo (strlen($title) > 22) ? '...' : '';
+                                                ?></p>
                                             <p class="popular-hover-card__author">Мария Сакрытина</p>
                                             <?php $desc = strip_tags($product->get_short_description());
                                             if ($desc):?>
@@ -63,7 +71,7 @@
                                             <a href="<?= $product->get_permalink(); ?>"
                                                class="btn btn-primary">Подробнее</a>
                                         </div>
-                                        <div>
+                                        <div class="popular-hover-card__meta">
                                             <?php
                                             $tags = get_the_terms($product->get_id(), 'product_tag');
                                             if ($tags):
@@ -96,25 +104,29 @@
                                                 $variables = get_the_terms($product->get_id(), 'pa_book_type');
                                                 if ($variables):
                                                     foreach ($variables as $variable) {
-                                                        $variablesSlugList[] = $variable->slug;
+                                                        $variablesSlugList[$variable->slug] = '';
                                                     }
                                                     ?>
-                                                    <?php foreach ($variablesSlugList as $slug): ?>
-                                                    <?php if ($slug === 'elektronnaya-kniga'): ?>
-                                                        <img src="/wp-content/themes/storefront-child/svg/svg-ebook.svg"
+                                                    <?php foreach ($variablesSlugList as $key => $slug): ?>
+                                                    <?php if ($key === 'elektronnaya-kniga'): ?>
+                                                        <img data-toggle="tooltip" data-placement="bottom"
+                                                             title="Электронная книга"
+                                                             src="/wp-content/themes/storefront-child/svg/svg-ebook.svg"
                                                              alt="<?= $slug ?>">
                                                     <?php endif; ?>
                                                 <?php endforeach; ?>
-                                                    <img src="/wp-content/themes/storefront-child/svg/svg-book.svg"
+                                                    <img data-toggle="tooltip" data-placement="bottom"
+                                                         title="Бумажная книга"
+                                                         src="/wp-content/themes/storefront-child/svg/svg-book.svg"
                                                          alt="book">
-                                                    <?php foreach ($variablesSlugList as $slug): ?>
-                                                    <?php if ($slug === 'audiokniga'): ?>
-                                                        <img src="/wp-content/themes/storefront-child/svg/svg-audio.svg"
+                                                    <?php foreach ($variablesSlugList as $key => $slug): ?>
+                                                    <?php if ($key === 'audiokniga'): ?>
+                                                        <img data-toggle="tooltip" data-placement="bottom"
+                                                             title="Аудиокнига"
+                                                             src="/wp-content/themes/storefront-child/svg/svg-audio.svg"
                                                              alt="<?= $slug ?>">
                                                     <?php endif; ?>
                                                 <?php endforeach; ?>
-
-
                                                 <?php endif; ?>
                                             </div>
                                         </div>

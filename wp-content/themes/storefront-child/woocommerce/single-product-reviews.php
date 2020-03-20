@@ -60,7 +60,7 @@ $terms = get_the_terms($product->get_id(), 'product_cat');
         $products = $query->get_products();
         $i = 0;
         ?>
-        <div id="carouselRelated" class="carousel slide" data-ride="carousel">
+        <div id="carouselRelated" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carouselRelated-control">
                 <a class="carousel-books-control-prev" href="#carouselRelated" role="button"
                    data-slide="prev">
@@ -83,7 +83,12 @@ $terms = get_the_terms($product->get_id(), 'product_cat');
                                 </div>
                                 <div>
                                     <p class="new-related__cycle">Книги из этого цикла</p>
-                                    <p class="new-related__title"><?= $product->get_name(); ?></p>
+                                    <p class="new-related__title"><?php
+                                        $title = $product->get_name();
+                                        echo mb_substr($title, 0, mb_strrpos(mb_substr($title, 0, 22, 'utf-8'), ' ', 'utf-8'), 'utf-8');
+                                        echo (strlen($title) > 22) ? '...' : '';
+                                         ?>
+                                    </p>
                                     <p class="new-related__text">
                                         <?php
                                         $desc = strip_tags($product->get_short_description());

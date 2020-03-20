@@ -85,7 +85,7 @@ if ($category->count > 3):
                 }
 
                 if ($cat_id === $category->term_id) {
-                    echo '<div class="carousel-books">';
+                    echo '<div class="carousel-books carousel-books__single">';
                     wc_get_template_part('content', 'product');
                     echo '</div>';
                 }
