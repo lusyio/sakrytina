@@ -58,7 +58,7 @@
                                     <img src="/wp-content/themes/storefront-child/svg/svg-cart.svg"
                                          alt="cart">
                                 </span>
-                                <span id="basket-btn__counter"></span>
+                                    <span id="basket-btn__counter"></span>
                                 Корзина
                             </a>
                         </div>

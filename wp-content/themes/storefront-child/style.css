@@ -442,6 +442,10 @@ header#masthead .navbar-brand img {
     transform: translateY(0px);
 }
 
+body a:hover{
+    color: #40866E;
+}
+
 #basket-btn__counter {
     background: #40866E;
     border: 0;
@@ -456,6 +460,8 @@ header#masthead .navbar-brand img {
     text-align: center;
     left: 35px;
     bottom: 5px;
+    width: 16px;
+    height: 16px;
 }
 
 .storefront-sticky-add-to-cart {
@@ -1221,6 +1227,60 @@ header#masthead .navbar-brand img {
     fill: #898989;
 }
 
+#commentModal .modal-content {
+    background: #FFFFFF;
+    border: none;
+    border-radius: 0;
+}
+
+#commentModal .modal-body {
+    padding: 60px 30px 60px 80px;
+}
+
+#commentModal .modal-body > div {
+    padding-right: 65px;
+    max-height: 440px;
+    overflow: auto;
+}
+
+#commentModal {
+    margin: 10% auto;
+}
+
+#commentModal .comment-title-target {
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 140%;
+    color: #151515;
+    margin-bottom: 20px;
+    padding-right: 65px;
+}
+
+.comment-content-target {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 140%;
+    color: #151515;
+}
+
+#commentModal a {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    z-index: 100;
+    transition: 135ms ease-in-out;
+}
+
+#commentModal span:hover {
+    transform: scale(1.1);
+}
+
+#commentModal .modal-dialog {
+    max-width: 800px;
+}
+
 .single-product .woocommerce-product-gallery .woocommerce-product-gallery__trigger {
     display: none;
 }
@@ -1340,7 +1400,7 @@ header#masthead .navbar-brand img {
 }
 
 .product-card .product-card__meta .product-card__meta-content > a:hover {
-    color: #6F6F6F;
+    color: #40866E;
 }
 
 .fragment-link {
@@ -2251,6 +2311,10 @@ footer.site-footer p {
     padding: 30px 30px 30px 0;
     background: #FFFFFF;
     border-radius: 0px 5px 5px 5px;
+}
+
+.new-related__card-body btn.btn-primary{
+    padding: 13px 23px;
 }
 
 .new-related__card-body > div {

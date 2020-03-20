@@ -35,7 +35,7 @@ $terms = get_the_terms($product->get_id(), 'product_cat');
                      alt="reviews">
 
                 <div class="slider-container">
-                    <div id="carouselReviews" class="carousel slide" data-ride="carousel">
+                    <div id="carouselReviews" class="carousel slide carousel-fade" data-ride="carousel">
                         <div class="carousel-inner">
                             <?php wp_list_comments(apply_filters('woocommerce_product_review_list_args', array('callback' => 'mytheme_comment'))); ?>
                         </div>

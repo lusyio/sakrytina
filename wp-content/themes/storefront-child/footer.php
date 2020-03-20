@@ -18,6 +18,22 @@
 
 <?php do_action('storefront_before_footer'); ?>
 
+<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <a data-dismiss="modal"><img src="/wp-content/themes/storefront-child/svg/svg-close-modal.svg"
+                                         alt="close-modal"></a>
+            <div class="modal-body">
+                <h5 class="modal-title comment-title-target"></h5>
+                <div>
+                    <p class="comment-content-target"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <footer id="colophon" class="site-footer" role="contentinfo">
     <div class="container">
         <div class="row">

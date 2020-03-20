@@ -87,6 +87,7 @@ if (post_password_required()) {
                             $genreTerms = get_the_terms($product->get_id(), 'pa_genre');
                             $yearTerms = get_the_terms($product->get_id(), 'pa_year_publication');
                             $timeTerms = get_the_terms($product->get_id(), 'pa_reading_time');
+                            $catTerms = wp_get_post_terms($product->get_id(), 'product_cat')
                             ?>
                             <?php if ($genreTerms): ?>
                                 <p class="product-card__meta-title">Жанр:</p>
@@ -97,8 +98,18 @@ if (post_password_required()) {
                                     } ?>
                                 </p>
                             <?php endif; ?>
-                            <p class="product-card__meta-title">Серия:</p>
-                            <p class="product-card__meta-content"><?php echo wc_get_product_category_list($product->get_id(), ', ', '' . _n('', '', count($product->get_category_ids()), 'woocommerce') . ' ', ''); ?></p>
+                            <?php if ($catTerms): ?>
+                                <p class="product-card__meta-title">Серия:</p>
+                                <p class="product-card__meta-content">
+                                    <?php foreach ($catTerms
+
+                                    as $key => $term):
+                                    $link = '/shop/#' . $term->slug; ?>
+                                    <a href='<?= $link ?>'><?= $term->name ?><?= array_key_last($catTerms) === $key ? '' : ', ' ?>
+                                        </a>
+                                        <?php endforeach; ?>
+                                </p>
+                            <?php endif; ?>
                             <?php if ($yearTerms): ?>
                                 <p class="product-card__meta-title">Год издания:</p>
                                 <p class="product-card__meta-content">

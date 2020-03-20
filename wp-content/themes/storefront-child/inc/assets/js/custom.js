@@ -53,6 +53,21 @@ jQuery(function ($) {
         carouselHover.fadeOut(350)
     })
 
+    $('.triggerModal').on('click', function () {
+        const $this = $(this);
+        const $modal = $('#commentModal')
+        $modal.modal('show')
+        let title = $this.data('title')
+        let text = $this.data('text')
+
+        $modal.find('.comment-content-target').text(text)
+        $modal.find('.comment-title-target').text(title)
+
+    })
+
+
+    $('.comment-content-target')
+
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })
