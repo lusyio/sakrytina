@@ -1,4 +1,6 @@
 jQuery(function ($) {
+    new WOW().init();
+
     const $page = $('html, body');
     $('a.link[href*="#"]').on('click', function () {
         let blockId = $.attr(this, 'href');
@@ -41,11 +43,13 @@ jQuery(function ($) {
     bookBlock.mouseenter(function () {
         let blockId = $(this).data('active')
         $(`#${blockId}`).addClass('active')
+        $('#carouselHover').addClass('active-nav')
         carouselHover.fadeIn(200)
     })
 
     carouselHover.mouseleave(function () {
         $('.popular-hover-card').removeClass('active')
+        $('#carouselHover').removeClass('active-nav')
         carouselHover.fadeOut(350)
     })
 

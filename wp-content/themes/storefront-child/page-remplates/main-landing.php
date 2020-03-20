@@ -73,7 +73,8 @@ Template Post Type: post, page, product
                              alt="sakrytina-avatar">
                     </div>
                     <p>
-                        Общий тираж: 13500 экземпляров. Награждена национальной премией для молодых писателей «Русское слово». Творчество для меня не хобби, это моя жизнь.
+                        Общий тираж: 13500 экземпляров. Награждена национальной премией для молодых писателей «Русское
+                        слово». Творчество для меня не хобби, это моя жизнь.
                     </p>
                 </div>
             </div>
@@ -92,17 +93,17 @@ Template Post Type: post, page, product
             <div class="col-12">
                 <p class="main-social__header">Подписывайся на социальные сети!</p>
             </div>
-            <div class="col-4">
-                <div class="main-social__card vk">
+            <div class="col-4" >
+                <div class="main-social__card vk wow fadeInUp" data-wow-delay="0s">
                     <div class="main-social__card-body">
                         <p class="main-social__card-title">Группа в ВК</p>
                         <div class="main-social__card-mes">
-                            <p class="left">Конкурс репостов 🎁</p>
-                            <p class="right">Открыт читательский чат 📚</p>
-                            <p class="left">Анкета читателя 📋</p>
-                            <p class="right">Ответы на вопросы, о которых вы боялись спросить 😱</p>
-                            <p class="left">Творческие новости</p>
-                            <p class="right">А также! Арты, видео... скандалы, интриги, расследования 😀</p>
+                            <p class="left wow fadeInLeft" data-wow-delay="1s">Конкурс репостов 🎁</p>
+                            <p class="right wow fadeInRight" data-wow-delay="1.5s">Открыт читательский чат 📚</p>
+                            <p class="left wow fadeInLeft" data-wow-delay="2s">Анкета читателя 📋</p>
+                            <p class="right wow fadeInRight" data-wow-delay="2.5s">Ответы на вопросы, о которых вы боялись спросить 😱</p>
+                            <p class="left wow fadeInLeft" data-wow-delay="3s">Творческие новости</p>
+                            <p class="right wow fadeInRight" data-wow-delay="3.5s">А также! Арты, видео... скандалы, интриги, расследования 😀</p>
                         </div>
                         <a class="btn btn-vk" href="#"><img
                                     src="/wp-content/themes/storefront-child/svg/svg-vk-card.svg"
@@ -111,7 +112,7 @@ Template Post Type: post, page, product
                 </div>
             </div>
             <div class="col-8">
-                <div class="main-social__card inst">
+                <div class="main-social__card inst wow fadeInUp" data-wow-delay="0.2s">
                     <?= do_shortcode('[instagram-feed]') ?>
                     <div class="main-social__card-body">
                         <p class="main-social__card-title">Аккаунт в Инстаграме</p>
@@ -125,7 +126,7 @@ Template Post Type: post, page, product
                     </div>
                 </div>
 
-                <div class="main-social__card fb">
+                <div class="main-social__card fb wow fadeInUp" data-wow-delay="0.2s">
                     <img src="/wp-content/themes/storefront-child/images/img-fb.jpg" alt="image-fb">
                     <div class="main-social__card-body">
                         <p class="main-social__card-title">Страница на Facebook</p>
@@ -157,16 +158,53 @@ Template Post Type: post, page, product
                                         Муза + автор = интересная книга 😼
                                         Муза + вкусняшка = вдохновение 😼
                                     </p>
-                                    <div class="card-muse__input-group">
-                                        <input type="text">
-                                        <button>Покормить</button>
-                                    </div>
-                                    <p class="card-muse__footer">
-                                        Перевод денег осуществляется с помощью сервиса Яндекс.Деньги. После нажатия
-                                        кнопки
-                                        “Перевести” вы будете перенаправлены на страницу подтверждения перевода
-                                    </p>
+                                    <form class="mb-0" method="POST"
+                                          action="https://money.yandex.ru/quickpay/confirm.xml">
+                                        <input type="hidden" name="receiver" value="410013256132918">
+                                        <input type="hidden" name="formcomment"
+                                               value="sakrytina.ru КотоМуза - донат">
+                                        <input type="hidden" name="short-dest"
+                                               value="КотоМуза на покормить">
+                                        <input type="hidden" name="label" value="Донат">
+                                        <input type="hidden" name="quickpay-form" value="donate">
+                                        <input type="hidden" name="targets" value="транзакция донат">
+                                        <input type="hidden" name="comment"
+                                               value="На покормить">
+                                        <input type="hidden" name="need-fio" value="true">
+                                        <input type="hidden" name="need-email" value="true">
+                                        <input type="hidden" name="need-phone" value="false">
+                                        <input type="hidden" name="need-address" value="false">
+                                        <div>
+                                            <label class="pure-material-radio" for="payWallet">
+                                                <input class="input-radio"
+                                                       type="radio"
+                                                       id="payWallet"
+                                                       name="paymentType"
+                                                       value="PC"
+                                                       checked
+                                                >
+                                                <span>Яндекс.Деньгами</span>
+                                            </label>
+                                            <label class="pure-material-radio" for="payCard">
+                                                <input class="input-radio"
+                                                       type="radio"
+                                                       id="payCard"
+                                                       name="paymentType"
+                                                       value="AC">
+                                                <span>Банковской картой</span>
+                                            </label>
+                                        </div>
+                                        <div class="card-muse__input-group">
+                                            <input class="input-donate" type="number" name="sum" value="100"
+                                                   data-type="number">
+                                            <input class="btn-donate" type="submit" value="Покормить">
+                                    </form>
                                 </div>
+                                <p class="card-muse__footer">
+                                    Перевод денег осуществляется с помощью сервиса Яндекс.Деньги. После нажатия
+                                    кнопки
+                                    “Перевести” вы будете перенаправлены на страницу подтверждения перевода
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -174,6 +212,7 @@ Template Post Type: post, page, product
             </div>
         </div>
     </div>
+</div>
 
 
-    <?php get_footer(); ?>
+<?php get_footer(); ?>

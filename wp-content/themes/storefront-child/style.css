@@ -673,9 +673,13 @@ header#masthead .navbar-brand img {
     width: 90%;
 }
 
-.carousel .carousel-control-next:focus, .carousel .carousel-control-next:hover, .carousel .carousel-control-prev:focus, .carousel .carousel-control-prev:hover {
+.carousel .carousel-control-next:hover, .carousel .carousel-control-prev:hover {
     opacity: 1;
     transform: scale(1.1);
+}
+
+.carousel .carousel-control-next:focus, .carousel .carousel-control-prev:focus {
+    opacity: 1;
 }
 
 #carouselExampleIndicators .carousel-item img {
@@ -689,6 +693,7 @@ header#masthead .navbar-brand img {
 
 #carouselHover .carousel-control-next, #carouselHover .carousel-control-prev {
     opacity: 1;
+    right: -2%;
 }
 
 #carouselExampleIndicators .carousel-control-next {
@@ -974,8 +979,11 @@ header#masthead .navbar-brand img {
     vertical-align: text-top;
 }
 
+.main-social__card .btn{
+    transition: 135ms ease-in-out;
+}
+
 .main-social__card .btn:hover {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     color: #FFFFFF;
 }
 
@@ -989,8 +997,31 @@ header#masthead .navbar-brand img {
     background: #597DA3;
 }
 
+.main-social__card .btn.btn-vk:hover{
+    background: #47698E;
+}
+
 .main-social__card .btn.btn-fb {
     background: #3B5998;
+}
+
+.main-social__card .btn.btn-fb:hover {
+    background: #36528c;
+}
+
+.card-muse .pure-material-radio span{
+    font-size: 14px;
+    line-height: 2.5;
+    font-weight: 300;
+    color: #000;
+}
+
+.card-muse .pure-material-radio{
+    display: block;
+}
+
+.card-muse .input-donate{
+
 }
 
 .main-social__card.inst p {
@@ -1067,7 +1098,7 @@ header#masthead .navbar-brand img {
     font-size: 14px;
     line-height: 140%;
     color: #000000;
-    margin-bottom: 37px;
+    margin-bottom: 30px;
 }
 
 .card-muse .card-muse__body img {
@@ -1078,6 +1109,7 @@ header#masthead .navbar-brand img {
 .card-muse .card-muse__input-group {
     margin-bottom: 25px;
     display: flex;
+    margin-top: 15px;
 }
 
 .card-muse .card-muse__footer {
@@ -1086,6 +1118,10 @@ header#masthead .navbar-brand img {
     line-height: 16px;
     color: #585858;
     margin-bottom: 0;
+}
+
+.wow {
+    visibility: hidden;
 }
 
 
@@ -1173,6 +1209,14 @@ header#masthead .navbar-brand img {
 
 .single-product .woocommerce-product-gallery .woocommerce-product-gallery__trigger {
     display: none;
+}
+
+.oneall_social_login {
+    display: none;
+}
+
+.woocommerce-form-login .oneall_social_login {
+    display: block;
 }
 
 .woocommerce-product-gallery img {
@@ -1653,6 +1697,15 @@ header#masthead .navbar-brand img {
     background: #F3F3F3;
 }
 
+.product-thumbnail__body a > img{
+    width: 100px;
+    height: 150px;
+    max-width: 100px;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 0;
+}
+
 .cart-card .product-name {
     margin: auto 0;
 }
@@ -1798,7 +1851,7 @@ header#masthead .navbar-brand img {
     object-fit: cover;
 }
 
-.card-muse .card-muse__input-group > input[type='text'] {
+.card-muse .card-muse__input-group > .input-donate {
     border: 1px solid #C2C2C2;
     border-radius: 10px;
     background: transparent;
@@ -1808,7 +1861,7 @@ header#masthead .navbar-brand img {
     padding: 9px 15px;
 }
 
-.card-muse .card-muse__input-group > button {
+.card-muse .card-muse__input-group > .btn-donate {
     background: #F53F3B;
     border-radius: 10px;
     font-size: 14px;
@@ -1819,6 +1872,11 @@ header#masthead .navbar-brand img {
     min-height: 35px;
     height: 35px;
     padding: 8px 23px;
+    transition: box-shadow 135ms cubic-bezier(.4, 0, .2, 1);
+}
+
+.card-muse .card-muse__input-group > .btn-donate:hover{
+    background: #de3935;
 }
 
 .popular-hover-card {
@@ -1881,14 +1939,17 @@ header#masthead .navbar-brand img {
 }
 
 #carouselHover {
-    overflow: hidden;
     padding-left: 30px;
     margin-left: -30px;
 }
 
 #carouselHover .carousel-control-next, #carouselHover .carousel-control-prev {
     width: unset;
-    right: 1%;
+    display: none;
+}
+
+#carouselHover.active-nav .carousel-control-next, #carouselHover.active-nav .carousel-control-prev {
+    display: flex;
 }
 
 .popular-hover-card__img > img {
@@ -2165,7 +2226,7 @@ footer.site-footer p {
     height: 300px;
 }
 
-.oneall_social_login_label{
+.oneall_social_login_label {
     display: none;
 }
 
