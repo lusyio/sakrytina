@@ -15,7 +15,7 @@ Template Post Type: post, page, product
             <div class="col-12">
 
                 <div class="slider-container">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
                         <ol class="carousel-indicators">
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -40,11 +40,15 @@ Template Post Type: post, page, product
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
                            data-slide="prev">
-                            <img src="/wp-content/themes/storefront-child/svg/svg-prev-slide.svg" alt="prev">
+                            <div>
+                                <img src="/wp-content/themes/storefront-child/svg/svg-prev-slide.svg" alt="prev">
+                            </div>
                         </a>
                         <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
                            data-slide="next">
-                            <img src="/wp-content/themes/storefront-child/svg/svg-next-slide.svg" alt="next">
+                            <div>
+                                <img src="/wp-content/themes/storefront-child/svg/svg-next-slide.svg" alt="next">
+                            </div>
                         </a>
                     </div>
                 </div>

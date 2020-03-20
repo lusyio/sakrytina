@@ -36,7 +36,7 @@
                     </a>
                 </div>
 
-                <div class="d-flex">
+                <div class="d-flex menu-container">
                     <?php
                     wp_nav_menu(array(
                         'theme_location' => 'primary',

@@ -345,6 +345,13 @@ ul.menu li.current-menu-item > a:before {
     border-radius: 10px;
     height: 50px;
     display: block;
+    transition: 145ms cubic-bezier(.4, 0, .2, 1);
+}
+
+.basket-btn:hover {
+    color: #000000;
+    text-decoration: underline;
+    background: rgba(64, 133, 110, 0.1);
 }
 
 .basket-btn img {
@@ -373,7 +380,7 @@ header#masthead .navbar .navbar-nav .nav-link {
 
 header#masthead {
     opacity: 1;
-    font-family: Roboto, sans-serif;
+    font-family: 'Roboto slab', sans-serif;
     padding: 5px 0;
     background-color: #fff;
     color: #EEEEEE;
@@ -395,13 +402,38 @@ header#masthead .navbar-brand img {
     width: 80px;
 }
 
-.navbar-dark .navbar-nav .active > .nav-link:before, .navbar-dark .navbar-nav .nav-link.active:before, .navbar-dark .navbar-nav .nav-link.show:before, .navbar-dark .navbar-nav .show > .nav-link:before {
+.navbar .navbar-nav .active > .nav-link:before, .navbar .navbar-nav .nav-link.active:before, .navbar .navbar-nav .nav-link.show:before, .navbar .navbar-nav .show > .nav-link:before {
     content: '';
     display: block;
     position: absolute;
     width: 100%;
-    bottom: 5px;
-    border-bottom: 2px solid #fff;
+    bottom: 10px;
+    border-bottom: 1px solid #000;
+}
+
+.navbar .navbar-collapse .navbar-nav .nav-item:not(.active) a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    width: 100%;
+    height: 1px;
+    background: #000;
+    opacity: 0;
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    transform: translateY(5px);
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+    -moz-transition: -moz-transform 0.3s, opacity 0.3s;
+    transition: transform 0.3s, opacity 0.3s;
+    pointer-events: none;
+}
+
+.navbar .navbar-collapse .navbar-nav .nav-item:not(.active) a:hover::after, .navbar .navbar-collapse .navbar-nav .nav-item:not(.active) a:focus::after{
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    transform: translateY(0px);
 }
 
 #basket-btn__counter {
@@ -628,11 +660,24 @@ header#masthead .navbar-brand img {
 --------------------------------------------------------------*/
 
 #carouselExampleIndicators .carousel-control-next, #carouselExampleIndicators .carousel-control-prev {
-    opacity: 1;
+    opacity: 0.8;
     width: unset;
+    transition: 145ms cubic-bezier(.4, 0, .2, 1);
 }
 
-#carouselExampleIndicators .carousel-item img{
+#menu-primary{
+    margin-left: 0;
+}
+
+.menu-container{
+    width: 90%;
+}
+
+#carouselExampleIndicators .carousel-control-next:focus, #carouselExampleIndicators .carousel-control-next:hover, #carouselExampleIndicators .carousel-control-prev:focus, #carouselExampleIndicators .carousel-control-prev:hover{
+    opacity: 1;
+}
+
+#carouselExampleIndicators .carousel-item img {
     border-radius: 0;
 }
 
@@ -641,11 +686,11 @@ header#masthead .navbar-brand img {
 }
 
 #carouselExampleIndicators .carousel-control-next {
-    right: -3.4%;
+    right: -2.1%;
 }
 
 #carouselExampleIndicators .carousel-control-prev {
-    left: -3.4%;
+    left: -2.1%;
 }
 
 #carouselExampleIndicators .carousel-indicators li {
@@ -655,11 +700,27 @@ header#masthead .navbar-brand img {
     border: 1px solid #E0E0E0;
     background: transparent;
     border-radius: 50%;
+    transition: 145ms cubic-bezier(.4, 0, .2, 1);
+}
+
+#carouselExampleIndicators .carousel-indicators li:hover:not(.active) {
+    border-color: #fff;
+    opacity: 1;
 }
 
 #carouselExampleIndicators .carousel-indicators li.active {
     background: #fff;
     border-color: #fff;
+}
+
+.carousel-control-prev > div, .carousel-control-next > div {
+    width: 45px;
+    height: 45px;
+    padding: 10px 18px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+    transition: 145ms cubic-bezier(.4, 0, .2, 1);
 }
 
 #sb_instagram.sbi_col_1.sbi_disable_mobile #sbi_images .sbi_item {
@@ -2619,6 +2680,11 @@ body .btn.btn-primary {
     height: 50px;
     border: none;
     min-height: 50px;
+    transition: 145ms cubic-bezier(.4, 0, .2, 1);
+}
+
+body .btn.btn-primary:hover {
+    background: #357C64;
 }
 
 body .btn.btn-primary > img {
