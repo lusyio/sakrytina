@@ -442,7 +442,7 @@ header#masthead .navbar-brand img {
     transform: translateY(0px);
 }
 
-body a:hover{
+body a:hover {
     color: #40866E;
 }
 
@@ -1999,12 +1999,29 @@ body a:hover{
 
 .popular-hover-card__img {
     position: relative;
-    right: 30px;
+    right: 0px;
     margin-right: 57px;
     min-width: 200px;
     width: 200px;
     height: 327px;
+    background: url('/wp-content/themes/storefront-child/images/img-popular-back.png') no-repeat;
 }
+
+.popular-hover-card__img > img {
+    perspective-origin: 0 50%;
+    perspective: 1000px;
+    border-radius: 0;
+    object-fit: cover;
+    box-shadow: none;
+    width: 94%;
+    transform-origin: 80% 50%;
+    height: 100%;
+    position: relative;
+    left: -41px;
+    top: -5px;
+    transform: perspective(300px) rotateY(-13deg);
+}
+
 
 .carouselHover-slide div img {
     box-shadow: none;
@@ -2313,7 +2330,7 @@ footer.site-footer p {
     border-radius: 0px 5px 5px 5px;
 }
 
-.new-related__card-body btn.btn-primary{
+.new-related__card-body btn.btn-primary {
     padding: 13px 23px;
 }
 
