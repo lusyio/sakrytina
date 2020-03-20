@@ -136,6 +136,12 @@ ul.menu li.current-menu-item > a:before {
     font-size: 18px;
     line-height: 24px;
     color: #000000;
+    transition: 135ms ease-in-out;
+}
+
+
+.sidebar-cycles p > a:hover {
+    color: #40866E;
 }
 
 .sidebar-cycles p:last-of-type {
@@ -979,7 +985,7 @@ header#masthead .navbar-brand img {
     vertical-align: text-top;
 }
 
-.main-social__card .btn{
+.main-social__card .btn {
     transition: 135ms ease-in-out;
 }
 
@@ -997,7 +1003,7 @@ header#masthead .navbar-brand img {
     background: #597DA3;
 }
 
-.main-social__card .btn.btn-vk:hover{
+.main-social__card .btn.btn-vk:hover {
     background: #47698E;
 }
 
@@ -1009,18 +1015,18 @@ header#masthead .navbar-brand img {
     background: #36528c;
 }
 
-.card-muse .pure-material-radio span{
+.card-muse .pure-material-radio span {
     font-size: 14px;
     line-height: 2.5;
     font-weight: 300;
     color: #000;
 }
 
-.card-muse .pure-material-radio{
+.card-muse .pure-material-radio {
     display: block;
 }
 
-.card-muse .input-donate{
+.card-muse .input-donate {
 
 }
 
@@ -1205,6 +1211,14 @@ header#masthead .navbar-brand img {
 
 .carousel-books-control .carousel-books-control-prev {
     margin-right: 25px;
+}
+
+.carousel-books-control a > svg path, .carouselRelated-control a > svg path {
+    transition: 135ms ease-in-out;
+}
+
+.carousel-books-control a:hover > svg path, .carouselRelated-control a:hover > svg path {
+    fill: #898989;
 }
 
 .single-product .woocommerce-product-gallery .woocommerce-product-gallery__trigger {
@@ -1697,7 +1711,7 @@ header#masthead .navbar-brand img {
     background: #F3F3F3;
 }
 
-.product-thumbnail__body a > img{
+.product-thumbnail__body a > img {
     width: 100px;
     height: 150px;
     max-width: 100px;
@@ -1875,7 +1889,7 @@ header#masthead .navbar-brand img {
     transition: box-shadow 135ms cubic-bezier(.4, 0, .2, 1);
 }
 
-.card-muse .card-muse__input-group > .btn-donate:hover{
+.card-muse .card-muse__input-group > .btn-donate:hover {
     background: #de3935;
 }
 
@@ -2102,7 +2116,33 @@ header#masthead .navbar-brand img {
     line-height: 21px;
     color: #ECECEC !important;
     transition: 200ms ease-in-out;
-    text-decoration: none;
+    text-decoration: none !important;
+    position: relative;
+}
+
+.site-footer .footer-menu ul > li > a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    opacity: 0;
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    transform: translateY(5px);
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+    -moz-transition: -moz-transform 0.3s, opacity 0.3s;
+    transition: transform 0.3s, opacity 0.3s;
+    pointer-events: none;
+}
+
+.site-footer .footer-menu ul > li > a:hover::after {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    transform: translateY(0px);
 }
 
 footer.site-footer .site-info .site-title {

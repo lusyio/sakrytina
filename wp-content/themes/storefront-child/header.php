@@ -58,7 +58,7 @@
                                     <img src="/wp-content/themes/storefront-child/svg/svg-cart.svg"
                                          alt="cart">
                                 </span>
-                                    <span id="basket-btn__counter"></span>
+                                <span id="basket-btn__counter"></span>
                                 Корзина
                             </a>
                         </div>
@@ -124,8 +124,12 @@
     ?>
 
     <div id="content" class="site-content">
+        <?php if (is_front_page()): ?>
         <div class="container">
-            <div class="row">
+            <?php else: ?>
+            <div class="container" style="min-height: 65vh">
+                <?php endif; ?>
+                <div class="row">
 
 <?php
 do_action('storefront_content_top');
