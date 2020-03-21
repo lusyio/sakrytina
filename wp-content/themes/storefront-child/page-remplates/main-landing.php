@@ -175,7 +175,7 @@ Template Post Type: post, page, product
                                         <input type="hidden" name="need-phone" value="false">
                                         <input type="hidden" name="need-address" value="false">
                                         <div>
-                                            <label class="pure-material-radio" for="payWallet">
+                                            <!--<label class="pure-material-radio" for="payWallet">
                                                 <input class="input-radio"
                                                        type="radio"
                                                        id="payWallet"
@@ -192,11 +192,46 @@ Template Post Type: post, page, product
                                                        name="paymentType"
                                                        value="AC">
                                                 <span>Банковской картой</span>
-                                            </label>
+                                            </label>-->
+                                            
                                         </div>
+
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
                                         <div class="card-muse__input-group">
                                             <input class="input-donate" type="number" name="sum" value="100"
                                                    data-type="number">
+                                            
+                                                   <div class="widget-shop__payments-base">
+                                                    <label class="radio-button__radio radio-button__radio_checked_yes radio-button__radio_side_left" for="payByWallet">
+                                                        <input class="radio-button__control" 
+                                                            value="PC" aria-label="Заплатить кошельком"
+                                                            checked="checked" id="payByWallet"
+                                                            type="radio"
+                                                            name="paymentType"
+                                                        >
+                                                        <span class="radio-button__text">
+                                                            <i class="icon widget-shop__icon widget-shop__icon_name_PC" aria-hidden="true"></i>
+                                                        </span>
+                                                    </label>
+                                                    <label class="radio-button__radio radio-button__radio_side_right" for="payByCard">
+                                                        <input class="radio-button__control" 
+                                                            value="AC" 
+                                                            aria-label="Заплатить картой"
+                                                            id="payByCard"
+                                                            type="radio"
+                                                            name="paymentType"
+                                                        >
+                                                        <span class="radio-button__text">
+                                                            <i class="icon widget-shop__icon widget-shop__icon_name_AC" aria-hidden="true"></i>
+                                                        </span>
+                                                    </label>
+                                                </div>
+
                                             <input class="btn-donate" type="submit" value="Покормить">
                                     </form>
                                 </div>
