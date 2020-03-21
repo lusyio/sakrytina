@@ -785,16 +785,20 @@ body a:hover {
     float: right;
     width: unset;
     right: 9.5%;
-    top: -27px;
+    top: -25px;
+    transition: all 0.6s ease-in-out;
 }
 
 #sb_instagram .sb_instagram_header .sbi_header_img {
-    width: 21px;
-    height: 21px;
+    width: 16px;
+    height: 16px;
 }
 
 #sb_instagram .sb_instagram_header .sbi_header_text.sbi_no_bio h3 {
     padding-top: 0 !important;
+    position: relative;
+    top: -4px;
+    left: -3px;
 }
 
 #sb_instagram .sb_instagram_header .sbi_header_text .sbi_bio, #sb_instagram .sb_instagram_header .sbi_header_text h3 {
@@ -837,6 +841,7 @@ body a:hover {
     position: relative;
     z-index: 2;
     transform: rotate(4deg);
+    transition: all 0.6s ease-in-out;
 }
 
 #sb_instagram.sbi_col_1.sbi_disable_mobile #sbi_images .sbi_item:last-of-type {
@@ -845,6 +850,7 @@ body a:hover {
     right: -40px;
     bottom: -9px;
     transform: rotate(7.73deg);
+    transition: all 0.6s ease-in-out;
 }
 
 #sb_instagram #sbi_images {
@@ -852,6 +858,28 @@ body a:hover {
     width: unset;
     position: relative;
 }
+
+
+
+.main-social__card.inst:hover #sb_instagram .sb_instagram_header {
+    transform:matrix(1.00,0.00,0.00,1.00,-12, -3);
+    -ms-transform:matrix(1.00,0.00,0.00,1.00,-12, -3);
+    -webkit-transform:matrix(1.00,0.00,0.00,1.00,-12, -3);
+}
+
+
+.main-social__card.inst:hover #sb_instagram.sbi_col_1.sbi_disable_mobile #sbi_images .sbi_item:first-of-type {
+    transform:matrix(1.00,0.00,0.00,1.00,-5,-5);
+    -ms-transform:matrix(1.00,0.00,0.00,1.00,-5,-5);
+    -webkit-transform:matrix(1.00,0.00,0.00,1.00,-5,-5);
+}
+
+.main-social__card.inst:hover #sb_instagram.sbi_col_1.sbi_disable_mobile #sbi_images .sbi_item:last-of-type {
+    transform:matrix(0.99,0.16,-0.16,0.99,5,-5);
+    -ms-transform:matrix(0.99,0.16,-0.16,0.99,5,-5);
+    -webkit-transform:matrix(0.99,0.16,-0.16,0.99,5,-5);
+}
+
 
 .after-header {
     padding-top: 40px;
@@ -1032,8 +1060,7 @@ body a:hover {
     display: block;
 }
 
-.card-muse .input-donate {
-}
+
 
 .main-social__card.inst p {
     font-weight: 300;
@@ -3189,6 +3216,8 @@ and (max-width: 576px) {
     border-bottom-left-radius: 2px;
 }
 
+
+
 .radio-button__radio:after {
     z-index: -2;
     top: 1px;
@@ -3217,7 +3246,18 @@ and (max-width: 576px) {
 
 .radio-button__radio_checked_yes:after {
     background-color: #ffeca6;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
 }
+
+.radio-button__radio_side_left.radio-button__radio_checked_yes:after {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+
+
 
 .widget-shop__icon {
     background-size: contain;

@@ -72,14 +72,14 @@ jQuery(function ($) {
         $('[data-toggle="tooltip"]').tooltip()
     })
 
-    $(".radio-button__radio_side_left").bind("click", function(e){
+    $(".radio-button__radio_side_left").on("click", function(e){
         $("#payByWallet").prop("checked", true);
         $(".radio-button__radio_side_left").addClass("radio-button__radio_checked_yes");
         $(".radio-button__radio_side_right").removeClass("radio-button__radio_checked_yes");
     });
     
     
-    $(".radio-button__radio_side_right").bind("click", function(e){
+    $(".radio-button__radio_side_right").on("click", function(e){
         $("#payByCard").prop("checked", true);
         $(".radio-button__radio_side_right").addClass("radio-button__radio_checked_yes");
         $(".radio-button__radio_side_left").removeClass("radio-button__radio_checked_yes");

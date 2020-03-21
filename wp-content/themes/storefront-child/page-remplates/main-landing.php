@@ -174,27 +174,7 @@ Template Post Type: post, page, product
                                         <input type="hidden" name="need-email" value="true">
                                         <input type="hidden" name="need-phone" value="false">
                                         <input type="hidden" name="need-address" value="false">
-                                        <div>
-                                            <!--<label class="pure-material-radio" for="payWallet">
-                                                <input class="input-radio"
-                                                       type="radio"
-                                                       id="payWallet"
-                                                       name="paymentType"
-                                                       value="PC"
-                                                       checked
-                                                >
-                                                <span>Яндекс.Деньгами</span>
-                                            </label>
-                                            <label class="pure-material-radio" for="payCard">
-                                                <input class="input-radio"
-                                                       type="radio"
-                                                       id="payCard"
-                                                       name="paymentType"
-                                                       value="AC">
-                                                <span>Банковской картой</span>
-                                            </label>-->
-                                            
-                                        </div>
+
 
                                         
                                         
