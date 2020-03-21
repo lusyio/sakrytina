@@ -33,21 +33,25 @@ if (post_password_required()) {
 
 
 // получение данных о книге
-
 $idBook = $product->get_id();
 
 // жанры
-
+$tags = get_the_terms($idBook, 'product_tag');
+foreach ($tags as $tag) {
+    $tagNameList[] = $tag->name;
+}
 
 // серия
-
+$catTerms = get_the_terms($idBook, 'product_cat');
 
 // год издания
 $book_year = (get_post_meta($idBook, 'book_year', true));
 
 // количество симоволов
 $count_simvolov = (get_post_meta($idBook, 'count_simvolov', true));
+$hours = ceil(($count_simvolov/1000)/60);
 
+$timeToRead = $hours . ' часов ('.$count_simvolov.' символов)';
 // награда
 $award = (get_post_meta($idBook, 'award', true));
 
@@ -114,7 +118,7 @@ $avtograf2014_link = (get_post_meta($idBook, 'avtograf2014_link', true));
 
                         <?php
 
-                        //вывод награды
+                        // вывод награды
 
                         if (!empty($award)) :?>
                             <div class="product-card__award">
@@ -125,22 +129,25 @@ $avtograf2014_link = (get_post_meta($idBook, 'avtograf2014_link', true));
 
                         <div class="product-card__meta">
                             <?php
-                            $genreTerms = get_the_terms($product->get_id(), 'pa_genre');
-                            $yearTerms = get_the_terms($product->get_id(), 'pa_year_publication');
-                            $timeTerms = get_the_terms($product->get_id(), 'pa_reading_time');
-                            $catTerms = get_the_terms($product->get_id(), 'product_cat')
-                            ?>
-                            <?php if ($genreTerms): ?>
-                                <p class="product-card__meta-title">Жанр:</p>
+
+                            // вывод жанров
+
+                            if ($tagNameList): ?>
+                                <p class="product-card__meta-title">Жанр<?=(count($tagNameList) > 1) ? 'ы' : '';?>:</p>
                                 <p class="product-card__meta-content">
-                                    <?php foreach ($genreTerms as $key => $genre) {
-                                        echo $genre->name;
-                                        echo (count($genreTerms) - 1 !== $key) ? ', ' : '';
+                                    <?php foreach ($tagNameList as $key => $genre) {
+                                        echo $genre;
+                                        echo (count($tagNameList) - 1 !== $key) ? ', ' : '';
                                     } ?>
                                 </p>
+                                <p>
                             <?php endif; ?>
-                            <?php if ($catTerms): ?>
-                                <p class="product-card__meta-title">Серия:</p>
+                            <?php
+
+                            // вывод цикла
+
+                            if ($catTerms): ?>
+                                <p class="product-card__meta-title">Цикл:</p>
                                 <p class="product-card__meta-content">
                                     <?php foreach ($catTerms
 
@@ -151,21 +158,23 @@ $avtograf2014_link = (get_post_meta($idBook, 'avtograf2014_link', true));
                                         <?php endforeach; ?>
                                 </p>
                             <?php endif; ?>
-                            <?php if ($yearTerms): ?>
+
+                            <?php
+
+                            // вывод года издания
+
+                            if (!empty($book_year)) :?>
                                 <p class="product-card__meta-title">Год издания:</p>
-                                <p class="product-card__meta-content">
-                                    <?php foreach ($yearTerms as $key => $year) {
-                                        echo $year->name;
-                                    } ?>
-                                </p>
+                                <p class="product-card__meta-content"><?=$book_year;?></p>
                             <?php endif; ?>
-                            <?php if ($timeTerms): ?>
+
+                            <?php
+
+                            // вывод времени чтения
+
+                            if (!empty($count_simvolov)) :?>
                                 <p class="product-card__meta-title">Время чтения:</p>
-                                <p class="product-card__meta-content">
-                                    <?php foreach ($timeTerms as $key => $time) {
-                                        echo $time->name;
-                                    } ?>
-                                </p>
+                                <p class="product-card__meta-content"><?=$timeToRead;?></p>
                             <?php endif; ?>
 
                         </div>
