@@ -55,7 +55,7 @@
                         foreach ((array)$menu_items as $key => $menu_item) {
                             $title = $menu_item->title; // заголовок элемента меню (анкор ссылки)
                             $url = $menu_item->url; // URL ссылки
-                            echo '<li><a href="' . $url . '">' . $title . '</a></li>';
+                            echo '<li><a class="link-strike" href="' . $url . '">' . $title . '</a></li>';
                         }
                         echo '</ul>';
                         echo '</div>';
@@ -74,11 +74,11 @@
                 <div class="d-flex justify-content-between">
                     <p class="footer-name-p mb-0">
                         <?php echo date('Y'); ?>
-                        (c) <?php echo '<a class="footer-name" href="' . home_url() . '">' . get_bloginfo('name') . '</a>'; ?>
+                        &copy; <?php echo '<a class="link-strike" href="' . home_url() . '">' . get_bloginfo('name') . '</a>'; ?>
 
                     </p>
                     <p class="mb-0">
-                        <a class="footer-terms" href="/terms/">Политика конфиденциальности</a>
+                        <a class="link-strike" href="/terms/">Политика конфиденциальности</a>
                     </p>
                 </div>
             </div>
