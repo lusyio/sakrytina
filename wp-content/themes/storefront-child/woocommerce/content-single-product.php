@@ -30,6 +30,50 @@ if (post_password_required()) {
     echo get_the_password_form(); // WPCS: XSS ok.
     return;
 }
+
+
+// получение данных о книге
+
+$idBook = $product->get_id();
+
+// жанры
+
+
+// серия
+
+
+// год издания
+$book_year = (get_post_meta($idBook, 'book_year', true));
+
+// количество симоволов
+$count_simvolov = (get_post_meta($idBook, 'count_simvolov', true));
+
+// награда
+$award = (get_post_meta($idBook, 'award', true));
+
+// ссылка на ознакомительный фрагмент
+$read_fragment_link = (get_post_meta($idBook, 'read_fragment_link', true));
+
+// ссылки на бумажные книги
+
+// Ozon
+$ozon_link = (get_post_meta($idBook, 'ozon_link', true));
+
+// Лабиринт
+$labirint_link = (get_post_meta($idBook, 'labirint_link', true));
+
+// Book24
+$book24_link = (get_post_meta($idBook, 'book24_link', true));
+
+// Читай-город
+$chitai_gorod_link = (get_post_meta($idBook, 'chitai_gorod_link', true));
+
+// Буквоед
+$bukvoed_link = (get_post_meta($idBook, 'bukvoed_link', true));
+
+// Автограф
+$avtograf2014_link = (get_post_meta($idBook, 'avtograf2014_link', true));
+
 ?>
 <div class="row" id="product-<?php the_ID(); ?>" <?php wc_product_class('', $product); ?>>
 
@@ -67,18 +111,15 @@ if (post_password_required()) {
                 </div>
                 <div class="col-lg-4 col-12 pl-lg-0 pl-unset">
                     <div class="product-card__secondary-body">
+
                         <?php
-                        $tags = get_the_terms($product->get_id(), 'product_tag');
-                        if ($tags):
-                            ?>
+
+                        //вывод награды
+
+                        if (!empty($award)) :?>
                             <div class="product-card__award">
                                 <img src="/wp-content/themes/storefront-child/images/img-award.jpg" alt="award">
-                                <?php
-                                foreach ($tags as $tag) {
-                                    $tagNameList[] = $tag->name;
-                                }
-                                ?>
-                                <p><?php foreach ($tagNameList as $name) echo $name ?></p>
+                                <p><?= $award; ?></p>
                             </div>
                         <?php endif; ?>
 
