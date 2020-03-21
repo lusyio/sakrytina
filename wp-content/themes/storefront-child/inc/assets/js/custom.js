@@ -84,4 +84,29 @@ jQuery(function ($) {
         $(".radio-button__radio_side_right").addClass("radio-button__radio_checked_yes");
         $(".radio-button__radio_side_left").removeClass("radio-button__radio_checked_yes");
     });
+
+    $(".input-donate").on("click", function () {
+        this.value = "";
+        $("#inputDonateText").text("");
+    });
+
+    $(".input-donate").focusout(function() {
+        console.log(this.value)
+        if (this.value === "") {
+            this.value = 100; 
+            $("#inputDonateText").text(this.value)
+        }
+    });
+
+    $(".input-donate").on("input", function () {
+        if (this.value.length > 7) {
+            this.value = this.value.slice(0,7); 
+        }
+
+        if (this.value > 15000) {
+            this.value = 15000; 
+        }
+
+        $("#inputDonateText").text(this.value)
+    });
 });

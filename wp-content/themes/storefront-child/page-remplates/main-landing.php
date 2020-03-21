@@ -183,8 +183,8 @@ Template Post Type: post, page, product
                                         
                                         
                                         <div class="card-muse__input-group">
-                                            <input class="input-donate" type="number" name="sum" value="100"
-                                                   data-type="number">
+                                            <span id="inputDonateText">100</span>
+                                            <input class="input-donate" type="number" name="sum" value="100" max="15000" data-type="number">
                                             
                                                    <div class="widget-shop__payments-base">
                                                     <label class="radio-button__radio radio-button__radio_checked_yes radio-button__radio_side_left" for="payByWallet">

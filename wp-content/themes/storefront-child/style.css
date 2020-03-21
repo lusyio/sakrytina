@@ -1148,6 +1148,7 @@ body a:hover {
     margin-bottom: 25px;
     display: flex;
     margin-top: 15px;
+    position: relative;
 }
 
 .card-muse .card-muse__footer {
@@ -1973,6 +1974,20 @@ body a:hover {
     padding: 9px 15px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    color: #fff;
+    caret-color: #43454b;
+}
+
+#inputDonateText {
+    position: absolute;
+    color: #43454b;
+    top: 6px;
+    left: 15px;
+}
+
+#inputDonateText:after {
+    content: "\20BD";
+    padding-left: 5px;
 }
 
 .card-muse .card-muse__input-group > .btn-donate {
