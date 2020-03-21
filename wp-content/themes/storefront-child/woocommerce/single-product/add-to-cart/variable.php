@@ -19,6 +19,10 @@ defined('ABSPATH') || exit;
 
 global $product;
 
+$idBook = $product->get_id();
+// аудиоверсия на внешей площадке
+$audio_link = (get_post_meta($idBook, 'audio_link', true));
+
 $attribute_keys = array_keys($attributes);
 $variations_json = wp_json_encode($available_variations);
 $variations_attr = function_exists('wc_esc_json') ? wc_esc_json($variations_json) : _wp_specialchars($variations_json, ENT_QUOTES, 'UTF-8', true);
@@ -201,16 +205,21 @@ do_action('woocommerce_before_add_to_cart_form'); ?>
                         </div>
                         <div id="audiobookTarget"
                              class="card-payment-info__content">
+                            <?php if(empty($audio_link)) :?>
                             <div class="d-flex justify-content-between">
                                 <?php do_action('woocommerce_single_variation'); ?>
                             </div>
                             <hr>
+
+
+
                             <p><span>Как купить?</span> Добавьте книгу в корзину и оформите заказ. Оплата осуществляется
                                 с
                                 помощью
                                 банковской
                                 карты. Книга будет отправлена вам на элекронную почту сразу же после оплаты.
                             </p>
+
                             <?php
                             $audioId = array_search('audiokniga', $arr);
                             $productVar = new WC_Product_Variation($audioId);
@@ -230,6 +239,20 @@ do_action('woocommerce_before_add_to_cart_form'); ?>
                             <?php else: ?>
                             <p>Файлы не загружены</p>
                             <?php endif; ?>
+
+<?php else :?>
+                            <div class="audioTarget">
+                                <p>Аудио версию книги вы можете приобрести в
+                                    магазине-партнере.</p>
+                                <div class="bookTarget__where">
+                                    <p><a href="<?=$audio_link;?>" target="_blank">Купить аудио версию</a></p>
+                                </div>
+
+                            </div>
+
+<?php endif;?>
+
+
                         </div>
                     </div>
                 </div>
