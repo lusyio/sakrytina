@@ -1549,7 +1549,7 @@ body a:hover {
     padding: 26px 40px 91px;
 }
 
-#bookTarget p {
+#bookTarget p, .audioTarget p {
     font-weight: 300;
     font-size: 12px;
     line-height: 16px;
@@ -1558,14 +1558,21 @@ body a:hover {
     margin-bottom: 25px;
 }
 
-#bookTarget .bookTarget__where {
+.audioTarget a {
+    color: #000000;
+}
+#bookTarget .bookTarget__where, .audioTarget .bookTarget__where {
     display: block;
     position: relative;
     z-index: 2;
     margin-bottom: 25px;
 }
 
-#bookTarget .bookTarget__where > p {
+.audioTarget .bookTarget__where {
+    margin-top: 20px;
+}
+
+#bookTarget .bookTarget__where > p, .audioTarget .bookTarget__where > p {
     font-weight: normal;
     font-size: 12px;
     line-height: 16px;
@@ -1580,7 +1587,7 @@ body a:hover {
     margin-bottom: 0;
 }
 
-#bookTarget .bookTarget__where:before {
+#bookTarget .bookTarget__where:before, .audioTarget .bookTarget__where:before {
     width: 100%;
     top: 50%;
     display: block;
