@@ -122,7 +122,7 @@ Template Post Type: post, page, product
                                     <div class="col-6 bibliography__card">
                                         <div>
                                             <p class="bibliography__title"><a
-                                                        href="<?= $sortedProd->get_permalink() ?>"><?= $sortedProd->name ?> <?=$countBLock;?></a>
+                                                        href="<?= $sortedProd->get_permalink() ?>"><?= $sortedProd->name ?></a>
                                             </p>
                                             <hr>
                                             <p class="bibliography__genre"><?php foreach ($tagNameList as $key => $genre) {
