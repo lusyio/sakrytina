@@ -786,7 +786,7 @@ body a:hover {
     width: unset;
     right: 9.5%;
     top: -25px;
-    transition: all 0.6s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 #sb_instagram .sb_instagram_header .sbi_header_img {
@@ -841,7 +841,7 @@ body a:hover {
     position: relative;
     z-index: 2;
     transform: rotate(4deg);
-    transition: all 0.6s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 #sb_instagram.sbi_col_1.sbi_disable_mobile #sbi_images .sbi_item:last-of-type {
@@ -850,7 +850,7 @@ body a:hover {
     right: -40px;
     bottom: -9px;
     transform: rotate(7.73deg);
-    transition: all 0.6s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 #sb_instagram #sbi_images {
@@ -865,6 +865,7 @@ body a:hover {
     transform:matrix(1.00,0.00,0.00,1.00,-12, -3);
     -ms-transform:matrix(1.00,0.00,0.00,1.00,-12, -3);
     -webkit-transform:matrix(1.00,0.00,0.00,1.00,-12, -3);
+    transition: all 0.5s ease-in-out;
 }
 
 
@@ -872,12 +873,14 @@ body a:hover {
     transform:matrix(1.00,0.00,0.00,1.00,-5,-5);
     -ms-transform:matrix(1.00,0.00,0.00,1.00,-5,-5);
     -webkit-transform:matrix(1.00,0.00,0.00,1.00,-5,-5);
+    transition: all 0.5s ease-in-out;
 }
 
 .main-social__card.inst:hover #sb_instagram.sbi_col_1.sbi_disable_mobile #sbi_images .sbi_item:last-of-type {
     transform:matrix(0.99,0.16,-0.16,0.99,5,-5);
     -ms-transform:matrix(0.99,0.16,-0.16,0.99,5,-5);
     -webkit-transform:matrix(0.99,0.16,-0.16,0.99,5,-5);
+    transition: all 0.5s ease-in-out;
 }
 
 
