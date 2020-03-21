@@ -117,9 +117,6 @@ Template Post Type: post, page, product
                                     <div>
                                         <p class="bibliography__title"><a href="<?= $sortedProd->get_permalink() ?>"><?= $sortedProd->name ?></a></p>
                                         <hr>
-                                        <?php
-                                        $genreTerms = get_the_terms($sortedProd->get_id(), 'pa_genre');
-                                        ?>
                                         <p class="bibliography__genre"><?php foreach ($tagNameList as $key => $genre) {
                                                 echo $genre;
                                                 echo (count($tagNameList) - 1 !== $key) ? ', ' : '';
