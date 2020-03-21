@@ -10,9 +10,9 @@ Template Post Type: post, page, product
 
 <div class="container bibliography">
     <div class="row">
-        <div class="col-6">
+        <div class="col-6 bibliography__info">
             <h1 class="bibliography__header">Библиография</h1>
-            <p class="bibliography__info"><?=the_content();?></p>
+            <?=the_content();?>
         </div>
     </div>
     <div class="row mb-5">
