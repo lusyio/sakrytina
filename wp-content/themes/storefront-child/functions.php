@@ -744,3 +744,8 @@ function changeBreadcrumbLinkProduct($crumbs)
 }
 
 add_filter('woocommerce_get_breadcrumb', 'changeBreadcrumbLinkProduct');
+
+function remove_image_zoom_support() {
+    remove_theme_support( 'wc-product-gallery-zoom' );
+}
+add_action( 'after_setup_theme', 'remove_image_zoom_support', 100 );
