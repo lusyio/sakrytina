@@ -1736,6 +1736,10 @@ body a:hover {
     background: #F3F3F3;
 }
 
+.bibliography__border1:before {
+    height: 50%;
+}
+
 .bibliography__img {
     padding: 10px;
     background: #f9f9f9;
