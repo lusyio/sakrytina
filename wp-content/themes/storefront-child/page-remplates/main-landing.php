@@ -15,7 +15,7 @@ Template Post Type: post, page, product
             <div class="col-12">
 
                 <div class="slider-container">
-                    <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+                    <div id="carouselExampleIndicators" class="carousel slide carousel-fade wow fadeIn" data-ride="carousel">
                         <ol class="carousel-indicators">
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>

@@ -758,6 +758,7 @@ body a:hover {
 #sb_instagram.sbi_col_1.sbi_disable_mobile #sbi_images .sbi_item a {
     width: 190px;
     height: 190px;
+    opacity: 1!important;
 }
 
 #sb_instagram {
@@ -1036,6 +1037,9 @@ body a:hover {
     position: relative;
 }
 
+.main-social__card .btn.btn-inst:hover {
+    background: #d43743;
+}
 .main-social__card .btn.btn-vk {
     background: #597DA3;
 }
@@ -1986,6 +1990,7 @@ body a:hover {
     color: #43454b;
     top: 6px;
     left: 15px;
+    pointer-events: none
 }
 
 #inputDonateText:after {
