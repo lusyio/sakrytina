@@ -12,7 +12,7 @@ Template Post Type: post, page, product
     <div class="row">
         <div class="col-6 bibliography__info">
             <h1 class="bibliography__header">Библиография</h1>
-            <?=the_content();?>
+            <?= the_content(); ?>
         </div>
     </div>
     <div class="row mb-5">
@@ -57,7 +57,7 @@ Template Post Type: post, page, product
                 <div class="row">
                     <div class="col-1 mb-auto" style="margin-top: 6.5%;"><p
                                 class="bibliography__year"><?= $yearNumber ?></p></div>
-                    <div class="col bibliography__border <?php if($countBLock == 1) : echo 'bibliography__border1'; endif;?>">
+                    <div class="col bibliography__border <?php if ($countBLock == 1) : echo 'bibliography__border1'; endif; ?>">
                         <?php
                         $i = 0;
                         foreach ($products as $sortedProd):
@@ -67,6 +67,10 @@ Template Post Type: post, page, product
 
                             // год издания
                             $book_year = (get_post_meta($idBook, 'book_year', true));
+
+                            // публикуется только в библиографии?
+                            $bibl_only = (get_post_meta($idBook, 'only_bibli', true));
+
 
                             // сравниванием года
 
@@ -110,17 +114,24 @@ Template Post Type: post, page, product
                                         <?php endif; ?>
                                     </div>
                                     <div class="col-2">
-                                        <a href="<?= $sortedProd->get_permalink() ?>">
+                                        <?php if ($bibl_only != 1) : ?><a
+                                                href="<?= $sortedProd->get_permalink() ?>"><?php endif;
+                                            ?>
                                             <div class="bibliography__thumbnail">
                                                 <img alt="<?= $sortedProd->name ?>"
                                                      src="<?= $imgsrc; ?>"/>
                                             </div>
-                                        </a>
+                                            <?php if ($bibl_only != 1) : ?></a><?php endif;
+                                    ?>
                                     </div>
                                     <div class="col-6 bibliography__card">
                                         <div>
-                                            <p class="bibliography__title"><a
-                                                        href="<?= $sortedProd->get_permalink() ?>"><?= $sortedProd->name ?></a>
+                                            <p class="bibliography__title">
+                                                <?php if ($bibl_only != 1) : ?>
+                                                    <a
+                                                            href="<?= $sortedProd->get_permalink() ?>"><?= $sortedProd->name ?></a>
+                                                <?php else :
+                                                    echo $sortedProd->name; endif; ?>
                                             </p>
                                             <hr>
                                             <p class="bibliography__genre"><?php foreach ($tagNameList as $key => $genre) {
