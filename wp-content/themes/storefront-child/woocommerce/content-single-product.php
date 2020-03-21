@@ -43,6 +43,15 @@ foreach ($tags as $tag) {
 
 // серия
 $catTerms = get_the_terms($idBook, 'product_cat');
+foreach ($catTerms as $key => $term):
+    $catName = $term->name;
+    $linkCat = '/shop/#' . $term->slug;
+endforeach;
+
+$typeName = 'Цикл';
+if ($catName == 'Сборник рассказов') :
+    $typeName = 'Тип';
+endif;
 
 // год издания
 $book_year = (get_post_meta($idBook, 'book_year', true));
@@ -144,19 +153,11 @@ $avtograf2014_link = (get_post_meta($idBook, 'avtograf2014_link', true));
                             <?php endif; ?>
                             <?php
 
-                            // вывод цикла
+                            // вывод циклп
 
-                            if ($catTerms): ?>
-                                <p class="product-card__meta-title">Цикл:</p>
-                                <p class="product-card__meta-content">
-                                    <?php foreach ($catTerms
-
-                                    as $key => $term):
-                                    $link = '/shop/#' . $term->slug; ?>
-                                    <a href='<?= $link ?>'><?= $term->name ?><?= array_key_last($catTerms) === $key ? '' : ', ' ?>
-                                        </a>
-                                        <?php endforeach; ?>
-                                </p>
+                            if (!empty($catName)) :?>
+                                <p class="product-card__meta-title"><?=$typeName;?>:</p>
+                                <p class="product-card__meta-content"><a href="<?= $linkCat ?>"><?=$catName;?></a></p>
                             <?php endif; ?>
 
                             <?php
