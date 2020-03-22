@@ -1190,6 +1190,7 @@ body a:hover {
     object-fit: cover;
     max-width: 200px;
     max-height: 300px;
+    margin-top: 10px;
 }
 
 .carousel-books {
@@ -1236,7 +1237,7 @@ body a:hover {
 }
 
 .woocommerce-loop-category__title {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 36px;
     line-height: 47px;
     color: #000000;
@@ -2724,11 +2725,11 @@ ul.products li.product:hover {
 }
 
 .woocommerce-loop-product__link:hover > img {
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 .woocommerce-LoopProduct-link.woocommerce-loop-product__link:hover .woocommerce-placeholder.wp-post-image {
-    transform: scale(1.1);
+    transform: scale(1.02);
 }
 
 .product-label {
