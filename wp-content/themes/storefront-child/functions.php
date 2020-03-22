@@ -69,7 +69,7 @@ remove_action('wp_head', 'rsd_link');  // сервис Really Simple Discovery
 remove_action('wp_head', 'wlwmanifest_link'); // Windows Live Writer
 remove_action('wp_head', 'wp_generator');  // скрыть версию wordpress
 
-$my_js_ver = date("ymd-Gis", filemtime(plugin_dir_path(__FILE__) . 'js/custom.js'));
+$my_js_ver = date("ymd-Gis", filemtime(plugin_dir_path(__FILE__) . 'inc/assets/js/custom.js'));
 
 wp_enqueue_script('custom', '/wp-content/themes/storefront-child/inc/assets/js/custom.js', array('jquery'), $my_js_ver, true);
 
@@ -289,7 +289,7 @@ add_action('init', 'custom_remove_footer_credit', 10);
 function custom_remove_footer_credit()
 {
     remove_action('storefront_footer', 'storefront_credit', 20);
-    add_action('storefront_footer', 'custom_storefront_credit', 20);
+//    add_action('storefront_footer', 'custom_storefront_credit', 20);
 }
 
 
