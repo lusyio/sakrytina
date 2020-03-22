@@ -524,14 +524,11 @@ function my_theme_wrapper_start()
 {
 
     global $product;
-    $tags = wc_get_object_terms($product->get_id(), 'product_tag');
-    $tagSlugList = [];
-    foreach ($tags as $tag) {
-        $tagName = $tag->name;
-    }
-    if ($tagName): ?>
-        <div class="product-label-container" data-toggle="tooltip" data-placement="top" title='<?= $tagName ?>'>
-            <img alt='<?= $tagName ?>' src="/wp-content/themes/storefront-child/images/img-award-products.png"/>
+    // награда
+    $award = (get_post_meta($product->get_id(), 'award', true));
+    if ($award): ?>
+        <div class="product-label-container" data-toggle="tooltip" data-placement="top" title='<?= $award; ?>'>
+            <img alt='<?= $award; ?>' src="/wp-content/themes/storefront-child/images/img-award-products.png"/>
         </div>
     <?php endif;
 }
