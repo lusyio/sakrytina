@@ -68,20 +68,12 @@ Template Post Type: post, page, product
         <div class="row">
             <div class="col-12">
                 <div class="d-flex justify-content-between">
-                    <p>
-                        Пишу фэнтези, от тёмного до юмористического. За 10-ть лет написала больше 20-ти романов и около
-                        50-ти рассказов. В АСТ изданы 6-ть моих романов, 2 готовятся к публикации
-                    </p>
-
-
+                    <p><?php echo nl2br(get_option('main_about_1')); ?></p>
                     <div class="main-info__img">
-                        <img src="/wp-content/themes/storefront-child/images/sakrytina-avatar.png"
+                        <img src="<?php echo nl2br(get_option('author_image')); ?>"
                              alt="sakrytina-avatar">
                     </div>
-                    <p>
-                        Общий тираж: 13500 экземпляров. Награждена национальной премией для молодых писателей «Русское
-                        слово». Творчество для меня не хобби, это моя жизнь.
-                    </p>
+                    <p><?php echo nl2br(get_option('main_about_2')); ?></p>
                 </div>
             </div>
             <div class="col-12">
@@ -124,8 +116,7 @@ Template Post Type: post, page, product
                     <?= do_shortcode('[instagram-feed]') ?>
                     <div class="main-social__card-body">
                         <p class="main-social__card-title">Аккаунт в Инстаграме</p>
-                        <p>- каждый день новые посты</p>
-                        <p>- рассказываю о себе, котомузе и книгах</p>
+                        <p><?php echo nl2br(get_option('instagram_text')); ?></p>
                         <p><br></p>
                         <a class="btn btn-inst" target="_blank"
                            href="https://www.instagram.com/sakrytina_maria_writer/">
@@ -139,8 +130,7 @@ Template Post Type: post, page, product
                     <img src="/wp-content/themes/storefront-child/images/img-fb.jpg" alt="image-fb">
                     <div class="main-social__card-body">
                         <p class="main-social__card-title">Страница на Facebook</p>
-                        <p>каждый день - только главные</p>
-                        <p>творческие новости</p>
+                        <p><?php echo nl2br(get_option('facebook_text')); ?></p>
                         <a class="btn btn-fb" target="_blank" href="https://www.facebook.com/sakrytina/">
                             <img src="/wp-content/themes/storefront-child/svg/svg-fb-card.svg"
                                  alt="fb-icon">Перейти в facebook
