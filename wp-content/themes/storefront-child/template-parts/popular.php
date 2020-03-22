@@ -34,7 +34,7 @@
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <div id="carouselHover" data-interval="false" class="carousel slide carousel-fade" data-ride="carousel">
+                <div id="carouselHover" data-interval="false" class="carousel carousel--popular slide carousel-fade" data-ride="carousel">
                     <div class="carousel-inner">
                         <?php 
                         foreach ($products as $product): ?>
