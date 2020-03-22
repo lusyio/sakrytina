@@ -17,8 +17,16 @@
 
 
 $idBook = $product->get_id();
-
 // определяем доступные табы
+$_product = wc_get_product( $idBook );
+if( $_product->is_type( 'simple' ) ) {
+ echo 'simple';
+} else {
+// do stuff for everything else
+}
+
+$booksArr = ['ozon_link', 'labirint_link', 'book24_link', 'chitai_gorod_link', 'bukvoed_link', 'avtograf2014_link'];
+$booksAvalible = [];
 
 // Электронная версия
 
@@ -27,20 +35,33 @@ $idBook = $product->get_id();
 $not_to_buy = (get_post_meta($idBook, 'not_to_buy', true));
 
 
+// Бумажная версия
 
+// Проверяем наличие бумажной версии
 
+foreach ($booksArr as $n) :
+    $link = 0;
+    $link = (get_post_meta($idBook, $n, true));
+    if ($link) {
+        $booksAvalible[] = $link;
+    }
+endforeach;
 
 ?>
 
 
-<form class="variations_form cart" action="<?php echo esc_url(apply_filters('woocommerce_add_to_cart_form_action', $product->get_permalink())); ?>"
+<form class="variations_form cart"
+      action="<?php echo esc_url(apply_filters('woocommerce_add_to_cart_form_action', $product->get_permalink())); ?>"
       method="post" enctype='multipart/form-data' data-product_id="<?php echo absint($product->get_id()); ?>"
       data-product_variations="<?php echo $variations_attr; // WPCS: XSS ok. ?>">
 
     <div class="row">
+
         <div class="col-lg-4 col-12 pr-unset pr-lg-0 mb-payment">
+
             <div data-id="elektronnaya-kniga"
-                 class="card-payment">
+                 class="card-payment <?= ($not_to_buy == 1) ? 'disabled' : ''; ?>">
+
                 <div class="card-payment__body">
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
 
@@ -48,11 +69,13 @@ $not_to_buy = (get_post_meta($idBook, 'not_to_buy', true));
                     <input data-target="ebookTarget" id="paymentEbook" type="radio" name="payment" checked>
                     <p>Электронная книга</p>
                 </div>
+
             </div>
+
         </div>
 
         <div class="col-lg-4 col-12 pr-unset pr-lg-0 mb-payment">
-            <div data-id="" class="card-payment">
+            <div data-id="" class="card-payment <?= (empty($booksAvalible)) ? 'disabled' : ''; ?>">
                 <div class="card-payment__body">
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
 
@@ -145,12 +168,11 @@ $not_to_buy = (get_post_meta($idBook, 'not_to_buy', true));
                     </div>
                     <div id="audiobookTarget"
                          class="card-payment-info__content">
-                        <?php if(empty($audio_link)) :?>
+                        <?php if (empty($audio_link)) : ?>
                             <div class="d-flex justify-content-between">
                                 <?php do_action('woocommerce_single_variation'); ?>
                             </div>
                             <hr>
-
 
 
                             <p><span>Как купить?</span> Добавьте книгу в корзину и оформите заказ. Оплата осуществляется
@@ -180,17 +202,17 @@ $not_to_buy = (get_post_meta($idBook, 'not_to_buy', true));
                                 <p>Файлы не загружены</p>
                             <?php endif; ?>
 
-                        <?php else :?>
+                        <?php else : ?>
                             <div class="audioTarget">
                                 <p>Аудио версию книги вы можете приобрести в
                                     магазине-партнере.</p>
                                 <div class="bookTarget__where">
-                                    <p><a href="<?=$audio_link;?>" target="_blank">Купить аудио версию</a></p>
+                                    <p><a href="<?= $audio_link; ?>" target="_blank">Купить аудио версию</a></p>
                                 </div>
 
                             </div>
 
-                        <?php endif;?>
+                        <?php endif; ?>
 
 
                     </div>
