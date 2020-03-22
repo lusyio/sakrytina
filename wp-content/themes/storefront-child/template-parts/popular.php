@@ -28,10 +28,7 @@
                                         <?php echo $product->get_image('medium'); ?>
                                     </div>
                                     <p class="popular-block-card__title"><?php
-                                        $title = $product->get_name();
-                                        echo mb_substr($title, 0, mb_strrpos(mb_substr($title, 0, 27, 'utf-8'), ' ', 'utf-8'), 'utf-8');
-                                        echo (strlen($title) > 27) ? '...' : '';
-                                        ?></p>
+                                        echo $product->get_name(); ?></p>
                                 </a>
                             </div>
                         </div>
@@ -43,7 +40,7 @@
                         foreach ($products as $product): ?>
                             <div id="<?= $product->slug ?>" class="popular-hover-card carousel-item">
                                 <div class="popular-hover-card__body">
-                                    <div class="popular-hover-card__img wow fadeIn" data-wow-delay="0.2s">
+                                    <div class="popular-hover-card__img wow fadeIn" data-wow-delay="0.01s">
                                         <img src="<?= wp_get_attachment_url($product->get_image_id()); ?>"
                                              alt="">
                                     </div>
