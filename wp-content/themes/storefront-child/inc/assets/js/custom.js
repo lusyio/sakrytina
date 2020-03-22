@@ -45,14 +45,36 @@ jQuery(function ($) {
         $(`#${blockId}`).addClass('active')
         $('#carouselHover').addClass('active-nav')
         carouselHover.fadeIn(200)
-        descriptionCut();
+
+        popularWowReInit();
     })
+
 
     carouselHover.mouseleave(function () {
         $('.popular-hover-card').removeClass('active')
         $('#carouselHover').removeClass('active-nav')
         carouselHover.fadeOut(350)
+
     })
+
+    $('#carouselHover .carousel-control-next').click(function(){
+        popularWowReInit();
+    })
+        
+    function popularWowReInit() {
+        // Если анимация уже была показана, то обнуляем
+        if ($('.wow').hasClass('animated')) {
+            $(this).removeClass('animated');
+            $(this).removeAttr('style');
+            new WOW().init();
+        }
+
+        // Этот велосипед нужен для того, чтобы срабатывал Wow js, так как он активируется при скролле
+        // Жду предложения сделать это нормально
+        let y = $(window).scrollTop(); 
+        $(window).scrollTop(y+1);
+        $(window).scrollTop(y);
+    }
 
     $('.triggerModal').on('click', function () {
         const $this = $(this);
@@ -73,12 +95,14 @@ jQuery(function ($) {
         $('[data-toggle="tooltip"]').tooltip()
     })
 
+
+    // Обработка карточки с пожертвованием
+
     $(".radio-button__radio_side_left").on("click", function(e){
         $("#payByWallet").prop("checked", true);
         $(".radio-button__radio_side_left").addClass("radio-button__radio_checked_yes");
         $(".radio-button__radio_side_right").removeClass("radio-button__radio_checked_yes");
     });
-    
     
     $(".radio-button__radio_side_right").on("click", function(e){
         $("#payByCard").prop("checked", true);
@@ -112,7 +136,6 @@ jQuery(function ($) {
     });
 
   
-    
 
 
     

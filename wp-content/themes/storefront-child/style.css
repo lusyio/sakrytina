@@ -2082,7 +2082,6 @@ body a:hover {
     color: #000000;
     margin-bottom: 30px;
     max-width: 360px;
-    overflow-y: hidden;
 }
 
 .popular-hover-card__img {
