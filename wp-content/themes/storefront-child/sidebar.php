@@ -19,7 +19,6 @@ if (!is_active_sidebar('sidebar-1')) {
         $args = array(
             'taxonomy' => "product_cat",
             'number' => '',
-            'orderby' => '',
             'order' => $order,
             'hide_empty' => true,
             'include' => ''
