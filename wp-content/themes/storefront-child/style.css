@@ -1194,7 +1194,6 @@ body a:hover {
 }
 
 .carousel-books {
-    overflow: hidden;
     padding-left: 30px;
     margin-left: -30px;
 }
@@ -2742,7 +2741,7 @@ ul.products li.product:hover {
 
 .item-book .product-label-container {
     position: absolute;
-    top: 230px;
+    top: 233px;
     left: -26px;
     z-index: 5;
 }
