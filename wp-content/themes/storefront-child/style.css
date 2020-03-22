@@ -2015,6 +2015,12 @@ body a:hover {
     padding-left: 5px;
 }
 
+.blockStory {
+    width: 80%;
+    margin: auto;
+    margin-top: 40px;
+    color: #6F6F6F;
+}
 .card-muse .card-muse__input-group > .btn-donate {
     background: #F53F3B;
     border-radius: 10px;
@@ -2151,8 +2157,9 @@ body a:hover {
     color: #6F6F6F;
 }
 
-.carousel-inner {
-    overflow: visible !important;
+.products .carousel-inner {
+    padding-left: 20px;
+    left: -20px;
 }
 
 .popular-hover-card__info {

@@ -24,6 +24,43 @@ get_header(); ?>
                 comments_template();
             } ?>
         </main><!-- #main -->
+        <div class="product-card d-none">
+            <div class="product-card__main-body">
+                <h4 class="text-center">Рассказы в сборнике</h4>
+                <div class="blockStory">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <ul>
+                                <li>«Вечная молодость»</li>
+                                <li>«Вьюга»</li>
+                                <li>«Мальчик по вызову»</li>
+                                <li>«Я буду любить тебя вечно»</li>
+                                <li>«Не к той блондинке сунулся!»</li>
+                                <li>«Всё будет хорошо, детка!»</li>
+                                <li>«А вы верите в сказки?»</li>
+                                <li>«Легенда»</li>
+                                <li>«Взлетай»</li>
+                                <li>«Моя Снежинка»</li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <ul>
+                                <li>«Лунный идальго»</li>
+                                <li>«Он и Она»</li>
+                                <li>«Скрипка»</li>
+                                <li>«Тающий лёд»</li>
+                                <li>«Любовь зла»</li>
+                                <li>«Я всё ещё здесь»</li>
+                                <li>«Я закрываю глаза»</li>
+                                <li>«Скажи да мне или нет»</li>
+                                <li>«Приворот»</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </section><!-- #primary -->
 <?php else: ?>
     <section id="primary" class="content-area col-sm-12 col-lg-8 archive-product-page">
