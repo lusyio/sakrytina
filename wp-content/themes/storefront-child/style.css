@@ -2711,7 +2711,7 @@ ul.products li.product:hover {
     border-radius: 0 0 3px 0;
 }
 
-.woocommerce-LoopProduct-link.woocommerce-loop-product__link .woocommerce-placeholder.wp-post-image {
+.woocommerce-LoopProduct-link.woocommerce-loop-product__link img {
     display: block;
     width: 100%;
     -webkit-backface-visibility: hidden;
