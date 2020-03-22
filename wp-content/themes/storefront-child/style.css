@@ -3343,3 +3343,6 @@ and (max-width: 576px) {
     background-image: url(https://money.yandex.ru/b/_/znDCcGN9U__lRVsmiQ6akvmMXuE.svg);
 }
 
+.pointer-events-none {
+    pointer-events: none;
+}
