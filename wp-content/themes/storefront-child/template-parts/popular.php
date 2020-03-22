@@ -52,8 +52,7 @@
                                             <p class="popular-hover-card__title wow fadeInUp"
                                                data-wow-delay="0.4s"><?php
                                                 $title = $product->get_name();
-                                                echo mb_substr($title, 0, mb_strrpos(mb_substr($title, 0, 22, 'utf-8'), ' ', 'utf-8'), 'utf-8');
-                                                echo (strlen($title) > 22) ? '...' : '';
+                                                echo $title;
                                                 ?></p>
                                             <p class="popular-hover-card__author wow fadeInUp" data-wow-delay="0.5s">
                                                 Мария Сакрытина</p>
@@ -69,50 +68,60 @@
                                                     ?></p>
                                             <?php endif; ?>
                                             <a href="<?= $product->get_permalink(); ?>"
-                                               class="btn btn-primary wow fadeInUp" data-wow-delay="2s">Подробнее</a>
+                                               class="btn btn-primary wow fadeInUp" data-wow-delay="1s">Подробнее</a>
                                         </div>
                                         <div class="popular-hover-card__meta">
                                             <?php
-                                            $tags = get_the_terms($product->get_id(), 'product_tag');
-                                            if ($tags):
+                                            // награда
+                                            $award = (get_post_meta($product->get_id(), 'award', true));
+                                            if ($award):
                                                 ?>
                                                 <div class="popular-hover-card__award wow fadeInUp"
                                                      data-wow-delay="0.8s">
                                                     <img src="/wp-content/themes/storefront-child/images/img-award.jpg"
                                                          alt="award">
-                                                    <?php foreach ($tags as $tag) : ?>
-                                                        <p><?= $tag->name ?></p>
-                                                    <?php endforeach; ?>
+                                                    <p><?= $award; ?></p>
                                                 </div>
                                             <?php endif; ?>
                                             <?php
-                                            $genreTerms = get_the_terms($product->get_id(), 'pa_genre');
-                                            $categoryTerms = get_the_terms($product->get_id(), 'pa_book_category');
-                                            $catTerms = get_the_terms($product->get_id(), 'product_cat')
+
+                                            // жанры
+                                            $tags = get_the_terms($product->get_id(), 'product_tag');
+                                            foreach ($tags as $tag) {
+                                                $tagNameList[] = $tag->name;
+                                            }
+
+                                            // серия
+                                            $catTerms = get_the_terms($product->get_id(), 'product_cat');
+                                            foreach ($catTerms as $key => $term):
+                                                $catName = $term->name;
+                                                $linkCat = '/shop/#' . $term->slug;
+                                            endforeach;
+
+                                            $typeName = 'Цикл';
+                                            if ($catName == 'Сборник рассказов') :
+                                                $typeName = 'Тип';
+                                            endif;
                                             ?>
-                                            <?php if ($categoryTerms): ?>
+                                            <?php if ($tagNameList): ?>
                                                 <p class="popular-hover-card__meta-title wow fadeInUp"
-                                                   data-wow-delay="1s">Категории:</p>
+                                                   data-wow-delay="1s">Жанр<?= (count($tagNameList) > 1) ? 'ы' : ''; ?>
+                                                    :</p>
                                                 <p class="popular-hover-card__meta-content wow fadeInUp"
                                                    data-wow-delay="1s">
-                                                    <?php foreach ($categoryTerms as $key => $category) {
-                                                        echo $category->name;
-                                                        echo (count($categoryTerms) - 1 !== $key) ? ', ' : '';
-                                                    } ?>
+                                                    <?php foreach ($tagNameList as $key => $genre) {
+                                                        echo $genre;
+                                                        echo (count($tagNameList) - 1 !== $key) ? ', ' : '';
+                                                    }
+                                                    $tagNameList = array();
+                                                    ?>
                                                 </p>
                                             <?php endif; ?>
                                             <?php if ($catTerms): ?>
                                                 <p class="popular-hover-card__meta-title wow fadeInUp"
-                                                   data-wow-delay="1.2s">Серия:</p>
+                                                   data-wow-delay="1.2s"><?= $typeName; ?>:</p>
                                                 <p class="popular-hover-card__meta-content wow fadeInUp"
-                                                   data-wow-delay="1.2s">
-                                                    <?php foreach ($catTerms
-                                                                   as $key => $term):
-                                                        $link = '/shop/#' . $term->slug; ?>
-                                                        <a href='<?= $link ?>'><?= $term->name ?><?= array_key_last($catTerms) === $key ? '' : ', ' ?>
-                                                        </a>
-                                                    <?php endforeach; ?>
-                                                </p>
+                                                   data-wow-delay="1.2s"><?= $catName; ?></p>
                                             <?php endif; ?>
                                             <div class="popular-hover-card__variables">
                                                 <?php
