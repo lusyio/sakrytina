@@ -53,9 +53,11 @@ jQuery(function ($) {
     carouselHover.mouseleave(function () {
        
         carouselHover.fadeOut(500);
+        carouselHover.addClass('pointer-events-none');
         setTimeout(() => {
             $('.popular-hover-card').removeClass('active')
             $('#carouselHover').removeClass('active-nav')
+            carouselHover.removeClass('pointer-events-none');
         }, 500);
 
     })
