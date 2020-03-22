@@ -26,7 +26,7 @@ if (!is_active_sidebar('sidebar-1')) {
         );
         $product_categories = get_terms($args);
         foreach ($product_categories as $key => $cat):?>
-            <?php if ($key !== 0 && $cat->slug !== 'storybooks'): ?>
+            <?php if ($key !== 0 && $cat->slug !== 'sbornik-rasskazov'): ?>
                 <p class="sidebar-cycles__item">
                     <a class="link" href="#<?= $cat->slug ?>"><?= $cat->name ?></a>
                 </p>
@@ -38,7 +38,7 @@ if (!is_active_sidebar('sidebar-1')) {
         <?php
         $i = 0;
         foreach ($product_categories as $cat): ?>
-            <?php if ($cat->slug === 'storybooks'):
+            <?php if ($cat->slug === 'sbornik-rasskazov'):
                 if ($i === 0){
                     echo '<p class="sidebar-cycles__header">Сборники рассказов</p>';
                 }
