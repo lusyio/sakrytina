@@ -746,3 +746,11 @@ function remove_image_zoom_support() {
     remove_theme_support( 'wc-product-gallery-zoom' );
 }
 add_action( 'after_setup_theme', 'remove_image_zoom_support', 100 );
+
+add_filter( 'woocommerce_get_wp_query_args', function( $wp_query_args, $query_vars ){
+    if ( isset( $query_vars['meta_query'] ) ) {
+        $meta_query = isset( $wp_query_args['meta_query'] ) ? $wp_query_args['meta_query'] : [];
+        $wp_query_args['meta_query'] = array_merge( $meta_query, $query_vars['meta_query'] );
+    }
+    return $wp_query_args;
+}, 10, 2 );
