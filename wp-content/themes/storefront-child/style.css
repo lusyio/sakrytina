@@ -2155,7 +2155,7 @@ body a:hover {
     color: #6F6F6F;
 }
 
-.carousel-inner {
+.products .carousel-inner {
     padding-left: 20px;
     left: -20px;
 }
