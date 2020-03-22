@@ -2150,7 +2150,8 @@ body a:hover {
 }
 
 .carousel-inner {
-    overflow: visible !important;
+    padding-left: 20px;
+    left: -20px;
 }
 
 .popular-hover-card__info {
