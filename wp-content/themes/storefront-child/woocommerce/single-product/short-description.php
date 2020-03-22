@@ -32,10 +32,11 @@ if ($short_description) :
     </div>
 <?php endif; ?>
 <?php
-$link = get_post_meta($post->ID, 'read_fragment_link');
+// ссылка на ознакомительный фрагмент
+$link = (get_post_meta($post->ID, 'read_fragment_link', true));
 if (!!$link): ?>
     <div class="fragment-link">
-        <a target="_blank" href="<?= $link[0] ?>">
+        <a target="_blank" href="<?= $link; ?>">
             <img src="/wp-content/themes/storefront-child/svg/svg-read-fragment.svg"
                  alt="read-fragment">
             Читать фрагмент

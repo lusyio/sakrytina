@@ -64,8 +64,6 @@ $timeToRead = $hours . ' часов ('.$count_simvolov.' символов)';
 // награда
 $award = (get_post_meta($idBook, 'award', true));
 
-// ссылка на ознакомительный фрагмент
-$read_fragment_link = (get_post_meta($idBook, 'read_fragment_link', true));
 
 // ссылки на бумажные книги
 
