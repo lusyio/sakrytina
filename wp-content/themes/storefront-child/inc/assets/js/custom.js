@@ -45,6 +45,7 @@ jQuery(function ($) {
         $(`#${blockId}`).addClass('active')
         $('#carouselHover').addClass('active-nav')
         carouselHover.fadeIn(200)
+        descriptionCut();
     })
 
     carouselHover.mouseleave(function () {
@@ -109,4 +110,11 @@ jQuery(function ($) {
 
         $("#inputDonateText").text(this.value)
     });
+
+  
+    
+
+
+    
 });
+

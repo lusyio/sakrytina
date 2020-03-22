@@ -2037,6 +2037,7 @@ body a:hover {
     background: #FFFFFF;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
     position: relative;
+    max-height: 400px;
 }
 
 .popular-hover-card .popular-hover-card__body {
@@ -2075,6 +2076,7 @@ body a:hover {
     color: #000000;
     margin-bottom: 30px;
     max-width: 360px;
+    overflow-y: hidden;
 }
 
 .popular-hover-card__img {
@@ -2170,11 +2172,14 @@ body a:hover {
     align-items: center;
     margin-bottom: 33px;
     margin-left: -10px;
+    position: relative;
 }
 
 .popular-hover-card__award > img {
     width: 80px;
     margin-right: 10px;
+    position: relative;
+    left: -6px;
 }
 
 .popular-hover-card__award > p {

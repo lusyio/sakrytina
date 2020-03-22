@@ -36,7 +36,7 @@
                 </div>
                 <div id="carouselHover" data-interval="false" class="carousel slide carousel-fade" data-ride="carousel">
                     <div class="carousel-inner">
-                        <?php
+                        <?php 
                         foreach ($products as $product): ?>
                             <div id="<?= $product->slug ?>" class="popular-hover-card carousel-item">
                                 <div class="popular-hover-card__body">
@@ -60,6 +60,10 @@
                                                 <p class="popular-hover-card__desc wow fadeInUp" data-wow-delay="0.6s">
                                                     <?php
                                                     $size = 240;
+
+                                                    if (strlen($title) > 25) {
+                                                        $size = 180;
+                                                    }
                                                     echo mb_substr($desc, 0, mb_strrpos(mb_substr($desc, 0, $size, 'utf-8'), ' ', 'utf-8'), 'utf-8');
                                                     echo (strlen($desc) > $size) ? '...' : '';
                                                     ?></p>
@@ -162,7 +166,7 @@
                         endforeach; ?>
                     </div>
                     <a class="carousel-control-next carouselHover-slide" href="#carouselHover" role="button"
-                       data-slide="next">
+                       data-slide="next" >
                         <div>
                             <img src="/wp-content/themes/storefront-child/svg/svg-next-slide.svg" alt="">
                         </div>
