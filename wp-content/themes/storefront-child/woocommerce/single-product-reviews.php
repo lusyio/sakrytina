@@ -20,7 +20,7 @@ defined('ABSPATH') || exit;
 global $product;
 
 if (!comments_open()) {
-    return;
+//    return;
 }
 
 $terms = get_the_terms($product->get_id(), 'product_cat');
@@ -28,28 +28,27 @@ $terms = get_the_terms($product->get_id(), 'product_cat');
 ?>
 
 <div class="row">
+    <?php if (have_comments()) : ?>
+
     <div id="reviews" class="woocommerce-Reviews col-lg-6 col-12">
         <div id="comments">
-            <?php if (have_comments()) : ?>
-                <img class="comments__img" src="/wp-content/themes/storefront-child/svg/svg-review.svg"
-                     alt="reviews">
-
-                <div class="slider-container">
-                    <div id="carouselReviews" class="carousel slide carousel-fade" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <?php wp_list_comments(apply_filters('woocommerce_product_review_list_args', array('callback' => 'mytheme_comment'))); ?>
-                        </div>
+            <img class="comments__img" src="/wp-content/themes/storefront-child/svg/svg-review.svg"
+                 alt="reviews">
+            <div class="slider-container">
+                <div id="carouselReviews" class="carousel slide carousel-fade" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <?php wp_list_comments(apply_filters('woocommerce_product_review_list_args', array('callback' => 'mytheme_comment'))); ?>
                     </div>
                 </div>
-
-            <?php endif; ?>
+            </div>
         </div>
-
         <div class="clear"></div>
     </div>
 
     <div class="col-lg-6 col-12 new-related">
-
+        <?php else: ?>
+        <div class="col-lg-12 col-12 new-related">
+<?php endif; ?>
         <?php
         $args = array(
             'status' => 'publish',
@@ -79,8 +78,12 @@ $terms = get_the_terms($product->get_id(), 'product_cat');
                 <?php foreach ($products
                                as $product):
                     ?>
+                    <?php if (have_comments() || $i % 2 == 0): ?>
                     <div class="new-related__card carousel-item <?= $i === 0 ? 'active' : '' ?>">
-                        <div class="new-related__card-body">
+                    <div class="row">
+                    <?php endif; ?>
+                <div class="<?php echo (!have_comments()) ? 'col-lg-6' :'' ?>">
+                    <div class="new-related__card-body ">
                             <div>
                                 <div class="new-related__img">
                                     <?= $product->get_image('medium'); ?>
@@ -105,7 +108,11 @@ $terms = get_the_terms($product->get_id(), 'product_cat');
                                 </div>
                             </div>
                         </div>
+                </div>
+                    <?php if (have_comments() || $i % 2 == 1): ?>
                     </div>
+                    </div>
+                    <?php endif; ?>
                     <?php
                     $i++;
                 endforeach; ?>
