@@ -132,7 +132,7 @@ Template Post Type: post, page, product
                                     </div>
                                     <div class="col-5 bibliography__card">
                                         <div>
-                                            <p class="bibliography__title wow fadeInRight" data-wow-delay="0.2s">
+                                            <p class="bibliography__title wow fadeInUp" data-wow-delay="0.2s">
                                                 <?php if ($bibl_only != 1) : ?>
                                                     <a
                                                             href="<?= $sortedProd->get_permalink() ?>"><?= $sortedProd->name ?></a>
@@ -140,12 +140,12 @@ Template Post Type: post, page, product
                                                     echo $sortedProd->name; endif; ?>
                                             </p>
                                             <hr>
-                                            <p class="bibliography__genre wow fadeInRight"
+                                            <p class="bibliography__genre wow fadeInUp"
                                                data-wow-delay="0.3s"><?php foreach ($tagNameList as $key => $genre) {
                                                     echo $genre;
                                                     echo (count($tagNameList) - 1 !== $key) ? ', ' : '';
                                                 } ?></p>
-                                            <p class="bibliography__cycle wow fadeInRight" data-wow-delay="0.4s">
+                                            <p class="bibliography__cycle wow fadeInUp" data-wow-delay="0.4s">
                                                 <?php if ($bibl_only != 1) : ?>
                                                     <a href="<?= $linkCat ?>"><?= $catName; ?></a>
                                                 <?php else :
