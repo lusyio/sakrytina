@@ -918,7 +918,6 @@ body a:hover {
 .main-info {
     background: #FEFEFE;
     padding-top: 30px;
-    padding-bottom: 45px;
 }
 
 .main-info .main-info__img {
@@ -926,12 +925,11 @@ body a:hover {
     margin-right: 50px;
     width: 200px;
     position: relative;
+    top: -65px;
 }
 
 .main-info .main-info__img > img {
     display: block;
-    position: absolute;
-    top: -65px;
     border-radius: 50%;
     width: 200px;
     height: 200px;
@@ -958,7 +956,11 @@ body a:hover {
     color: #000000;
     margin: 0;
     padding: 0;
-    margin-top: 50px;
+    margin-top: 15px;
+    position: relative;
+    width: 120%;
+    left: -10%;
+    margin-bottom: -30px;
 }
 
 .main-social {
@@ -3300,6 +3302,92 @@ and (max-width: 991px) {
 and (max-width: 768px) {
     footer.site-footer {
         padding-bottom: 75px;
+    }
+
+    /*очень временная адаптация! переделать по уму с учетом верстки*/
+    .basket-btn {
+        border: none;
+        padding: 12px 2px;
+    }
+    .cartName {
+        display: none;
+    }
+    .carousel-control-prev > div, .carousel-control-next > div {
+        transform: scale(0.5);
+    }
+    #carouselExampleIndicators .carousel-control-prev {
+        left: -6.1%;
+    }
+    #carouselExampleIndicators .carousel-control-next {
+        right: -6.1%;
+    }
+    .main-info .d-flex {
+        flex-flow: column;
+    }
+    .main-info p {
+        order: 2;
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 0px 22px;
+    }
+    .main-info .main-info__img > img {
+        width: 145px;
+        height: 145px;
+        max-width: 145px;
+        max-height: 145px;
+    }
+    .main-info .main-info__img {
+        margin-left: auto;
+        margin-right: auto;
+        width: 145px;
+        position: relative;
+    }
+    .main-info h1 {
+        width: 180%;
+        left: -40%;
+        margin-bottom: -40px;
+    }
+    .carousel-indicators {
+        transform: scale(0.5);
+        bottom: -15px;
+    }
+
+    .popular-block {
+        padding: 22px;
+        padding-bottom: 60px;
+    }
+    .popular-block .col-3 {
+        display: none;
+    }
+    .popular-block .col-3:first-child {
+        display: block;
+        width: 100%;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .popular-block-card__img > img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .popular-block .popular-block__header {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    .main-social__card.inst p {
+        display: none;
+    }
+    #sb_instagram {
+        position: relative;
+        top: 50px;
+    }
+    .main-social .main-social__card {
+        overflow: visible;
+    }
+    .main-social__card.fb > img {
+        display: none;
     }
 }
 

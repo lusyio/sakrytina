@@ -78,12 +78,10 @@ Template Post Type: post, page, product
                     <div class="main-info__img">
                         <img src="<?php echo nl2br(get_option('author_image')); ?>"
                              alt="sakrytina-avatar">
+                        <h1>Мария Сакрытина</h1>
                     </div>
                     <p><?php echo nl2br(get_option('main_about_2')); ?></p>
                 </div>
-            </div>
-            <div class="col-12">
-                <h1>Мария Сакрытина</h1>
             </div>
         </div>
     </div>

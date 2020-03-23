@@ -59,7 +59,7 @@
                                          alt="cart">
                                 </span>
                                     <span id="basket-btn__counter"></span>
-                                Корзина
+                                <span class="cartName">Корзина</span>
                             </a>
                         </div>
                         <div class="m-auto d-xl-block d-none">
