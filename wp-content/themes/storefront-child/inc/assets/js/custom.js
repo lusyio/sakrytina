@@ -93,7 +93,7 @@ jQuery(function ($) {
 
     function popularWowReInit() {
         // Если анимация уже была показана, то обнуляем
-        if ($('].wow').hasClass('animated')) {
+        if ($('.wow').hasClass('animated')) {
             $(this).removeClass('animated');
             $(this).removeAttr('style');
             new WOW().init();
