@@ -55,9 +55,9 @@ Template Post Type: post, page, product
                 $sortedProducts = $loop->get_products();
                 ?>
                 <div class="row">
-                    <div class="col-1 mb-auto" style="margin-top: 6.5%;"><p
+                    <div class="col-1 mb-auto wow fadeInUp" data-wow-delay="0s" style="margin-top: 6.5%;"><p
                                 class="bibliography__year"><?= $yearNumber ?></p></div>
-                    <div class="col bibliography__border <?php if ($countBLock == 1) : echo 'bibliography__border1'; endif; ?>">
+                    <div class="col bibliography__border wow fadeInUp <?php if ($countBLock == 1) : echo 'bibliography__border1'; endif; ?>"  data-wow-delay="0s">
                         <?php
                         $i = 0;
                         foreach ($products as $sortedProd):
@@ -124,7 +124,7 @@ Template Post Type: post, page, product
                                             <?php if ($bibl_only != 1) : ?></a><?php endif;
                                     ?>
                                     </div>
-                                    <div class="col-6 bibliography__card">
+                                    <div class="col-5 bibliography__card">
                                         <div>
                                             <p class="bibliography__title">
                                                 <?php if ($bibl_only != 1) : ?>
@@ -142,13 +142,14 @@ Template Post Type: post, page, product
                                                         href="<?= $linkCat ?>"><?= $catName; ?></a></p>
                                         </div>
                                     </div>
-                                    <div class="col-3 mt-auto mb-auto">
-                                        <?php if (!empty($award)) :
+                                    <div class="col-4 mt-auto mb-auto">
+                                        <?php
+                                        if (!empty($award)) :
                                             ?>
                                             <div class="bibliography__award">
-                                                <img src="/wp-content/themes/storefront-child/images/img-award-bibl.png"
-                                                     alt="award">
-                                                <p><?= $award; ?></p>
+                                                    <img src="/wp-content/themes/storefront-child/images/img-award-bibl.png"
+                                                         alt="award">
+                                                <div><p><?= $award; ?></p></div>
                                             </div>
                                         <?php endif; ?>
                                     </div>

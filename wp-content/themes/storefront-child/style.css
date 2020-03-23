@@ -1776,6 +1776,7 @@ body a:hover {
 
 .bibliography .bibliography__award img {
     display: block;
+    margin: auto;
     margin-right: 25px;
     max-height: 57px;
 }
@@ -1785,6 +1786,10 @@ body a:hover {
     font-size: 14px;
     line-height: 18px;
     color: #000000;
+    margin-bottom: 10px;
+}
+
+.bibliography .bibliography__award p:last-of-type{
     margin-bottom: 0;
 }
 
