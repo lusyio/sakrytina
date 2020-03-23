@@ -746,3 +746,136 @@ function remove_image_zoom_support() {
     remove_theme_support( 'wc-product-gallery-zoom' );
 }
 add_action( 'after_setup_theme', 'remove_image_zoom_support', 100 );
+
+add_filter( 'woocommerce_get_wp_query_args', function( $wp_query_args, $query_vars ){
+    if ( isset( $query_vars['meta_query'] ) ) {
+        $meta_query = isset( $wp_query_args['meta_query'] ) ? $wp_query_args['meta_query'] : [];
+        $wp_query_args['meta_query'] = array_merge( $meta_query, $query_vars['meta_query'] );
+    }
+    return $wp_query_args;
+}, 10, 2 );
+
+add_action( 'customize_register', 'mytheme_customize_register' );
+/**
+ * Добавляет страницу настройки темы в админку Вордпресса
+ */
+function mytheme_customize_register( $wp_customize ) {
+    /*
+    Добавляем секцию в настройки темы
+    */
+    $wp_customize->add_section(
+    // ID
+        'data_main_section',
+        // Arguments array
+        array(
+            'title' => 'Данные главной страницы',
+            'capability' => 'edit_theme_options',
+            'description' => "Тут можно указать данные для главной страницы"
+        )
+    );
+    $wp_customize->add_setting(
+    // ID
+        'author_image',
+        // Arguments array
+        array(
+            'default' => '',
+            'type' => 'option'
+        )
+    );
+    $wp_customize->add_control(
+    // ID
+        'author_image_control',
+        // Arguments array
+        array(
+            'type' => 'url',
+            'label' => "Ссылка на изображение автора",
+            'section' => 'data_main_section',
+            // This last one must match setting ID from above
+            'settings' => 'author_image'
+        )
+    );
+    $wp_customize->add_setting(
+    // ID
+        'main_about_1',
+        // Arguments array
+        array(
+            'default' => '',
+            'type' => 'option'
+        )
+    );
+    $wp_customize->add_control(
+    // ID
+        'main_about_1_control',
+        // Arguments array
+        array(
+            'type' => 'textarea',
+            'label' => "Об авторе - 1-й абзац",
+            'section' => 'data_main_section',
+            // This last one must match setting ID from above
+            'settings' => 'main_about_1'
+        )
+    );
+    $wp_customize->add_setting(
+    // ID
+        'main_about_2',
+        // Arguments array
+        array(
+            'default' => '',
+            'type' => 'option'
+        )
+    );
+    $wp_customize->add_control(
+    // ID
+        'main_about_2_control',
+        // Arguments array
+        array(
+            'type' => 'textarea',
+            'label' => "Об авторе - 2-й абзац",
+            'section' => 'data_main_section',
+            // This last one must match setting ID from above
+            'settings' => 'main_about_2'
+        )
+    );
+    $wp_customize->add_setting(
+    // ID
+        'instagram_text',
+        // Arguments array
+        array(
+            'default' => '',
+            'type' => 'option'
+        )
+    );
+    $wp_customize->add_control(
+    // ID
+        'instagram_text_control',
+        // Arguments array
+        array(
+            'type' => 'textarea',
+            'label' => "Текст блока Instagram",
+            'section' => 'data_main_section',
+            // This last one must match setting ID from above
+            'settings' => 'instagram_text'
+        )
+    );
+    $wp_customize->add_setting(
+    // ID
+        'facebook_text',
+        // Arguments array
+        array(
+            'default' => '',
+            'type' => 'option'
+        )
+    );
+    $wp_customize->add_control(
+    // ID
+        'facebook_text_control',
+        // Arguments array
+        array(
+            'type' => 'textarea',
+            'label' => "Текст блока Facebook",
+            'section' => 'data_main_section',
+            // This last one must match setting ID from above
+            'settings' => 'facebook_text'
+        )
+    );
+}

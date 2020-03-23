@@ -5,18 +5,23 @@
                 <p class="popular-block__header">Популярное</p>
                 <div class="row">
                     <?php
-                    $args = array(
+                    $args = [
                         'status' => 'publish',
                         'orderby' => 'order_clause',
                         'order' => 'DESC',
-                        'meta_query' => array(
-                            'order_clause' => array(
+                        'meta_query' => [
+                            'order_clause' => [
                                 'key' => 'total_sales',
-                                'value' => 'some_value',
-                                'type' => 'NUMERIC' // unless the field is not a number
-                            )),
+                                'compare' => 'EXISTS',
+                            ],
+                        ],
                         'limit' => 4,
-                    );
+                    ];
+                    $args['meta_query'][] = [
+                        'key' => 'only_bibli',
+                        'compare' => '!=',
+                        'value' => '1',
+                    ];
                     $query = new WC_Product_Query($args);
                     $products = $query->get_products();
                     foreach ($products as $product):
