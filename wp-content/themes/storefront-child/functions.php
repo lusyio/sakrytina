@@ -460,7 +460,7 @@ function mytheme_comment($comment, $args, $depth)
     $first_comment_id = $comments[0]->comment_ID;
     ?>
     <div class="post <?= $first_comment_id === $comment->comment_ID ? 'active' : '' ?> carousel-item">
-        <p class="comment__title"><?= $comment->comment_author ?><?= get_comment_date($d = ', F jS, Y', $comment) ?> </p>
+        <p class="comment__title"><?= $comment->comment_author ?><?= get_comment_date($d = ', F jS Y', $comment) ?> <?= preg_replace('#^https?://#', '', $comment->comment_author_url); ?></p>
         <div class="comment__content">
             <p><?php
                 $desc = $comment->comment_content;
@@ -468,7 +468,7 @@ function mytheme_comment($comment, $args, $depth)
                 echo (mb_strlen($desc) > $size) ? mb_substr($desc, 0, mb_strrpos(mb_substr($desc, 0, $size, 'utf-8'), ' ', 0, 'utf-8'), 'utf-8') . '...' : $desc; ?>
             </p>
             <?php if (mb_strlen($desc) > $size): ?>
-                <a data-title="<?= $comment->comment_author ?><?= get_comment_date($d = ', F jS, Y', $comment) ?>"
+                <a data-title="<?= $comment->comment_author ?><?= get_comment_date($d = ', F jS Y', $comment) ?> <?= preg_replace('#^https?://#', '', $comment->comment_author_url); ?>"
                    data-text="<?= $desc ?>" data-toggle="modal" class="triggerModal" data-target="#commentModal"
                    href="#">Читать весь отзыв <img
                             src="/wp-content/themes/storefront-child/svg/svg-review__link.svg" alt="review-link"></a>
