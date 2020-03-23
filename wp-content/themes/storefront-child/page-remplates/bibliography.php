@@ -57,7 +57,8 @@ Template Post Type: post, page, product
                 <div class="row">
                     <div class="col-1 mb-auto wow fadeInUp" data-wow-delay="0s" style="margin-top: 6.5%;"><p
                                 class="bibliography__year"><?= $yearNumber ?></p></div>
-                    <div class="col bibliography__border wow fadeInUp <?php if ($countBLock == 1) : echo 'bibliography__border1'; endif; ?>"  data-wow-delay="0s">
+                    <div class="col bibliography__border wow fadeInUp <?php if ($countBLock == 1) : echo 'bibliography__border1'; endif; ?>"
+                         data-wow-delay="0s">
                         <?php
                         $i = 0;
                         foreach ($products as $sortedProd):
@@ -114,15 +115,15 @@ Template Post Type: post, page, product
                                         <?php endif; ?>
                                     </div>
                                     <div class="col-2">
-                                        <?php if ($bibl_only != 1) : ?><a
-                                                href="<?= $sortedProd->get_permalink() ?>"><?php endif;
-                                            ?>
-                                            <div class="bibliography__thumbnail">
+
+                                        <div class="bibliography__thumbnail">
+                                            <?php if ($bibl_only != 1) : ?>
+                                            <a href="<?= $sortedProd->get_permalink() ?>"><?php endif; ?>
                                                 <img alt="<?= $sortedProd->name ?>"
                                                      src="<?= $imgsrc; ?>"/>
-                                            </div>
-                                            <?php if ($bibl_only != 1) : ?></a><?php endif;
-                                    ?>
+                                                <?php if ($bibl_only != 1) : ?></a><?php endif; ?>
+                                        </div>
+
                                     </div>
                                     <div class="col-5 bibliography__card">
                                         <div>
@@ -147,8 +148,8 @@ Template Post Type: post, page, product
                                         if (!empty($award)) :
                                             ?>
                                             <div class="bibliography__award">
-                                                    <img src="/wp-content/themes/storefront-child/images/img-award-bibl.png"
-                                                         alt="award">
+                                                <img src="/wp-content/themes/storefront-child/images/img-award-bibl.png"
+                                                     alt="award">
                                                 <div><p><?= $award; ?></p></div>
                                             </div>
                                         <?php endif; ?>
