@@ -131,8 +131,7 @@ $terms = get_the_terms($product->get_id(), 'product_cat');
                                     <?php endif; ?>
                                     <p class="new-related__title"><?php
                                         $title = $relatedProduct->get_name();
-                                        echo mb_substr($title, 0, mb_strrpos(mb_substr($title, 0, 22, 'utf-8'), ' ', 'utf-8'), 'utf-8');
-                                        echo (strlen($title) > 22) ? '...' : '';
+                                        echo (mb_strlen($title) > 22) ? mb_substr($title, 0, mb_strrpos(mb_substr($title, 0, 22, 'utf-8'), ' ', 0, 'utf-8'), 'utf-8') . '...' : $title;
                                          ?>
                                     </p>
                                     <p class="new-related__text">
