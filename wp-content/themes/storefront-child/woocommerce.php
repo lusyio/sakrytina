@@ -19,10 +19,6 @@ get_header(); ?>
         <main id="main" class="site-main" role="main">
 
             <?php woocommerce_content(); ?>
-            <?php
-            if (is_product()) {
-                comments_template();
-            } ?>
         </main><!-- #main -->
             <?php if (is_product()): ?>
                 <?php
@@ -71,7 +67,13 @@ get_header(); ?>
                         <?php endif; ?>
                     <?php endif; ?>
                 <?php endif; ?>
+
+
             </section><!-- #primary -->
+    <?php
+    if (is_product()) {
+        comments_template();
+    } ?>
 <?php else: ?>
     <section id="primary" class="content-area col-sm-12 col-lg-8 archive-product-page">
         <main id="main" class="site-main" role="main">
