@@ -121,7 +121,7 @@ Template Post Type: post, page, product
                                         <?php if ($bibl_only != 1) : ?><a
                                                 href="<?= $sortedProd->get_permalink() ?>"><?php endif;
                                             ?>
-                                            
+
                                                 <img class="wow fadeIn" data-wow-delay="0.2s"
                                                      alt="<?= $sortedProd->name ?>"
 
@@ -156,9 +156,9 @@ Template Post Type: post, page, product
 
                                                     <img class="wow fadeIn" data-wow-delay="1s" src="/wp-content/themes/storefront-child/images/img-award-bibl.png"
                                                          alt="award">
-                                                <div><p class="wow fadeIn" data-wow-delay="1s"><?= $award; ?></p></div>
+                                                <div class="wow fadeIn" data-wow-delay="1s"><p><?= $award; ?></p></div>
 
-                                                
+
                                             </div>
                                         <?php endif; ?>
                                     </div>
