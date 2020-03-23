@@ -1374,9 +1374,8 @@ body a:hover {
     margin-top: 40px;
     object-fit: cover;
     width: 268px;
-    max-height: 377px;
     max-width: 268px;
-    height: 377px;
+    height: auto;
 }
 
 .woocommerce-product-gallery .woocommerce-product-gallery__image {
