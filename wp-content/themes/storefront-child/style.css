@@ -67,10 +67,12 @@ a::-moz-focus-inner {
 
 button:active, button:focus {
     outline: none !important;
+    box-shadow: none !important;
 }
 
 button::-moz-focus-inner {
     border: 0 !important;
+    box-shadow: none !important;
 }
 
 img {
