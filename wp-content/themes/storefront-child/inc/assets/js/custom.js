@@ -1,6 +1,31 @@
 jQuery(function ($) {
     new WOW().init();
 
+    $('.carousel-books').each(function () {
+        var swiper = new Swiper(this, {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            breakpoints: {
+                576: {
+                    slidesPerView: 1,
+                    spaceBetween: 0,
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+                991: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+            },
+            navigation: {
+                nextEl: $(this).prev('h2').find('.carousel-books-control-next'),
+                prevEl: $(this).prev('h2').find('.carousel-books-control-prev'),
+            },
+        });
+    });
+
     const $page = $('html, body');
     $('a.link[href*="#"]').on('click', function () {
         let blockId = $.attr(this, 'href');
@@ -51,7 +76,7 @@ jQuery(function ($) {
 
 
     carouselHover.mouseleave(function () {
-       
+
         carouselHover.fadeOut(500);
         carouselHover.addClass('pointer-events-none');
         setTimeout(() => {
@@ -62,10 +87,10 @@ jQuery(function ($) {
 
     })
 
-    $('#carouselHover .carousel-control-next').click(function(){
+    $('#carouselHover .carousel-control-next').click(function () {
         popularWowReInit();
     })
-        
+
     function popularWowReInit() {
         // Если анимация уже была показана, то обнуляем
         if ($('.wow').hasClass('animated')) {
@@ -76,8 +101,8 @@ jQuery(function ($) {
 
         // Этот велосипед нужен для того, чтобы срабатывал Wow js, так как он активируется при скролле
         // Жду предложения сделать это нормально
-        let y = $(window).scrollTop(); 
-        $(window).scrollTop(y+1);
+        let y = $(window).scrollTop();
+        $(window).scrollTop(y + 1);
         $(window).scrollTop(y);
     }
 
@@ -103,13 +128,13 @@ jQuery(function ($) {
 
     // Обработка карточки с пожертвованием
 
-    $(".radio-button__radio_side_left").on("click", function(e){
+    $(".radio-button__radio_side_left").on("click", function (e) {
         $("#payByWallet").prop("checked", true);
         $(".radio-button__radio_side_left").addClass("radio-button__radio_checked_yes");
         $(".radio-button__radio_side_right").removeClass("radio-button__radio_checked_yes");
     });
-    
-    $(".radio-button__radio_side_right").on("click", function(e){
+
+    $(".radio-button__radio_side_right").on("click", function (e) {
         $("#payByCard").prop("checked", true);
         $(".radio-button__radio_side_right").addClass("radio-button__radio_checked_yes");
         $(".radio-button__radio_side_left").removeClass("radio-button__radio_checked_yes");
@@ -120,29 +145,26 @@ jQuery(function ($) {
         $("#inputDonateText").text("");
     });
 
-    $(".input-donate").focusout(function() {
+    $(".input-donate").focusout(function () {
         console.log(this.value)
         if (this.value === "") {
-            this.value = 100; 
+            this.value = 100;
             $("#inputDonateText").text(this.value)
         }
     });
 
     $(".input-donate").on("input", function () {
         if (this.value.length > 7) {
-            this.value = this.value.slice(0,7); 
+            this.value = this.value.slice(0, 7);
         }
 
         if (this.value > 15000) {
-            this.value = 15000; 
+            this.value = 15000;
         }
 
         $("#inputDonateText").text(this.value)
     });
 
-  
 
-
-    
 });
 

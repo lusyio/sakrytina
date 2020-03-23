@@ -29,10 +29,10 @@ do_action('woocommerce_shop_loop_subcategory_title', $category);
 
 if ($category->count > 3):
     ?>
-    <div data-interval="false" id="carousel<?= $category->slug ?>" class="carousel carousel-books slide" data-ride="carousel">
-        <div class="carousel-inner">
+    <div id="<?= $category->slug ?>" class="swiper-container carousel-books" data-ride="carousel">
+        <div class="swiper-wrapper">
             <?php $i = 0; ?>
-            <div class="carousel-item active">
+            <div class="swiper-slide">
                 <?php
                 if (wc_get_loop_prop('total')) {
                     while (have_posts()) {
@@ -56,9 +56,9 @@ if ($category->count > 3):
                             $i++;
                         }
 
-                        if ($i === 3) {
+                        if ($i === 1) {
                             echo '</div>';
-                            echo '<div class="carousel-item">';
+                            echo '<div class="swiper-slide">';
                             $i = 0;
                         }
 
