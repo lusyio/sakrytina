@@ -23,6 +23,7 @@ if (!is_ajax()) {
 ?>
     <div id="payment" class="woocommerce-checkout-payment">
 <?php if (WC()->cart->needs_payment()) : ?>
+    <h3 id="order_review_heading">Выберите способ оплаты</h3>
     <ul class="wc_payment_methods payment_methods methods">
         <?php
         if (!empty($available_gateways)) {

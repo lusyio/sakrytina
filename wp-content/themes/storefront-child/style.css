@@ -925,6 +925,12 @@ body a:hover {
     display: block;
     position: absolute;
     top: -65px;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: contain;
 }
 
 .main-info p {
@@ -1210,9 +1216,9 @@ body a:hover {
     margin-top: 10px;
 }
 
-.carousel-books {
+.carousel-books.swiper-container {
     padding-left: 30px;
-    margin-left: -30px;
+    margin-left: -40px;
 }
 
 .carousel-books .woocommerce-loop-product__title {
@@ -1236,7 +1242,7 @@ body a:hover {
     margin-right: 0;
 }
 
-.carousel-books {
+.swiper-container.carousel-books {
     margin-bottom: 60px;
 }
 
@@ -1270,11 +1276,19 @@ body a:hover {
     margin-right: 25px;
 }
 
-.carousel-books-control a > svg path, .carouselRelated-control a > svg path {
+.carousel-books-control span:focus{
+    outline: none;
+}
+
+.carousel-books-control span:hover{
+    cursor: pointer;
+}
+
+.carousel-books-control span > svg path, .carouselRelated-control a > svg path {
     transition: 135ms ease-in-out;
 }
 
-.carousel-books-control a:hover > svg path, .carouselRelated-control a:hover > svg path {
+.carousel-books-control span:hover > svg path, .carouselRelated-control a:hover > svg path {
     fill: #898989;
 }
 
@@ -1762,6 +1776,7 @@ body a:hover {
 
 .bibliography .bibliography__award img {
     display: block;
+    margin: auto;
     margin-right: 25px;
     max-height: 57px;
 }
@@ -1771,6 +1786,10 @@ body a:hover {
     font-size: 14px;
     line-height: 18px;
     color: #000000;
+    margin-bottom: 10px;
+}
+
+.bibliography .bibliography__award p:last-of-type{
     margin-bottom: 0;
 }
 
@@ -2461,6 +2480,14 @@ footer.site-footer p {
 .new-related__card {
     position: relative;
     padding-left: 105px;
+}
+
+.new-related.new-related__row .new-related__card {
+    padding-left: 0;
+}
+
+.new-related.new-related__row .new-related__card-body{
+    margin-left: 65px;
 }
 
 .new-related__card-body {
@@ -3319,9 +3346,6 @@ and (max-width: 576px) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
-
-
-
 
 .widget-shop__icon {
     background-size: contain;

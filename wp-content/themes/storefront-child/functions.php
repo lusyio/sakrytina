@@ -46,7 +46,7 @@ function enqueue_child_theme_styles()
 
 // load swiper js and css
     wp_enqueue_script('wp-swiper-js', get_stylesheet_directory_uri() . '/inc/assets/js/swiper.min.js', array(), '', true);
-    wp_enqueue_style('wp-swiper-js', get_stylesheet_directory_uri() . '/inc/assets/css/swiper.min.css', array(), '', true);
+    wp_enqueue_style('wp-swiper-js', get_stylesheet_directory_uri() . '/inc/assets/css/swiper.min.css', array(), '');
 
 // load bootstrap js
     wp_enqueue_script('wp-bootstrap-starter-popper', get_stylesheet_directory_uri() . '/inc/assets/js/popper.min.js', array(), '', true);
@@ -347,20 +347,19 @@ function custom_woocommerce_template_loop_category_title($category)
         echo $category->name;
         if ($category->count > 3) :?>
             <div class="carousel-books-control">
-                <a class="carousel-books-control-prev" href="#carousel<?= $category->slug ?>" role="button"
-                   data-slide="prev">
-                    <svg width="31" height="16" viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <span class="carousel-books-control-prev <?= $category->slug ?>"><svg width="31" height="16"
+                                                                                      viewBox="0 0 31 16" fill="none"
+                                                                                      xmlns="http://www.w3.org/2000/svg">
                         <path d="M0.292891 8.70711C-0.097633 8.31658 -0.097633 7.68342 0.292891 7.29289L6.65685 0.928932C7.04738 0.538408 7.68054 0.538408 8.07107 0.928932C8.46159 1.31946 8.46159 1.95262 8.07107 2.34315L2.41421 8L8.07107 13.6569C8.46159 14.0474 8.46159 14.6805 8.07107 15.0711C7.68054 15.4616 7.04738 15.4616 6.65685 15.0711L0.292891 8.70711ZM31 9H0.999998V7H31V9Z"
                               fill="#B9B9B9"/>
-                    </svg>
-                </a>
-                <a class="carousel-books-control-next" href="#carousel<?= $category->slug ?>" role="button"
-                   data-slide="next">
-                    <svg width="31" height="16" viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    </svg></span><span class="carousel-books-control-next <?= $category->slug ?>"><svg width="31"
+                                                                                                       height="16"
+                                                                                                       viewBox="0 0 31 16"
+                                                                                                       fill="none"
+                                                                                                       xmlns="http://www.w3.org/2000/svg">
                         <path d="M30.7071 8.70711C31.0976 8.31658 31.0976 7.68342 30.7071 7.29289L24.3431 0.928932C23.9526 0.538408 23.3195 0.538408 22.9289 0.928932C22.5384 1.31946 22.5384 1.95262 22.9289 2.34315L28.5858 8L22.9289 13.6569C22.5384 14.0474 22.5384 14.6805 22.9289 15.0711C23.3195 15.4616 23.9526 15.4616 24.3431 15.0711L30.7071 8.70711ZM0 9H30V7H0V9Z"
                               fill="#B9B9B9"/>
-                    </svg>
-                </a>
+                    </svg></span>
             </div>
         <?php endif; ?>
     </h2>
@@ -451,21 +450,24 @@ function lw_hide_sale_flash()
 
 function mytheme_comment($comment, $args, $depth)
 {
+    global $product;
     $GLOBALS['comment'] = $comment;
-    $comments = get_comments();
+    $args = array(
+        'post_id' => $product->get_id()
+    );
+    $comments = get_comments($args);
     $first_comment_id = $comments[0]->comment_ID;
     ?>
     <div class="post <?= $first_comment_id === $comment->comment_ID ? 'active' : '' ?> carousel-item">
-        <p class="comment__title"><?= $comment->comment_author ?><?= get_comment_date($d = ', F jS, Y', $comment) ?> </p>
+        <p class="comment__title"><?= $comment->comment_author ?><?= get_comment_date($d = ', F jS Y', $comment) ?> <?= preg_replace('#^https?://#', '', $comment->comment_author_url); ?></p>
         <div class="comment__content">
             <p><?php
                 $desc = $comment->comment_content;
                 $size = 220;
-                echo mb_substr($desc, 0, mb_strrpos(mb_substr($desc, 0, $size, 'utf-8'), ' ', 'utf-8'), 'utf-8');
-                echo (strlen($desc) > $size) ? '...' : ''; ?>
+                echo (mb_strlen($desc) > $size) ? mb_substr($desc, 0, mb_strrpos(mb_substr($desc, 0, $size, 'utf-8'), ' ', 0, 'utf-8'), 'utf-8') . '...' : $desc; ?>
             </p>
-            <?php if (strlen($desc) > $size): ?>
-                <a data-title="<?= $comment->comment_author ?><?= get_comment_date($d = ', F jS, Y', $comment) ?>"
+            <?php if (mb_strlen($desc) > $size): ?>
+                <a data-title="<?= $comment->comment_author ?><?= get_comment_date($d = ', F jS Y', $comment) ?> <?= preg_replace('#^https?://#', '', $comment->comment_author_url); ?>"
                    data-text="<?= $desc ?>" data-toggle="modal" class="triggerModal" data-target="#commentModal"
                    href="#">Читать весь отзыв <img
                             src="/wp-content/themes/storefront-child/svg/svg-review__link.svg" alt="review-link"></a>
@@ -742,7 +744,143 @@ function changeBreadcrumbLinkProduct($crumbs)
 
 add_filter('woocommerce_get_breadcrumb', 'changeBreadcrumbLinkProduct');
 
-function remove_image_zoom_support() {
-    remove_theme_support( 'wc-product-gallery-zoom' );
+function remove_image_zoom_support()
+{
+    remove_theme_support('wc-product-gallery-zoom');
 }
-add_action( 'after_setup_theme', 'remove_image_zoom_support', 100 );
+
+add_action('after_setup_theme', 'remove_image_zoom_support', 100);
+
+add_filter('woocommerce_get_wp_query_args', function ($wp_query_args, $query_vars) {
+    if (isset($query_vars['meta_query'])) {
+        $meta_query = isset($wp_query_args['meta_query']) ? $wp_query_args['meta_query'] : [];
+        $wp_query_args['meta_query'] = array_merge($meta_query, $query_vars['meta_query']);
+    }
+    return $wp_query_args;
+}, 10, 2);
+
+add_action('customize_register', 'mytheme_customize_register');
+/**
+ * Добавляет страницу настройки темы в админку Вордпресса
+ */
+function mytheme_customize_register($wp_customize)
+{
+    /*
+    Добавляем секцию в настройки темы
+    */
+    $wp_customize->add_section(
+    // ID
+        'data_main_section',
+        // Arguments array
+        array(
+            'title' => 'Данные главной страницы',
+            'capability' => 'edit_theme_options',
+            'description' => "Тут можно указать данные для главной страницы"
+        )
+    );
+    $wp_customize->add_setting(
+    // ID
+        'author_image',
+        // Arguments array
+        array(
+            'default' => '',
+            'type' => 'option'
+        )
+    );
+    $wp_customize->add_control(
+    // ID
+        'author_image_control',
+        // Arguments array
+        array(
+            'type' => 'url',
+            'label' => "Ссылка на изображение автора",
+            'section' => 'data_main_section',
+            // This last one must match setting ID from above
+            'settings' => 'author_image'
+        )
+    );
+    $wp_customize->add_setting(
+    // ID
+        'main_about_1',
+        // Arguments array
+        array(
+            'default' => '',
+            'type' => 'option'
+        )
+    );
+    $wp_customize->add_control(
+    // ID
+        'main_about_1_control',
+        // Arguments array
+        array(
+            'type' => 'textarea',
+            'label' => "Об авторе - 1-й абзац",
+            'section' => 'data_main_section',
+            // This last one must match setting ID from above
+            'settings' => 'main_about_1'
+        )
+    );
+    $wp_customize->add_setting(
+    // ID
+        'main_about_2',
+        // Arguments array
+        array(
+            'default' => '',
+            'type' => 'option'
+        )
+    );
+    $wp_customize->add_control(
+    // ID
+        'main_about_2_control',
+        // Arguments array
+        array(
+            'type' => 'textarea',
+            'label' => "Об авторе - 2-й абзац",
+            'section' => 'data_main_section',
+            // This last one must match setting ID from above
+            'settings' => 'main_about_2'
+        )
+    );
+    $wp_customize->add_setting(
+    // ID
+        'instagram_text',
+        // Arguments array
+        array(
+            'default' => '',
+            'type' => 'option'
+        )
+    );
+    $wp_customize->add_control(
+    // ID
+        'instagram_text_control',
+        // Arguments array
+        array(
+            'type' => 'textarea',
+            'label' => "Текст блока Instagram",
+            'section' => 'data_main_section',
+            // This last one must match setting ID from above
+            'settings' => 'instagram_text'
+        )
+    );
+    $wp_customize->add_setting(
+    // ID
+        'facebook_text',
+        // Arguments array
+        array(
+            'default' => '',
+            'type' => 'option'
+        )
+    );
+    $wp_customize->add_control(
+    // ID
+        'facebook_text_control',
+        // Arguments array
+        array(
+            'type' => 'textarea',
+            'label' => "Текст блока Facebook",
+            'section' => 'data_main_section',
+            // This last one must match setting ID from above
+            'settings' => 'facebook_text'
+        )
+    );
+}

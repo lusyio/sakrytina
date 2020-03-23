@@ -25,8 +25,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=<?php bloginfo( 'charset' ); ?>" />
 		<title><?php echo get_bloginfo( 'name', 'display' ); ?></title>
-        <link href='https://fonts.googleapis.com/css?family=Caveat:400,700&display=swap&subset=cyrillic-ext' rel='stylesheet' type='text/css'> -->
-        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700&display=swap&subset=cyrillic-ext' rel='stylesheet' type='text/css'> -->
+        <link href='https://fonts.googleapis.com/css?family=Caveat:400,700&display=swap&subset=cyrillic-ext' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700&display=swap&subset=cyrillic-ext' rel='stylesheet' type='text/css'>
 	</head>
 	<body <?php echo is_rtl() ? 'rightmargin' : 'leftmargin'; ?>="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
 		<div id="wrapper" dir="<?php echo is_rtl() ? 'rtl' : 'ltr'; ?>">
@@ -36,7 +36,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<table border="0" cellpadding="0" cellspacing="0" width="600" id="template_container">
 							<tr>
 								<td align="center" valign="top">
-									<!-- Header -->
 									<table border="0" cellpadding="0" cellspacing="0" width="100%" id="template_header">
 										<tr>
 											<td id="header_wrapper">
@@ -51,16 +50,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 											</td>
 										</tr>
 									</table>
-									<!-- End Header -->
 								</td>
 							</tr>
 							<tr>
 								<td align="center" valign="top">
-									<!-- Body -->
 									<table border="0" cellpadding="0" cellspacing="0" width="600" id="template_body">
 										<tr>
 											<td valign="top" id="body_content">
-												<!-- Content -->
 												<table border="0" cellpadding="20" cellspacing="0" width="100%">
 													<tr>
 														<td valign="top">
