@@ -2469,6 +2469,14 @@ footer.site-footer p {
     padding-left: 105px;
 }
 
+.new-related.new-related__row .new-related__card {
+    padding-left: 0;
+}
+
+.new-related.new-related__row .new-related__card-body{
+    margin-left: 65px;
+}
+
 .new-related__card-body {
     padding: 30px 30px 30px 0;
     background: #FFFFFF;

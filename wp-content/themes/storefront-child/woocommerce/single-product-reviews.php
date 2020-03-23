@@ -47,7 +47,7 @@ $terms = get_the_terms($product->get_id(), 'product_cat');
 
     <div class="col-lg-6 col-12 new-related">
         <?php else: ?>
-        <div class="col-lg-12 col-12 new-related">
+        <div class="col-lg-12 col-12 new-related new-related__row">
 <?php endif; ?>
         <?php
         $args = array(
