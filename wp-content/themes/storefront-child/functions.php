@@ -461,10 +461,9 @@ function mytheme_comment($comment, $args, $depth)
             <p><?php
                 $desc = $comment->comment_content;
                 $size = 220;
-                echo mb_substr($desc, 0, mb_strrpos(mb_substr($desc, 0, $size, 'utf-8'), ' ', 'utf-8'), 'utf-8');
-                echo (strlen($desc) > $size) ? '...' : ''; ?>
+                echo (mb_strlen($desc) > $size) ? mb_substr($desc, 0, mb_strrpos(mb_substr($desc, 0, $size, 'utf-8'), ' ', 0, 'utf-8'), 'utf-8') . '...' : $desc; ?>
             </p>
-            <?php if (strlen($desc) > $size): ?>
+            <?php if (mb_strlen($desc) > $size): ?>
                 <a data-title="<?= $comment->comment_author ?><?= get_comment_date($d = ', F jS, Y', $comment) ?>"
                    data-text="<?= $desc ?>" data-toggle="modal" class="triggerModal" data-target="#commentModal"
                    href="#">Читать весь отзыв <img

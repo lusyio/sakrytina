@@ -50,13 +50,48 @@ $terms = get_the_terms($product->get_id(), 'product_cat');
         <div class="col-lg-12 col-12 new-related new-related__row">
 <?php endif; ?>
         <?php
-        $args = array(
+        // Делаем запрос на 4 книги этой же категории, кроме текущей и тех, которые только для библиографии
+        $args = [
             'status' => 'publish',
             'category' => $terms[0]->slug,
             'limit' => 4,
-        );
+            'exclude' => array($product->get_id()),
+            'meta_query' => [
+                'key' => 'only_bibli',
+                'compare' => '!=',
+                'value' => '1',
+            ],
+        ];
         $query = new WC_Product_Query($args);
         $products = $query->get_products();
+        $relatedProducts = $products;
+        // Если в результате запроса меньше 4 книг, то делаем новый запрос
+        $inCategoryCount = count($products);
+        if ($inCategoryCount < 4) {
+            // создаем массив с id текущей книги и уже полученных книг, чтобы исключить их при запросе
+            $notIn = [$product->get_id()];
+            foreach ($relatedProducts as $relatedProduct) {
+                $notIn[] = $relatedProduct->get_id();
+            }
+            $limit = 4 - $inCategoryCount;
+            $args = array(
+                'status' => 'publish',
+                'limit' => $limit,
+                'exclude' => $notIn,
+                'orderby' => 'rand',
+            );
+            $args['meta_query'][] = [
+                'key' => 'only_bibli',
+                'compare' => '!=',
+                'value' => '1',
+            ];
+            $secondRelatedQuery = new WC_Product_Query($args);
+            $secondRelatedProducts = $secondRelatedQuery->get_products();
+            // Добавляем результаты второго запроса в общий результат
+            foreach ($secondRelatedProducts as $secondRelatedProduct) {
+                $relatedProducts[] = $secondRelatedProduct;
+            }
+        }
         $i = 0;
         ?>
         <div id="carouselRelated" class="carousel slide carousel-fade" data-ride="carousel">
@@ -75,8 +110,8 @@ $terms = get_the_terms($product->get_id(), 'product_cat');
                 </a>
             </div>
             <div class="carousel-inner">
-                <?php foreach ($products
-                               as $product):
+                <?php foreach ($relatedProducts
+                               as $key => $relatedProduct):
                     ?>
                     <?php if (have_comments() || $i % 2 == 0): ?>
                     <div class="new-related__card carousel-item <?= $i === 0 ? 'active' : '' ?>">
@@ -86,25 +121,28 @@ $terms = get_the_terms($product->get_id(), 'product_cat');
                     <div class="new-related__card-body ">
                             <div>
                                 <div class="new-related__img">
-                                    <?= $product->get_image('medium'); ?>
+                                    <?= $relatedProduct->get_image('medium'); ?>
                                 </div>
                                 <div>
+                                    <?php if ($key < $inCategoryCount): ?>
                                     <p class="new-related__cycle">Книги из этого цикла</p>
+                                    <?php else: ?>
+                                    <p class="new-related__cycle">Рекомендуем</p>
+                                    <?php endif; ?>
                                     <p class="new-related__title"><?php
-                                        $title = $product->get_name();
-                                        echo mb_substr($title, 0, mb_strrpos(mb_substr($title, 0, 22, 'utf-8'), ' ', 'utf-8'), 'utf-8');
-                                        echo (strlen($title) > 22) ? '...' : '';
+                                        $title = $relatedProduct->get_name();
+                                        echo (mb_strlen($title) > 22) ? mb_substr($title, 0, mb_strrpos(mb_substr($title, 0, 22, 'utf-8'), ' ', 0, 'utf-8'), 'utf-8') . '...' : $title;
                                          ?>
                                     </p>
                                     <p class="new-related__text">
                                         <?php
-                                        $desc = strip_tags($product->get_short_description());
+                                        $desc = strip_tags($relatedProduct->get_short_description());
                                         $size = 240;
                                         echo mb_substr($desc, 0, mb_strrpos(mb_substr($desc, 0, $size, 'utf-8'), ' ', 'utf-8'), 'utf-8');
                                         echo (strlen($desc) > $size) ? '...' : '';
                                         ?>
                                     </p>
-                                    <a class="btn btn-primary" href="<?= $product->get_permalink(); ?>">Подробнее</a>
+                                    <a class="btn btn-primary" href="<?= $relatedProduct->get_permalink(); ?>">Подробнее</a>
                                 </div>
                             </div>
                         </div>
