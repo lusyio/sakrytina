@@ -55,9 +55,9 @@ Template Post Type: post, page, product
                 $sortedProducts = $loop->get_products();
                 ?>
                 <div class="row">
-                    <div class="col-1 mb-auto wow fadeInUp" data-wow-delay="0s" style="margin-top: 6.5%;"><p
+                    <div class="col-1 mb-auto wow fadeIn" data-wow-duration="1s" style="margin-top: 6.5%;"><p
                                 class="bibliography__year"><?= $yearNumber ?></p></div>
-                    <div class="col bibliography__border wow fadeInUp <?php if ($countBLock == 1) : echo 'bibliography__border1'; endif; ?>"  data-wow-delay="0s">
+                    <div class="col bibliography__border <?php if ($countBLock == 1) : echo 'bibliography__border1'; endif; ?>"  data-wow-delay="0s">
                         <?php
                         $i = 0;
                         foreach ($products as $sortedProd):
@@ -102,7 +102,7 @@ Template Post Type: post, page, product
 
                                 ?>
                                 <div class="row bibliography__row">
-                                    <div class="col-1 m-auto">
+                                    <div class="col-1 m-auto wow fadeIn">
                                         <?php if ($yearNumber && $i === 0): ?>
                                             <img class="bibliography__img"
                                                  src="/wp-content/themes/storefront-child/svg/svg-point.svg"
@@ -117,8 +117,9 @@ Template Post Type: post, page, product
                                         <?php if ($bibl_only != 1) : ?><a
                                                 href="<?= $sortedProd->get_permalink() ?>"><?php endif;
                                             ?>
-                                            <div class="bibliography__thumbnail">
-                                                <img alt="<?= $sortedProd->name ?>"
+                                            <div class="bibliography__thumbnail wow fadeIn">
+                                                <img class="wow fadeIn" data-wow-delay="0.2s"
+                                                     alt="<?= $sortedProd->name ?>"
                                                      src="<?= $imgsrc; ?>"/>
                                             </div>
                                             <?php if ($bibl_only != 1) : ?></a><?php endif;
@@ -126,7 +127,7 @@ Template Post Type: post, page, product
                                     </div>
                                     <div class="col-5 bibliography__card">
                                         <div>
-                                            <p class="bibliography__title">
+                                            <p class="bibliography__title wow fadeInRight" data-wow-delay="0.2s">
                                                 <?php if ($bibl_only != 1) : ?>
                                                     <a
                                                             href="<?= $sortedProd->get_permalink() ?>"><?= $sortedProd->name ?></a>
@@ -134,11 +135,11 @@ Template Post Type: post, page, product
                                                     echo $sortedProd->name; endif; ?>
                                             </p>
                                             <hr>
-                                            <p class="bibliography__genre"><?php foreach ($tagNameList as $key => $genre) {
+                                            <p class="bibliography__genre wow fadeInRight" data-wow-delay="0.3s"><?php foreach ($tagNameList as $key => $genre) {
                                                     echo $genre;
                                                     echo (count($tagNameList) - 1 !== $key) ? ', ' : '';
                                                 } ?></p>
-                                            <p class="bibliography__cycle"><a
+                                            <p class="bibliography__cycle wow fadeInRight" data-wow-delay="0.4s"><a
                                                         href="<?= $linkCat ?>"><?= $catName; ?></a></p>
                                         </div>
                                     </div>
@@ -147,9 +148,9 @@ Template Post Type: post, page, product
                                         if (!empty($award)) :
                                             ?>
                                             <div class="bibliography__award">
-                                                    <img src="/wp-content/themes/storefront-child/images/img-award-bibl.png"
+                                                    <img class="wow fadeIn" data-wow-delay="1s" src="/wp-content/themes/storefront-child/images/img-award-bibl.png"
                                                          alt="award">
-                                                <div><p><?= $award; ?></p></div>
+                                                <div><p class="wow fadeIn" data-wow-delay="1s"><?= $award; ?></p></div>
                                             </div>
                                         <?php endif; ?>
                                     </div>
