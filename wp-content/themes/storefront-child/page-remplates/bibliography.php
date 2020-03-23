@@ -58,7 +58,7 @@ Template Post Type: post, page, product
                     <div class="col-1 mb-auto wow fadeIn" data-wow-duration="1s" style="margin-top: 6.5%;"><p
                                 class="bibliography__year"><?= $yearNumber ?></p></div>
 
-                    <div class="col bibliography__border <?php if ($countBLock == 1) : echo 'bibliography__border1'; endif; ?>"  >
+                    <div class="col bibliography__border <?php if ($countBLock == 1) : echo 'bibliography__border1'; endif; ?>">
 
                         <?php
                         $i = 0;
@@ -118,9 +118,9 @@ Template Post Type: post, page, product
                                     <div class="col-2">
                                         <div class="bibliography__thumbnail wow fadeIn">
 
-                                        <?php if ($bibl_only != 1) : ?><a
-                                                href="<?= $sortedProd->get_permalink() ?>"><?php endif;
-                                            ?>
+                                            <?php if ($bibl_only != 1) : ?><a
+                                                    href="<?= $sortedProd->get_permalink() ?>"><?php endif;
+                                                ?>
 
                                                 <img class="wow fadeIn" data-wow-delay="0.2s"
                                                      alt="<?= $sortedProd->name ?>"
@@ -140,12 +140,17 @@ Template Post Type: post, page, product
                                                     echo $sortedProd->name; endif; ?>
                                             </p>
                                             <hr>
-                                            <p class="bibliography__genre wow fadeInRight" data-wow-delay="0.3s"><?php foreach ($tagNameList as $key => $genre) {
+                                            <p class="bibliography__genre wow fadeInRight"
+                                               data-wow-delay="0.3s"><?php foreach ($tagNameList as $key => $genre) {
                                                     echo $genre;
                                                     echo (count($tagNameList) - 1 !== $key) ? ', ' : '';
                                                 } ?></p>
-                                            <p class="bibliography__cycle wow fadeInRight" data-wow-delay="0.4s"><a
-                                                        href="<?= $linkCat ?>"><?= $catName; ?></a></p>
+                                            <p class="bibliography__cycle wow fadeInRight" data-wow-delay="0.4s">
+                                                <?php if ($bibl_only != 1) : ?>
+                                                    <a href="<?= $linkCat ?>"><?= $catName; ?></a>
+                                                <?php else :
+                                                    echo $catName; endif; ?>
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="col-4 mt-auto mb-auto">
@@ -154,8 +159,9 @@ Template Post Type: post, page, product
                                             ?>
                                             <div class="bibliography__award">
 
-                                                    <img class="wow fadeIn" data-wow-delay="1s" src="/wp-content/themes/storefront-child/images/img-award-bibl.png"
-                                                         alt="award">
+                                                <img class="wow fadeIn" data-wow-delay="1s"
+                                                     src="/wp-content/themes/storefront-child/images/img-award-bibl.png"
+                                                     alt="award">
                                                 <div class="wow fadeIn" data-wow-delay="1s"><p><?= $award; ?></p></div>
 
 
