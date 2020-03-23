@@ -134,7 +134,7 @@ $styleDNone = 'style="display: none;"';
             <div class="card-payment-info">
                 <div class="card-payment-info__body">
                     <div id="ebookTarget" class="card-payment-info__content" <?= ($activeTab == 'ebook') ? $styleDBlock : $styleDNone; ?>>
-                        <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-end">
                             <?php do_action('woocommerce_single_variation'); ?>
                         </div>
                         <hr>
@@ -216,7 +216,7 @@ $styleDNone = 'style="display: none;"';
                     </div>
                     <div id="audiobookTarget" class="card-payment-info__content" <?= ($activeTab == 'abook') ? $styleDBlock : $styleDNone; ?>>
                         <?php if (!$externalABook) : ?>
-                            <div class="d-flex justify-content-between">
+                            <div class="d-flex justify-content-end">
                                 <?php do_action('woocommerce_single_variation'); ?>
                             </div>
                             <hr>
