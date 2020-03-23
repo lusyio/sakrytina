@@ -18,11 +18,19 @@
 
 $idBook = $product->get_id();
 // определяем доступные табы
-$_product = wc_get_product( $idBook );
-if( $_product->is_type( 'simple' ) ) {
- echo 'simple';
-} else {
-// do stuff for everything else
+$isVariable = false;
+if ($product->is_type('variable')) {
+    $isVariable = true;
+    $availableVariations = $product->get_available_variations();
+    $variations = [];
+    foreach ($availableVariations as $availableVariation) {
+        if ($availableVariation['attributes']['attribute_pa_book_type'] == 'audiokniga') {
+            $variations['abook'] = $availableVariation;
+        }
+        if ($availableVariation['attributes']['attribute_pa_book_type'] == 'elektronnaya-kniga') {
+            $variations['ebook'] = $availableVariation;
+        }
+    }
 }
 
 $booksArr = ['ozon_link', 'labirint_link', 'book24_link', 'chitai_gorod_link', 'bukvoed_link', 'avtograf2014_link'];
@@ -34,6 +42,9 @@ $booksAvalible = [];
 
 $not_to_buy = (get_post_meta($idBook, 'not_to_buy', true));
 
+// Аудиоверсия на внешнем сайте
+
+$externalABook = get_post_meta($idBook, 'audio_link', true);
 
 // Бумажная версия
 
@@ -47,6 +58,29 @@ foreach ($booksArr as $n) :
     }
 endforeach;
 
+    // Определяем активную вкладку
+$disabledTabs = [];
+if ($not_to_buy == 1) {
+    $disabledTabs[] = 'ebook';
+}
+if (empty($booksAvalible)) {
+    $disabledTabs[] = 'book';
+}
+if (!isset($variations['abook']) && !$externalABook) {
+    $disabledTabs[] = 'abook';
+}
+
+if (!in_array('ebook', $disabledTabs)) {
+    $activeTab = 'ebook';
+} elseif (!in_array('book', $disabledTabs)) {
+    $activeTab = 'book';
+} elseif (!in_array('abook', $disabledTabs)) {
+    $activeTab = 'abook';
+}
+
+$styleDBlock = 'style="display: block;"';
+$styleDNone = 'style="display: none;"';
+
 ?>
 
 
@@ -56,17 +90,14 @@ endforeach;
       data-product_variations="<?php echo $variations_attr; // WPCS: XSS ok. ?>">
 
     <div class="row">
-
         <div class="col-lg-4 col-12 pr-unset pr-lg-0 mb-payment">
-
-            <div data-id="elektronnaya-kniga"
-                 class="card-payment <?= ($not_to_buy == 1) ? 'disabled' : ''; ?>">
+            <div data-id="elektronnaya-kniga" class="card-payment<?= ($activeTab == 'ebook') ? ' active' : '' ?><?= (in_array('ebook', $disabledTabs)) ? ' disabled' : ''; ?>">
 
                 <div class="card-payment__body">
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
 
                     </svg>
-                    <input data-target="ebookTarget" id="paymentEbook" type="radio" name="payment" checked>
+                    <input data-target="ebookTarget" id="paymentEbook" type="radio" name="variation_id" value="<?= (isset($variations['ebook'])) ? $variations['ebook']['variation_id'] : '' ?>" checked>
                     <p>Электронная книга</p>
                 </div>
 
@@ -75,24 +106,26 @@ endforeach;
         </div>
 
         <div class="col-lg-4 col-12 pr-unset pr-lg-0 mb-payment">
-            <div data-id="" class="card-payment <?= (empty($booksAvalible)) ? 'disabled' : ''; ?>">
+            <div data-id="" class="card-payment<?= ($activeTab == 'book') ? ' active' : '' ?><?= (in_array('book', $disabledTabs)) ? ' disabled' : ''; ?>">
+                <?php if (!empty($booksAvalible)) {
+                    $activateNext = false;
+                }?>
                 <div class="card-payment__body">
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
 
                     </svg>
-                    <input data-target="bookTarget" id="paymentBook" type="radio" name="payment">
+                    <input data-target="bookTarget" id="paymentBook" type="radio" name="variation_id">
                     <p>Бумажная книга</p>
                 </div>
             </div>
         </div>
         <div class="col-lg-4 col-12 pr-unset pr-lg-0 mb-payment">
-            <div data-id="audiokniga"
-                 class="card-payment">
+            <div data-id="audiokniga" class="card-payment<?= ($activeTab == 'abook') ? ' active' : '' ?><?= (in_array('abook', $disabledTabs)) ? ' disabled' : ''; ?>">
                 <div class="card-payment__body">
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
 
                     </svg>
-                    <input data-target="audiobookTarget" id="paymentAudiobook" type="radio" name="payment">
+                    <input data-target="audiobookTarget" id="paymentAudiobook" type="radio" name="variation_id" value="<?= (isset($variations['abook'])) ? $variations['abook']['variation_id'] : '' ?>">
                     <p>Аудиокнига</p>
                 </div>
             </div>
@@ -100,28 +133,30 @@ endforeach;
         <div class="col-12 pr-lg-0 pr-unset">
             <div class="card-payment-info">
                 <div class="card-payment-info__body">
-                    <div id="ebookTarget" class="card-payment-info__content">
+                    <div id="ebookTarget" class="card-payment-info__content" <?= ($activeTab == 'ebook') ? $styleDBlock : $styleDNone; ?>>
                         <div class="d-flex justify-content-between">
                             <?php do_action('woocommerce_single_variation'); ?>
                         </div>
                         <hr>
-                        <p><span>Как купить?</span> Добавьте книгу в корзину и оформите заказ. Оплата осуществляется
-                            с
-                            помощью
-                            банковской
-                            карты. Книга будет отправлена вам на элекронную почту сразу же после оплаты.
+                        <p><span>Как купить?</span> Добавьте книгу в корзину и оформите заказ. Оплата осуществляется с помощью банковской карты. Книга будет отправлена вам на элекронную почту сразу же после оплаты.
                         </p>
                         <?php
-                        $audioId = array_search('elektronnaya-kniga', $arr);
-                        $productVar = new WC_Product_Variation($audioId);
-                        if ($productVar->is_downloadable('yes') && $productVar->has_file()) {
-                            $item_downloads = $productVar->get_downloads();
+                        if ($isVariable && isset($variations['ebook'])) {
+                            $productVar = new WC_Product_Variation($variations['ebook']['variation_id']);
+                            if ($productVar->is_downloadable('yes') && $productVar->has_file()) {
+                                $eBookDownloads = $productVar->get_downloads();
+                            }
+                        } elseif (!$isVariable) {
+                            if ($product->is_downloadable('yes') && $product->has_file()) {
+                                $eBookDownloads = $product->get_downloads();
+                            }
                         }
-                        if ($item_downloads):?>
+
+                        if ($eBookDownloads):?>
                             <p>Книга доступна в форматах:
-                                <?php foreach ($item_downloads as $key => $item_download) {
-                                    echo $item_download->get_name();
-                                    if ($key === array_key_last($item_downloads)) {
+                                <?php foreach ($eBookDownloads as $key => $eBookDownload) {
+                                    echo $eBookDownload->get_name();
+                                    if ($key === array_key_last($eBookDownloads)) {
                                         echo '';
                                     } else {
                                         echo ', ';
@@ -131,7 +166,7 @@ endforeach;
                             <p>Файлы не загружены</p>
                         <?php endif; ?>
                     </div>
-                    <div id="bookTarget" class="card-payment-info__content">
+                    <div id="bookTarget" class="card-payment-info__content" <?= ($activeTab == 'book') ? $styleDBlock : $styleDNone; ?>>
                         <p>Бумажную версию книги вы можете приобрести в любом
                             магазине-партнере.</p>
                         <div class="bookTarget__where">
@@ -139,36 +174,48 @@ endforeach;
                         </div>
                         <div class="bookTarget__links">
                             <?php
+
                             $id = $product->get_id();
-                            $chitai_gorod_link = get_post_meta($id, 'chitai_gorod_link');
-                            if (!!$chitai_gorod_link): ?>
-                                <a target="_blank" href="<?= $chitai_gorod_link[0] ?>">
+                            $chitai_gorod_link = get_post_meta($id, 'chitai_gorod_link', true);
+                            if ($chitai_gorod_link != ''): ?>
+                                <a target="_blank" href="<?= $chitai_gorod_link ?>">
                                     Читай город
                                 </a>
                             <?php endif;
-                            $book24_link = get_post_meta($id, 'book24_link');
-                            if (!!$book24_link): ?>
-                                <a target="_blank" href="<?= $book24_link[0] ?>">
+                            $book24_link = get_post_meta($id, 'book24_link', true);
+                            if ($book24_link != ''): ?>
+                                <a target="_blank" href="<?= $book24_link ?>">
                                     book24
                                 </a>
                             <?php endif;
-                            $ozon_link = get_post_meta($id, 'ozon_link');
-                            if (!!$ozon_link): ?>
-                                <a target="_blank" href="<?= $ozon_link[0] ?>">
+                            $ozon_link = get_post_meta($id, 'ozon_link', true);
+                            if ($ozon_link != ''): ?>
+                                <a target="_blank" href="<?= $ozon_link ?>">
                                     Ozon
                                 </a>
                             <?php endif;
-                            $labirint_link = get_post_meta($id, 'labirint_link');
-                            if (!!$labirint_link): ?>
-                                <a target="_blank" href="<?= $labirint_link[0] ?>">
+                            $labirint_link = get_post_meta($id, 'labirint_link', true);
+                            if ($labirint_link != ''): ?>
+                                <a target="_blank" href="<?= $labirint_link ?>">
                                     Лабиринт
+                                </a>
+                            <?php endif;
+                            $bukvoed_link = get_post_meta($id, 'bukvoed_link', true);
+                            if ($bukvoed_link != ''): ?>
+                                <a target="_blank" href="<?= $bukvoed_link ?>">
+                                    Буквоед
+                                </a>
+                            <?php endif;
+                            $avtograf2014_link = get_post_meta($id, 'avtograf2014_link', true);
+                            if ($avtograf2014_link != ''): ?>
+                                <a target="_blank" href="<?= $avtograf2014_link ?>">
+                                    Автограф
                                 </a>
                             <?php endif; ?>
                         </div>
                     </div>
-                    <div id="audiobookTarget"
-                         class="card-payment-info__content">
-                        <?php if (empty($audio_link)) : ?>
+                    <div id="audiobookTarget" class="card-payment-info__content" <?= ($activeTab == 'abook') ? $styleDBlock : $styleDNone; ?>>
+                        <?php if (!$externalABook) : ?>
                             <div class="d-flex justify-content-between">
                                 <?php do_action('woocommerce_single_variation'); ?>
                             </div>
@@ -183,16 +230,17 @@ endforeach;
                             </p>
 
                             <?php
-                            $audioId = array_search('audiokniga', $arr);
-                            $productVar = new WC_Product_Variation($audioId);
-                            if ($productVar->is_downloadable('yes') && $productVar->has_file()) {
-                                $item_downloads = $productVar->get_downloads();
+                            if ($isVariable && isset($variations['abook'])) {
+                                $productVar = new WC_Product_Variation($variations['abook']['variation_id']);
+                                if ($productVar->is_downloadable('yes') && $productVar->has_file()) {
+                                    $aBookDownloads = $productVar->get_downloads();
+                                }
                             }
-                            if ($item_downloads):?>
+                            if ($aBookDownloads):?>
                                 <p>Книга доступна в форматах:
-                                    <?php foreach ($item_downloads as $key => $item_download) {
-                                        echo $item_download->get_name();
-                                        if ($key === array_key_last($item_downloads)) {
+                                    <?php foreach ($aBookDownloads as $key => $aBookDownload) {
+                                        echo $aBookDownload->get_name();
+                                        if ($key === array_key_last($aBookDownloads)) {
                                             echo '';
                                         } else {
                                             echo ', ';
@@ -207,7 +255,7 @@ endforeach;
                                 <p>Аудио версию книги вы можете приобрести в
                                     магазине-партнере.</p>
                                 <div class="bookTarget__where">
-                                    <p><a href="<?= $audio_link; ?>" target="_blank">Купить аудио версию</a></p>
+                                    <p><a href="<?= $externalABook; ?>" target="_blank">Купить аудио версию</a></p>
                                 </div>
 
                             </div>
