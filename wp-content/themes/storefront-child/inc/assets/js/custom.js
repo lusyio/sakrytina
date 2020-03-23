@@ -7,8 +7,8 @@ jQuery(function ($) {
             spaceBetween: 30,
             breakpoints: {
                 576: {
-                    slidesPerView: 1,
-                    spaceBetween: 0,
+                    slidesPerView: 2,
+                    spaceBetween: 30,
                 },
                 768: {
                     slidesPerView: 2,

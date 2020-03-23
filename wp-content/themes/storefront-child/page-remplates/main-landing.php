@@ -92,12 +92,12 @@ Template Post Type: post, page, product
 <?php get_template_part('template-parts/popular', 'popular'); ?>
 
 <div class="main-social">
-    <div class="container">
+        <div class="container">
         <div class="row">
             <div class="col-12">
                 <p class="main-social__header">Подписывайся на социальные сети!</p>
             </div>
-            <div class="col-lg-4 col-md-8 offset-md-2 offset-0 col-12">
+            <div class="col-lg-4 col-md-8 offset-md-2 offset-lg-0 offset-0 col-12">
                 <div class="main-social__card vk wow fadeInUp" data-wow-delay="0s">
                     <div class="main-social__card-body">
                         <p class="main-social__card-title">Группа в ВК</p>
