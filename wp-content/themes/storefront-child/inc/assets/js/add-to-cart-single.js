@@ -36,7 +36,9 @@ jQuery(function ($) {
                     window.location = response.product_url;
                     return;
                 } else {
+                    $thisbutton.addClass('d-none')
                     $(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash, $thisbutton]);
+                    // $( document.body ).trigger( 'wc_fragments_loaded' );
                 }
             },
         });

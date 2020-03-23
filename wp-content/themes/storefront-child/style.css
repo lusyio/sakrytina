@@ -3160,7 +3160,7 @@ table th {
 --------------------------------------------------------------*/
 
 
-body .btn.btn-primary, body .button.wc-forward {
+body .btn.btn-primary, body .button.wc-forward, .added_to_cart.wc-forward{
     background: #40866E;
     border-radius: 10px;
     padding: 14px 23px;
@@ -3174,13 +3174,13 @@ body .btn.btn-primary, body .button.wc-forward {
     transition: 145ms cubic-bezier(.4, 0, .2, 1);
 }
 
-body .btn.btn-primary:not(:disabled):not(.disabled).active, body .btn.btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle, body .button.wc-forward:not(:disabled):not(.disabled).active, body .button.wc-forward:not(:disabled):not(.disabled):active {
+body .btn.btn-primary:not(:disabled):not(.disabled).active, body .btn.btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle, body .button.wc-forward:not(:disabled):not(.disabled).active, body .button.wc-forward:not(:disabled):not(.disabled):active, .added_to_cart.wc-forward:not(:disabled):not(.disabled):active, .added_to_cart.wc-forward:not(:disabled):not(.disabled).active {
     background-color: #357C64;
     border-color: #357C64;
     box-shadow: none;
 }
 
-body .btn.btn-primary:hover, body .button.wc-forward:hover {
+body .btn.btn-primary:hover, body .button.wc-forward:hover, .added_to_cart.wc-forward:hover {
     background: #357C64;
 }
 
