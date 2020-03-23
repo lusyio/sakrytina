@@ -152,7 +152,7 @@ Template Post Type: post, page, product
                                 <p class="card-muse__header">Покорми котоМузу</p>
                                 <img src="/wp-content/themes/storefront-child/images/img-muse.jpg" alt="muse">
                             </div>
-                            <div class="col-lg-5 col-12">
+                            <div class="col-lg-5 col-12 order-lg-2 order-1">
                                 <div class="card-muse__right">
                                     <p class="card-muse__title">
                                         Муза мнет лапками автора и дарит вдохновение. У автора получается интересная

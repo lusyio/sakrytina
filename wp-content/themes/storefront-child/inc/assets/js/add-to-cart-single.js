@@ -22,37 +22,21 @@ jQuery(function ($) {
         };
 
         $.ajax({
-
             type: 'post',
-
             url: wc_add_to_cart_params.ajax_url,
-
             data: data,
-
             beforeSend: function (response) {
-
                 $thisbutton.removeClass('added').addClass('loading');
-
             },
-
             complete: function (response) {
-
                 $thisbutton.addClass('added').removeClass('loading');
-
             },
-
             success: function (response) {
-
                 if (response.error & response.product_url) {
-
                     window.location = response.product_url;
-
                     return;
-
                 } else {
-
                     $(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash, $thisbutton]);
-
                 }
             },
         });
