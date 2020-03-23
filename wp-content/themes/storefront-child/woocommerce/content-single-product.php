@@ -58,9 +58,10 @@ $book_year = (get_post_meta($idBook, 'book_year', true));
 
 // количество симоволов
 $count_simvolov = (get_post_meta($idBook, 'count_simvolov', true));
-$hours = ceil(($count_simvolov/1000)/60);
-
-$timeToRead = $hours . ' часов ('.$count_simvolov.' символов)';
+if (!empty($count_simvolov)) {
+    $hours = ceil(($count_simvolov/1000)/60);
+    $timeToRead = $hours . ' часов ('.$count_simvolov.' символов)';
+}
 // награда
 $award = (get_post_meta($idBook, 'award', true));
 

@@ -29,7 +29,7 @@ do_action('woocommerce_shop_loop_subcategory_title', $category);
 
 if ($category->count > 3):
     ?>
-    <div data-interval="false" id="carousel<?= $category->slug ?>" class="carousel carousel-books slide carousel-fade" data-ride="carousel">
+    <div data-interval="false" id="carousel<?= $category->slug ?>" class="carousel carousel-books slide" data-ride="carousel">
         <div class="carousel-inner">
             <?php $i = 0; ?>
             <div class="carousel-item active">
@@ -37,7 +37,9 @@ if ($category->count > 3):
                 if (wc_get_loop_prop('total')) {
                     while (have_posts()) {
                         the_post();
-
+                        if (get_post_meta(get_the_ID(), 'only_bibli',true) == 1) {
+                            continue;
+                        }
                         /**
                          * Hook: woocommerce_shop_loop.
                          */

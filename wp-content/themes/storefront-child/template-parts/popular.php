@@ -5,18 +5,23 @@
                 <p class="popular-block__header">Популярное</p>
                 <div class="row">
                     <?php
-                    $args = array(
+                    $args = [
                         'status' => 'publish',
                         'orderby' => 'order_clause',
                         'order' => 'DESC',
-                        'meta_query' => array(
-                            'order_clause' => array(
+                        'meta_query' => [
+                            'order_clause' => [
                                 'key' => 'total_sales',
-                                'value' => 'some_value',
-                                'type' => 'NUMERIC' // unless the field is not a number
-                            )),
+                                'compare' => 'EXISTS',
+                            ],
+                        ],
                         'limit' => 4,
-                    );
+                    ];
+                    $args['meta_query'][] = [
+                        'key' => 'only_bibli',
+                        'compare' => '!=',
+                        'value' => '1',
+                    ];
                     $query = new WC_Product_Query($args);
                     $products = $query->get_products();
                     foreach ($products as $product):
@@ -28,22 +33,19 @@
                                         <?php echo $product->get_image('medium'); ?>
                                     </div>
                                     <p class="popular-block-card__title"><?php
-                                        $title = $product->get_name();
-                                        echo mb_substr($title, 0, mb_strrpos(mb_substr($title, 0, 27, 'utf-8'), ' ', 'utf-8'), 'utf-8');
-                                        echo (strlen($title) > 27) ? '...' : '';
-                                        ?></p>
+                                        echo $product->get_name(); ?></p>
                                 </a>
                             </div>
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <div id="carouselHover" data-interval="false" class="carousel slide carousel-fade" data-ride="carousel">
+                <div id="carouselHover" data-interval="false" class="carousel carousel--popular slide carousel-fade" data-ride="carousel">
                     <div class="carousel-inner">
-                        <?php
+                        <?php 
                         foreach ($products as $product): ?>
                             <div id="<?= $product->slug ?>" class="popular-hover-card carousel-item">
                                 <div class="popular-hover-card__body">
-                                    <div class="popular-hover-card__img wow fadeIn" data-wow-delay="0.2s">
+                                    <div class="popular-hover-card__img wow fadeIn" data-wow-delay="0.01s">
                                         <img src="<?= wp_get_attachment_url($product->get_image_id()); ?>"
                                              alt="">
                                     </div>
@@ -63,6 +65,10 @@
                                                 <p class="popular-hover-card__desc wow fadeInUp" data-wow-delay="0.6s">
                                                     <?php
                                                     $size = 240;
+
+                                                    if (strlen($title) > 25) {
+                                                        $size = 180;
+                                                    }
                                                     echo mb_substr($desc, 0, mb_strrpos(mb_substr($desc, 0, $size, 'utf-8'), ' ', 'utf-8'), 'utf-8');
                                                     echo (strlen($desc) > $size) ? '...' : '';
                                                     ?></p>
@@ -165,7 +171,7 @@
                         endforeach; ?>
                     </div>
                     <a class="carousel-control-next carouselHover-slide" href="#carouselHover" role="button"
-                       data-slide="next">
+                       data-slide="next" >
                         <div>
                             <img src="/wp-content/themes/storefront-child/svg/svg-next-slide.svg" alt="">
                         </div>

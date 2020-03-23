@@ -69,7 +69,7 @@ remove_action('wp_head', 'rsd_link');  // сервис Really Simple Discovery
 remove_action('wp_head', 'wlwmanifest_link'); // Windows Live Writer
 remove_action('wp_head', 'wp_generator');  // скрыть версию wordpress
 
-$my_js_ver = date("ymd-Gis", filemtime(plugin_dir_path(__FILE__) . 'js/custom.js'));
+$my_js_ver = date("ymd-Gis", filemtime(plugin_dir_path(__FILE__) . 'inc/assets/js/custom.js'));
 
 wp_enqueue_script('custom', '/wp-content/themes/storefront-child/inc/assets/js/custom.js', array('jquery'), $my_js_ver, true);
 
@@ -289,7 +289,7 @@ add_action('init', 'custom_remove_footer_credit', 10);
 function custom_remove_footer_credit()
 {
     remove_action('storefront_footer', 'storefront_credit', 20);
-    add_action('storefront_footer', 'custom_storefront_credit', 20);
+//    add_action('storefront_footer', 'custom_storefront_credit', 20);
 }
 
 
@@ -461,10 +461,9 @@ function mytheme_comment($comment, $args, $depth)
             <p><?php
                 $desc = $comment->comment_content;
                 $size = 220;
-                echo mb_substr($desc, 0, mb_strrpos(mb_substr($desc, 0, $size, 'utf-8'), ' ', 'utf-8'), 'utf-8');
-                echo (strlen($desc) > $size) ? '...' : ''; ?>
+                echo (mb_strlen($desc) > $size) ? mb_substr($desc, 0, mb_strrpos(mb_substr($desc, 0, $size, 'utf-8'), ' ', 0, 'utf-8'), 'utf-8') . '...' : $desc; ?>
             </p>
-            <?php if (strlen($desc) > $size): ?>
+            <?php if (mb_strlen($desc) > $size): ?>
                 <a data-title="<?= $comment->comment_author ?><?= get_comment_date($d = ', F jS, Y', $comment) ?>"
                    data-text="<?= $desc ?>" data-toggle="modal" class="triggerModal" data-target="#commentModal"
                    href="#">Читать весь отзыв <img
@@ -746,3 +745,136 @@ function remove_image_zoom_support() {
     remove_theme_support( 'wc-product-gallery-zoom' );
 }
 add_action( 'after_setup_theme', 'remove_image_zoom_support', 100 );
+
+add_filter( 'woocommerce_get_wp_query_args', function( $wp_query_args, $query_vars ){
+    if ( isset( $query_vars['meta_query'] ) ) {
+        $meta_query = isset( $wp_query_args['meta_query'] ) ? $wp_query_args['meta_query'] : [];
+        $wp_query_args['meta_query'] = array_merge( $meta_query, $query_vars['meta_query'] );
+    }
+    return $wp_query_args;
+}, 10, 2 );
+
+add_action( 'customize_register', 'mytheme_customize_register' );
+/**
+ * Добавляет страницу настройки темы в админку Вордпресса
+ */
+function mytheme_customize_register( $wp_customize ) {
+    /*
+    Добавляем секцию в настройки темы
+    */
+    $wp_customize->add_section(
+    // ID
+        'data_main_section',
+        // Arguments array
+        array(
+            'title' => 'Данные главной страницы',
+            'capability' => 'edit_theme_options',
+            'description' => "Тут можно указать данные для главной страницы"
+        )
+    );
+    $wp_customize->add_setting(
+    // ID
+        'author_image',
+        // Arguments array
+        array(
+            'default' => '',
+            'type' => 'option'
+        )
+    );
+    $wp_customize->add_control(
+    // ID
+        'author_image_control',
+        // Arguments array
+        array(
+            'type' => 'url',
+            'label' => "Ссылка на изображение автора",
+            'section' => 'data_main_section',
+            // This last one must match setting ID from above
+            'settings' => 'author_image'
+        )
+    );
+    $wp_customize->add_setting(
+    // ID
+        'main_about_1',
+        // Arguments array
+        array(
+            'default' => '',
+            'type' => 'option'
+        )
+    );
+    $wp_customize->add_control(
+    // ID
+        'main_about_1_control',
+        // Arguments array
+        array(
+            'type' => 'textarea',
+            'label' => "Об авторе - 1-й абзац",
+            'section' => 'data_main_section',
+            // This last one must match setting ID from above
+            'settings' => 'main_about_1'
+        )
+    );
+    $wp_customize->add_setting(
+    // ID
+        'main_about_2',
+        // Arguments array
+        array(
+            'default' => '',
+            'type' => 'option'
+        )
+    );
+    $wp_customize->add_control(
+    // ID
+        'main_about_2_control',
+        // Arguments array
+        array(
+            'type' => 'textarea',
+            'label' => "Об авторе - 2-й абзац",
+            'section' => 'data_main_section',
+            // This last one must match setting ID from above
+            'settings' => 'main_about_2'
+        )
+    );
+    $wp_customize->add_setting(
+    // ID
+        'instagram_text',
+        // Arguments array
+        array(
+            'default' => '',
+            'type' => 'option'
+        )
+    );
+    $wp_customize->add_control(
+    // ID
+        'instagram_text_control',
+        // Arguments array
+        array(
+            'type' => 'textarea',
+            'label' => "Текст блока Instagram",
+            'section' => 'data_main_section',
+            // This last one must match setting ID from above
+            'settings' => 'instagram_text'
+        )
+    );
+    $wp_customize->add_setting(
+    // ID
+        'facebook_text',
+        // Arguments array
+        array(
+            'default' => '',
+            'type' => 'option'
+        )
+    );
+    $wp_customize->add_control(
+    // ID
+        'facebook_text_control',
+        // Arguments array
+        array(
+            'type' => 'textarea',
+            'label' => "Текст блока Facebook",
+            'section' => 'data_main_section',
+            // This last one must match setting ID from above
+            'settings' => 'facebook_text'
+        )
+    );
+}

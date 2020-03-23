@@ -15,7 +15,8 @@ Template Post Type: post, page, product
             <div class="col-12">
 
                 <div class="slider-container">
-                    <div id="carouselExampleIndicators" class="carousel slide carousel-fade wow fadeIn" data-ride="carousel">
+                    <div id="carouselExampleIndicators" class="carousel slide carousel-fade wow fadeIn"
+                         data-ride="carousel">
                         <ol class="carousel-indicators">
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -23,13 +24,23 @@ Template Post Type: post, page, product
                         </ol>
                         <div class="carousel-inner">
                             <?php
+                            $content = $post->post_content;
+                            $content_parts = preg_split('/[\s,]+/', $content, -1);
                             while (have_posts()) : the_post();
                                 if ($gallery = get_post_gallery(get_the_ID(), false)) :
-                                    $i = 0;
+                                    $i = 1;
                                     foreach ($gallery['src'] AS $src) {
                                         ?>
-                                        <div class="carousel-item <?= $i === 0 ? 'active' : '' ?>">
-                                            <img src="<?php echo $src; ?>" class="d-block w-100" alt="Gallery image"/>
+                                        <div class="carousel-item <?= $i === 1 ? 'active' : '' ?>">
+                                            <?php if ($content_parts[0] === 'ссылки'): ?>
+                                                <a href="<?= $content_parts[$i] ? $content_parts[$i] : '' ?>">
+                                                    <img src="<?php echo $src; ?>" class="d-block w-100"
+                                                         alt="Gallery image"/>
+                                                </a>
+                                            <?php else: ?>
+                                                <img src="<?php echo $src; ?>" class="d-block w-100"
+                                                     alt="Gallery image"/>
+                                            <?php endif; ?>
                                         </div>
                                         <?php
                                         $i++;
@@ -62,20 +73,12 @@ Template Post Type: post, page, product
         <div class="row">
             <div class="col-12">
                 <div class="d-flex justify-content-between">
-                    <p>
-                        Пишу фэнтези, от тёмного до юмористического. За 10-ть лет написала больше 20-ти романов и около
-                        50-ти рассказов. В АСТ изданы 6-ть моих романов, 2 готовятся к публикации
-                    </p>
-
-
+                    <p><?php echo nl2br(get_option('main_about_1')); ?></p>
                     <div class="main-info__img">
-                        <img src="/wp-content/themes/storefront-child/images/sakrytina-avatar.png"
+                        <img src="<?php echo nl2br(get_option('author_image')); ?>"
                              alt="sakrytina-avatar">
                     </div>
-                    <p>
-                        Общий тираж: 13500 экземпляров. Награждена национальной премией для молодых писателей «Русское
-                        слово». Творчество для меня не хобби, это моя жизнь.
-                    </p>
+                    <p><?php echo nl2br(get_option('main_about_2')); ?></p>
                 </div>
             </div>
             <div class="col-12">
@@ -93,7 +96,7 @@ Template Post Type: post, page, product
             <div class="col-12">
                 <p class="main-social__header">Подписывайся на социальные сети!</p>
             </div>
-            <div class="col-4" >
+            <div class="col-4">
                 <div class="main-social__card vk wow fadeInUp" data-wow-delay="0s">
                     <div class="main-social__card-body">
                         <p class="main-social__card-title">Группа в ВК</p>
@@ -101,9 +104,11 @@ Template Post Type: post, page, product
                             <p class="left wow fadeInLeft" data-wow-delay="1s">Конкурс репостов 🎁</p>
                             <p class="right wow fadeInRight" data-wow-delay="1.5s">Открыт читательский чат 📚</p>
                             <p class="left wow fadeInLeft" data-wow-delay="2s">Анкета читателя 📋</p>
-                            <p class="right wow fadeInRight" data-wow-delay="2.5s">Ответы на вопросы, о которых вы боялись спросить 😱</p>
+                            <p class="right wow fadeInRight" data-wow-delay="2.5s">Ответы на вопросы, о которых вы
+                                боялись спросить 😱</p>
                             <p class="left wow fadeInLeft" data-wow-delay="3s">Творческие новости</p>
-                            <p class="right wow fadeInRight" data-wow-delay="3.5s">А также! Арты, видео... скандалы, интриги, расследования 😀</p>
+                            <p class="right wow fadeInRight" data-wow-delay="3.5s">А также! Арты, видео... скандалы,
+                                интриги, расследования 😀</p>
                         </div>
                         <a class="btn btn-vk" target="_blank" href="https://vk.com/sakrytina_mariya"><img
                                     src="/wp-content/themes/storefront-child/svg/svg-vk-card.svg"
@@ -116,10 +121,10 @@ Template Post Type: post, page, product
                     <?= do_shortcode('[instagram-feed]') ?>
                     <div class="main-social__card-body">
                         <p class="main-social__card-title">Аккаунт в Инстаграме</p>
-                        <p>- каждый день новые посты</p>
-                        <p>- рассказываю о себе, котомузе и книгах</p>
+                        <p><?php echo nl2br(get_option('instagram_text')); ?></p>
                         <p><br></p>
-                        <a class="btn btn-inst" target="_blank" href="https://www.instagram.com/sakrytina_maria_writer/">
+                        <a class="btn btn-inst" target="_blank"
+                           href="https://www.instagram.com/sakrytina_maria_writer/">
                             <img src="/wp-content/themes/storefront-child/svg/svg-instagram-card.svg"
                                  alt="instagram-icon">Перейти в инстаграм
                         </a>
@@ -130,8 +135,7 @@ Template Post Type: post, page, product
                     <img src="/wp-content/themes/storefront-child/images/img-fb.jpg" alt="image-fb">
                     <div class="main-social__card-body">
                         <p class="main-social__card-title">Страница на Facebook</p>
-                        <p>каждый день - только главные</p>
-                        <p>творческие новости</p>
+                        <p><?php echo nl2br(get_option('facebook_text')); ?></p>
                         <a class="btn btn-fb" target="_blank" href="https://www.facebook.com/sakrytina/">
                             <img src="/wp-content/themes/storefront-child/svg/svg-fb-card.svg"
                                  alt="fb-icon">Перейти в facebook
@@ -175,42 +179,40 @@ Template Post Type: post, page, product
                                         <input type="hidden" name="need-phone" value="false">
                                         <input type="hidden" name="need-address" value="false">
 
-
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
                                         <div class="card-muse__input-group">
                                             <span id="inputDonateText">100</span>
-                                            <input class="input-donate" type="number" name="sum" value="100" max="15000" data-type="number">
-                                            
-                                                   <div class="widget-shop__payments-base">
-                                                    <label class="radio-button__radio radio-button__radio_checked_yes radio-button__radio_side_left" for="payByWallet">
-                                                        <input class="radio-button__control" 
-                                                            value="PC" aria-label="Заплатить кошельком"
-                                                            checked="checked" id="payByWallet"
-                                                            type="radio"
-                                                            name="paymentType"
-                                                        >
-                                                        <span class="radio-button__text">
-                                                            <i class="icon widget-shop__icon widget-shop__icon_name_PC" aria-hidden="true"></i>
+                                            <input class="input-donate" type="number" name="sum" value="100" max="15000"
+                                                   data-type="number">
+
+                                            <div class="widget-shop__payments-base">
+                                                <label class="radio-button__radio radio-button__radio_checked_yes radio-button__radio_side_left"
+                                                       for="payByWallet">
+                                                    <input class="radio-button__control"
+                                                           value="PC" aria-label="Заплатить кошельком"
+                                                           checked="checked" id="payByWallet"
+                                                           type="radio"
+                                                           name="paymentType"
+                                                    >
+                                                    <span class="radio-button__text">
+                                                            <i class="icon widget-shop__icon widget-shop__icon_name_PC"
+                                                               aria-hidden="true"></i>
                                                         </span>
-                                                    </label>
-                                                    <label class="radio-button__radio radio-button__radio_side_right" for="payByCard">
-                                                        <input class="radio-button__control" 
-                                                            value="AC" 
-                                                            aria-label="Заплатить картой"
-                                                            id="payByCard"
-                                                            type="radio"
-                                                            name="paymentType"
-                                                        >
-                                                        <span class="radio-button__text">
-                                                            <i class="icon widget-shop__icon widget-shop__icon_name_AC" aria-hidden="true"></i>
+                                                </label>
+                                                <label class="radio-button__radio radio-button__radio_side_right"
+                                                       for="payByCard">
+                                                    <input class="radio-button__control"
+                                                           value="AC"
+                                                           aria-label="Заплатить картой"
+                                                           id="payByCard"
+                                                           type="radio"
+                                                           name="paymentType"
+                                                    >
+                                                    <span class="radio-button__text">
+                                                            <i class="icon widget-shop__icon widget-shop__icon_name_AC"
+                                                               aria-hidden="true"></i>
                                                         </span>
-                                                    </label>
-                                                </div>
+                                                </label>
+                                            </div>
 
                                             <input class="btn-donate" type="submit" value="Покормить">
                                     </form>
