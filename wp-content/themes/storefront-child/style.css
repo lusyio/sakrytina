@@ -3309,6 +3309,9 @@ and (max-width: 768px) {
         border: none;
         padding: 12px 2px;
     }
+    #basket-btn__counter {
+        left: 12px;
+    }
     .cartName {
         display: none;
     }
