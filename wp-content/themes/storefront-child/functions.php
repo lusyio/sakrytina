@@ -878,3 +878,18 @@ function mytheme_customize_register( $wp_customize ) {
         )
     );
 }
+
+add_action('template_redirect', 'onlyBibliRedirect');
+
+/**
+ * Редирект на библиографию если книга только для неё
+ */
+function onlyBibliRedirect()
+{
+    global $product;
+    global $post;
+    if (!is_null($product) && get_post_meta($post->ID, 'only_bibli', true) === '1') {
+        exit( wp_redirect( home_url( '/bibliografiya/' ) ) );
+    }
+
+}
