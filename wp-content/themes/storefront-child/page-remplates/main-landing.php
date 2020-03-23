@@ -28,14 +28,19 @@ Template Post Type: post, page, product
                             $content_parts = preg_split('/[\s,]+/', $content, -1);
                             while (have_posts()) : the_post();
                                 if ($gallery = get_post_gallery(get_the_ID(), false)) :
-                                    $i = 0;
+                                    $i = 1;
                                     foreach ($gallery['src'] AS $src) {
                                         ?>
-                                        <div class="carousel-item <?= $i === 0 ? 'active' : '' ?>">
-                                            <a href="<?= $content_parts[$i] ? $content_parts[$i] : '' ?>">
+                                        <div class="carousel-item <?= $i === 1 ? 'active' : '' ?>">
+                                            <?php if ($content_parts[0] === 'ссылки'): ?>
+                                                <a href="<?= $content_parts[$i] ? $content_parts[$i] : '' ?>">
+                                                    <img src="<?php echo $src; ?>" class="d-block w-100"
+                                                         alt="Gallery image"/>
+                                                </a>
+                                            <?php else: ?>
                                                 <img src="<?php echo $src; ?>" class="d-block w-100"
                                                      alt="Gallery image"/>
-                                            </a>
+                                            <?php endif; ?>
                                         </div>
                                         <?php
                                         $i++;
