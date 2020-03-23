@@ -354,7 +354,7 @@ ul.menu li.current-menu-item > a:before {
 # HEADER
 --------------------------------------------------------------*/
 
-.navbar-dark .navbar-toggler {
+.navbar-dark .navbar-toggler, .navbar-light .navbar-toggler {
     border: 0;
 }
 
@@ -543,7 +543,7 @@ body a:hover {
     margin: auto;
 }
 
-.navbar-dark .navbar-brand {
+.navbar-dark .navbar-brand, .navbar-light .navbar-brand {
     position: relative;
     z-index: 5;
 }
@@ -554,8 +554,10 @@ body a:hover {
     left: 0;
     z-index: 2;
     cursor: pointer;
-    width: 51px;
-    height: 36px;
+    /*width: 51px;*/
+    /*height: 36px;*/
+    width: 100%;
+    height: 100%;
     opacity: 0;
 }
 
@@ -605,11 +607,15 @@ body a:hover {
     justify-content: center;
 }
 
+.carousel .carousel-indicators {
+    z-index: 2;
+}
+
 .outer-menu .menu > div {
     width: 200vw;
     height: 200vw;
     color: #FEFEFE;
-    background: #1C1C1C;
+    background: #fff;
     border-radius: 50%;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
@@ -3166,7 +3172,7 @@ body .btn.btn-primary, body .button.wc-forward {
     transition: 145ms cubic-bezier(.4, 0, .2, 1);
 }
 
-body .btn.btn-primary:not(:disabled):not(.disabled).active, body .btn.btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle, body .button.wc-forward:not(:disabled):not(.disabled).active, body .button.wc-forward:not(:disabled):not(.disabled):active{
+body .btn.btn-primary:not(:disabled):not(.disabled).active, body .btn.btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle, body .button.wc-forward:not(:disabled):not(.disabled).active, body .button.wc-forward:not(:disabled):not(.disabled):active {
     background-color: #357C64;
     border-color: #357C64;
     box-shadow: none;
@@ -3225,11 +3231,67 @@ and (max-width: 1199px) {
         text-align: left;
     }
 
+    .menu-container {
+        width: unset;
+    }
+
+    .popular-block-card__img > img {
+        width: 100%;
+        height: 250px;
+    }
+
+    .popular-hover-card__meta {
+        margin-left: 25px;
+        min-width: auto;
+    }
+
+    .popular-hover-card__info {
+        padding-right: 50px;
+        min-width: 70%;
+    }
+
+    .card-muse .card-muse__input-group > .input-donate {
+        width: 95px;
+    }
+
+    .card-muse .card-muse__body {
+        padding-right: 40px;
+    }
+
 }
 
 @media screen
 and (max-width: 991px) {
 
+    .main-social__card {
+        margin-bottom: 11px;
+    }
+
+    .main-social__card.inst {
+        margin-bottom: 20px;
+    }
+
+    .main-social__card.fb {
+        margin-bottom: 0;
+    }
+
+
+    .card-muse {
+        margin-top: 20px;
+    }
+
+    .main-social__card .btn.btn-vk {
+        display: block;
+        margin: auto;
+    }
+
+    .card-muse .card-muse__body img{
+        position: relative;
+    }
+
+    .card-muse .card-muse__body{
+        padding: 16px 30px 30px;
+    }
 
 }
 

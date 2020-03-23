@@ -28,7 +28,7 @@
     <header id="masthead" class="site-header" role="banner" style="<?php storefront_header_styles(); ?>">
 
         <div class="container">
-            <nav class="navbar navbar navbar-expand-xl p-0 justify-content-between">
+            <nav class="navbar navbar-light navbar-expand-xl p-0 justify-content-between">
                 <div class="navbar-brand">
                     <a href="<?php echo esc_url(home_url('/')); ?>">
                         <img src="/wp-content/themes/storefront-child/svg/svg-sakrytina-icon.svg"
@@ -62,7 +62,7 @@
                                 Корзина
                             </a>
                         </div>
-                        <div class="m-auto">
+                        <div class="m-auto d-xl-block d-none">
                             <?php if (is_user_logged_in()) { ?>
                                 <a class="btn btn-primary"
                                    href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>"

@@ -97,7 +97,7 @@ Template Post Type: post, page, product
             <div class="col-12">
                 <p class="main-social__header">Подписывайся на социальные сети!</p>
             </div>
-            <div class="col-4">
+            <div class="col-lg-4 col-md-8 offset-md-2 offset-0 col-12">
                 <div class="main-social__card vk wow fadeInUp" data-wow-delay="0s">
                     <div class="main-social__card-body">
                         <p class="main-social__card-title">Группа в ВК</p>
@@ -117,7 +117,7 @@ Template Post Type: post, page, product
                     </div>
                 </div>
             </div>
-            <div class="col-8">
+            <div class="col-lg-8 col-12">
                 <div class="main-social__card inst wow fadeInUp" data-wow-delay="0.2s">
                     <?= do_shortcode('[instagram-feed]') ?>
                     <div class="main-social__card-body">
@@ -148,11 +148,11 @@ Template Post Type: post, page, product
                 <div class="card-muse">
                     <div class="card-muse__body">
                         <div class="row">
-                            <div class="col-7">
+                            <div class="col-lg-7 col-12 order-lg-1 order-2">
                                 <p class="card-muse__header">Покорми котоМузу</p>
                                 <img src="/wp-content/themes/storefront-child/images/img-muse.jpg" alt="muse">
                             </div>
-                            <div class="col-5">
+                            <div class="col-lg-5 col-12">
                                 <div class="card-muse__right">
                                     <p class="card-muse__title">
                                         Муза мнет лапками автора и дарит вдохновение. У автора получается интересная
