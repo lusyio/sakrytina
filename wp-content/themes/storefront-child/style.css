@@ -3392,6 +3392,20 @@ and (max-width: 768px) {
     .main-social__card.fb > img {
         display: none;
     }
+    .widget-shop__payments-base {
+        display: none;
+    }
+    .card-muse .card-muse__input-group > .btn-donate {
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+    .card-muse__right {
+        padding-left: 0px;
+    }
+    .footer-menu {
+        margin: auto;
+        margin-bottom: 30px;
+    }
 }
 
 @media screen
