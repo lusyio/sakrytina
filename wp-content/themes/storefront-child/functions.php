@@ -451,8 +451,12 @@ function lw_hide_sale_flash()
 
 function mytheme_comment($comment, $args, $depth)
 {
+    global $product;
     $GLOBALS['comment'] = $comment;
-    $comments = get_comments();
+    $args = array(
+            'post_id' => $product->get_id()
+    );
+    $comments = get_comments($args);
     $first_comment_id = $comments[0]->comment_ID;
     ?>
     <div class="post <?= $first_comment_id === $comment->comment_ID ? 'active' : '' ?> carousel-item">
