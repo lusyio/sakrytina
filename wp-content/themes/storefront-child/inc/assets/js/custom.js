@@ -73,7 +73,8 @@ jQuery(function ($) {
         $('#carouselHover').addClass('active-nav')
         carouselHover.fadeIn(200)
 
-        
+       
+
         popularWowReInit()
     })
 
@@ -88,7 +89,7 @@ jQuery(function ($) {
             carouselHover.removeClass('pointer-events-none');
         }, 500);
 
-        
+        $("#carouselExampleIndicators").removeClass("wow");
 
     })
 
@@ -99,7 +100,6 @@ jQuery(function ($) {
     $(window).scroll(function() {
         let wows = $('.main-social').find(".wow");
 
-        
         if (wows) {
             if ($(wows).hasClass('animated')) {
             setTimeout(() => {
