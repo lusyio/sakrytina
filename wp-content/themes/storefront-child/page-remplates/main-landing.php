@@ -25,15 +25,16 @@ Template Post Type: post, page, product
                         <div class="carousel-inner">
                             <?php
                             $content = $post->post_content;
-                            $content_parts = preg_split('/[\s,]+/', $content, -1);
+                            $regex = '/https?\:\/\/[^\" \n]+/i';
+                            preg_match_all($regex, $content, $matches);
                             while (have_posts()) : the_post();
                                 if ($gallery = get_post_gallery(get_the_ID(), false)) :
-                                    $i = 1;
+                                    $i = 0;
                                     foreach ($gallery['src'] AS $src) {
                                         ?>
-                                        <div class="carousel-item <?= $i === 1 ? 'active' : '' ?>">
-                                            <?php if ($content_parts[0] === 'ссылки'): ?>
-                                                <a href="<?= $content_parts[$i] ? $content_parts[$i] : '' ?>">
+                                        <div class="carousel-item <?= $i === 0 ? 'active' : '' ?>">
+                                            <?php if ($matches[0][$i]): ?>
+                                                <a href="<?= $matches[0][$i] ?>">
                                                     <img src="<?php echo $src; ?>" class="d-block w-100"
                                                          alt="Gallery image"/>
                                                 </a>
