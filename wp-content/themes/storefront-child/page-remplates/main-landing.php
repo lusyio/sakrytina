@@ -6,7 +6,7 @@ Template Post Type: post, page, product
 ?>
 
 <?php get_header(); ?>
-
+<script src="https://gitcdn.xyz/repo/thesmart/jquery-scrollspy/0.1.3/scrollspy.js"></script>
 </div>
 </div>
 <div class="after-header">

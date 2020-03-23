@@ -1,5 +1,7 @@
 jQuery(function ($) {
-    new WOW().init();
+
+    const wow = new WOW();
+    wow.init();
 
     $('.carousel-books').each(function () {
         var swiper = new Swiper(this, {
@@ -71,7 +73,8 @@ jQuery(function ($) {
         $('#carouselHover').addClass('active-nav')
         carouselHover.fadeIn(200)
 
-        popularWowReInit();
+        
+        popularWowReInit()
     })
 
 
@@ -85,25 +88,51 @@ jQuery(function ($) {
             carouselHover.removeClass('pointer-events-none');
         }, 500);
 
+        
+
     })
 
     $('#carouselHover .carousel-control-next').click(function () {
         popularWowReInit();
     })
 
+    $(window).scroll(function() {
+        let wows = $('.main-social').find(".wow");
+
+        
+        if (wows) {
+            if ($(wows).hasClass('animated')) {
+            setTimeout(() => {
+                
+                    $(wows).removeClass('animated');
+                    $(wows).removeClass('wow');
+                    $(wows).removeAttr('style');
+                
+            }, 1000);
+
+        }
+            }
+
+    });
+    
+
     function popularWowReInit() {
+
+        
         // Если анимация уже была показана, то обнуляем
         if ($('.wow').hasClass('animated')) {
             $(this).removeClass('animated');
             $(this).removeAttr('style');
             new WOW().init();
+
         }
 
         // Этот велосипед нужен для того, чтобы срабатывал Wow js, так как он активируется при скролле
         // Жду предложения сделать это нормально
         let y = $(window).scrollTop();
-        $(window).scrollTop(y + 1);
+        $(window).scrollTop(y + 1000);
         $(window).scrollTop(y);
+
     }
 
     $('.triggerModal').on('click', function () {
