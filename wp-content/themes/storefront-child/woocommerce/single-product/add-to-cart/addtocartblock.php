@@ -152,25 +152,31 @@ $styleDNone = 'style="display: none;"';
             <div class="card-payment-info">
                 <div class="card-payment-info__body">
                     <div id="ebookTarget" class="card-payment-info__content" <?= ($activeTab == 'ebook') ? $styleDBlock : $styleDNone; ?>>
-                        <div class="d-flex justify-content-end">
+                        <div class="d-flex justify-content-between">
+                                <?php
+                                if ($isVariable && isset($variations['ebook'])) {
+                                    $productVar = new WC_Product_Variation($variations['ebook']['variation_id']);
+                                    if ($productVar->is_downloadable('yes') && $productVar->has_file()) {
+                                        $eBookDownloads = $productVar->get_downloads();
+                                        $eBookPriceHtml = $productVar->get_price_html();
+                                    }
+                                } elseif (!$isVariable) {
+                                    if ($product->is_downloadable('yes') && $product->has_file()) {
+                                        $eBookDownloads = $product->get_downloads();
+                                        $eBookPriceHtml = $product->get_price_html();
+                                    }
+                                } ?>
+                            <div>
+                                <p class="<?php echo esc_attr(apply_filters('woocommerce_product_price_class', 'price')); ?>"><?php echo $eBookPriceHtml ?></p>
+                            </div>
                             <?php do_action('woocommerce_single_variation'); ?>
                         </div>
                         <hr>
                         <p><span>Как купить?</span> Добавьте книгу в корзину и оформите заказ. Оплата осуществляется с помощью банковской карты. Книга будет отправлена вам на элекронную почту сразу же после оплаты.
                         </p>
-                        <?php
-                        if ($isVariable && isset($variations['ebook'])) {
-                            $productVar = new WC_Product_Variation($variations['ebook']['variation_id']);
-                            if ($productVar->is_downloadable('yes') && $productVar->has_file()) {
-                                $eBookDownloads = $productVar->get_downloads();
-                            }
-                        } elseif (!$isVariable) {
-                            if ($product->is_downloadable('yes') && $product->has_file()) {
-                                $eBookDownloads = $product->get_downloads();
-                            }
-                        }
 
-                        if ($eBookDownloads):?>
+
+                        <?php if ($eBookDownloads):?>
                             <p>Книга доступна в форматах:
                                 <?php foreach ($eBookDownloads as $key => $eBookDownload) {
                                     echo $eBookDownload->get_name();
@@ -234,7 +240,19 @@ $styleDNone = 'style="display: none;"';
                     </div>
                     <div id="audiobookTarget" class="card-payment-info__content" <?= ($activeTab == 'abook') ? $styleDBlock : $styleDNone; ?>>
                         <?php if (!$externalABook) : ?>
-                            <div class="d-flex justify-content-end">
+                            <?php
+                            if ($isVariable && isset($variations['abook'])) {
+                                $productVar = new WC_Product_Variation($variations['abook']['variation_id']);
+                                if ($productVar->is_downloadable('yes') && $productVar->has_file()) {
+                                    $aBookDownloads = $productVar->get_downloads();
+                                    $aBookPriceHtml = $productVar->get_price_html();
+                                }
+                            }
+                            ?>
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <p class="<?php echo esc_attr(apply_filters('woocommerce_product_price_class', 'price')); ?>"><?php echo $aBookPriceHtml ?></p>
+                                </div>
                                 <?php do_action('woocommerce_single_variation'); ?>
                             </div>
                             <hr>
@@ -247,14 +265,8 @@ $styleDNone = 'style="display: none;"';
                                 карты. Книга будет отправлена вам на элекронную почту сразу же после оплаты.
                             </p>
 
-                            <?php
-                            if ($isVariable && isset($variations['abook'])) {
-                                $productVar = new WC_Product_Variation($variations['abook']['variation_id']);
-                                if ($productVar->is_downloadable('yes') && $productVar->has_file()) {
-                                    $aBookDownloads = $productVar->get_downloads();
-                                }
-                            }
-                            if ($aBookDownloads):?>
+
+                            <?php if ($aBookDownloads):?>
                                 <p>Книга доступна в форматах:
                                     <?php foreach ($aBookDownloads as $key => $aBookDownload) {
                                         echo $aBookDownload->get_name();
