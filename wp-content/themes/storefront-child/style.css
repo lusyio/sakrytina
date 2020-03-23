@@ -1438,6 +1438,8 @@ body a:hover {
 .product-card .product-card__award img {
     display: block;
     margin: 0 auto 6px;
+    max-width: 80px;
+    max-height: 80px;
 }
 
 .product-card .product-card__award p {
@@ -2252,8 +2254,6 @@ body a:hover {
 }
 
 .popular-hover-card__award > img {
-    width: 80px;
-    height: 80px;
     max-width: 80px;
     max-height: 80px;
     margin-right: 10px;
