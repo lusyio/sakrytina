@@ -78,7 +78,9 @@ if ($category->count > 3):
         if (wc_get_loop_prop('total')) {
             while (have_posts()) {
                 the_post();
-
+                if (get_post_meta(get_the_ID(), 'only_bibli',true) == 1) {
+                    continue;
+                }
                 /**
                  * Hook: woocommerce_shop_loop.
                  */
