@@ -468,7 +468,7 @@ function mytheme_comment($comment, $args, $depth)
             </p>
             <?php if (mb_strlen($desc) > $size): ?>
                 <a data-title="<?= $comment->comment_author ?><?= get_comment_date($d = ', F jS Y', $comment) ?> <?= preg_replace('#^https?://#', '', $comment->comment_author_url); ?>"
-                   data-text="<?= $desc ?>" data-toggle="modal" class="triggerModal" data-target="#commentModal"
+                   data-text="<?= htmlspecialchars($desc) ?>" data-toggle="modal" class="triggerModal" data-target="#commentModal"
                    href="#">Читать весь отзыв <img
                             src="/wp-content/themes/storefront-child/svg/svg-review__link.svg" alt="review-link"></a>
             <?php endif; ?>
