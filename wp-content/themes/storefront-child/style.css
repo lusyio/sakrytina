@@ -3265,10 +3265,23 @@ and (max-width: 1199px) {
         padding-right: 40px;
     }
 
+    .sidebar-attention{
+        margin-bottom: 50px;
+    }
+
 }
 
 @media screen
 and (max-width: 991px) {
+
+    .storefront-breadcrumb{
+        margin-bottom: 0;
+        padding-top: 40px;
+    }
+
+    .woocommerce-breadcrumb{
+        text-align: center;
+    }
 
     .main-social__card {
         margin-bottom: 11px;
@@ -3582,4 +3595,49 @@ and (max-width: 576px) {
 
 .pointer-events-none {
     pointer-events: none;
+}
+
+/*--------------------------------------------------------------
+## Notebook
+--------------------------------------------------------------*/
+@media only screen and (max-width: 1280px) {
+    html {
+        font-size: 95%;
+    }
+}
+
+/*--------------------------------------------------------------
+## Netbook
+--------------------------------------------------------------*/
+@media only screen and (max-width: 1024px) {
+    html {
+        font-size: 90%;
+    }
+}
+
+/*--------------------------------------------------------------
+## iPad
+--------------------------------------------------------------*/
+@media only screen and (max-width: 960px) {
+    html {
+        font-size: 85%;
+    }
+}
+
+/*--------------------------------------------------------------
+## iPad
+--------------------------------------------------------------*/
+@media only screen and (max-width: 768px) {
+    html {
+        font-size: 80%;
+    }
+}
+
+/*--------------------------------------------------------------
+## iPad
+--------------------------------------------------------------*/
+@media only screen and (max-width: 480px) {
+    html {
+        font-size: 75%;
+    }
 }
