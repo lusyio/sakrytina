@@ -28,6 +28,7 @@ if (!defined('ABSPATH')) {
 do_action('woocommerce_shop_loop_subcategory_title', $category);
 
 if ($category->count > 3):
+    $j = 0;
     ?>
     <div id="<?= $category->slug ?>" class="swiper-container carousel-books" data-ride="carousel">
         <div class="swiper-wrapper">
@@ -54,11 +55,14 @@ if ($category->count > 3):
                         if ($cat_id === $category->term_id) {
                             wc_get_template_part('content', 'product');
                             $i++;
+                            $j++;
                         }
 
                         if ($i === 1) {
                             echo '</div>';
-                            echo '<div class="swiper-slide">';
+                            if ($category->count !== $j){
+                                echo '<div class="swiper-slide">';
+                            }
                             $i = 0;
                         }
 

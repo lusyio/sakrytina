@@ -7,6 +7,7 @@ jQuery(function ($) {
         var swiper = new Swiper(this, {
             slidesPerView: 3,
             spaceBetween: 30,
+            loop: true,
             breakpoints: {
                 576: {
                     slidesPerView: 2,
