@@ -1523,6 +1523,10 @@ body a:hover {
     background: rgba(196, 196, 196, 0.1);
 }
 
+.carousel-fade .carousel-item{
+    transition: opacity 1s cubic-bezier(.4, 0, .2, 1) !important;
+}
+
 .card-payment .card-payment__body {
     padding: 25px 35px 15px;
 }
