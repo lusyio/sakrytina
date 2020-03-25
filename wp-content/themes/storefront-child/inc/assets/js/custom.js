@@ -59,6 +59,34 @@ jQuery(function ($) {
         });
     });
 
+    var swiperPopular = new Swiper('#popularCards', {
+        slidesPerView: 4,
+        spaceBetween: 30,
+        loop: true,
+        breakpoints: {
+            576: {
+                slidesPerView: 1,
+                spaceBetween: 30,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+            },
+            991: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+            },
+            1200: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+        },
+        navigation: {
+            nextEl: $(this).prev('h2').find('.carousel-books-control-next'),
+            prevEl: $(this).prev('h2').find('.carousel-books-control-prev'),
+        },
+    });
+
     const $page = $('html, body');
     $('a.link[href*="#"]').on('click', function () {
         let blockId = $.attr(this, 'href');
@@ -98,53 +126,53 @@ jQuery(function ($) {
     const bookBlock = $('.popular-block-card');
     const carouselHover = $('#carouselHover');
 
-    bookBlock.mouseenter(function () {
-        let blockId = $(this).data('active')
-        $(`#${blockId}`).addClass('active')
-        $('#carouselHover').addClass('active-nav')
-        carouselHover.fadeIn(200)
+    if (document.documentElement.clientWidth >= 991){
+        bookBlock.mouseenter(function () {
+            let blockId = $(this).data('active')
+            $(`#${blockId}`).addClass('active')
+            $('#carouselHover').addClass('active-nav')
+            carouselHover.fadeIn(200)
 
 
-        popularWowReInit()
-    })
+            popularWowReInit()
+        })
 
+        carouselHover.mouseleave(function () {
 
-    carouselHover.mouseleave(function () {
+            carouselHover.fadeOut(500);
+            carouselHover.addClass('pointer-events-none');
+            setTimeout(() => {
+                $('.popular-hover-card').removeClass('active')
+                $('#carouselHover').removeClass('active-nav')
+                carouselHover.removeClass('pointer-events-none');
+            }, 500);
 
-        carouselHover.fadeOut(500);
-        carouselHover.addClass('pointer-events-none');
-        setTimeout(() => {
-            $('.popular-hover-card').removeClass('active')
-            $('#carouselHover').removeClass('active-nav')
-            carouselHover.removeClass('pointer-events-none');
-        }, 500);
+            $("#carouselExampleIndicators").removeClass("wow");
 
-        $("#carouselExampleIndicators").removeClass("wow");
+        })
 
-    })
+        $('#carouselHover .carousel-control-next').click(function () {
+            popularWowReInit();
+        })
 
-    $('#carouselHover .carousel-control-next').click(function () {
-        popularWowReInit();
-    })
+        $(window).scroll(function () {
+            let wows = $('.main-social').find(".wow");
 
-    $(window).scroll(function () {
-        let wows = $('.main-social').find(".wow");
+            if (wows) {
+                if ($(wows).hasClass('animated')) {
+                    setTimeout(() => {
 
-        if (wows) {
-            if ($(wows).hasClass('animated')) {
-                setTimeout(() => {
+                        $(wows).removeClass('animated');
+                        $(wows).removeClass('wow');
+                        $(wows).removeAttr('style');
 
-                    $(wows).removeClass('animated');
-                    $(wows).removeClass('wow');
-                    $(wows).removeAttr('style');
+                    }, 1000);
 
-                }, 1000);
-
+                }
             }
-        }
 
-    });
-
+        });
+    }
 
     function popularWowReInit() {
 
@@ -177,8 +205,6 @@ jQuery(function ($) {
 
     })
 
-
-    $('.comment-content-target')
 
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()

@@ -2004,9 +2004,12 @@ body a:hover {
     margin-bottom: 29px;
 }
 
-.popular-block-card {
+#popularCards .popular-block-card {
     background: #357C64;
     padding: 22px 24px 20px;
+    max-width: 250px;
+    width: 100% !important;
+    margin: auto;
 }
 
 .popular-block-card .popular-block-card__title {
@@ -2025,7 +2028,7 @@ body a:hover {
 .popular-block-card__img > img {
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     border-radius: 0;
-    width: 200px;
+    width: 100% !important;
     max-width: 200px;
     max-height: 300px;
     height: 300px;
@@ -2168,6 +2171,7 @@ body a:hover {
 
 #carouselHover {
     padding-left: 30px;
+    z-index: 2;
     margin-left: -30px;
 }
 
@@ -3244,7 +3248,6 @@ and (max-width: 1199px) {
 
     .popular-block-card__img > img {
         width: 100%;
-        height: 250px;
     }
 
     .popular-hover-card__meta {
@@ -3273,6 +3276,10 @@ and (max-width: 1199px) {
 
 @media screen
 and (max-width: 991px) {
+
+    .popular-block-card{
+        max-width: 250px;
+    }
 
     .storefront-breadcrumb{
         margin-bottom: 0;
@@ -3388,9 +3395,6 @@ and (max-width: 768px) {
     }
     .popular-block-card__img > img {
         width: 100%;
-        height: auto;
-        max-width: 100%;
-        max-height: 100%;
     }
     .popular-block .popular-block__header {
         font-size: 24px;
