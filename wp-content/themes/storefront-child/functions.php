@@ -954,3 +954,10 @@ function onlyBibliRedirect()
     }
 
 }
+
+function post_id_by_term_id( $term_id ){
+    global $wpdb;
+
+    $ids = $wpdb->get_col( $wpdb->prepare( "SELECT object_id FROM $wpdb->term_relationships WHERE term_taxonomy_id = %d", $term_id ) );
+    return $ids;
+}

@@ -19,12 +19,14 @@ if (!is_active_sidebar('sidebar-1')) {
         $args = array(
             'taxonomy' => "product_cat",
             'number' => '',
-            'order' => $order,
             'hide_empty' => true,
             'include' => ''
         );
         $product_categories = get_terms($args);
         foreach ($product_categories as $key => $cat):?>
+            <?php if (isset($GLOBALS['emptyCategories']) && in_array($cat->slug, $GLOBALS['emptyCategories'])){
+                continue;
+                } ?>
             <?php if ($cat->slug !== 'sbornik-rasskazov'): ?>
                 <p class="sidebar-cycles__item">
                     <a class="link" href="#<?= $cat->slug ?>"><?= $cat->name ?></a>

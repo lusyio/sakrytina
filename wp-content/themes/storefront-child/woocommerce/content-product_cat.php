@@ -18,6 +18,32 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+$productCount = 0;
+//var_dump($category->count);
+//var_dump($category);
+global $wp_query;
+$params = array(
+    'posts_per_page' => -1,
+    'meta_key' => 'only_bibli',
+    'meta_value' => '1',
+    'meta_compare' => '!=',
+);
+$params = array_merge( $wp_query->query, $params );
+query_posts( $params );
+$booksInResult = $wp_query->posts;
+$booksInCategory = post_id_by_term_id($category->term_id);
+foreach ($booksInResult as $book) {
+    if (in_array($book->ID, $booksInCategory)) {
+        $productCount++;
+    }
+}
+if ($productCount == 0) {
+    if (!isset($GLOBALS['emptyCategories'])) {
+        $GLOBALS['emptyCategories'] = [];
+    }
+    $GLOBALS['emptyCategories'][] = $category->slug;
+    return;
+}
 ?>
 <?php
 /**
@@ -27,7 +53,9 @@ if (!defined('ABSPATH')) {
  */
 do_action('woocommerce_shop_loop_subcategory_title', $category);
 
-if ($category->count > 3):
+
+
+if ($productCount > 3):
     $j = 0;
     ?>
     <div id="<?= $category->slug ?>" class="swiper-container carousel-books" data-ride="carousel">
@@ -78,7 +106,9 @@ if ($category->count > 3):
         if (wc_get_loop_prop('total')) {
             while (have_posts()) {
                 the_post();
-
+                if (get_post_meta(get_the_ID(), 'only_bibli',true) == 1) {
+                    continue;
+                }
                 /**
                  * Hook: woocommerce_shop_loop.
                  */
