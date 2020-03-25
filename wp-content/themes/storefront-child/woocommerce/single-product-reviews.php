@@ -64,7 +64,6 @@ $terms = get_the_terms($product->get_id(), 'product_cat');
             ],
         ];
 
-        var_dump($args);
         $query = new WC_Product_Query($args);
         $products = $query->get_products();
         $relatedProducts = $products;
