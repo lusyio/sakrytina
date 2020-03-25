@@ -85,7 +85,7 @@ $j = 0;
                     }
 
                     if ($i === 1) {
-                        if ($category->count !== $j) {
+                        if ($productCount !== $j) {
                             echo '</div>';
                             echo '<div class="swiper-slide">';
                         }

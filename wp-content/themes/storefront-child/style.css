@@ -1707,8 +1707,8 @@ body a:hover {
 
 .bibliography .bibliography__header {
     font-weight: normal;
-    font-size: 36px;
-    line-height: 47px;
+    font-size: 2.25rem;
+    line-height: 2.9375rem;
     color: #000000;
     margin-bottom: 30px;
 }
@@ -1750,19 +1750,23 @@ body a:hover {
 }
 
 .bibliography .bibliography__title, .bibliography .bibliography__title > a {
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 1.5rem;
+    line-height: 2rem;
     color: #000000;
     margin-bottom: 0;
 }
 
 .bibliography .bibliography__year {
     font-weight: normal;
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 1.5rem;
+    line-height: 2rem;
     text-align: center;
     color: #000000;
     margin-bottom: 30px;
+}
+
+.bibliography__years {
+    margin-top: 6.5%;
 }
 
 .bibliography .bibliography__card hr {
@@ -3237,6 +3241,10 @@ and (max-width: 1199px) {
         margin-right: 0 !important;
     }
 
+    .bibliography__years {
+        margin-top: 7.5%;
+    }
+
     .outer-menu .menu ul {
         text-align: left;
     }
@@ -3327,33 +3335,78 @@ and (max-width: 991px) {
         width: 40px;
     }
 
+    .bibliography__border1:before {
+        content: none;
+        display: none;
+    }
+
+    .bibliography__border:before {
+        content: none;
+        display: none;
+    }
+
+    .bibliography__year:after {
+        width: 22%;
+        left: -12%;
+    }
+
+    .bibliography .bibliography__title {
+        margin-bottom: 25px;
+    }
+
+    .bibliography .bibliography__info {
+        margin-bottom: 30px;
+    }
+
+    .bibliography__year > img {
+        margin-right: 25px;
+        vertical-align: baseline;
+    }
+
+    .bibliography .bibliography__thumbnail .bibliography__thumbnail-award {
+        position: absolute;
+        right: 18px;
+        bottom: -10px;
+    }
+
+    .bibliography .bibliography__thumbnail .bibliography__thumbnail-award > img {
+        max-width: 56px;
+        max-height: 50px;
+        width: 56px;
+        height: 50px;
+    }
+
 }
 
 @media screen
 and (max-width: 768px) {
 
-    #custom_html-3{
+    #custom_html-3 {
         margin: 0;
     }
 
-    .swiper-container.carousel-books{
+    .container.bibliography > .row > .col-12 {
+        padding: 0 30px;
+    }
+
+    .swiper-container.carousel-books {
         margin-bottom: 50px;
     }
 
-    .carousel-books-control{
+    .carousel-books-control {
         display: none;
     }
 
-    .main-social__card .main-social__card-mes > p{
+    .main-social__card .main-social__card-mes > p {
         font-size: 14px;
         line-height: 20px;
     }
 
-    .main-social{
+    .main-social {
         padding-bottom: 40px;
     }
 
-    .after-header{
+    .after-header {
         padding-top: 10px;
     }
 
@@ -3362,7 +3415,7 @@ and (max-width: 768px) {
         margin-bottom: 70px;
     }
 
-    .card-muse__header{
+    .card-muse__header {
         font-weight: normal;
         font-size: 24px;
         line-height: 140%;
@@ -3439,20 +3492,20 @@ and (max-width: 768px) {
         position: relative;
     }
 
-    .sidebar-cycles{
+    .sidebar-cycles {
         padding: 0 15px;
     }
 
-    .sidebar-attention{
+    .sidebar-attention {
         margin: 0 15px;
         margin-bottom: 50px;
     }
 
-    .site-main{
+    .site-main {
         padding: 0 15px;
     }
 
-    .woocommerce-loop-category__title{
+    .woocommerce-loop-category__title {
         font-size: 24px;
         line-height: 32px;
         text-align: center;
@@ -3527,6 +3580,19 @@ and (max-width: 768px) {
     #sb_instagram .sb_instagram_header {
         right: 15.5%;
     }
+
+    .bibliography__years {
+        max-width: 49% !important;
+        -ms-flex: 0 0 33.333333% !important;
+        flex: 0 0 49.333333% !important;
+    }
+
+
+    .bibliography .bibliography__thumbnail .bibliography__thumbnail-award {
+        position: absolute;
+        right: 0;
+        bottom: -10px;
+    }
 }
 
 @media screen
@@ -3536,11 +3602,11 @@ and (max-width: 576px) {
         top: 3px;
     }
 
-    #sb_instagram{
+    #sb_instagram {
         right: 23%;
     }
 
-    #sb_instagram .sb_instagram_header{
+    #sb_instagram .sb_instagram_header {
         right: 23.5%;
     }
 
@@ -3552,6 +3618,18 @@ and (max-width: 576px) {
         margin-left: 0;
     }
 
+}
+
+@media screen and (max-width: 460px) {
+    .bibliography .bibliography__card {
+        padding-left: 45px;
+    }
+
+    .bibliography .bibliography__thumbnail .bibliography__thumbnail-award {
+        position: absolute;
+        right: -39%;
+        bottom: -10px;
+    }
 }
 
 
@@ -3714,7 +3792,7 @@ and (max-width: 576px) {
 --------------------------------------------------------------*/
 @media only screen and (max-width: 1280px) {
     html {
-        font-size: 95%;
+        font-size: 92%;
     }
 }
 
