@@ -465,7 +465,7 @@ body a:hover {
     color: #40866E;
 }
 
-#basket-btn__counter, .basket-btn__counter  {
+#basket-btn__counter, .basket-btn__counter {
     background: #40866E;
     border: 0;
     border-radius: 50%;
@@ -941,7 +941,7 @@ body a:hover {
 .main-info p {
     width: 34.9%;
     font-weight: 300;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 22px;
     color: #000000;
     margin-bottom: 0;
@@ -950,8 +950,8 @@ body a:hover {
 .main-info h1 {
     font-family: 'Caveat', sans-serif;
     font-weight: normal;
-    font-size: 36px;
-    line-height: 45px;
+    font-size: 2.25rem;
+    line-height: 2.8125rem;
     text-align: center;
     color: #000000;
     margin: 0;
@@ -972,8 +972,8 @@ body a:hover {
 .main-social .main-social__header {
     font-family: 'Caveat', sans-serif;
     font-weight: normal;
-    font-size: 48px;
-    line-height: 60px;
+    font-size: 3rem;
+    line-height: 3.75rem;
     text-align: center;
     color: #000000;
     margin-bottom: 36px;
@@ -988,8 +988,8 @@ body a:hover {
 
 .main-social__card .main-social__card-title {
     font-weight: 300;
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 1.5rem;
+    line-height: 2rem;
     text-align: center;
     color: #000000;
     margin-bottom: 20px;
@@ -1007,8 +1007,8 @@ body a:hover {
     max-width: 89%;
 
     font-weight: 300;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
     color: #000000;
 }
 
@@ -1028,8 +1028,8 @@ body a:hover {
 
 .main-social__card.inst .main-social__card-title, .main-social__card.fb .main-social__card-title {
     font-weight: 300;
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 1.5rem;
+    line-height: 2rem;
     color: #000000;
     margin-bottom: 20px;
     text-align: left;
@@ -1100,7 +1100,6 @@ body a:hover {
     display: block;
 }
 
-
 .main-social__card.inst p {
     font-weight: 300;
     font-size: 14px;
@@ -1129,7 +1128,7 @@ body a:hover {
     margin-bottom: 52px;
 }
 
-.main-social__card.fb > img {
+.main-social__card.fb .fb-img {
     position: absolute;
     right: 30px;
     top: 25px;
@@ -1152,7 +1151,7 @@ body a:hover {
     font-family: 'Caveat', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 72px;
+    font-size: 4.5rem;
     line-height: 140%;
     margin-bottom: 0;
     color: #4F4F4F;
@@ -1523,7 +1522,7 @@ body a:hover {
     background: rgba(196, 196, 196, 0.1);
 }
 
-.carousel-fade .carousel-item{
+.carousel-fade .carousel-item {
     transition: opacity 1s cubic-bezier(.4, 0, .2, 1) !important;
 }
 
@@ -3169,7 +3168,7 @@ table th {
 --------------------------------------------------------------*/
 
 
-body .btn.btn-primary, body .button.wc-forward, .added_to_cart.wc-forward{
+body .btn.btn-primary, body .button.wc-forward, .added_to_cart.wc-forward {
     background: #40866E;
     border-radius: 10px;
     padding: 14px 23px;
@@ -3268,7 +3267,7 @@ and (max-width: 1199px) {
         padding-right: 40px;
     }
 
-    .sidebar-attention{
+    .sidebar-attention {
         margin-bottom: 50px;
     }
 
@@ -3277,16 +3276,16 @@ and (max-width: 1199px) {
 @media screen
 and (max-width: 991px) {
 
-    .popular-block-card{
+    .popular-block-card {
         max-width: 250px;
     }
 
-    .storefront-breadcrumb{
+    .storefront-breadcrumb {
         margin-bottom: 0;
         padding-top: 40px;
     }
 
-    .woocommerce-breadcrumb{
+    .woocommerce-breadcrumb {
         text-align: center;
     }
 
@@ -3312,20 +3311,69 @@ and (max-width: 991px) {
         margin: auto;
     }
 
-    .card-muse .card-muse__body img{
+    .card-muse .card-muse__body img {
         position: relative;
     }
 
-    .card-muse .card-muse__body{
+    .card-muse .card-muse__body {
         padding: 16px 30px 30px;
+    }
+
+    header#masthead {
+        padding: 1px 0;
+    }
+
+    header#masthead .navbar-brand img {
+        width: 40px;
     }
 
 }
 
 @media screen
 and (max-width: 768px) {
+
+    .main-social__card .main-social__card-mes > p{
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .main-social{
+        padding-bottom: 40px;
+    }
+
+    .after-header{
+        padding-top: 10px;
+    }
+
+    .inst-container {
+        margin-top: 20px;
+        margin-bottom: 70px;
+    }
+
+    .card-muse__header{
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 140%;
+        margin-bottom: 12px;
+    }
+
     footer.site-footer {
         padding-bottom: 75px;
+    }
+
+    .main-social__card .btn.btn-inst, .main-social__card .btn.btn-fb {
+        display: block;
+        margin: auto;
+    }
+
+    .main-social__card.fb .fb-img {
+        position: unset;
+        margin: auto;
+        margin-bottom: 15px;
+    }
+
+    .main-social__card.fb p:last-of-type {
+        margin-bottom: 15px;
     }
 
     /*очень временная адаптация! переделать по уму с учетом верстки*/
@@ -3333,47 +3381,58 @@ and (max-width: 768px) {
         border: none;
         padding: 12px 2px;
     }
+
     #basket-btn__counter {
         left: 12px;
     }
+
     .cartName {
         display: none;
     }
+
     .carousel-control-prev > div, .carousel-control-next > div {
         transform: scale(0.5);
     }
+
     #carouselExampleIndicators .carousel-control-prev {
         left: -6.1%;
     }
+
     #carouselExampleIndicators .carousel-control-next {
         right: -6.1%;
     }
+
     .main-info .d-flex {
         flex-flow: column;
     }
+
     .main-info p {
         order: 2;
         width: 100%;
         margin-bottom: 20px;
         padding: 0px 22px;
     }
+
     .main-info .main-info__img > img {
         width: 145px;
         height: 145px;
         max-width: 145px;
         max-height: 145px;
     }
+
     .main-info .main-info__img {
         margin-left: auto;
         margin-right: auto;
         width: 145px;
         position: relative;
     }
+
     .main-info h1 {
         width: 180%;
         left: -40%;
         margin-bottom: -40px;
     }
+
     .carousel-indicators {
         transform: scale(0.5);
         bottom: -15px;
@@ -3383,9 +3442,11 @@ and (max-width: 768px) {
         padding: 22px;
         padding-bottom: 60px;
     }
+
     .popular-block .col-3 {
         display: none;
     }
+
     .popular-block .col-3:first-child {
         display: block;
         width: 100%;
@@ -3393,36 +3454,39 @@ and (max-width: 768px) {
         flex: 0 0 100%;
         max-width: 100%;
     }
+
     .popular-block-card__img > img {
         width: 100%;
     }
+
     .popular-block .popular-block__header {
         font-size: 24px;
         margin-bottom: 15px;
     }
-    .main-social__card.inst p {
-        display: none;
-    }
+
     #sb_instagram {
         position: relative;
-        top: 50px;
+        top: 0;
+        right: 33%;
     }
+
     .main-social .main-social__card {
         overflow: visible;
     }
-    .main-social__card.fb > img {
-        display: none;
-    }
+
     .widget-shop__payments-base {
         display: none;
     }
+
     .card-muse .card-muse__input-group > .btn-donate {
         border-top-left-radius: 0px;
         border-bottom-left-radius: 0px;
     }
+
     .card-muse__right {
         padding-left: 0px;
     }
+
     .footer-menu {
         margin: auto;
         margin-bottom: 30px;
