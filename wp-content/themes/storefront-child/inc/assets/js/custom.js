@@ -3,6 +3,36 @@ jQuery(function ($) {
     const wow = new WOW();
     wow.init();
 
+
+    $(document).on('click', '.btn.remove-book', function (event) {
+        event.preventDefault();
+
+        const $thisa = $(this)
+
+        $.ajax({
+            type: 'GET',
+            url: $thisa.data('href'),
+            dataType: 'html',
+            beforeSend: function (response) {
+                $thisa.addClass('loading');
+                $thisa.prop('disabled', true);
+            },
+            success: function (response) {
+                const $html = $.parseHTML(response);
+                const $new_form = $('.card-payment-info', $html);
+                const $new_totals = $('#basket-btn__counter', $html);
+                $('.card-payment-info').replaceWith($new_form);
+                $('#basket-btn__counter').replaceWith($new_totals);
+            },
+            complete: function () {
+                $thisa.removeClass('loading');
+                $thisa.prop('disabled', false);
+                $.scroll_to_notices($('[role="alert"]'));
+
+            }
+        });
+    });
+
     $('.carousel-books').each(function () {
         var swiper = new Swiper(this, {
             slidesPerView: 3,
@@ -74,7 +104,6 @@ jQuery(function ($) {
         $('#carouselHover').addClass('active-nav')
         carouselHover.fadeIn(200)
 
-       
 
         popularWowReInit()
     })
@@ -98,28 +127,28 @@ jQuery(function ($) {
         popularWowReInit();
     })
 
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         let wows = $('.main-social').find(".wow");
 
         if (wows) {
             if ($(wows).hasClass('animated')) {
-            setTimeout(() => {
-                
+                setTimeout(() => {
+
                     $(wows).removeClass('animated');
                     $(wows).removeClass('wow');
                     $(wows).removeAttr('style');
-                
-            }, 1000);
 
-        }
+                }, 1000);
+
             }
+        }
 
     });
-    
+
 
     function popularWowReInit() {
 
-        
+
         // Если анимация уже была показана, то обнуляем
         if ($('.wow').hasClass('animated')) {
             $(this).removeClass('animated');

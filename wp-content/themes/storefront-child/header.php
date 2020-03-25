@@ -58,7 +58,7 @@
                                     <img src="/wp-content/themes/storefront-child/svg/svg-cart.svg"
                                          alt="cart">
                                 </span>
-                                    <span id="basket-btn__counter"></span>
+                                    <span id="basket-btn__counter"><?= WC()->cart->cart_contents_count ?></span>
                                 <span class="cartName">Корзина</span>
                             </a>
                         </div>

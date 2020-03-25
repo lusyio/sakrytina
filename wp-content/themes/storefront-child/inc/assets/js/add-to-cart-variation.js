@@ -163,12 +163,11 @@ jQuery(function ($) {
                     // Trigger event so themes can refresh other areas
                     // $( document.body ).trigger( 'added_to_cart', [ fragments, cart_hash, $thisbutton ] );
                     $(document.body).trigger('cart_page_refreshed');
-
                     $(document.body).trigger('wc_fragment_refresh');
                 }
-            }).fail(function() {
-				$thisbutton.removeClass('loading');
-			});
+            }).fail(function () {
+                $thisbutton.removeClass('loading');
+            });
 
             return false;
 

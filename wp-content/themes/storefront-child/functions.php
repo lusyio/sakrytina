@@ -191,9 +191,34 @@ function header_add_to_cart_fragment($fragments)
     global $woocommerce;
     ob_start();
     ?>
-    <span class="basket-btn__counter"><?php echo sprintf($woocommerce->cart->cart_contents_count); ?></span>
+    <span id="basket-btn__counter"><?php echo sprintf($woocommerce->cart->cart_contents_count); ?></span>
     <?php
-    $fragments['.basket-btn__counter'] = ob_get_clean();
+    $fragments['basket'] = ob_get_clean();
+    return $fragments;
+}
+
+/*
+*Обновление количества товара
+*/
+add_filter('woocommerce_add_to_cart_fragments', 'card_payment_info');
+
+function card_payment_info($fragments)
+{
+    global $product;
+    ob_start();
+
+    foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item): ?>
+
+            <button data-href="<?= wc_get_cart_remove_url($cart_item_key) ?>"
+                    data-product_id="" data-product_sku=""
+                    type="submit" class="btn btn-primary remove-book">Удалить
+            </button>
+
+            <?php break; endforeach;
+    ?>
+
+    <?php
+    $fragments['paymentInfo'] = ob_get_clean();
     return $fragments;
 }
 
@@ -289,14 +314,15 @@ add_action('init', 'custom_remove_footer_credit', 10);
 function custom_remove_footer_credit()
 {
     remove_action('storefront_footer', 'storefront_credit', 20);
-//    add_action('storefront_footer', 'custom_storefront_credit', 20);
+    //    add_action('storefront_footer', 'custom_storefront_credit', 20);
 }
 
 
 //Добавление favicon
 function favicon_link()
 {
-    echo '<link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />' . "\n";
+    echo '
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.png"/>' . "\n";
 }
 
 add_action('wp_head', 'favicon_link');
@@ -468,7 +494,8 @@ function mytheme_comment($comment, $args, $depth)
             </p>
             <?php if (mb_strlen($desc) > $size): ?>
                 <a data-title="<?= $comment->comment_author ?><?= get_comment_date($d = ', F jS Y', $comment) ?> <?= preg_replace('#^https?://#', '', $comment->comment_author_url); ?>"
-                   data-text="<?= htmlspecialchars($desc) ?>" data-toggle="modal" class="triggerModal" data-target="#commentModal"
+                   data-text="<?= htmlspecialchars($desc) ?>" data-toggle="modal" class="triggerModal"
+                   data-target="#commentModal"
                    href="#">Читать весь отзыв <img
                             src="/wp-content/themes/storefront-child/svg/svg-review__link.svg" alt="review-link"></a>
             <?php endif; ?>
@@ -950,14 +977,15 @@ function onlyBibliRedirect()
     global $product;
     global $post;
     if (!is_null($product) && get_post_meta($post->ID, 'only_bibli', true) === '1') {
-        exit( wp_redirect( home_url( '/bibliografiya/' ) ) );
+        exit(wp_redirect(home_url('/bibliografiya/')));
     }
 
 }
 
-function post_id_by_term_id( $term_id ){
+function post_id_by_term_id($term_id)
+{
     global $wpdb;
 
-    $ids = $wpdb->get_col( $wpdb->prepare( "SELECT object_id FROM $wpdb->term_relationships WHERE term_taxonomy_id = %d", $term_id ) );
+    $ids = $wpdb->get_col($wpdb->prepare("SELECT object_id FROM $wpdb->term_relationships WHERE term_taxonomy_id = %d", $term_id));
     return $ids;
 }

@@ -11,7 +11,7 @@ Author URI:   https://richbee.ru/
 
 @import url('https://fonts.googleapis.com/css?family=Caveat:400,700&display=swap&subset=cyrillic-ext');
 
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700&display=swap&subset=cyrillic-ext');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700&display=swap&subset=cyrillic,cyrillic-ext,latin-ext');
 
 html header, html body, html footer {
     font-family: 'Roboto Slab', sans-serif;
@@ -465,7 +465,7 @@ body a:hover {
     color: #40866E;
 }
 
-#basket-btn__counter {
+#basket-btn__counter, .basket-btn__counter  {
     background: #40866E;
     border: 0;
     border-radius: 50%;
