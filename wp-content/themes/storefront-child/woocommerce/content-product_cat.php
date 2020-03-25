@@ -59,8 +59,8 @@ if ($category->count > 3):
                         }
 
                         if ($i === 1) {
-                            echo '</div>';
                             if ($category->count !== $j){
+                                echo '</div>';
                                 echo '<div class="swiper-slide">';
                             }
                             $i = 0;
