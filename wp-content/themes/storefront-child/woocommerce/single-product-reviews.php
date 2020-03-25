@@ -56,11 +56,15 @@ $terms = get_the_terms($product->get_id(), 'product_cat');
             'limit' => 4,
             'exclude' => array($product->get_id()),
             'meta_query' => [
-                'key' => 'only_bibli',
-                'compare' => '!=',
-                'value' => '1',
+                [
+                    'key' => 'only_bibli',
+                    'compare' => '!=',
+                    'value' => '1',
+                ]
             ],
         ];
+
+        var_dump($args);
         $query = new WC_Product_Query($args);
         $products = $query->get_products();
         $relatedProducts = $products;
@@ -78,12 +82,14 @@ $terms = get_the_terms($product->get_id(), 'product_cat');
                 'limit' => $limit,
                 'exclude' => $notIn,
                 'orderby' => 'rand',
+                'meta_query' => [
+                    [
+                        'key' => 'only_bibli',
+                        'compare' => '!=',
+                        'value' => '1',
+                    ]
+                ],
             );
-            $args['meta_query'][] = [
-                'key' => 'only_bibli',
-                'compare' => '!=',
-                'value' => '1',
-            ];
             $secondRelatedQuery = new WC_Product_Query($args);
             $secondRelatedProducts = $secondRelatedQuery->get_products();
             // Добавляем результаты второго запроса в общий результат
