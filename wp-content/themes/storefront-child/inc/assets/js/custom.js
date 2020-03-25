@@ -37,10 +37,10 @@ jQuery(function ($) {
         var swiper = new Swiper(this, {
             slidesPerView: 3,
             spaceBetween: 30,
-            loop: true,
+            loop: !!$(this).hasClass('loop'),
             breakpoints: {
                 576: {
-                    slidesPerView: 2,
+                    slidesPerView: 1,
                     spaceBetween: 30,
                 },
                 768: {

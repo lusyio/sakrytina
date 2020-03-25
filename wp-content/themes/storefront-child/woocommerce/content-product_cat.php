@@ -28,8 +28,8 @@ $params = array(
     'meta_value' => '1',
     'meta_compare' => '!=',
 );
-$params = array_merge( $wp_query->query, $params );
-query_posts( $params );
+$params = array_merge($wp_query->query, $params);
+query_posts($params);
 $booksInResult = $wp_query->posts;
 $booksInCategory = post_id_by_term_id($category->term_id);
 foreach ($booksInResult as $book) {
@@ -54,80 +54,47 @@ if ($productCount == 0) {
 do_action('woocommerce_shop_loop_subcategory_title', $category);
 
 
-
-if ($productCount > 3):
-    $j = 0;
-    ?>
-    <div id="<?= $category->slug ?>" class="swiper-container carousel-books" data-ride="carousel">
-        <div class="swiper-wrapper">
-            <?php $i = 0; ?>
-            <div class="swiper-slide">
-                <?php
-                if (wc_get_loop_prop('total')) {
-                    while (have_posts()) {
-                        the_post();
-                        if (get_post_meta(get_the_ID(), 'only_bibli',true) == 1) {
-                            continue;
-                        }
-                        /**
-                         * Hook: woocommerce_shop_loop.
-                         */
-                        do_action('woocommerce_shop_loop');
-
-                        global $product;
-
-                        foreach ($product->category_ids as $category_id) {
-                            $cat_id = $category_id;
-                        }
-
-                        if ($cat_id === $category->term_id) {
-                            wc_get_template_part('content', 'product');
-                            $i++;
-                            $j++;
-                        }
-
-                        if ($i === 1) {
-                            if ($category->count !== $j){
-                                echo '</div>';
-                                echo '<div class="swiper-slide">';
-                            }
-                            $i = 0;
-                        }
-
+$j = 0;
+?>
+<div id="<?= $category->slug ?>" class="swiper-container <?= $productCount > 3 ? 'loop' : '' ?> carousel-books" data-ride="carousel">
+    <div class="swiper-wrapper">
+        <?php $i = 0; ?>
+        <div class="swiper-slide">
+            <?php
+            if (wc_get_loop_prop('total')) {
+                while (have_posts()) {
+                    the_post();
+                    if (get_post_meta(get_the_ID(), 'only_bibli', true) == 1) {
+                        continue;
                     }
+                    /**
+                     * Hook: woocommerce_shop_loop.
+                     */
+                    do_action('woocommerce_shop_loop');
+
+                    global $product;
+
+                    foreach ($product->category_ids as $category_id) {
+                        $cat_id = $category_id;
+                    }
+
+                    if ($cat_id === $category->term_id) {
+                        wc_get_template_part('content', 'product');
+                        $i++;
+                        $j++;
+                    }
+
+                    if ($i === 1) {
+                        if ($category->count !== $j) {
+                            echo '</div>';
+                            echo '<div class="swiper-slide">';
+                        }
+                        $i = 0;
+                    }
+
                 }
-                ?>
-            </div>
+            }
+            ?>
         </div>
     </div>
-<?php else: ?>
-    <div class="d-flex">
-        <?php
-        if (wc_get_loop_prop('total')) {
-            while (have_posts()) {
-                the_post();
-                if (get_post_meta(get_the_ID(), 'only_bibli',true) == 1) {
-                    continue;
-                }
-                /**
-                 * Hook: woocommerce_shop_loop.
-                 */
-                do_action('woocommerce_shop_loop');
-
-                global $product;
-
-                foreach ($product->category_ids as $category_id) {
-                    $cat_id = $category_id;
-                }
-
-                if ($cat_id === $category->term_id) {
-                    echo '<div class="carousel-books carousel-books__single">';
-                    wc_get_template_part('content', 'product');
-                    echo '</div>';
-                }
-
-            }
-        }
-        ?>
-    </div>
-<?php endif; ?>
+</div>
