@@ -31,7 +31,7 @@
             <nav class="navbar navbar-light navbar-expand-xl p-0 justify-content-between">
                 <div class="navbar-brand">
                     <a href="<?php echo esc_url(home_url('/')); ?>">
-                        <img src="/wp-content/themes/storefront-child/svg/svg-sakrytina-icon.svg"
+                        <img src="/wp-content/themes/storefront-child/images/sakrytina_logotip.png"
                              alt="sakrytina-icon">
                     </a>
                 </div>

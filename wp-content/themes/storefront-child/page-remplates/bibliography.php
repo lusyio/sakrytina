@@ -11,7 +11,7 @@ Template Post Type: post, page, product
 <div class="container bibliography">
     <div class="row">
         <div class="col-md-6 col-12 bibliography__info">
-            <h1 class="bibliography__header">Библиография</h1>
+            <h1 class="bibliography__header text-center text-md-left">Библиография</h1>
             <?= the_content(); ?>
         </div>
     </div>

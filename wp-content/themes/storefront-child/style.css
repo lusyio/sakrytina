@@ -3,7 +3,7 @@ Theme Name:   	Richbee
 Author:       	Richbee
 Template:     	storefront
 Description:  	Дочерняя тема для storefront
-Version:      	1.0.4
+Version:      	1.0.5
 Theme URI:    https://richbee.ru/
 Author URI:   https://richbee.ru/
 
@@ -2311,9 +2311,9 @@ body a:hover {
 
 #carouselHover {
     position: absolute;
-    top: 14%;
-    width: 100%;
     display: none;
+    top: 15%;
+    width: 102%;
 }
 
 /*--------------------------------------------------------------
@@ -3559,13 +3559,24 @@ and (max-width: 768px) {
         overflow: visible;
     }
 
-    .widget-shop__payments-base {
-        display: none;
+    .widget-shop__payments-base{
+        display: inline-block;
+        right: 0;
+        top: 0;
+        position: absolute;
+    }
+
+    .card-muse .card-muse__input-group{
+        display: block;
+    }
+
+    .card-muse .card-muse__input-group > .input-donate{
+        width: 95%;
     }
 
     .card-muse .card-muse__input-group > .btn-donate {
-        border-top-left-radius: 0px;
-        border-bottom-left-radius: 0px;
+        margin-top: 15px;
+        width: 100%;
     }
 
     .card-muse__right {
@@ -3597,6 +3608,10 @@ and (max-width: 768px) {
 
 @media screen
 and (max-width: 576px) {
+
+    .item-book .product-label-container{
+        left: 21%;
+    }
 
     .woocommerce-shipping-methods .pure-material-radio > span::after {
         top: 3px;
