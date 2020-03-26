@@ -3,7 +3,7 @@ Theme Name:   	Richbee
 Author:       	Richbee
 Template:     	storefront
 Description:  	Дочерняя тема для storefront
-Version:      	1.0.7
+Version:      	1.0.8
 Theme URI:    https://richbee.ru/
 Author URI:   https://richbee.ru/
 
@@ -1285,6 +1285,10 @@ body a:hover {
 
 .carousel-books-control .carousel-books-control-prev {
     margin-right: 25px;
+}
+
+.carousel-books-control__mobile{
+    display: none;
 }
 
 .carousel-books-control span:focus {
@@ -3427,6 +3431,16 @@ and (max-width: 1199px) {
 @media screen
 and (max-width: 991px) {
 
+    .carousel-books-control__mobile > span:first-of-type{
+        position: absolute;
+        left: 10%;
+    }
+
+    .carousel-books-control__mobile > span:last-of-type{
+        position: absolute;
+        right: 10%;
+    }
+
     .popular-prev{
         display: inline-block;
         margin-right: 15px;
@@ -3938,6 +3952,17 @@ and (max-width: 768px) {
 
 @media screen
 and (max-width: 576px) {
+
+    .carousel-books-control__mobile.carousel-books-control{
+        display: block;
+    }
+
+    .carousel-books-control__mobile.carousel-books-control{
+        display: block;
+        position: relative;
+        z-index: 5;
+        top: 10rem;
+    }
 
     .new-checkout__body {
         padding: 20px;

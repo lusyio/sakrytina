@@ -372,7 +372,7 @@ function custom_woocommerce_template_loop_category_title($category)
         <?php
         echo $category->name;
         if ($category->count > 3) :?>
-            <div class="carousel-books-control">
+            <div class="carousel-books-control" data-href="<?= $category->slug ?>">
                 <span class="carousel-books-control-prev <?= $category->slug ?>"><svg width="31" height="16"
                                                                                       viewBox="0 0 31 16" fill="none"
                                                                                       xmlns="http://www.w3.org/2000/svg">

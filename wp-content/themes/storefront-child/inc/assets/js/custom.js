@@ -34,10 +34,11 @@ jQuery(function ($) {
     });
 
     $('.carousel-books').each(function () {
+        let id = $(this).attr('id')
         var swiper = new Swiper(this, {
             slidesPerView: 3,
             spaceBetween: 30,
-            loop: !!$(this).hasClass('loop'),
+            loop: !!($(this).hasClass('loop') || document.documentElement.clientWidth < 576),
             breakpoints: {
                 576: {
                     slidesPerView: 1,
@@ -53,8 +54,8 @@ jQuery(function ($) {
                 },
             },
             navigation: {
-                nextEl: $(this).prev('h2').find('.carousel-books-control-next'),
-                prevEl: $(this).prev('h2').find('.carousel-books-control-prev'),
+                nextEl: $(`[data-href='${id}'] .carousel-books-control-next`),
+                prevEl: $(`[data-href='${id}'] .carousel-books-control-prev`),
             },
         });
     });
