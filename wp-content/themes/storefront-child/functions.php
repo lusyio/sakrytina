@@ -1027,7 +1027,7 @@ add_filter('wpseo_twitter_image', 'changeTwitterImage');
 add_filter('wpseo_og_og_image', 'changeOGImage');
 add_filter('wpseo_og_og_image_secure_url', 'changeOGImageSecure');
 
-function changeOGImageSecure()
+function changeOGImageSecure($img)
 {
     return changeOGImage($img,'autodetect', true);
 }
@@ -1083,7 +1083,7 @@ function changeOGImage($img, $size = 'autodetect', $secure = false)
         ->fromImg($file_path)
         ->resizeFor($size)
         ->getPath();
-    $finalUrl = preg_replace('~(.)+/wp-content/uploads~', $uploads['baseurl'], $path);
+    $finalUrl = preg_replace('~^(.){0,}/wp-content/uploads~', $uploads['baseurl'], $path);
     if ($secure) {
         $finalUrl = preg_replace('~http:~', 'https:', $finalUrl);
     }
