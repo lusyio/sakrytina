@@ -14,6 +14,7 @@ class imgTextGenerator
 			"padding"=>20,
 			"style"=>\Imagick::STYLE_NORMAL,
 			"weight"=>300,
+            "lines_before_trim"=>0
 		);
 	}
 
@@ -28,6 +29,12 @@ class imgTextGenerator
 		$this->opts["big_text_bg"]["paddings"]=$paddings;
 		return $this;
 	}
+	function setLinesBeforeTrim($lines)
+    {
+        $lines = intval($lines);
+        $this->opts["lines_before_trim"]=$lines;
+        return $this;
+    }
 	function setFont($font)
 	{
 		$this->opts["big_text_font"]=$font;
@@ -99,7 +106,8 @@ class imgTextGenerator
 		$ex=explode(" ",$text);
 		$checkLine="";
 		$textImage=new \Imagick();
-		foreach ($ex as $val) {
+		$currentLine = 1;
+		foreach ($ex as $key => $val) {
 			if($checkLine) {
 				$checkLine.=" ";
 			}
@@ -107,6 +115,11 @@ class imgTextGenerator
 			$metrics=$textImage->queryFontMetrics($draw, $checkLine);
 			if($metrics["textWidth"]>$maxWidth) {
 				$checkLine=preg_replace('/\s(?=\S*$)/',"\n",$checkLine);
+                $currentLine++;
+				if ($this->opts["lines_before_trim"] > 0 && $currentLine >= $this->opts["lines_before_trim"]) {
+                    $checkLine .= '...';
+                    break;
+                }
 			}
 		}
 		return $checkLine;
@@ -222,7 +235,7 @@ class imgTextGenerator
 			$baseline = $metrics['boundingBox']['y2'];
 			$textwidth = $metrics['textWidth'] + 2 * $metrics['boundingBox']['x1'];
 			$textheight = $metrics['textHeight'] + $metrics['descender'];
-
+            $draw->setTextInterLineSpacing(-10);
 			$draw->annotation ($textwidth*1.3, $textheight*1.3, $this->opts["big_text"]["text"]);
 
 			/*print_r(array($baseline,$textwidth,$textheight));

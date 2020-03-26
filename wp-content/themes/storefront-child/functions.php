@@ -1031,8 +1031,6 @@ function changeTwitterImage($img) {
 }
 function changeOGImage($img, $size = 'autodetect')
 {
-    return $img;
-
     if (!is_product()) {
         return $img;
     }
@@ -1046,15 +1044,29 @@ function changeOGImage($img, $size = 'autodetect')
     require_once __DIR__ . '/evaSocialImgGenerator/evaSocialImgGenerator.php';
     require_once __DIR__ . '/evaSocialImgGenerator/evaSocialImgTextGenerator.php';
     $authorGenerator = new imgTextGenerator();
+    $social = 'vk';
+    if($size=="autodetect") {
+        $social = imgGenerator::getSocial();
+    }
+    $authorTextPadding = ["15%","0%","0%","45%"];
+    $titleTextPadding = ["30%","5%","0%","45%"];
+    if ($social == 'vk') {
+        $authorTextPadding = ["15%","0%","0%","37%"];
+        $titleTextPadding = ["30%","5%","0%","37%"];
+    }
+
     $author = $authorGenerator
+        ->setCaptionPosition(imgGenerator::position_left_center)
         ->seTextShadow('#000000',75, 1, 2, 2)
-        ->setText('Мария Сакрытина',"#ffffff",imgGenerator::position_center_top,"1/15", ["10%","0%","0%","15%",]);
-//        ->setFont($_SERVER["DOCUMENT_ROOT"] . '/wp-content/themes/storefront-child/inc/assets/fonts/Robotoslabregular.ttf');
+        ->setText('Мария Сакрытина',"#ffffff",imgGenerator::position_left_top,"1/15", $authorTextPadding)
+        ->setFont($_SERVER["DOCUMENT_ROOT"] . '/wp-content/themes/storefront-child/inc/assets/fonts/Robotoslabregular.ttf');
     $titleGenerator = new imgTextGenerator();
     $title = $titleGenerator
+        ->setCaptionPosition(imgGenerator::position_left_center)
         ->seTextShadow('#000000',75, 1, 2, 2)
-        ->setText(get_the_title(),"#ffffff",imgGenerator::position_center_top,"1/15", ["20%","0%","0%","15%",]);
-//        ->setFont($_SERVER["DOCUMENT_ROOT"] . '/wp-content/themes/storefront-child/inc/assets/fonts/Robotoslabregular.ttf');
+        ->setText(get_the_title(),"#ffffff",imgGenerator::position_left_top,"1/8", $titleTextPadding)
+        ->setLinesBeforeTrim(3)
+        ->setFont($_SERVER["DOCUMENT_ROOT"] . '/wp-content/themes/storefront-child/inc/assets/fonts/Robotoslabregular.ttf');
     $generator = new imgGenerator();
     $path = $generator
         ->enableCache($uploads['basedir'])
@@ -1063,7 +1075,30 @@ function changeOGImage($img, $size = 'autodetect')
         ->addOverlay(0.5, '#000000')
         ->setLogo($file_path, imgGenerator::position_left_bottom, ["10%","0%","10%","5%",],'auto')
         ->fromImg($file_path)
-        ->resizeFor('autodetect')
+        ->resizeFor($size)
         ->getPath();
-    return $path;
+    $finalUrl = str_replace($uploads['basedir'],$uploads['baseurl'], $path);
+    return $finalUrl;
 }
+
+add_filter('wpseo_og_og_image_width', function ($width) {
+    if (!is_product()) {
+        return $width;
+    }
+    if(!extension_loaded('imagick')) {
+        return $width;
+    }
+    require_once __DIR__ . '/evaSocialImgGenerator/evaSocialImgGenerator.php';
+    return imgGenerator::getWidth();
+});
+
+add_filter('wpseo_og_og_image_height', function ($height) {
+    if (!is_product()) {
+        return $height;
+    }
+    if(!extension_loaded('imagick')) {
+        return $height;
+    }
+    require_once __DIR__ . '/evaSocialImgGenerator/evaSocialImgGenerator.php';
+    return imgGenerator::getHeight();
+});
