@@ -1697,6 +1697,68 @@ body a:hover {
     margin-right: 0;
 }
 
+#litnetTarget {
+    padding: 26px 40px 91px;
+}
+
+#litnetTarget p, .audioTarget p {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 25px;
+}
+
+#litnetTarget .bookTarget__where, .audioTarget .bookTarget__where {
+    display: block;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 25px;
+}
+
+#litnetTarget .bookTarget__where > p, .audioTarget .bookTarget__where > p {
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #000000;
+    display: table;
+    padding: 0 40px;
+    background: #f9f9f9;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 0;
+}
+
+#litnetTarget .bookTarget__where:before, .audioTarget .bookTarget__where:before {
+    width: 100%;
+    top: 50%;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    content: '';
+    border-bottom: 1px solid #DFDFDF;;
+}
+
+#litnetTarget .bookTarget__links {
+    display: flex;
+    justify-content: center;
+}
+
+#litnetTarget .bookTarget__links > a {
+    margin-right: 15px;
+    display: flex;
+    font-size: 12px;
+    line-height: 16px;
+    color: #000000;
+}
+
+#litnetTarget .bookTarget__links > a:last-of-type {
+    margin-right: 0;
+}
+
 /*--------------------------------------------------------------
 # BOOKS
 --------------------------------------------------------------*/

@@ -46,6 +46,7 @@ $not_to_buy = (get_post_meta($idBook, 'not_to_buy', true));
 
 $externalABook = get_post_meta($idBook, 'audio_link', true);
 
+$litnetLink = get_post_meta($idBook, 'read_fragment_link', true);
 // Бумажная версия
 
 // Проверяем наличие бумажной версии
@@ -76,6 +77,8 @@ if (!in_array('ebook', $disabledTabs)) {
     $activeTab = 'book';
 } elseif (!in_array('abook', $disabledTabs)) {
     $activeTab = 'abook';
+} else {
+    $activeTab = 'litnet';
 }
 
 $styleDBlock = 'style="display: block;"';
@@ -293,6 +296,17 @@ $styleDNone = 'style="display: none;"';
                         <?php endif; ?>
 
 
+                    </div>
+                    <div id="litnetTarget" class="book-target card-payment-info__content" <?= ($activeTab == 'litnet' && $litnetLink != '') ? $styleDBlock : $styleDNone; ?>>
+                        <p>Данную книгу можно приобрести только на сайте Литнет</p>
+                        <div class="bookTarget__where">
+                            <p></p>
+                        </div>
+                        <div class="bookTarget__links">
+                            <a target="_blank" href="<?= $litnetLink ?>">
+                                Перейти на Литнет
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
