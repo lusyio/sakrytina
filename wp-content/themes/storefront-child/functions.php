@@ -961,3 +961,27 @@ function post_id_by_term_id( $term_id ){
     $ids = $wpdb->get_col( $wpdb->prepare( "SELECT object_id FROM $wpdb->term_relationships WHERE term_taxonomy_id = %d", $term_id ) );
     return $ids;
 }
+
+// Удаление инлайн-скриптов из хедера
+add_filter('storefront_customizer_css', '__return_false');
+add_filter('storefront_customizer_woocommerce_css', '__return_false');
+add_filter('storefront_gutenberg_block_editor_customizer_css', '__return_false');
+
+add_action('wp_print_styles', function () {
+    wp_styles()->add_data('woocommerce-inline', 'after', '');
+});
+
+add_action('init', function () {
+    global $heateor_sss;
+    remove_action('wp_head', 'wc_gallery_noscript');
+    remove_action('wp_enqueue_scripts', array($heateor_sss->plugin_public, 'frontend_inline_style'));
+    add_action('wp_footer', function () {
+        global $heateor_sss;
+        echo '<style type="text/css">';
+        $heateor_sss->plugin_public->frontend_inline_style();
+        echo '</style>';
+    });
+
+});
+// Конец удаления инлайн-скриптов из хедера
+
