@@ -1586,8 +1586,8 @@ body a:hover {
 
 .card-payment-info__content .price {
     font-weight: bold;
-    font-size: 36px;
-    line-height: 47px;
+    font-size: 2.25rem;
+    line-height: 2.9375rem;
     color: #4B4B4B;
     margin-bottom: 0;
     position: relative;
@@ -2668,7 +2668,7 @@ footer.site-footer p {
     display: none;
 }
 
-.new-related__card-body > div .new-related__img > img {
+.new-related__card-body > div .new-related__img img {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
     border-radius: 0;
     object-fit: cover;

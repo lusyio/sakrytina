@@ -127,7 +127,9 @@ $terms = get_the_terms($product->get_id(), 'product_cat');
                         <div class="new-related__card-body ">
                             <div>
                                 <div class="new-related__img">
+                                    <a href="<?= $relatedProduct->get_permalink(); ?>">
                                     <?= $relatedProduct->get_image('medium'); ?>
+                                    </a>
                                 </div>
                                 <div>
                                     <?php if ($key < $inCategoryCount): ?>
