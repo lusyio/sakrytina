@@ -66,7 +66,7 @@ class imgGenerator
 			$this->opts["resize_and_crop"]=array("width"=>1024,"height"=>512);
 		}
 		if($type=="vk") {
-			$this->opts["resize_and_crop"]=array("width"=>510,"height"=>228);
+			$this->opts["resize_and_crop"]=array("width"=>898,"height"=>400);
 		}
 		if($type=="ok") {
 			$this->opts["resize_and_crop"]=array("width"=>780,"height"=>385);

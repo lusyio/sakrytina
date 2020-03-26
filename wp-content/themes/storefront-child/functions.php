@@ -1025,11 +1025,17 @@ add_action('wp_print_styles', function () {
 
 add_filter('wpseo_twitter_image', 'changeTwitterImage');
 add_filter('wpseo_og_og_image', 'changeOGImage');
+add_filter('wpseo_og_og_image_secure_url', 'changeOGImageSecure');
 
-function changeTwitterImage($img) {
+function changeOGImageSecure()
+{
+    return changeOGImage($img,'autodetect', true);
+}
+function changeTwitterImage($img)
+{
     return changeOGImage($img,'twitter');
 }
-function changeOGImage($img, $size = 'autodetect')
+function changeOGImage($img, $size = 'autodetect', $secure = false)
 {
     if (!is_product()) {
         return $img;
@@ -1077,7 +1083,13 @@ function changeOGImage($img, $size = 'autodetect')
         ->fromImg($file_path)
         ->resizeFor($size)
         ->getPath();
-    $finalUrl = str_replace($uploads['basedir'],$uploads['baseurl'], $path);
+    $finalUrl = str_replace($uploads['basedir'], $uploads['baseurl'], $path);
+    var_dump($uploads['basedir']);
+    var_dump($uploads['baseurl']);
+    var_dump($finalUrl);
+    if ($secure) {
+        $finalUrl = preg_replace('~http:~', 'https:', $finalUrl);
+    }
     return $finalUrl;
 }
 
