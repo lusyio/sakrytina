@@ -999,18 +999,18 @@ add_action('wp_print_styles', function () {
     wp_styles()->add_data('woocommerce-inline', 'after', '');
 });
 
-add_action('init', function () {
-    global $heateor_sss;
-    remove_action('wp_head', 'wc_gallery_noscript');
-    remove_action('wp_enqueue_scripts', array($heateor_sss->plugin_public, 'frontend_inline_style'));
-    add_action('wp_footer', function () {
-        global $heateor_sss;
-        echo '<style type="text/css">';
-        $heateor_sss->plugin_public->frontend_inline_style();
-        echo '</style>';
-    });
-
-});
+//add_action('init', function () {
+//    global $heateor_sss;
+//    remove_action('wp_head', 'wc_gallery_noscript');
+//    remove_action('wp_enqueue_scripts', array($heateor_sss->plugin_public, 'frontend_inline_style'));
+//    add_action('wp_footer', function () {
+//        global $heateor_sss;
+//        echo '<style type="text/css">';
+//        $heateor_sss->plugin_public->frontend_inline_style();
+//        echo '</style>';
+//    });
+//
+//});
 // Конец удаления инлайн-скриптов из хедера
 
 add_filter('wpseo_twitter_image', 'changeTwitterImage');

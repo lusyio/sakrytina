@@ -58,24 +58,41 @@
                                     <img src="/wp-content/themes/storefront-child/svg/svg-cart.svg"
                                          alt="cart">
                                 </span>
-                                    <span id="basket-btn__counter"><?= WC()->cart->cart_contents_count ?></span>
+                                <span id="basket-btn__counter"><?= WC()->cart->cart_contents_count ?></span>
                                 <span class="cartName">Корзина</span>
                             </a>
                         </div>
-                        <div class="m-auto d-xl-block d-none">
+                        <div class="m-auto d-md-block d-none">
                             <?php if (is_user_logged_in()) { ?>
-                                <a class="btn btn-primary"
+                                <a style="z-index: 5;position: relative;" class="btn btn-primary"
                                    href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>"
                                    title="<?php _e('My Account', 'woothemes'); ?>"><img
                                             src="/wp-content/themes/storefront-child/svg/svg-your-account.svg"
                                             alt="your-account"> Личный кабинет
                                 </a>
                             <?php } else { ?>
-                                <a class="btn btn-primary"
+                                <a style="z-index: 5;position: relative;" class="btn btn-primary"
                                    href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>"
                                    title="<?php _e('Login / Register', 'woothemes'); ?>"> <img
                                             src="/wp-content/themes/storefront-child/svg/svg-your-account.svg"
                                             alt="your-account"> Личный кабинет
+                                </a>
+                            <?php } ?>
+                        </div>
+                        <div class="m-auto d-md-none d-block">
+                            <?php if (is_user_logged_in()) { ?>
+                                <a style="z-index: 5;position: relative;"
+                                   href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>"
+                                   title="<?php _e('My Account', 'woothemes'); ?>"><img
+                                            src="/wp-content/themes/storefront-child/svg/svg-your-account-black.svg"
+                                            alt="your-account" style="width: 21px; height: 26px; margin-right: 10px;">
+                                </a>
+                            <?php } else { ?>
+                                <a style="z-index: 5;position: relative;"
+                                   href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>"
+                                   title="<?php _e('Login / Register', 'woothemes'); ?>"> <img
+                                            src="/wp-content/themes/storefront-child/svg/svg-your-account-black.svg"
+                                            alt="your-account" style="width: 21px; height: 26px; margin-right: 10px;">
                                 </a>
                             <?php } ?>
                         </div>

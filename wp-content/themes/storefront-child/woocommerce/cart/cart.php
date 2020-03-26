@@ -38,7 +38,7 @@ do_action('woocommerce_before_cart'); ?>
                     ?>
                     <div class="row <?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>">
 
-                        <div class="product-thumbnail col-2">
+                        <div class="product-thumbnail col-lg-2 col-md-3 col-4">
                             <?php
                             $thumbnail = apply_filters('woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key);
                             ?>
@@ -75,14 +75,27 @@ do_action('woocommerce_before_cart'); ?>
                             ?>
                         </div>
 
-                        <div class="product-price col-2"
+                        <div class="product-price col-lg-2 col-md-3 col-4"
                              data-title="<?php esc_attr_e('Price', 'woocommerce'); ?>">
                             <?php
                             echo apply_filters('woocommerce_cart_item_price', WC()->cart->get_product_price($_product), $cart_item, $cart_item_key); // PHPCS: XSS ok.
                             ?>
+                            <?php
+                            echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                                'woocommerce_cart_item_remove_link',
+                                sprintf(
+                                    '<a href="%s" class="remove d-md-none d-block" aria-label="%s" data-product_id="%s" data-product_sku="%s"><img src="/wp-content/themes/storefront-child/svg/svg-delete.svg" alt=""></a>',
+                                    esc_url(wc_get_cart_remove_url($cart_item_key)),
+                                    esc_html__('Remove this item', 'woocommerce'),
+                                    esc_attr($product_id),
+                                    esc_attr($_product->get_sku())
+                                ),
+                                $cart_item_key
+                            );
+                            ?>
                         </div>
 
-                        <div class="product-remove col-3">
+                        <div class="product-remove col-lg-3 col-2 d-md-block d-none">
                             <?php
                             echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                 'woocommerce_cart_item_remove_link',
@@ -107,16 +120,15 @@ do_action('woocommerce_before_cart'); ?>
             <?php do_action('woocommerce_after_cart_contents'); ?>
             <hr>
             <div class="row">
-                <div class="col-2"></div>
-                <div class="col-4 total">
+                <div class="col-lg-4 col-md-7 col-8 offset-lg-2 offset-0 total">
                     <p>Сумма к оплате</p>
                 </div>
-                <div class="col-2 total-price">
+                <div class="col-lg-2 col-md-3 col-4 total-price">
                     <p>
                         <?= WC()->cart->cart_contents_total ?>₽
                     </p>
                 </div>
-                <div class="col-3 m-auto">
+                <div class="col-lg-3 col-12 m-auto">
                     <div class="wc-proceed-to-checkout">
                         <?php do_action('woocommerce_proceed_to_checkout'); ?>
                     </div>
