@@ -63,7 +63,12 @@
                     ?>
                 </div>
             </div>
-            <div class="col-12 footer-socials text-center col-lg-3 text-lg-right m-auto">
+            <div class="d-flex m-auto justify-content-between">
+                <p class="mb-0 d-lg-none d-block">
+                    <a class="link-strike" href="/terms/">Политика конфиденциальности</a>
+                </p>
+            </div>
+            <div class="col-12 d-lg-block d-none footer-socials text-center col-lg-3 text-lg-right m-auto">
                 <p class="mb-0 footer-credits d-block">
                     <a class="credits" href="https://richbee.ru/"
                        target="_blank"><img src="/wp-content/themes/storefront-child/svg/Richbee-white.svg" alt=""></a>
@@ -71,13 +76,19 @@
             </div>
             <div class="col-12">
                 <hr>
+                <div class="col-12 d-lg-none d-block footer-socials text-center col-lg-3 text-lg-right">
+                    <p class="mb-0 footer-credits d-block">
+                        <a class="credits" href="https://richbee.ru/"
+                           target="_blank"><img src="/wp-content/themes/storefront-child/svg/Richbee-white.svg" alt=""></a>
+                    </p>
+                </div>
                 <div class="d-flex justify-content-between">
-                    <p class="footer-name-p mb-0">
+                    <p class="footer-name-p mb-0 m-auto m-lg-0">
                         <?php echo date('Y'); ?>
                         &copy; <?php echo '<a class="link-strike" href="' . home_url() . '">' . get_bloginfo('name') . '</a>'; ?>
 
                     </p>
-                    <p class="mb-0">
+                    <p class="mb-0 d-lg-block d-none">
                         <a class="link-strike" href="/terms/">Политика конфиденциальности</a>
                     </p>
                 </div>

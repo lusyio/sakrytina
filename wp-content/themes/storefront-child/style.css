@@ -3655,6 +3655,25 @@ and (max-width: 991px) {
         margin-top: 25px;
     }
 
+    .footer-menu{
+        margin: auto;
+        margin-bottom: 10px;
+    }
+
+    footer .footer-socials{
+        margin: auto;
+        margin-bottom: 30px;
+    }
+
+    footer.site-footer hr{
+        margin: 20px 0 40px;
+    }
+
+    footer.site-footer{
+        padding-top: 26px;
+        padding-bottom: 35px;
+    }
+
 }
 
 @media screen
@@ -3721,10 +3740,6 @@ and (max-width: 768px) {
         font-size: 24px;
         line-height: 140%;
         margin-bottom: 12px;
-    }
-
-    footer.site-footer {
-        padding-bottom: 75px;
     }
 
     .main-social__card .btn.btn-inst, .main-social__card .btn.btn-fb {
@@ -3881,11 +3896,6 @@ and (max-width: 768px) {
 
     .card-muse__right {
         padding-left: 0px;
-    }
-
-    .footer-menu {
-        margin: auto;
-        margin-bottom: 30px;
     }
 
     #sb_instagram .sb_instagram_header {
