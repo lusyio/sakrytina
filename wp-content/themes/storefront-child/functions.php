@@ -1023,3 +1023,47 @@ add_action('wp_print_styles', function () {
 //});
 // Конец удаления инлайн-скриптов из хедера
 
+add_filter('wpseo_twitter_image', 'changeTwitterImage');
+add_filter('wpseo_og_og_image', 'changeOGImage');
+
+function changeTwitterImage($img) {
+    return changeOGImage($img,'twitter');
+}
+function changeOGImage($img, $size = 'autodetect')
+{
+    return $img;
+
+    if (!is_product()) {
+        return $img;
+    }
+    if(!extension_loaded('imagick')) {
+        return $img;
+    }
+    global $post;
+    $originalImageUrl = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
+    $uploads = wp_upload_dir();
+    $file_path = str_replace($uploads['baseurl'], $uploads['basedir'], $originalImageUrl);
+    require_once __DIR__ . '/evaSocialImgGenerator/evaSocialImgGenerator.php';
+    require_once __DIR__ . '/evaSocialImgGenerator/evaSocialImgTextGenerator.php';
+    $authorGenerator = new imgTextGenerator();
+    $author = $authorGenerator
+        ->seTextShadow('#000000',75, 1, 2, 2)
+        ->setText('Мария Сакрытина',"#ffffff",imgGenerator::position_center_top,"1/15", ["10%","0%","0%","15%",]);
+//        ->setFont($_SERVER["DOCUMENT_ROOT"] . '/wp-content/themes/storefront-child/inc/assets/fonts/Robotoslabregular.ttf');
+    $titleGenerator = new imgTextGenerator();
+    $title = $titleGenerator
+        ->seTextShadow('#000000',75, 1, 2, 2)
+        ->setText(get_the_title(),"#ffffff",imgGenerator::position_center_top,"1/15", ["20%","0%","0%","15%",]);
+//        ->setFont($_SERVER["DOCUMENT_ROOT"] . '/wp-content/themes/storefront-child/inc/assets/fonts/Robotoslabregular.ttf');
+    $generator = new imgGenerator();
+    $path = $generator
+        ->enableCache($uploads['basedir'])
+        ->addText($author)
+        ->addText($title)
+        ->addOverlay(0.5, '#000000')
+        ->setLogo($file_path, imgGenerator::position_left_bottom, ["10%","0%","10%","5%",],'auto')
+        ->fromImg($file_path)
+        ->resizeFor('autodetect')
+        ->getPath();
+    return $path;
+}
