@@ -2,7 +2,9 @@ jQuery(function ($) {
 
     const wow = new WOW();
     wow.init();
-
+    $(document).ready(function () {
+        $('.card-payment.active').trigger('click')
+    })
 
     $(document).on('click', '.btn.remove-book', function (event) {
         event.preventDefault();
