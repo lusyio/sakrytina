@@ -1413,8 +1413,8 @@ body a:hover {
 
 .product-card__main-body h1.entry-title {
     font-weight: normal;
-    font-size: 36px;
-    line-height: 47px;
+    font-size: 2.25rem;
+    line-height: 2.9375rem;
     color: #000000;
     text-align: left;
     margin: 0;
@@ -2016,7 +2016,7 @@ body a:hover {
     margin-bottom: 0;
 }
 
-.cart-card .wc-proceed-to-checkout .checkout-button:after{
+.cart-card .wc-proceed-to-checkout .checkout-button:after {
     content: none;
     display: none;
 }
@@ -2666,8 +2666,8 @@ footer.site-footer p {
 }
 
 .new-related__card .new-related__title {
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 1.5rem;
+    line-height: 2rem;
     color: #000000;
     margin-bottom: 8px;
 }
@@ -2701,6 +2701,49 @@ footer.site-footer p {
 # PRODUCT
 --------------------------------------------------------------*/
 
+.product-card-breadcrumb {
+    margin-bottom: 10px;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+    color: #6F6F6F;
+}
+
+.product-card-breadcrumb > a {
+    color: #000000;
+    display: inline-block;
+    text-decoration: none;
+    position: relative;
+}
+
+.product-card-breadcrumb > a:hover {
+    color: #000000;
+}
+
+.product-card-breadcrumb > a:hover:after {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    transform: translateY(0px);
+}
+
+.product-card-breadcrumb > a:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: #000;
+    opacity: 0;
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    transform: translateY(5px);
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+    -moz-transition: -moz-transform 0.3s, opacity 0.3s;
+    transition: transform 0.3s, opacity 0.3s;
+    pointer-events: none;
+}
 
 .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword {
     background: #FFFFFF;
@@ -3244,7 +3287,7 @@ body .btn.btn-primary, body .button.wc-forward, .added_to_cart.wc-forward {
     border-radius: 10px;
     padding: 14px 23px;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 21px;
     color: #FFFFFF;
     height: 50px;
@@ -3303,6 +3346,15 @@ and (min-width: 768px) {
 @media screen
 and (max-width: 1199px) {
 
+    .woocommerce-product-gallery img {
+        width: 100%;
+    }
+
+    .card-payment .card-payment__body {
+        padding: 25px 20px 15px;
+    }
+
+
     .outer-menu .menu li > a {
         margin-left: 0 !important;
         margin-right: 0 !important;
@@ -3346,7 +3398,7 @@ and (max-width: 1199px) {
         margin-bottom: 50px;
     }
 
-    .product-thumbnail__body a > img{
+    .product-thumbnail__body a > img {
         width: 100%;
         height: auto;
     }
@@ -3360,18 +3412,18 @@ and (max-width: 991px) {
         padding: 40px 40px 80px 40px;
     }
 
-    .my-account-card .my-account-card__body{
+    .my-account-card .my-account-card__body {
         padding: 40px;
     }
 
-    .new-checkout form.checkout{
+    .new-checkout form.checkout {
         border-right: none;
         border-bottom: 1px solid #F3F3F3;
         padding-bottom: 30px;
         padding-right: 0;
     }
 
-    .new-checkout__info{
+    .new-checkout__info {
         padding: 0;
     }
 
@@ -3467,24 +3519,112 @@ and (max-width: 991px) {
         height: 50px;
     }
 
-    h1.entry-title{
+    h1.entry-title {
         text-align: center;
     }
 
-    .navigation-my-account{
+    .navigation-my-account {
         border-right: none;
         border-bottom: 1px solid #F3F3F3;
         margin-bottom: 20px;
     }
 
-    .cart-card .wc-proceed-to-checkout .checkout-button{
+    .cart-card .wc-proceed-to-checkout .checkout-button {
         max-width: 190px;
         margin: auto;
         margin-top: 30px;
     }
 
-    .cart-card .total-price{
+    .woocommerce-product-gallery img {
+        margin: auto;
+    }
+
+    .woocommerce-product-gallery {
+        z-index: 1;
+    }
+
+    .cart-card .total-price {
         margin: 0;
+    }
+
+    .woocommerce-product-gallery .woocommerce-product-gallery__wrapper:after {
+        content: none;
+        display: none;
+    }
+
+    .variations_form.cart {
+        margin-bottom: 0;
+    }
+
+    .product-card .product-card__secondary-body {
+        padding-top: 0;
+    }
+
+    .woocommerce-product-gallery__wrapper {
+        background: #ffffff;
+        padding-top: 30px;
+    }
+
+    .product-card .br {
+        border-right: none;
+    }
+
+    .product-card .product-card__award {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .product-card .product-card__main-body {
+        padding: 25px;
+    }
+
+    .product-card-breadcrumb {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .new-related__mt:last-of-type {
+        display: none;
+    }
+
+    .new-related__mt:first-of-type {
+        display: block;
+    }
+
+    #commentModal .modal-body{
+        padding: 40px 30px 40px 40px;
+    }
+
+    #comments .comments__img{
+        margin: auto;
+        margin-bottom: 25px;
+    }
+
+    .comment__title{
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .comment__content > p{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .comment__content > a{
+        margin: auto;
+    }
+
+    #reviews #comments{
+        padding: 0 20px;
+    }
+
+    #reviews #comments{
+        margin-bottom: 45px;
+    }
+
+    #carouselRelated .carouselRelated-control{
+        text-align: center;
+        margin-top: 25px;
     }
 
 }
@@ -3492,25 +3632,25 @@ and (max-width: 991px) {
 @media screen
 and (max-width: 768px) {
 
-    .cart-card a.remove{
+    .cart-card a.remove {
         position: absolute;
         right: 0;
         top: 7px;
     }
 
-    .cart-card .product-price{
+    .cart-card .product-price {
         position: relative;
     }
 
-    .cart-card__body{
+    .cart-card__body {
         padding: 20px 20px 60px 20px;
     }
 
-    .basket-btn:hover{
+    .basket-btn:hover {
         background: transparent;
     }
 
-    .new-checkout__body{
+    .new-checkout__body {
         padding: 40px;
     }
 
@@ -3692,18 +3832,18 @@ and (max-width: 768px) {
         overflow: visible;
     }
 
-    .widget-shop__payments-base{
+    .widget-shop__payments-base {
         display: inline-block;
         right: 0;
         top: 0;
         position: absolute;
     }
 
-    .card-muse .card-muse__input-group{
+    .card-muse .card-muse__input-group {
         display: block;
     }
 
-    .card-muse .card-muse__input-group > .input-donate{
+    .card-muse .card-muse__input-group > .input-donate {
         width: 95%;
     }
 
@@ -3738,19 +3878,71 @@ and (max-width: 768px) {
         bottom: -10px;
     }
 
-    table td, table th{
+    table td, table th {
         padding: 20px 0 0;
+    }
+
+    .woocommerce-product-gallery img {
+        max-width: 150px;
+    }
+
+    .product-card-breadcrumb {
+        padding: 0 40px;
     }
 }
 
 @media screen
 and (max-width: 576px) {
 
-    .my-account-card .my-account-card__body{
+    .new-related__card-body > div {
+        display: block;
+    }
+
+    .new-related__card-body > div .new-related__img {
+        margin: auto;
+        right: unset;
+        top: -50px;
+    }
+
+    .new-related__mt {
+        padding-top: 50px;
+    }
+
+    .new-related__card .new-related__title {
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .new-related__card .new-related__cycle {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .new-related.new-related__row .new-related__card-body, .new-related .new-related__card-body {
+        margin-left: 0;
+        padding: 0 30px 40px;
+        text-align: center;
+    }
+
+    .new-related .new-related__card {
+        padding-left: 0;
+    }
+
+    .new-related__card .new-related__text {
+        margin-bottom: 25px;
+    }
+
+    .new-related__card .btn-primary {
+        position: unset;
+        display: block;
+        margin: auto;
+    }
+
+    .my-account-card .my-account-card__body {
         padding: 20px;
     }
 
-    .item-book .product-label-container{
+    .item-book .product-label-container {
         left: 21%;
     }
 

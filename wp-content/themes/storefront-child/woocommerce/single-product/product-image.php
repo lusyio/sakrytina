@@ -24,14 +24,22 @@ if ( ! function_exists( 'wc_get_gallery_image_html' ) ) {
 
 global $product;
 
+$catTerms = get_the_terms($product->get_id(), 'product_cat');
+foreach ($catTerms as $key => $term):
+    $catName = $term->name;
+    $catSlug = $term->slug;
+    $linkCat = '/shop/#' . $term->slug;
+endforeach;
+
 $columns           = apply_filters( 'woocommerce_product_thumbnails_columns', 4 );
 $post_thumbnail_id = $product->get_image_id();
 $wrapper_classes   = apply_filters( 'woocommerce_single_product_image_gallery_classes', array(
 	'woocommerce-product-gallery',
 	'col-lg-3',
 	'col-12',
+	'pl-lg-3',
 	'pr-lg-0',
-	'pr-unset',
+	'p-0',
 	'woocommerce-product-gallery--' . ( $product->get_image_id() ? 'with-images' : 'without-images' ),
 	'woocommerce-product-gallery--columns-' . absint( $columns ),
 	'images',
@@ -39,6 +47,9 @@ $wrapper_classes   = apply_filters( 'woocommerce_single_product_image_gallery_cl
 ?>
 <div class="<?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>" data-columns="<?php echo esc_attr( $columns ); ?>" style="opacity: 0; transition: opacity .25s ease-in-out;">
 	<figure class="woocommerce-product-gallery__wrapper">
+        <p class="product-card-breadcrumb d-lg-none d-block">
+            <a href="/">Главная</a> / <a href="/shop/#<?= $catSlug ?>"><?= $catName ?></a> / <?= $product->name ?>
+        </p>
 		<?php
 		if ( $product->get_image_id() ) {
 			$html = wc_get_gallery_image_html( $post_thumbnail_id, true );

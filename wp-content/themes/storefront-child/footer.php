@@ -87,7 +87,7 @@
     </div>
 
 
-    <div class="col-full">
+    <div class="col-full d-none">
 
         <?php
         /**
