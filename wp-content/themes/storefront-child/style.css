@@ -1895,8 +1895,8 @@ body a:hover {
 }
 
 .cart-card .product-name a {
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 1.5rem;
+    line-height: 2rem;
     color: #000000;
     margin-bottom: 15px;
 }
@@ -1907,8 +1907,8 @@ body a:hover {
 
 .cart-card .product-price span {
     font-weight: bold;
-    font-size: 36px;
-    line-height: 47px;
+    font-size: 2.25rem;
+    line-height: 2.9375rem;
     color: #969696;
 }
 
@@ -1945,13 +1945,18 @@ body a:hover {
     border-radius: 10px;
     padding: 14px 23px;
     font-weight: normal;
-    font-size: 16px;
-    line-height: 21px;
+    font-size: 1rem;
+    line-height: 1.7;
     color: #FFFFFF;
     height: 50px;
     border: none;
     min-height: 50px;
     margin-bottom: 0;
+}
+
+.cart-card .wc-proceed-to-checkout .checkout-button:after{
+    content: none;
+    display: none;
 }
 
 .cart-card .wc-proceed-to-checkout {
@@ -1965,8 +1970,8 @@ body a:hover {
 
 .cart-card .total p {
     font-weight: normal;
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 1.5rem;
+    line-height: 2rem;
     color: #000000;
     margin-bottom: 0;
 }
@@ -1977,8 +1982,8 @@ body a:hover {
 
 .cart-card .total-price p {
     font-weight: bold;
-    font-size: 36px;
-    line-height: 47px;
+    font-size: 2.25rem;
+    line-height: 2.9375rem;
     color: #4B4B4B;
     margin-bottom: 0;
 }
@@ -3279,10 +3284,19 @@ and (max-width: 1199px) {
         margin-bottom: 50px;
     }
 
+    .product-thumbnail__body a > img{
+        width: 100%;
+        height: auto;
+    }
+
 }
 
 @media screen
 and (max-width: 991px) {
+
+    .cart-card__body {
+        padding: 40px 40px 80px 40px;
+    }
 
     .my-account-card .my-account-card__body{
         padding: 40px;
@@ -3401,10 +3415,38 @@ and (max-width: 991px) {
         margin-bottom: 20px;
     }
 
+    .cart-card .wc-proceed-to-checkout .checkout-button{
+        max-width: 190px;
+        margin: auto;
+        margin-top: 30px;
+    }
+
+    .cart-card .total-price{
+        margin: 0;
+    }
+
 }
 
 @media screen
 and (max-width: 768px) {
+
+    .cart-card a.remove{
+        position: absolute;
+        right: 0;
+        top: 7px;
+    }
+
+    .cart-card .product-price{
+        position: relative;
+    }
+
+    .cart-card__body{
+        padding: 20px 20px 60px 20px;
+    }
+
+    .basket-btn:hover{
+        background: transparent;
+    }
 
     .new-checkout__body{
         padding: 40px;
