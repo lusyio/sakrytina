@@ -23,7 +23,7 @@ if ($is_in_cart)
 
 ?>
 <?php if ($is_in_cart): ?>
-<button data-href="<?= wc_get_cart_remove_url($cart_item_key) ?>" data-product_id="<?= $product->get_id() ?>" data-product_sku="<?= $product->get_sku() ?>" type="submit" class="btn btn-primary remove-book">Удалить</button>
+<button data-href="<?= wc_get_cart_remove_url($cart_item_key) ?>" data-product_id="<?= $product->get_id() ?>" data-product_sku="<?= $product->get_sku() ?>" type="submit" class="btn btn-primary remove-book">Удалить из корзины</button>
 <?php else: ?>
     <div class="woocommerce-variation-add-to-cart variations_button">
         <?php do_action('woocommerce_before_add_to_cart_button'); ?>

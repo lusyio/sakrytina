@@ -211,7 +211,7 @@ function card_payment_info($fragments)
 
             <button data-href="<?= wc_get_cart_remove_url($cart_item_key) ?>"
                     data-product_id="" data-product_sku=""
-                    type="submit" class="btn btn-primary remove-book">Удалить
+                    type="submit" class="btn btn-primary remove-book">Удалить из корзины
             </button>
 
             <?php break; endforeach;
