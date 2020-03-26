@@ -1024,6 +1024,9 @@ function changeOGImage($img, $size = 'autodetect')
     if (!is_product()) {
         return $img;
     }
+    if(!extension_loaded('imagick')) {
+        return $img;
+    }
     global $post;
     $originalImageUrl = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
     $uploads = wp_upload_dir();
