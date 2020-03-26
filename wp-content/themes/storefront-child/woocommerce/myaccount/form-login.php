@@ -25,7 +25,7 @@ do_action('woocommerce_before_customer_login_form'); ?>
 
 <div class="row" id="customer_login">
     <?php endif; ?>
-    <div class="col-12 offset-0 col-lg-6 offset-lg-3" id="loginBlock">
+    <div class="col-12 offset-0 col-lg-6 offset-lg-3 pl-lg-3 pr-lg-3 p-0" id="loginBlock">
         <form class="woocommerce-form woocommerce-form-login login" method="post">
 
             <?php do_action('woocommerce_login_form_start'); ?>
@@ -55,7 +55,7 @@ do_action('woocommerce_before_customer_login_form'); ?>
 
             <div class="row login-block">
                 <div class="col-lg-7 col-12 m-auto">
-                    <label class="m-0 p-0 woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme pure-material-radio">
+                    <label class="mb-3 p-0 woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme pure-material-radio">
                         <input class="woocommerce-form__input woocommerce-form__input-checkbox"
                                name="rememberme"
                                type="checkbox" id="rememberme" value="forever"/>
@@ -91,7 +91,7 @@ do_action('woocommerce_before_customer_login_form'); ?>
 
     <?php if ('yes' === get_option('woocommerce_enable_myaccount_registration')) : ?>
 
-    <div class="col-12 offset-0 col-lg-6 offset-lg-3" id="registerBlock" style="display: none">
+    <div class="col-12 offset-0 col-lg-6 offset-lg-3 pl-lg-3 pr-lg-3 p-0" id="registerBlock" style="display: none">
 
         <form method="post"
               class="woocommerce-form woocommerce-form-register register" <?php do_action('woocommerce_register_form_tag'); ?> >
@@ -145,7 +145,7 @@ do_action('woocommerce_before_customer_login_form'); ?>
 
             <div class="row">
                 <div class="col-lg-7 col-12 m-auto">
-                    <p class="already-registered">
+                    <p class="already-registered mb-3">
                         <a href="#" class="toggle-form" data-target-form="login">Я уже зарегистрирован</a>
                     </p>
                 </div>

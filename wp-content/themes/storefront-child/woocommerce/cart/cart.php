@@ -125,7 +125,7 @@ do_action('woocommerce_before_cart'); ?>
                 </div>
                 <div class="col-lg-2 col-md-3 col-4 total-price">
                     <p>
-                        <?= WC()->cart->cart_contents_total ?>₽
+                        <?= WC()->cart->cart_contents_total ?> <span class="woocommerce-Price-currencySymbol">₽</span>
                     </p>
                 </div>
                 <div class="col-lg-3 col-12 m-auto">

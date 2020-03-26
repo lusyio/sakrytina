@@ -3,7 +3,7 @@ Theme Name:   	Richbee
 Author:       	Richbee
 Template:     	storefront
 Description:  	Дочерняя тема для storefront
-Version:      	1.0.9
+Version:      	1.0.14
 Theme URI:    https://richbee.ru/
 Author URI:   https://richbee.ru/
 
@@ -13,8 +13,14 @@ Author URI:   https://richbee.ru/
 
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700&display=swap&subset=cyrillic,cyrillic-ext,latin-ext');
 
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap&subset=latin-ext');
+
 html header, html body, html footer {
     font-family: 'Roboto Slab', sans-serif;
+}
+
+html body .woocommerce-Price-currencySymbol, html body #inputDonateText:after{
+    font-family: 'Roboto', sans-serif !important;
 }
 
 body {
@@ -1288,7 +1294,7 @@ body a:hover {
     margin-right: 25px;
 }
 
-.carousel-books-control__mobile{
+.carousel-books-control__mobile {
     display: none;
 }
 
@@ -1535,20 +1541,24 @@ body a:hover {
     padding: 25px 35px 15px;
 }
 
-.card-payment .card-payment__body > svg {
+.card-payment__body .price{
+    display: none;
+}
+
+.card-payment .card-payment__body svg {
     display: block;
     margin: 0 auto 10px;
 }
 
-.card-payment .card-payment__body > svg path {
+.card-payment .card-payment__body svg path {
     fill: #CECECE;
 }
 
-.card-payment.active .card-payment__body > svg path {
+.card-payment.active .card-payment__body svg path {
     fill: #626262;
 }
 
-.card-payment .card-payment__body > p {
+.card-payment .card-payment__body p {
     font-weight: 300;
     font-size: 12px;
     line-height: 16px;
@@ -1557,7 +1567,7 @@ body a:hover {
     margin-bottom: 0;
 }
 
-.card-payment.active .card-payment__body > p {
+.card-payment.active .card-payment__body p {
     font-weight: normal;
 }
 
@@ -2069,20 +2079,20 @@ body a:hover {
     background: #40866E;
 }
 
-.popular-prev:focus, .popular-next:focus{
+.popular-prev:focus, .popular-next:focus {
     outline: none;
 }
 
-.popular-prev:hover, .popular-next:hover{
+.popular-prev:hover, .popular-next:hover {
     cursor: pointer;
 }
 
-.popular-prev{
+.popular-prev {
     display: none;
     margin-right: 15px;
 }
 
-.popular-next{
+.popular-next {
     display: none;
 }
 
@@ -3432,16 +3442,28 @@ and (max-width: 1199px) {
 @media screen
 and (max-width: 991px) {
 
-    #inputDonateText{
+    .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword{
+        padding: 27px 20px 50px;
+    }
+
+    .register{
+        width: 100%;
+    }
+
+    .oneall_social_login{
+        width: 50%;
+    }
+
+    #inputDonateText {
         top: 9px;
     }
 
-    .popular-prev{
+    .popular-prev {
         display: inline-block;
         margin-right: 15px;
     }
 
-    .popular-next{
+    .popular-next {
         display: inline-block;
     }
 
@@ -3628,57 +3650,57 @@ and (max-width: 991px) {
         display: block;
     }
 
-    #commentModal .modal-body{
+    #commentModal .modal-body {
         padding: 40px 30px 40px 40px;
     }
 
-    #comments .comments__img{
+    #comments .comments__img {
         margin: auto;
         margin-bottom: 25px;
     }
 
-    .comment__title{
+    .comment__title {
         text-align: center;
         margin-bottom: 15px;
     }
 
-    .comment__content > p{
+    .comment__content > p {
         text-align: center;
         margin-bottom: 20px;
     }
 
-    .comment__content > a{
+    .comment__content > a {
         margin: auto;
     }
 
-    #reviews #comments{
+    #reviews #comments {
         padding: 0 20px;
     }
 
-    #reviews #comments{
+    #reviews #comments {
         margin-bottom: 45px;
     }
 
-    #carouselRelated .carouselRelated-control{
+    #carouselRelated .carouselRelated-control {
         text-align: center;
         margin-top: 25px;
     }
 
-    .footer-menu{
+    .footer-menu {
         margin: auto;
         margin-bottom: 10px;
     }
 
-    footer .footer-socials{
+    footer .footer-socials {
         margin: auto;
         margin-bottom: 30px;
     }
 
-    footer.site-footer hr{
+    footer.site-footer hr {
         margin: 20px 0 40px;
     }
 
-    footer.site-footer{
+    footer.site-footer {
         padding-top: 26px;
         padding-bottom: 35px;
     }
@@ -3688,19 +3710,59 @@ and (max-width: 991px) {
 @media screen
 and (max-width: 768px) {
 
-    .carousel-books-control.carousel-books-control__mobile{
+    .card-payment-info__content .btn{
+        width: 100%;
+    }
+
+    .card-payment-info {
+        display: none;
+    }
+
+    .card-payment .card-payment__body {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .card-payment .card-payment__body svg {
+        margin: 0;
+        margin-right: 10px;
+        display: inline-block;
+        width: 40px;
+    }
+
+    .card-payment-info__content p > span {
+        display: none;
+    }
+
+    .card-payment-info__content hr {
+        border: none;
+    }
+
+    .woocommerce-variation-add-to-cart {
+        width: 100%;
+    }
+
+    .woocommerce-variation-add-to-cart > .btn {
+        width: 100%;
+    }
+
+    .card-payment .card-payment__body p {
+        display: inline-flex;
+    }
+
+    .carousel-books-control.carousel-books-control__mobile {
         display: block;
         position: relative;
         z-index: 5;
         top: 10rem;
     }
 
-    .carousel-books-control__mobile > span:first-of-type{
+    .carousel-books-control__mobile > span:first-of-type {
         position: absolute;
         left: -3%;
     }
 
-    .carousel-books-control__mobile > span:last-of-type{
+    .carousel-books-control__mobile > span:last-of-type {
         position: absolute;
         right: -3%;
     }
@@ -3866,7 +3928,7 @@ and (max-width: 768px) {
     }
 
     .popular-block {
-        padding: 30px 21px 60px ;
+        padding: 30px 21px 60px;
     }
 
     .popular-block .col-3 {
@@ -3953,55 +4015,75 @@ and (max-width: 768px) {
         padding: 0 40px;
     }
 
-    .product-card .product-card__main-body{
+    .product-card .product-card__main-body {
         padding-bottom: 0;
     }
 
-    .card-payment-info__content{
-        padding: 30px 22px 25px;
+    .card-payment-info__content {
+        padding: 0px 22px 25px;
     }
 
-    #sb_instagram.sbi_col_1.sbi_disable_mobile #sbi_images .sbi_item:after{
+    .card-payment__body .price{
+        margin-bottom: 0;
+        align-items: center;
+    }
+
+    .card-payment__body .woocommerce-Price-amount.amount{
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 21px;
+        color: #4B4B4B;
+    }
+
+    #sb_instagram.sbi_col_1.sbi_disable_mobile #sbi_images .sbi_item:after {
         border-bottom: 1px solid #cfcfcfa6;
     }
 
-    .main-info p{
+    .main-info p {
         font-size: 14px;
     }
 
-    .main-social .main-social__header{
+    .main-social .main-social__header {
         margin-bottom: 20px;
     }
 
-    .main-social__card .main-social__card-title{
+    .main-social__card .main-social__card-title {
         margin-bottom: 20px;
         font-size: 24px;
         line-height: 32px;
     }
 
-    .main-social__card.inst .main-social__card-title, .main-social__card.fb .main-social__card-title{
+    .main-social__card.inst .main-social__card-title, .main-social__card.fb .main-social__card-title {
         font-size: 22px;
+    }
+
+    .carousel-books .woocommerce-loop-product__title{
+        background: #f9f9f9;
     }
 }
 
 @media screen
 and (max-width: 576px) {
 
-    .carousel-books-control__mobile > span:first-of-type{
+    .carousel-books .item-book{
+        background: #f9f9f9;
+    }
+
+    .carousel-books-control__mobile > span:first-of-type {
         position: absolute;
         left: 10%;
     }
 
-    .carousel-books-control__mobile > span:last-of-type{
+    .carousel-books-control__mobile > span:last-of-type {
         position: absolute;
         right: 10%;
     }
 
-    .carousel-books-control__mobile.carousel-books-control{
+    .carousel-books-control__mobile.carousel-books-control {
         display: block;
     }
 
-    .carousel-books-control__mobile.carousel-books-control{
+    .carousel-books-control__mobile.carousel-books-control {
         display: block;
         position: relative;
         z-index: 5;
@@ -4012,7 +4094,7 @@ and (max-width: 576px) {
         padding: 20px;
     }
 
-    .new-checkout{
+    .new-checkout {
         margin-bottom: 25px;
     }
 
@@ -4095,7 +4177,7 @@ and (max-width: 576px) {
         padding-left: 45px;
     }
 
-    .item-book .product-label-container{
+    .item-book .product-label-container {
         left: 12%;
     }
 

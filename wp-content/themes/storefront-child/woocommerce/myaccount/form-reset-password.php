@@ -20,7 +20,7 @@ defined('ABSPATH') || exit;
 do_action('woocommerce_before_reset_password_form');
 ?>
     <div class="row">
-        <div class="col-12 offset-0 col-lg-6 offset-lg-3">
+        <div class="col-12 offset-0 col-lg-6 offset-lg-3 pl-lg-3 pr-lg-3 p-0">
             <form method="post" class="woocommerce-ResetPassword lost_reset_password">
 
                 <p><?php echo apply_filters('woocommerce_reset_password_message', esc_html__('Enter a new password below.', 'woocommerce')); ?></p><?php // @codingStandardsIgnoreLine ?>

@@ -40,7 +40,7 @@ if (!is_ajax()) {
         <div class="col-12">
             <div class="new-totals">
                 <p>Сумма к оплате</p>
-                <p class="new-totals__price"> <?= WC()->cart->cart_contents_total ?>₽</p>
+                <p class="new-totals__price"> <?= WC()->cart->cart_contents_total ?> <span class="woocommerce-Price-currencySymbol">₽</span></p>
             </div>
         </div>
         <div class="col">

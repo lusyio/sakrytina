@@ -2,7 +2,9 @@ jQuery(function ($) {
 
     const wow = new WOW();
     wow.init();
-
+    $(document).ready(function () {
+        $('.card-payment.active').trigger('click')
+    })
 
     $(document).on('click', '.btn.remove-book', function (event) {
         event.preventDefault();
@@ -35,7 +37,7 @@ jQuery(function ($) {
 
     $('.carousel-books').each(function () {
         let id = $(this).attr('id')
-        if (document.documentElement.clientWidth < 991) {
+        if (document.documentElement.clientWidth < 576) {
             var swiper = new Swiper(this, {
                 slidesPerView: 3,
                 spaceBetween: 30,
@@ -88,7 +90,7 @@ jQuery(function ($) {
 
     });
 
-    if (document.documentElement.clientWidth < 991) {
+    if (document.documentElement.clientWidth < 576) {
         var swiperPopular = new Swiper('#popularCards', {
             slidesPerView: 4,
             spaceBetween: 30,
@@ -169,20 +171,37 @@ jQuery(function ($) {
         }
     });
 
-    $('.card-payment:not(".disabled")').on('click', function () {
-        let dataId = $(this).data('id')
-        $('#pa_book_type').val(dataId).trigger('change')
-        let input = $(this).find('input');
-        let target = input.data('target');
-        input.attr('checked', true);
-        if (input.is(':checked')) {
-            $('.card-payment').removeClass('active');
-            $.when($('.card-payment-info__content').fadeOut(50)).done(() => {
-                $(`#${target}`).fadeIn(150);
-            });
-            $(this).addClass('active')
-        }
-    })
+    if (document.documentElement.clientWidth < 991){
+        $('.card-payment:not(".disabled")').on('click', function () {
+            let input = $(this).find('input');
+            let target = input.data('target');
+            input.attr('checked', true);
+            if (input.is(':checked') && !$(this).find(`#${target}`).is(':visible')) {
+                $('.card-payment').removeClass('active');
+                $.when($('.card-payment-info__content').slideUp(200)).done(() => {
+                    let block = $(`#${target}`)
+                    $(this).append(block)
+                    block.slideDown(400);
+                });
+                $(this).addClass('active')
+            }
+        })
+    }else {
+        $('.card-payment:not(".disabled")').on('click', function () {
+            let dataId = $(this).data('id')
+            $('#pa_book_type').val(dataId).trigger('change')
+            let input = $(this).find('input');
+            let target = input.data('target');
+            input.attr('checked', true);
+            if (input.is(':checked')) {
+                $('.card-payment').removeClass('active');
+                $.when($('.card-payment-info__content').fadeOut(50)).done(() => {
+                    $(`#${target}`).fadeIn(150);
+                });
+                $(this).addClass('active')
+            }
+        })
+    }
 
     const bookBlock = $('.popular-block-card');
     const carouselHover = $('#carouselHover');
