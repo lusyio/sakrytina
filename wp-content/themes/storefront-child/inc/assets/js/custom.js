@@ -37,7 +37,7 @@ jQuery(function ($) {
 
     $('.carousel-books').each(function () {
         let id = $(this).attr('id')
-        if (document.documentElement.clientWidth < 991) {
+        if (document.documentElement.clientWidth < 576) {
             var swiper = new Swiper(this, {
                 slidesPerView: 3,
                 spaceBetween: 30,
@@ -90,7 +90,7 @@ jQuery(function ($) {
 
     });
 
-    if (document.documentElement.clientWidth < 991) {
+    if (document.documentElement.clientWidth < 576) {
         var swiperPopular = new Swiper('#popularCards', {
             slidesPerView: 4,
             spaceBetween: 30,

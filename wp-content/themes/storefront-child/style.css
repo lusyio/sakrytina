@@ -4047,6 +4047,10 @@ and (max-width: 768px) {
 @media screen
 and (max-width: 576px) {
 
+    .carousel-books .item-book{
+        background: #f9f9f9;
+    }
+
     .carousel-books-control__mobile > span:first-of-type {
         position: absolute;
         left: 10%;
