@@ -3284,6 +3284,10 @@ and (max-width: 1199px) {
 @media screen
 and (max-width: 991px) {
 
+    .my-account-card .my-account-card__body{
+        padding: 40px;
+    }
+
     .new-checkout form.checkout{
         border-right: none;
         border-bottom: 1px solid #F3F3F3;
@@ -3385,6 +3389,16 @@ and (max-width: 991px) {
         max-height: 50px;
         width: 56px;
         height: 50px;
+    }
+
+    h1.entry-title{
+        text-align: center;
+    }
+
+    .navigation-my-account{
+        border-right: none;
+        border-bottom: 1px solid #F3F3F3;
+        margin-bottom: 20px;
     }
 
 }
@@ -3619,10 +3633,18 @@ and (max-width: 768px) {
         right: 0;
         bottom: -10px;
     }
+
+    table td, table th{
+        padding: 20px 0 0;
+    }
 }
 
 @media screen
 and (max-width: 576px) {
+
+    .my-account-card .my-account-card__body{
+        padding: 20px;
+    }
 
     .item-book .product-label-container{
         left: 21%;
