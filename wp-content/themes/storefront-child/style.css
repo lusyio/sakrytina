@@ -3284,6 +3284,17 @@ and (max-width: 1199px) {
 @media screen
 and (max-width: 991px) {
 
+    .new-checkout form.checkout{
+        border-right: none;
+        border-bottom: 1px solid #F3F3F3;
+        padding-bottom: 30px;
+        padding-right: 0;
+    }
+
+    .new-checkout__info{
+        padding: 0;
+    }
+
     .popular-block-card {
         max-width: 250px;
     }
@@ -3380,6 +3391,10 @@ and (max-width: 991px) {
 
 @media screen
 and (max-width: 768px) {
+
+    .new-checkout__body{
+        padding: 40px;
+    }
 
     #custom_html-3 {
         margin: 0;
