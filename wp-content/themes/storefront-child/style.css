@@ -3,7 +3,7 @@ Theme Name:   	Richbee
 Author:       	Richbee
 Template:     	storefront
 Description:  	Дочерняя тема для storefront
-Version:      	1.0.8
+Version:      	1.0.9
 Theme URI:    https://richbee.ru/
 Author URI:   https://richbee.ru/
 
@@ -1047,6 +1047,7 @@ body a:hover {
     padding: 10px;
     max-width: 280px;
     width: 100%;
+    font-size: 16px;
     color: #FFFFFF;
 }
 
@@ -3958,6 +3959,24 @@ and (max-width: 768px) {
 
     #sb_instagram.sbi_col_1.sbi_disable_mobile #sbi_images .sbi_item:after{
         border-bottom: 1px solid #cfcfcfa6;
+    }
+
+    .main-info p{
+        font-size: 14px;
+    }
+
+    .main-social .main-social__header{
+        margin-bottom: 20px;
+    }
+
+    .main-social__card .main-social__card-title{
+        margin-bottom: 20px;
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .main-social__card.inst .main-social__card-title, .main-social__card.fb .main-social__card-title{
+        font-size: 22px;
     }
 }
 
