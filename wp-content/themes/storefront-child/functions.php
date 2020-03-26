@@ -1083,10 +1083,7 @@ function changeOGImage($img, $size = 'autodetect', $secure = false)
         ->fromImg($file_path)
         ->resizeFor($size)
         ->getPath();
-    $finalUrl = str_replace($uploads['basedir'], $uploads['baseurl'], $path);
-    var_dump($uploads['basedir']);
-    var_dump($uploads['baseurl']);
-    var_dump($finalUrl);
+    $finalUrl = preg_replace('~(.)+/wp-content/uploads~', $uploads['baseurl'], $path);
     if ($secure) {
         $finalUrl = preg_replace('~http:~', 'https:', $finalUrl);
     }
