@@ -82,8 +82,8 @@ jQuery(function ($) {
             },
         },
         navigation: {
-            nextEl: $(this).prev('h2').find('.carousel-books-control-next'),
-            prevEl: $(this).prev('h2').find('.carousel-books-control-prev'),
+            nextEl: $('.popular-next'),
+            prevEl: $('.popular-prev'),
         },
     });
 

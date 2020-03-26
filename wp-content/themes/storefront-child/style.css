@@ -2064,7 +2064,26 @@ body a:hover {
     background: #40866E;
 }
 
+.popular-prev:focus, .popular-next:focus{
+    outline: none;
+}
+
+.popular-prev:hover, .popular-next:hover{
+    cursor: pointer;
+}
+
+.popular-prev{
+    display: none;
+    margin-right: 15px;
+}
+
+.popular-next{
+    display: none;
+}
+
 .popular-block .popular-block__header {
+    display: flex;
+    justify-content: space-between;
     font-family: 'Caveat', sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -3408,6 +3427,15 @@ and (max-width: 1199px) {
 @media screen
 and (max-width: 991px) {
 
+    .popular-prev{
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .popular-next{
+        display: inline-block;
+    }
+
     .cart-card__body {
         padding: 40px 40px 80px 40px;
     }
@@ -3797,8 +3825,7 @@ and (max-width: 768px) {
     }
 
     .popular-block {
-        padding: 22px;
-        padding-bottom: 60px;
+        padding: 30px 21px 60px ;
     }
 
     .popular-block .col-3 {
