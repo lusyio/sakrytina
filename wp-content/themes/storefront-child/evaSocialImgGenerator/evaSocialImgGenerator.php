@@ -252,7 +252,7 @@ class imgGenerator
 			//$color=new \ImagickPixel("rgba(0,0,0,0.1)");
 			//$color->setColorValue(\Imagick::COLOR_ALPHA,0.4);
 			$overlay->newImage($geometry["width"],$geometry["height"],$color);
-			$overlay->setImageAlpha($this->opts["overlay"]["opacity"]);
+			$overlay->setImageOpacity($this->opts["overlay"]["opacity"]);
 
 
 			$this->im->compositeimage($overlay,\Imagick::COMPOSITE_DEFAULT,0,0);
