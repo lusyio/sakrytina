@@ -117,11 +117,13 @@ Template Post Type: post, page, product
             </div>
             <div class="col-lg-8 col-12">
                 <div class="main-social__card inst wow fadeInUp" data-wow-delay="0.2s">
-                    <?= do_shortcode('[instagram-feed]') ?>
                     <div class="main-social__card-body">
                         <p class="main-social__card-title">Аккаунт в Инстаграме</p>
                         <p><?php echo nl2br(get_option('instagram_text')); ?></p>
                         <p><br></p>
+                        <div class="inst-container">
+                            <?= do_shortcode('[instagram-feed]') ?>
+                        </div>
                         <a class="btn btn-inst" target="_blank"
                            href="https://www.instagram.com/sakrytina_maria_writer/">
                             <img src="/wp-content/themes/storefront-child/svg/svg-instagram-card.svg"
@@ -131,10 +133,11 @@ Template Post Type: post, page, product
                 </div>
 
                 <div class="main-social__card fb wow fadeInUp" data-wow-delay="0.2s">
-                    <img src="/wp-content/themes/storefront-child/images/img-fb.jpg" alt="image-fb">
+                    <img class="fb-img d-md-block d-none" src="/wp-content/themes/storefront-child/images/img-fb.jpg" alt="image-fb">
                     <div class="main-social__card-body">
                         <p class="main-social__card-title">Страница на Facebook</p>
                         <p><?php echo nl2br(get_option('facebook_text')); ?></p>
+                        <img class="fb-img d-md-none d-block" src="/wp-content/themes/storefront-child/images/img-fb.jpg" alt="image-fb">
                         <a class="btn btn-fb" target="_blank" href="https://www.facebook.com/sakrytina/">
                             <img src="/wp-content/themes/storefront-child/svg/svg-fb-card.svg"
                                  alt="fb-icon">Перейти в facebook
@@ -147,11 +150,12 @@ Template Post Type: post, page, product
                     <div class="card-muse__body">
                         <div class="row">
                             <div class="col-lg-7 col-12 order-lg-1 order-2">
-                                <p class="card-muse__header">Покорми котоМузу</p>
+                                <p class="card-muse__header d-md-block d-none">Покорми котоМузу</p>
                                 <img src="/wp-content/themes/storefront-child/images/img-muse.jpg" alt="muse">
                             </div>
                             <div class="col-lg-5 col-12 order-lg-2 order-1">
                                 <div class="card-muse__right">
+                                    <p class="card-muse__header d-md-none d-block">Покорми котоМузу</p>
                                     <p class="card-muse__title">
                                         Муза мнет лапками автора и дарит вдохновение. У автора получается интересная
                                         книга.

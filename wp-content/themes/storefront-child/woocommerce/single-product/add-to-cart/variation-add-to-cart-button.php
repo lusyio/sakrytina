@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 global $product;
 $is_in_cart = false;
 
-foreach (WC()->cart->get_cart() as $cart_item)
+foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item)
     if ($cart_item['product_id'] == $product->get_id()) {
         $is_in_cart = true;
         break;
@@ -23,7 +23,7 @@ if ($is_in_cart)
 
 ?>
 <?php if ($is_in_cart): ?>
-    <a class="btn btn-primary" href="/cart/">Уже в корзине</a>
+<button data-href="<?= wc_get_cart_remove_url($cart_item_key) ?>" data-product_id="<?= $product->get_id() ?>" data-product_sku="<?= $product->get_sku() ?>" type="submit" class="btn btn-primary remove-book">Удалить из корзины</button>
 <?php else: ?>
     <div class="woocommerce-variation-add-to-cart variations_button">
         <?php do_action('woocommerce_before_add_to_cart_button'); ?>

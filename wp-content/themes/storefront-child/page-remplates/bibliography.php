@@ -10,8 +10,8 @@ Template Post Type: post, page, product
 
 <div class="container bibliography">
     <div class="row">
-        <div class="col-6 bibliography__info">
-            <h1 class="bibliography__header">Библиография</h1>
+        <div class="col-md-6 col-12 bibliography__info">
+            <h1 class="bibliography__header text-center text-md-left">Библиография</h1>
             <?= the_content(); ?>
         </div>
     </div>
@@ -55,10 +55,11 @@ Template Post Type: post, page, product
                 $sortedProducts = $loop->get_products();
                 ?>
                 <div class="row">
-                    <div class="col-1 mb-auto wow fadeIn" data-wow-duration="1s" style="margin-top: 6.5%;"><p
-                                class="bibliography__year"><?= $yearNumber ?></p></div>
+                    <div class="col-lg-1 col-md-3 col-4 bibliography__years  mb-auto wow fadeIn" data-wow-duration="1s"><p
+                                class="bibliography__year"><img class="d-lg-none d-inline-block" src="/wp-content/themes/storefront-child/svg/svg-point.svg"
+                                                                 alt="point"> <?= $yearNumber ?></p></div>
 
-                    <div class="col bibliography__border <?php if ($countBLock == 1) : echo 'bibliography__border1'; endif; ?>">
+                    <div class="col-lg-11 col-12 bibliography__border <?php if ($countBLock == 1) : echo 'bibliography__border1'; endif; ?>">
 
                         <?php
                         $i = 0;
@@ -104,7 +105,7 @@ Template Post Type: post, page, product
 
                                 ?>
                                 <div class="row bibliography__row">
-                                    <div class="col-1 m-auto wow fadeIn">
+                                    <div class="col-1 d-lg-block d-none m-auto wow fadeIn">
                                         <?php if ($yearNumber && $i === 0): ?>
                                             <img class="bibliography__img"
                                                  src="/wp-content/themes/storefront-child/svg/svg-point.svg"
@@ -115,7 +116,7 @@ Template Post Type: post, page, product
                                                  alt="point">
                                         <?php endif; ?>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-lg-2 col-md-3 col-4">
                                         <div class="bibliography__thumbnail wow fadeIn">
 
                                             <?php if ($bibl_only != 1) : ?><a
@@ -127,10 +128,18 @@ Template Post Type: post, page, product
 
                                                      src="<?= $imgsrc; ?>"/>
                                                 <?php if ($bibl_only != 1) : ?></a><?php endif; ?>
+                                            <?php  if (!empty($award)) :
+                                                ?>
+                                                <div class="bibliography__thumbnail-award d-lg-none d-block">
+                                                    <img class="wow fadeIn" data-wow-delay="1s"
+                                                         src="/wp-content/themes/storefront-child/images/img-award-bibl.png"
+                                                         alt="award">
+                                                </div>
+                                            <?php endif; ?>
                                         </div>
 
                                     </div>
-                                    <div class="col-5 bibliography__card">
+                                    <div class="col-lg-5 col-md-9 col-8 bibliography__card">
                                         <div>
                                             <p class="bibliography__title wow fadeInUp" data-wow-delay="0.2s">
                                                 <?php if ($bibl_only != 1) : ?>
@@ -139,7 +148,7 @@ Template Post Type: post, page, product
                                                 <?php else :
                                                     echo $sortedProd->name; endif; ?>
                                             </p>
-                                            <hr>
+                                            <hr class="d-lg-block d-none">
                                             <p class="bibliography__genre wow fadeInUp"
                                                data-wow-delay="0.3s"><?php foreach ($tagNameList as $key => $genre) {
                                                     echo $genre;
@@ -153,7 +162,7 @@ Template Post Type: post, page, product
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="col-4 mt-auto mb-auto">
+                                    <div class="col-4 d-lg-block d-none mt-auto mb-auto">
                                         <?php
                                         if (!empty($award)) :
                                             ?>

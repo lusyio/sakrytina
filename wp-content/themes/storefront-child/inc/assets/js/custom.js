@@ -3,14 +3,44 @@ jQuery(function ($) {
     const wow = new WOW();
     wow.init();
 
+
+    $(document).on('click', '.btn.remove-book', function (event) {
+        event.preventDefault();
+
+        const $thisa = $(this)
+
+        $.ajax({
+            type: 'GET',
+            url: $thisa.data('href'),
+            dataType: 'html',
+            beforeSend: function (response) {
+                $thisa.addClass('loading');
+                $thisa.prop('disabled', true);
+            },
+            success: function (response) {
+                const $html = $.parseHTML(response);
+                const $new_form = $('.card-payment-info', $html);
+                const $new_totals = $('#basket-btn__counter', $html);
+                $('.card-payment-info').replaceWith($new_form);
+                $('#basket-btn__counter').replaceWith($new_totals);
+            },
+            complete: function () {
+                $thisa.removeClass('loading');
+                $thisa.prop('disabled', false);
+                $.scroll_to_notices($('[role="alert"]'));
+
+            }
+        });
+    });
+
     $('.carousel-books').each(function () {
         var swiper = new Swiper(this, {
             slidesPerView: 3,
             spaceBetween: 30,
-            loop: true,
+            loop: !!$(this).hasClass('loop'),
             breakpoints: {
                 576: {
-                    slidesPerView: 2,
+                    slidesPerView: 1,
                     spaceBetween: 30,
                 },
                 768: {
@@ -27,6 +57,34 @@ jQuery(function ($) {
                 prevEl: $(this).prev('h2').find('.carousel-books-control-prev'),
             },
         });
+    });
+
+    var swiperPopular = new Swiper('#popularCards', {
+        slidesPerView: 4,
+        spaceBetween: 30,
+        loop: true,
+        breakpoints: {
+            576: {
+                slidesPerView: 1,
+                spaceBetween: 30,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+            },
+            991: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+            },
+            1200: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+        },
+        navigation: {
+            nextEl: $(this).prev('h2').find('.carousel-books-control-next'),
+            prevEl: $(this).prev('h2').find('.carousel-books-control-prev'),
+        },
     });
 
     const $page = $('html, body');
@@ -68,58 +126,57 @@ jQuery(function ($) {
     const bookBlock = $('.popular-block-card');
     const carouselHover = $('#carouselHover');
 
-    bookBlock.mouseenter(function () {
-        let blockId = $(this).data('active')
-        $(`#${blockId}`).addClass('active')
-        $('#carouselHover').addClass('active-nav')
-        carouselHover.fadeIn(200)
-
-       
-
-        popularWowReInit()
-    })
+    if (document.documentElement.clientWidth >= 991){
+        bookBlock.mouseenter(function () {
+            let blockId = $(this).data('active')
+            $(`#${blockId}`).addClass('active')
+            $('#carouselHover').addClass('active-nav')
+            carouselHover.fadeIn(200)
 
 
-    carouselHover.mouseleave(function () {
+            popularWowReInit()
+        })
 
-        carouselHover.fadeOut(500);
-        carouselHover.addClass('pointer-events-none');
-        setTimeout(() => {
-            $('.popular-hover-card').removeClass('active')
-            $('#carouselHover').removeClass('active-nav')
-            carouselHover.removeClass('pointer-events-none');
-        }, 500);
+        carouselHover.mouseleave(function () {
 
-        $("#carouselExampleIndicators").removeClass("wow");
-
-    })
-
-    $('#carouselHover .carousel-control-next').click(function () {
-        popularWowReInit();
-    })
-
-    $(window).scroll(function() {
-        let wows = $('.main-social').find(".wow");
-
-        if (wows) {
-            if ($(wows).hasClass('animated')) {
+            carouselHover.fadeOut(500);
+            carouselHover.addClass('pointer-events-none');
             setTimeout(() => {
-                
-                    $(wows).removeClass('animated');
-                    $(wows).removeClass('wow');
-                    $(wows).removeAttr('style');
-                
-            }, 1000);
+                $('.popular-hover-card').removeClass('active')
+                $('#carouselHover').removeClass('active-nav')
+                carouselHover.removeClass('pointer-events-none');
+            }, 500);
 
-        }
+            $("#carouselExampleIndicators").removeClass("wow");
+
+        })
+
+        $('#carouselHover .carousel-control-next').click(function () {
+            popularWowReInit();
+        })
+
+        $(window).scroll(function () {
+            let wows = $('.main-social').find(".wow");
+
+            if (wows) {
+                if ($(wows).hasClass('animated')) {
+                    setTimeout(() => {
+
+                        $(wows).removeClass('animated');
+                        $(wows).removeClass('wow');
+                        $(wows).removeAttr('style');
+
+                    }, 1000);
+
+                }
             }
 
-    });
-    
+        });
+    }
 
     function popularWowReInit() {
 
-        
+
         // Если анимация уже была показана, то обнуляем
         if ($('.wow').hasClass('animated')) {
             $(this).removeClass('animated');
@@ -148,8 +205,6 @@ jQuery(function ($) {
 
     })
 
-
-    $('.comment-content-target')
 
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()

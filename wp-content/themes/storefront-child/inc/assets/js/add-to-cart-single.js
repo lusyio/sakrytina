@@ -1,4 +1,6 @@
 jQuery(function ($) {
+
+
     $(document).on('click', '.single_add_to_cart_button', function (e) {
 
         e.preventDefault();
@@ -27,18 +29,26 @@ jQuery(function ($) {
             data: data,
             beforeSend: function (response) {
                 $thisbutton.removeClass('added').addClass('loading');
+                $thisbutton.prop('disabled', true)
             },
             complete: function (response) {
                 $thisbutton.addClass('added').removeClass('loading');
+                $thisbutton.prop('disabled', false)
             },
             success: function (response) {
                 if (response.error & response.product_url) {
                     window.location = response.product_url;
                     return;
                 } else {
-                    $thisbutton.addClass('d-none')
-                    $(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash, $thisbutton]);
-                    // $( document.body ).trigger( 'wc_fragments_loaded' );
+                    // $(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash, $thisbutton]);
+                    $thisbutton.replaceWith(response.fragments.paymentInfo);
+                    $('.btn.remove-book').data('product_id', product_id)
+                    if (!$('#basket-btn__counter').is('visible')) {
+                        $('.basket-btn').append(response.fragments.basket);
+                    } else {
+                        $('#basket-btn__counter').replaceWith(response.fragments.basket);
+                    }
+
                 }
             },
         });

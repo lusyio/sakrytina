@@ -31,7 +31,7 @@
             <nav class="navbar navbar-light navbar-expand-xl p-0 justify-content-between">
                 <div class="navbar-brand">
                     <a href="<?php echo esc_url(home_url('/')); ?>">
-                        <img src="/wp-content/themes/storefront-child/svg/svg-sakrytina-icon.svg"
+                        <img src="/wp-content/themes/storefront-child/images/sakrytina_logotip.png"
                              alt="sakrytina-icon">
                     </a>
                 </div>
@@ -58,7 +58,7 @@
                                     <img src="/wp-content/themes/storefront-child/svg/svg-cart.svg"
                                          alt="cart">
                                 </span>
-                                    <span id="basket-btn__counter"></span>
+                                    <span id="basket-btn__counter"><?= WC()->cart->cart_contents_count ?></span>
                                 <span class="cartName">Корзина</span>
                             </a>
                         </div>

@@ -10,7 +10,7 @@ if (!is_active_sidebar('sidebar-1')) {
 }
 ?>
 
-<aside id="secondary" class="widget-area col-sm-12 col-lg-3 pr-0" role="complementary">
+<aside id="secondary" class="widget-area col-sm-12 col-lg-3 pr-lg-0 pr-unset" role="complementary">
     <?php dynamic_sidebar('sidebar-1'); ?>
     <div class="sidebar-cycles">
         <p class="sidebar-cycles__header">Циклы</p>
