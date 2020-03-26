@@ -60,16 +60,13 @@ class imgGenerator
 			$type=$this::getSocial();
 		}
 		if($type=="facebook") {
-			$this->opts["resize_and_crop"]=array("width"=>1200,"height"=>630);
+			$this->opts["resize_and_crop"]=array("width"=>500,"height"=>261);
 		}
 		if($type=="twitter") {
-			$this->opts["resize_and_crop"]=array("width"=>978,"height"=>511);
-		}
-		if($type=="google_plus") {
-			$this->opts["resize_and_crop"]=array("width"=>2120,"height"=>1192);
+			$this->opts["resize_and_crop"]=array("width"=>1024,"height"=>512);
 		}
 		if($type=="vk") {
-			$this->opts["resize_and_crop"]=array("width"=>537,"height"=>240);
+			$this->opts["resize_and_crop"]=array("width"=>510,"height"=>228);
 		}
 		if($type=="ok") {
 			$this->opts["resize_and_crop"]=array("width"=>780,"height"=>385);
@@ -77,6 +74,42 @@ class imgGenerator
 		}
 		return $this;
 	}
+	static function getWidth($type = "autodetect")
+    {
+        if($type=="autodetect") {
+            $type = self::getSocial();
+        }
+        if($type=="facebook") {
+            return 500;
+        }
+        if($type=="twitter") {
+            return 1024;
+        }
+        if($type=="vk") {
+            return 510;
+        }
+        if($type=="ok") {
+            return 780;
+        }
+    }
+	static function getHeight($type = "autodetect")
+    {
+        if($type=="autodetect") {
+            $type = self::getSocial();
+        }
+        if($type=="facebook") {
+            return 261;
+        }
+        if($type=="twitter") {
+            return 512;
+        }
+        if($type=="vk") {
+            return 228;
+        }
+        if($type=="ok") {
+            return 385;
+        }
+    }
 	function addBlackOverlay()
 	{
 		$this->addOverlay("0.5","#000000");
@@ -252,7 +285,11 @@ class imgGenerator
 			//$color=new \ImagickPixel("rgba(0,0,0,0.1)");
 			//$color->setColorValue(\Imagick::COLOR_ALPHA,0.4);
 			$overlay->newImage($geometry["width"],$geometry["height"],$color);
-			$overlay->setImageOpacity($this->opts["overlay"]["opacity"]);
+			if (method_exists('Imagick', 'setImageOpacity')) {
+                $overlay->setImageOpacity($this->opts["overlay"]["opacity"]);
+            } else {
+                $overlay->setImageAlpha($this->opts["overlay"]["opacity"]);
+            }
 
 
 			$this->im->compositeimage($overlay,\Imagick::COMPOSITE_DEFAULT,0,0);
