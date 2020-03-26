@@ -45,6 +45,7 @@ foreach ($tags as $tag) {
 $catTerms = get_the_terms($idBook, 'product_cat');
 foreach ($catTerms as $key => $term):
     $catName = $term->name;
+    $catSlug = $term->slug;
     $linkCat = '/shop/#' . $term->slug;
 endforeach;
 
@@ -59,8 +60,8 @@ $book_year = (get_post_meta($idBook, 'book_year', true));
 // количество симоволов
 $count_simvolov = (get_post_meta($idBook, 'count_simvolov', true));
 if (!empty($count_simvolov)) {
-    $hours = ceil(($count_simvolov/1000)/60);
-    $timeToRead = $hours . ' часов ('.$count_simvolov.' символов)';
+    $hours = ceil(($count_simvolov / 1000) / 60);
+    $timeToRead = $hours . ' часов (' . $count_simvolov . ' символов)';
 }
 // награда
 $award = (get_post_meta($idBook, 'award', true));
@@ -99,11 +100,14 @@ $avtograf2014_link = (get_post_meta($idBook, 'avtograf2014_link', true));
     do_action('woocommerce_before_single_product_summary');
     ?>
 
-    <div class="col-lg-9 pl-lg-0 pl-unset col-12 ">
+    <div class="col-lg-9 pl-lg-0 pl-unset col-12 p-0 pr-lg-3">
         <div class="product-card">
             <div class="row">
                 <div class="col-lg-8 pr-lg-0 pr-unset col-12 br">
                     <div class="product-card__main-body">
+                        <p class="product-card-breadcrumb d-lg-block d-none">
+                            <a href="/">Главная</a> / <a href="/shop/#<?= $catSlug ?>"><?= $catName ?></a> / <?= $product->name ?>
+                        </p>
                         <?php
                         /**
                          * Hook: woocommerce_single_product_summary.
@@ -130,53 +134,66 @@ $avtograf2014_link = (get_post_meta($idBook, 'avtograf2014_link', true));
 
                         if (!empty($award)) :?>
                             <div class="product-card__award">
-                                <img src="/wp-content/themes/storefront-child/images/img-award.jpg" alt="award">
+                                <img src="/wp-content/themes/storefront-child/images/img-award-products.png"
+                                     alt="award">
                                 <p><?= $award; ?></p>
                             </div>
                         <?php endif; ?>
 
                         <div class="product-card__meta">
-                            <?php
+                            <div class="row">
+                                <?php
 
-                            // вывод жанров
+                                // вывод жанров
 
-                            if ($tagNameList): ?>
-                                <p class="product-card__meta-title">Жанр<?=(count($tagNameList) > 1) ? 'ы' : '';?>:</p>
-                                <p class="product-card__meta-content">
-                                    <?php foreach ($tagNameList as $key => $genre) {
-                                        echo $genre;
-                                        echo (count($tagNameList) - 1 !== $key) ? ', ' : '';
-                                    } ?>
-                                </p>
-                                <p>
-                            <?php endif; ?>
-                            <?php
+                                if ($tagNameList): ?>
+                                    <div class="col-lg-12 pl-lg-3 pr-lg-3 p-0 col-6">
+                                        <p class="product-card__meta-title">
+                                            Жанр<?= (count($tagNameList) > 1) ? 'ы' : ''; ?>:</p>
+                                        <p class="product-card__meta-content">
+                                            <?php foreach ($tagNameList as $key => $genre) {
+                                                echo $genre;
+                                                echo (count($tagNameList) - 1 !== $key) ? ', ' : '';
+                                            } ?>
+                                        </p>
+                                        <p>
+                                    </div>
+                                <?php endif; ?>
+                                <?php
 
-                            // вывод циклп
+                                // вывод циклп
 
-                            if (!empty($catName)) :?>
-                                <p class="product-card__meta-title"><?=$typeName;?>:</p>
-                                <p class="product-card__meta-content"><a href="<?= $linkCat ?>"><?=$catName;?></a></p>
-                            <?php endif; ?>
+                                if (!empty($catName)) :?>
+                                    <div class="col-lg-12 pl-lg-3 pr-lg-3 p-0 col-6">
+                                        <p class="product-card__meta-title"><?= $typeName; ?>:</p>
+                                        <p class="product-card__meta-content"><a
+                                                    href="<?= $linkCat ?>"><?= $catName; ?></a></p>
+                                    </div>
+                                <?php endif; ?>
 
-                            <?php
+                                <?php
 
-                            // вывод года издания
+                                // вывод года издания
 
-                            if (!empty($book_year)) :?>
-                                <p class="product-card__meta-title">Год издания:</p>
-                                <p class="product-card__meta-content"><?=$book_year;?></p>
-                            <?php endif; ?>
+                                if (!empty($book_year)) :?>
+                                    <div class="col-lg-12 pl-lg-3 pr-lg-3 p-0 col-6">
+                                        <p class="product-card__meta-title">Год издания:</p>
+                                        <p class="product-card__meta-content"><?= $book_year; ?></p>
+                                    </div>
+                                <?php endif; ?>
 
-                            <?php
+                                <?php
 
-                            // вывод времени чтения
+                                // вывод времени чтения
 
-                            if (!empty($count_simvolov)) :?>
-                                <p class="product-card__meta-title">Время чтения:</p>
-                                <p class="product-card__meta-content"><?=$timeToRead;?></p>
-                            <?php endif; ?>
+                                if (!empty($count_simvolov)) :?>
+                                    <div class="col-lg-12 pl-lg-3 pr-lg-3 p-0 col-6">
+                                        <p class="product-card__meta-title">Время чтения:</p>
+                                        <p class="product-card__meta-content"><?= $timeToRead; ?></p>
+                                    </div>
+                                <?php endif; ?>
 
+                            </div>
                         </div>
                     </div>
                 </div>

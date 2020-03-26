@@ -2,7 +2,15 @@
     <div class="container position-relative">
         <div class="row">
             <div class="col-12">
-                <p class="popular-block__header">Популярное</p>
+                <div class="popular-block__header"><p>Популярное</p> <div>
+                        <span class="popular-prev">
+                            <img src="/wp-content/themes/storefront-child/svg/svg-prev-white.svg" alt="popular-prev">
+                        </span>
+                        <span class="popular-next">
+                            <img src="/wp-content/themes/storefront-child/svg/svg-next-white.svg" alt="popular-next">
+                        </span>
+                    </div>
+                </div>
                 <div id="popularCards" class="swiper-container popular-block-cards" data-ride="carousel">
                     <div class="swiper-wrapper">
                         <?php

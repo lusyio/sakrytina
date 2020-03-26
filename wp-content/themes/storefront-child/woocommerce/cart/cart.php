@@ -54,7 +54,7 @@ do_action('woocommerce_before_cart'); ?>
 
                         </div>
 
-                        <div class="product-name col-4"
+                        <div class="product-name p-0 col-4"
                              data-title="<?php esc_attr_e('Product', 'woocommerce'); ?>">
                             <?php
                             if (!$product_permalink) {

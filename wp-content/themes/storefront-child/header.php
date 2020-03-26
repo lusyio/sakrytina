@@ -85,14 +85,14 @@
                                    href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>"
                                    title="<?php _e('My Account', 'woothemes'); ?>"><img
                                             src="/wp-content/themes/storefront-child/svg/svg-your-account-black.svg"
-                                            alt="your-account" style="width: 21px; height: 26px; margin-right: 10px;">
+                                            alt="your-account" style="width: 25px; height: 31px; margin-right: 10px;">
                                 </a>
                             <?php } else { ?>
                                 <a style="z-index: 5;position: relative;"
                                    href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>"
                                    title="<?php _e('Login / Register', 'woothemes'); ?>"> <img
                                             src="/wp-content/themes/storefront-child/svg/svg-your-account-black.svg"
-                                            alt="your-account" style="width: 21px; height: 26px; margin-right: 10px;">
+                                            alt="your-account" style="width: 25px; height: 31px; margin-right: 10px;">
                                 </a>
                             <?php } ?>
                         </div>

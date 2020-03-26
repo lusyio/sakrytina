@@ -93,7 +93,7 @@ $styleDNone = 'style="display: none;"';
       data-product_variations="<?php echo $variations_attr; // WPCS: XSS ok. ?>">
 
     <div class="row">
-        <div class="col-lg-4 col-12 pr-unset pr-lg-0 mb-payment">
+        <div class="col-lg-4 col-md-4 col-12 pr-unset pr-lg-0 mb-payment <?= (in_array('ebook', $disabledTabs)) ? 'd-md-block d-none' : ''; ?>">
             <div data-id="elektronnaya-kniga" class="card-payment<?= ($activeTab == 'ebook') ? ' active' : '' ?><?= (in_array('ebook', $disabledTabs)) ? ' disabled' : ''; ?>">
 
                 <div class="card-payment__body">
@@ -126,7 +126,7 @@ $styleDNone = 'style="display: none;"';
 
         </div>
 
-        <div class="col-lg-4 col-12 pr-unset pr-lg-0 mb-payment">
+        <div class="col-lg-4 col-md-4 col-12 pr-unset pr-lg-0 mb-payment <?= (in_array('book', $disabledTabs)) ? 'd-md-block d-none' : ''; ?>">
             <div data-id="" class="card-payment<?= ($activeTab == 'book') ? ' active' : '' ?><?= (in_array('book', $disabledTabs)) ? ' disabled' : ''; ?>">
                 <?php if (!empty($booksAvalible)) {
                     $activateNext = false;
@@ -140,7 +140,7 @@ $styleDNone = 'style="display: none;"';
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-12 pr-unset pr-lg-0 mb-payment">
+        <div class="col-lg-4 col-md-4 col-12 pr-unset pr-lg-0 mb-payment <?= (in_array('abook', $disabledTabs)) ? 'd-md-block d-none' : ''; ?>">
             <div data-id="audiokniga" class="card-payment<?= ($activeTab == 'abook') ? ' active' : '' ?><?= (in_array('abook', $disabledTabs)) ? ' disabled' : ''; ?>">
                 <div class="card-payment__body">
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">

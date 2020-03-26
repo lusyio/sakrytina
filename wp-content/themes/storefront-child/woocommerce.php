@@ -15,7 +15,7 @@
 get_header(); ?>
 
 <?php if (is_product() || is_cart() || is_checkout()): ?>
-    <section id="primary" class="content-area col-sm-12 mt-5">
+    <section id="primary" class="content-area <?= is_product() ? 'p-0 pl-lg-3 pr-lg-3' : '' ?> col-sm-12 mt-5 ">
         <main id="main" class="site-main" role="main">
 
             <?php woocommerce_content(); ?>

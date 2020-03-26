@@ -209,12 +209,12 @@ function card_payment_info($fragments)
 
     foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item): ?>
 
-            <button data-href="<?= wc_get_cart_remove_url($cart_item_key) ?>"
-                    data-product_id="" data-product_sku=""
-                    type="submit" class="btn btn-primary remove-book">Удалить из корзины
-            </button>
+        <button data-href="<?= wc_get_cart_remove_url($cart_item_key) ?>"
+                data-product_id="" data-product_sku=""
+                type="submit" class="btn btn-primary remove-book">Удалить из корзины
+        </button>
 
-            <?php break; endforeach;
+        <?php break; endforeach;
     ?>
 
     <?php
@@ -372,7 +372,7 @@ function custom_woocommerce_template_loop_category_title($category)
         <?php
         echo $category->name;
         if ($category->count > 3) :?>
-            <div class="carousel-books-control">
+            <div class="carousel-books-control" data-href="<?= $category->slug ?>">
                 <span class="carousel-books-control-prev <?= $category->slug ?>"><svg width="31" height="16"
                                                                                       viewBox="0 0 31 16" fill="none"
                                                                                       xmlns="http://www.w3.org/2000/svg">
@@ -405,12 +405,22 @@ function not_a_shop_page()
 add_filter('woocommerce_breadcrumb_defaults', 'jk_woocommerce_breadcrumbs', 20);
 function jk_woocommerce_breadcrumbs()
 {
-    return array(
-        'delimiter' => ' / ',
-        'wrap_before' => '<div class="storefront-breadcrumb"><div class="container"><div class="row"><div class="col-12"><nav class="woocommerce-breadcrumb">',
-        'wrap_after' => '</nav></div></div></div></div>',
-        'home' => _x('Home', 'breadcrumb', 'woocommerce'),
-    );
+    if (is_product()) {
+        return array(
+            'delimiter' => ' / ',
+            'wrap_before' => '<div class="storefront-breadcrumb d-none"><div class="container"><div class="row"><div class="col-12"><nav class="woocommerce-breadcrumb">',
+            'wrap_after' => '</nav></div></div></div></div>',
+            'home' => _x('Home', 'breadcrumb', 'woocommerce'),
+        );
+    } else {
+        return array(
+            'delimiter' => ' / ',
+            'wrap_before' => '<div class="storefront-breadcrumb"><div class="container"><div class="row"><div class="col-12"><nav class="woocommerce-breadcrumb">',
+            'wrap_after' => '</nav></div></div></div></div>',
+            'home' => _x('Home', 'breadcrumb', 'woocommerce'),
+        );
+    }
+
 }
 
 /**
