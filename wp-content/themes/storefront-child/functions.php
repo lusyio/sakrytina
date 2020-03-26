@@ -1064,7 +1064,7 @@ function changeOGImage($img, $size = 'autodetect')
     $title = $titleGenerator
         ->setCaptionPosition(imgGenerator::position_left_center)
         ->seTextShadow('#000000',75, 1, 2, 2)
-        ->setText(get_the_title() .  ' и четвертая строка',"#ffffff",imgGenerator::position_left_top,"1/8", $titleTextPadding)
+        ->setText(get_the_title(),"#ffffff",imgGenerator::position_left_top,"1/8", $titleTextPadding)
         ->setLinesBeforeTrim(3)
         ->setFont($_SERVER["DOCUMENT_ROOT"] . '/wp-content/themes/storefront-child/inc/assets/fonts/Robotoslabregular.ttf');
     $generator = new imgGenerator();
