@@ -3,7 +3,7 @@ Theme Name:   	Richbee
 Author:       	Richbee
 Template:     	storefront
 Description:  	Дочерняя тема для storefront
-Version:      	1.0.12
+Version:      	1.0.13
 Theme URI:    https://richbee.ru/
 Author URI:   https://richbee.ru/
 
@@ -13,8 +13,14 @@ Author URI:   https://richbee.ru/
 
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700&display=swap&subset=cyrillic,cyrillic-ext,latin-ext');
 
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap&subset=latin-ext');
+
 html header, html body, html footer {
     font-family: 'Roboto Slab', sans-serif;
+}
+
+html body .woocommerce-Price-currencySymbol, html body #inputDonateText:after{
+    font-family: 'Roboto', sans-serif !important;
 }
 
 body {
