@@ -3431,16 +3431,6 @@ and (max-width: 1199px) {
 @media screen
 and (max-width: 991px) {
 
-    .carousel-books-control__mobile > span:first-of-type{
-        position: absolute;
-        left: 10%;
-    }
-
-    .carousel-books-control__mobile > span:last-of-type{
-        position: absolute;
-        right: 10%;
-    }
-
     .popular-prev{
         display: inline-block;
         margin-right: 15px;
@@ -3692,6 +3682,23 @@ and (max-width: 991px) {
 
 @media screen
 and (max-width: 768px) {
+
+    .carousel-books-control.carousel-books-control__mobile{
+        display: block;
+        position: relative;
+        z-index: 5;
+        top: 10rem;
+    }
+
+    .carousel-books-control__mobile > span:first-of-type{
+        position: absolute;
+        left: -3%;
+    }
+
+    .carousel-books-control__mobile > span:last-of-type{
+        position: absolute;
+        right: -3%;
+    }
 
     .cart-card a.remove {
         position: absolute;
@@ -3948,10 +3955,24 @@ and (max-width: 768px) {
     .card-payment-info__content{
         padding: 30px 22px 25px;
     }
+
+    #sb_instagram.sbi_col_1.sbi_disable_mobile #sbi_images .sbi_item:after{
+        border-bottom: 1px solid #cfcfcfa6;
+    }
 }
 
 @media screen
 and (max-width: 576px) {
+
+    .carousel-books-control__mobile > span:first-of-type{
+        position: absolute;
+        left: 10%;
+    }
+
+    .carousel-books-control__mobile > span:last-of-type{
+        position: absolute;
+        right: 10%;
+    }
 
     .carousel-books-control__mobile.carousel-books-control{
         display: block;
