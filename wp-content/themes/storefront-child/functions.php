@@ -1021,6 +1021,8 @@ function changeTwitterImage($img) {
 }
 function changeOGImage($img, $size = 'autodetect')
 {
+    return $img;
+
     if (!is_product()) {
         return $img;
     }
