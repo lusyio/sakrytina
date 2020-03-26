@@ -2403,7 +2403,7 @@ body a:hover {
 #carouselHover {
     position: absolute;
     display: none;
-    top: 15%;
+    top: 18%;
     width: 102%;
 }
 
@@ -3431,6 +3431,10 @@ and (max-width: 1199px) {
 
 @media screen
 and (max-width: 991px) {
+
+    #inputDonateText{
+        top: 9px;
+    }
 
     .popular-prev{
         display: inline-block;

@@ -35,10 +35,65 @@ jQuery(function ($) {
 
     $('.carousel-books').each(function () {
         let id = $(this).attr('id')
-        var swiper = new Swiper(this, {
-            slidesPerView: 3,
+        if (document.documentElement.clientWidth < 991) {
+            var swiper = new Swiper(this, {
+                slidesPerView: 3,
+                spaceBetween: 30,
+                effect: 'fade',
+                loop: !!($(this).hasClass('loop') || document.documentElement.clientWidth < 576),
+                breakpoints: {
+                    576: {
+                        slidesPerView: 1,
+                        spaceBetween: 30,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 30,
+                    },
+                    991: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
+                },
+                navigation: {
+                    nextEl: $(`[data-href='${id}'] .carousel-books-control-next`),
+                    prevEl: $(`[data-href='${id}'] .carousel-books-control-prev`),
+                },
+            });
+        } else {
+            var swiper = new Swiper(this, {
+                slidesPerView: 3,
+                spaceBetween: 30,
+                loop: !!($(this).hasClass('loop') || document.documentElement.clientWidth < 576),
+                breakpoints: {
+                    576: {
+                        slidesPerView: 1,
+                        spaceBetween: 30,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 30,
+                    },
+                    991: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
+                },
+                navigation: {
+                    nextEl: $(`[data-href='${id}'] .carousel-books-control-next`),
+                    prevEl: $(`[data-href='${id}'] .carousel-books-control-prev`),
+                },
+            });
+        }
+
+    });
+
+    if (document.documentElement.clientWidth < 991) {
+        var swiperPopular = new Swiper('#popularCards', {
+            slidesPerView: 4,
             spaceBetween: 30,
-            loop: !!($(this).hasClass('loop') || document.documentElement.clientWidth < 576),
+            loop: true,
+            effect: 'fade',
             breakpoints: {
                 576: {
                     slidesPerView: 1,
@@ -49,44 +104,49 @@ jQuery(function ($) {
                     spaceBetween: 30,
                 },
                 991: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+                1200: {
                     slidesPerView: 3,
                     spaceBetween: 30,
                 },
             },
             navigation: {
-                nextEl: $(`[data-href='${id}'] .carousel-books-control-next`),
-                prevEl: $(`[data-href='${id}'] .carousel-books-control-prev`),
+                nextEl: $('.popular-next'),
+                prevEl: $('.popular-prev'),
             },
         });
-    });
+    } else {
+        var swiperPopular = new Swiper('#popularCards', {
+            slidesPerView: 4,
+            spaceBetween: 30,
+            loop: true,
+            breakpoints: {
+                576: {
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+                991: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+                1200: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+            },
+            navigation: {
+                nextEl: $('.popular-next'),
+                prevEl: $('.popular-prev'),
+            },
+        });
+    }
 
-    var swiperPopular = new Swiper('#popularCards', {
-        slidesPerView: 4,
-        spaceBetween: 30,
-        loop: true,
-        breakpoints: {
-            576: {
-                slidesPerView: 1,
-                spaceBetween: 30,
-            },
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 30,
-            },
-            991: {
-                slidesPerView: 2,
-                spaceBetween: 30,
-            },
-            1200: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-            },
-        },
-        navigation: {
-            nextEl: $('.popular-next'),
-            prevEl: $('.popular-prev'),
-        },
-    });
 
     const $page = $('html, body');
     $('a.link[href*="#"]').on('click', function () {
@@ -127,7 +187,7 @@ jQuery(function ($) {
     const bookBlock = $('.popular-block-card');
     const carouselHover = $('#carouselHover');
 
-    if (document.documentElement.clientWidth >= 991){
+    if (document.documentElement.clientWidth >= 991) {
         bookBlock.mouseenter(function () {
             let blockId = $(this).data('active')
             $(`#${blockId}`).addClass('active')
