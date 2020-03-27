@@ -22,6 +22,8 @@ if ($is_in_cart)
     $button_text = __('Уже в корзине', 'woocommerce');
 
 ?>
+
+<!--если товар вариативный и вариация в корзине или товар в корзине для сингл продукта-->
 <?php if ($is_in_cart): ?>
 <button data-href="<?= wc_get_cart_remove_url($cart_item_key) ?>" data-product_id="<?= $product->get_id() ?>" data-product_sku="<?= $product->get_sku() ?>" type="submit" class="btn btn-primary remove-book">Удалить из корзины</button>
 <?php else: ?>
@@ -29,12 +31,14 @@ if ($is_in_cart)
         <?php do_action('woocommerce_before_add_to_cart_button'); ?>
 
         <button type="submit"
-                class="btn btn-primary single_add_to_cart_button"><?php echo esc_html($product->single_add_to_cart_text()); ?></button>
+                class="btn btn-primary single_add_to_cart_button_new"><?php echo esc_html($product->single_add_to_cart_text()); ?></button>
 
         <?php do_action('woocommerce_after_add_to_cart_button'); ?>
 
         <input type="hidden" name="add-to-cart" value="<?php echo absint($product->get_id()); ?>"/>
         <input type="hidden" name="product_id" value="<?php echo absint($product->get_id()); ?>"/>
+<!--        сюда id вариации если товар вариативный-->
+        <input type="hidden" name="variation_id" class="variation_id" value="0" />
     </div>
 <?php endif; ?>
 

@@ -6,7 +6,7 @@ jQuery(function ($) {
         return false;
 
     // Ajax add to cart
-    $(document).on('click', '.variations_form .single_add_to_cart_button', function (e) {
+    $(document).on('click', '.variations_form .single_add_to_cart_button_new', function (e) {
 
         e.preventDefault();
 

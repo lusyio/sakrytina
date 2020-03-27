@@ -1,7 +1,7 @@
 jQuery(function ($) {
 
 
-    $(document).on('click', '.single_add_to_cart_button', function (e) {
+    $(document).on('click', '.single_add_to_cart_button_new', function (e) {
 
         e.preventDefault();
 
