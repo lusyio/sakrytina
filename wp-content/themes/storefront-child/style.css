@@ -3,7 +3,7 @@ Theme Name:   	Richbee
 Author:       	Richbee
 Template:     	storefront
 Description:  	Дочерняя тема для storefront
-Version:      	1.0.18
+Version:      	1.0.19
 Theme URI:    https://richbee.ru/
 Author URI:   https://richbee.ru/
 
@@ -893,9 +893,9 @@ body a:hover {
 
 
 .main-social__card.inst:hover #sb_instagram .sb_instagram_header {
-    transform: matrix(1.00, 0.00, 0.00, 1.00, -12, -3);
-    -ms-transform: matrix(1.00, 0.00, 0.00, 1.00, -12, -3);
-    -webkit-transform: matrix(1.00, 0.00, 0.00, 1.00, -12, -3);
+    transform: matrix(1.00, 0.00, 0.00, 1.00, -13, -5);
+    -ms-transform: matrix(1.00, 0.00, 0.00, 1.00, -13, -5);
+    -webkit-transform: matrix(1.00, 0.00, 0.00, 1.00, -13, -5);
     transition: all 0.5s ease-in-out;
 }
 
