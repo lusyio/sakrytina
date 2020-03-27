@@ -29,9 +29,8 @@ jQuery(function ($) {
                 } else {
                     $('.card-payment-info').replaceWith($new_form);
                 }
-                if ($new_totals.text() === 0){
-                    console.log('qweqwe')
-                    $('html').remove('#basket-btn__counter')
+                if ($new_totals.text() == 0){
+                    $('#basket-btn__counter').remove()
                 } else {
                     $('#basket-btn__counter').replaceWith($new_totals);
                 }

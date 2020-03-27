@@ -58,7 +58,9 @@
                                     <img src="/wp-content/themes/storefront-child/svg/svg-cart.svg"
                                          alt="cart">
                                 </span>
+                                <?php if (WC()->cart->cart_contents_count !== 0): ?>
                                 <span id="basket-btn__counter"><?= WC()->cart->cart_contents_count ?></span>
+                                <?php endif; ?>
                                 <span class="cartName">Корзина</span>
                             </a>
                         </div>
