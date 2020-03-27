@@ -23,8 +23,18 @@ jQuery(function ($) {
                 const $html = $.parseHTML(response);
                 const $new_form = $('.card-payment-info', $html);
                 const $new_totals = $('#basket-btn__counter', $html);
-                $('.card-payment-info').replaceWith($new_form);
-                $('#basket-btn__counter').replaceWith($new_totals);
+                const $new_btn = $(`#ebookTarget .single_add_to_cart_button`, $html);
+                if (document.documentElement.clientWidth < 576) {
+                    $thisa.replaceWith($new_btn);
+                } else {
+                    $('.card-payment-info').replaceWith($new_form);
+                }
+                if ($new_totals.text() === 0){
+                    console.log('qweqwe')
+                    $('html').remove('#basket-btn__counter')
+                } else {
+                    $('#basket-btn__counter').replaceWith($new_totals);
+                }
             },
             complete: function () {
                 $thisa.removeClass('loading');

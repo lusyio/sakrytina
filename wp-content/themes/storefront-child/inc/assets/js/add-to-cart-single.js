@@ -43,7 +43,7 @@ jQuery(function ($) {
                     // $(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash, $thisbutton]);
                     $thisbutton.replaceWith(response.fragments.paymentInfo);
                     $('.btn.remove-book').data('product_id', product_id)
-                    if (!$('#basket-btn__counter').is('visible')) {
+                    if (!$('#basket-btn__counter').is(':visible')) {
                         $('.basket-btn').append(response.fragments.basket);
                     } else {
                         $('#basket-btn__counter').replaceWith(response.fragments.basket);

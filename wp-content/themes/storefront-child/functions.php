@@ -71,7 +71,10 @@ remove_action('wp_head', 'wp_generator');  // скрыть версию wordpres
 
 $my_js_ver = date("ymd-Gis", filemtime(plugin_dir_path(__FILE__) . 'inc/assets/js/custom.js'));
 
-wp_enqueue_script('custom', '/wp-content/themes/storefront-child/inc/assets/js/custom.js', array('jquery'), $my_js_ver, true);
+
+if (!is_admin()){
+    wp_enqueue_script('custom', '/wp-content/themes/storefront-child/inc/assets/js/custom.js', array('jquery'), $my_js_ver, true);
+}
 
 /**
  * Load custom WordPress nav walker.
