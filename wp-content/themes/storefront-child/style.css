@@ -3710,6 +3710,11 @@ and (max-width: 991px) {
 @media screen
 and (max-width: 768px) {
 
+    .woocommerce-product-gallery img {
+        width: 100%;
+        max-width: 100%;
+    }
+
     .card-payment-info__content .btn{
         width: 100%;
     }
@@ -4005,10 +4010,6 @@ and (max-width: 768px) {
 
     table td, table th {
         padding: 20px 0 0;
-    }
-
-    .woocommerce-product-gallery img {
-        max-width: 150px;
     }
 
     .product-card-breadcrumb {
