@@ -3,7 +3,7 @@ Theme Name:   	Richbee
 Author:       	Richbee
 Template:     	storefront
 Description:  	Дочерняя тема для storefront
-Version:      	1.0.16
+Version:      	1.0.17
 Theme URI:    https://richbee.ru/
 Author URI:   https://richbee.ru/
 
@@ -272,7 +272,7 @@ ul.menu li.current-menu-item > a:before {
     cursor: pointer;
     line-height: 2;
     font-weight: normal;
-    font-size: 1.13rem;
+    font-size: 16px;
     color: #1C1C1C;
 
 }
@@ -2902,8 +2902,8 @@ footer.site-footer p {
 }
 
 .new-checkout #order_review_heading {
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 1.5rem;
+    line-height: 2rem;
     color: #000000;
     margin-bottom: 40px;
 }
@@ -2920,8 +2920,8 @@ footer.site-footer p {
 }
 
 .new-totals p {
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 1.5rem;
+    line-height: 2rem;
     color: #000000;
     margin-bottom: 0;
     align-self: center;
@@ -2929,8 +2929,8 @@ footer.site-footer p {
 
 .new-totals .new-totals__price {
     font-weight: bold;
-    font-size: 36px;
-    line-height: 47px;
+    font-size: 2.25rem;
+    line-height: 2.9375rem;
     color: #4B4B4B;
 }
 

@@ -30,7 +30,7 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
 ?>
 <div class="row">
 
-    <div class="col-12">
+    <div class="col-12 pl-lg-3 pr-lg-3 p-0">
         <div class="new-checkout">
             <div class="new-checkout__body">
                 <div class="row">
