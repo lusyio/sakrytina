@@ -98,6 +98,14 @@ if ($isVariable && isset($variations['ebook'])) {
     }
 }
 
+if ($isVariable && isset($variations['abook'])) {
+    $productVar = new WC_Product_Variation($variations['abook']['variation_id']);
+    if ($productVar->is_downloadable('yes') && $productVar->has_file()) {
+        $aBookDownloads = $productVar->get_downloads();
+        $aBookPriceHtml = $productVar->get_price_html();
+    }
+}
+
 ?>
 
 
@@ -189,6 +197,11 @@ if ($isVariable && isset($variations['ebook'])) {
                                value="<?= (isset($variations['abook'])) ? $variations['abook']['variation_id'] : '' ?>">
                         <p>Аудиокнига</p>
                     </div>
+                    <p class="<?php echo esc_attr(apply_filters('woocommerce_product_price_class', 'price')); ?>"><?php
+                        if (!$externalABook && isset($variations['abook'])) {
+                            echo $aBookPriceHtml;
+                        }
+                        ?></p>
                 </div>
             </div>
         </div>
@@ -274,15 +287,6 @@ if ($isVariable && isset($variations['ebook'])) {
                     <div id="audiobookTarget" class="card-payment-info__content"
                          <?= ($activeTab == 'abook') ? $styleDBlock : $styleDNone; ?>>
                         <?php if (!$externalABook) : ?>
-                            <?php
-                            if ($isVariable && isset($variations['abook'])) {
-                                $productVar = new WC_Product_Variation($variations['abook']['variation_id']);
-                                if ($productVar->is_downloadable('yes') && $productVar->has_file()) {
-                                    $aBookDownloads = $productVar->get_downloads();
-                                    $aBookPriceHtml = $productVar->get_price_html();
-                                }
-                            }
-                            ?>
                             <div class="d-flex justify-content-between">
                                 <div>
                                     <p class="<?php echo esc_attr(apply_filters('woocommerce_product_price_class', 'price')); ?>"><?php echo $aBookPriceHtml ?></p>
