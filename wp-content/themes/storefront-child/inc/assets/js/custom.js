@@ -23,8 +23,9 @@ jQuery(function ($) {
                 const $html = $.parseHTML(response);
                 const $new_form = $('.card-payment-info', $html);
                 const $new_totals = $('#basket-btn__counter', $html);
-                const $new_btn = $(`#ebookTarget .single_add_to_cart_button`, $html);
                 if (document.documentElement.clientWidth < 576) {
+                    const id = $thisa.parents('.card-payment').find('.card-payment-info__content').attr('id')
+                    const $new_btn = $(`#${id} .single_add_to_cart_button_new`, $html);
                     $thisa.replaceWith($new_btn);
                 } else {
                     $('.card-payment-info').replaceWith($new_form);
