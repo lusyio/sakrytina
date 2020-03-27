@@ -3,7 +3,7 @@ Theme Name:   	Richbee
 Author:       	Richbee
 Template:     	storefront
 Description:  	Дочерняя тема для storefront
-Version:      	1.0.17
+Version:      	1.0.18
 Theme URI:    https://richbee.ru/
 Author URI:   https://richbee.ru/
 
@@ -816,7 +816,7 @@ body a:hover {
     transform: rotate(4deg);
     float: right;
     width: unset;
-    right: 9.5%;
+    right: 1.5%;
     top: -25px;
     transition: all 0.3s ease-in-out;
 }
@@ -3998,7 +3998,7 @@ and (max-width: 768px) {
     }
 
     #sb_instagram .sb_instagram_header {
-        right: 15.5%;
+        right: 2.5%;
     }
 
     .bibliography__years {
@@ -4166,7 +4166,7 @@ and (max-width: 576px) {
     }
 
     #sb_instagram .sb_instagram_header {
-        right: 23.5%;
+        right: 4.5%;
     }
 
     .outer-menu .menu ul {
