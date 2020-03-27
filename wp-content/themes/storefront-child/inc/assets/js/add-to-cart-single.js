@@ -11,7 +11,7 @@ jQuery(function ($) {
             id = $thisbutton.val(),
             product_qty = $form.find('input[name=quantity]').val() || 1,
             product_id = $form.find('input[name=product_id]').val() || id,
-            variation_id = $form.find('input[name=variation_id]').val() || 0;
+            variation_id = $form.find('input[type=radio][name=variation_id]:checked').val() || 0;
 
         const data = {
 
