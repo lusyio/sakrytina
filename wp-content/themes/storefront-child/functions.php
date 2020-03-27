@@ -1122,3 +1122,9 @@ add_filter('wpseo_og_og_image_height', function ($height) {
     require_once __DIR__ . '/evaSocialImgGenerator/evaSocialImgGenerator.php';
     return imgGenerator::getHeight();
 });
+
+function admin_templ($atts ){
+    include 'page-remplates/dashboard.php';
+}
+
+add_shortcode( 'dashboard', 'admin_templ' );
