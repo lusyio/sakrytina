@@ -22,15 +22,10 @@ if (!defined('ABSPATH')) {
 global $post;
 global $product;
 
-$short_description = apply_filters('woocommerce_short_description', $post->post_excerpt);
-
-if ($short_description) :
-    ?>
-    <div class="woocommerce-product-details__short-description">
-        <?php echo $short_description; // WPCS: XSS ok.
-        ?>
-    </div>
-<?php endif; ?>
+?>
+<div class="woocommerce-product-details__short-description">
+    <?php the_content(); ?>
+</div>
 <?php
 // ссылка на ознакомительный фрагмент
 $link = (get_post_meta($post->ID, 'read_fragment_link', true));
