@@ -1041,9 +1041,17 @@ function changeTwitterImage($img)
 function changeOGImage($img, $size = 'autodetect', $secure = false)
 {
     if (!is_product()) {
+        $ogUrl = WPSEO_Options::get('og_default_image');
+        if ($size == 'twitter' && $ogUrl != '') {
+            return $ogUrl;
+        }
         return $img;
     }
     if(!extension_loaded('imagick')) {
+        $ogUrl = WPSEO_Options::get('og_default_image');
+        if ($size == 'twitter' && $ogUrl != '') {
+            return $ogUrl;
+        }
         return $img;
     }
     global $post;

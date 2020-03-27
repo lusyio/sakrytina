@@ -60,7 +60,7 @@ class imgGenerator
 			$type=$this::getSocial();
 		}
 		if($type=="facebook") {
-			$this->opts["resize_and_crop"]=array("width"=>500,"height"=>261);
+			$this->opts["resize_and_crop"]=array("width"=>1200,"height"=>630);
 		}
 		if($type=="twitter") {
 			$this->opts["resize_and_crop"]=array("width"=>1024,"height"=>512);
@@ -80,13 +80,13 @@ class imgGenerator
             $type = self::getSocial();
         }
         if($type=="facebook") {
-            return 500;
+            return 1200;
         }
         if($type=="twitter") {
             return 1024;
         }
         if($type=="vk") {
-            return 510;
+            return 898;
         }
         if($type=="ok") {
             return 780;
@@ -98,13 +98,13 @@ class imgGenerator
             $type = self::getSocial();
         }
         if($type=="facebook") {
-            return 261;
+            return 630;
         }
         if($type=="twitter") {
             return 512;
         }
         if($type=="vk") {
-            return 228;
+            return 400;
         }
         if($type=="ok") {
             return 385;
