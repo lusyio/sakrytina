@@ -3,7 +3,7 @@ Theme Name:   	Richbee
 Author:       	Richbee
 Template:     	storefront
 Description:  	Дочерняя тема для storefront
-Version:      	1.0.15
+Version:      	1.0.16
 Theme URI:    https://richbee.ru/
 Author URI:   https://richbee.ru/
 
@@ -1645,31 +1645,11 @@ body a:hover {
 .card-payment-info__content a{
     position: relative;
     display: inline-block;
+    text-decoration: underline dashed;
 }
 
-.card-payment-info__content a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -1px;
-    width: 100%;
-    height: 1px;
-    background: #000;
-    opacity: 0;
-    -webkit-transform: translateY(5px);
-    -moz-transform: translateY(5px);
-    transform: translateY(5px);
-    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
-    -moz-transition: -moz-transform 0.3s, opacity 0.3s;
-    transition: transform 0.3s, opacity 0.3s;
-    pointer-events: none;
-}
-
-.card-payment-info__content a:hover::after  {
-    opacity: 1;
-    -webkit-transform: translateY(0px);
-    -moz-transform: translateY(0px);
-    transform: translateY(0px);
+.card-payment-info__content a:hover{
+    text-decoration: none;
 }
 
 #bookTarget {
