@@ -72,7 +72,7 @@ remove_action('wp_head', 'wp_generator');  // скрыть версию wordpres
 $my_js_ver = date("ymd-Gis", filemtime(plugin_dir_path(__FILE__) . 'inc/assets/js/custom.js'));
 
 
-if (!is_admin()){
+if (!is_admin()) {
     wp_enqueue_script('custom', '/wp-content/themes/storefront-child/inc/assets/js/custom.js', array('jquery'), $my_js_ver, true);
 }
 
@@ -210,14 +210,21 @@ function card_payment_info($fragments)
     global $product;
     ob_start();
 
-    foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item): ?>
-
+    $cart = WC()->cart->get_cart();
+    $total = count($cart);
+    $counter = 0;
+    foreach ($cart as $cart_item_key => $cart_item):
+        $counter++;
+        ?>
+        <?php if ($counter === $total): ?>
         <button data-href="<?= wc_get_cart_remove_url($cart_item_key) ?>"
                 data-product_id="" data-product_sku=""
                 type="submit" class="btn btn-primary remove-book">Удалить из корзины
         </button>
 
-        <?php break; endforeach;
+        <?php break; endif; ?>
+
+    <?php endforeach;
     ?>
 
     <?php
@@ -1032,12 +1039,14 @@ add_filter('wpseo_og_og_image_secure_url', 'changeOGImageSecure');
 
 function changeOGImageSecure($img)
 {
-    return changeOGImage($img,'autodetect', true);
+    return changeOGImage($img, 'autodetect', true);
 }
+
 function changeTwitterImage($img)
 {
-    return changeOGImage($img,'twitter');
+    return changeOGImage($img, 'twitter');
 }
+
 function changeOGImage($img, $size = 'autodetect', $secure = false)
 {
     if (!is_product()) {
@@ -1047,7 +1056,7 @@ function changeOGImage($img, $size = 'autodetect', $secure = false)
         }
         return $img;
     }
-    if(!extension_loaded('imagick')) {
+    if (!extension_loaded('imagick')) {
         $ogUrl = WPSEO_Options::get('og_default_image');
         if ($size == 'twitter' && $ogUrl != '') {
             return $ogUrl;
@@ -1062,26 +1071,26 @@ function changeOGImage($img, $size = 'autodetect', $secure = false)
     require_once __DIR__ . '/evaSocialImgGenerator/evaSocialImgTextGenerator.php';
     $authorGenerator = new imgTextGenerator();
     $social = 'vk';
-    if($size=="autodetect") {
+    if ($size == "autodetect") {
         $social = imgGenerator::getSocial();
     }
-    $authorTextPadding = ["15%","0%","0%","45%"];
-    $titleTextPadding = ["30%","5%","0%","45%"];
+    $authorTextPadding = ["15%", "0%", "0%", "45%"];
+    $titleTextPadding = ["30%", "5%", "0%", "45%"];
     if ($social == 'vk') {
-        $authorTextPadding = ["15%","0%","0%","37%"];
-        $titleTextPadding = ["30%","5%","0%","37%"];
+        $authorTextPadding = ["15%", "0%", "0%", "37%"];
+        $titleTextPadding = ["30%", "5%", "0%", "37%"];
     }
 
     $author = $authorGenerator
         ->setCaptionPosition(imgGenerator::position_left_center)
-        ->seTextShadow('#000000',75, 1, 2, 2)
-        ->setText('Мария Сакрытина',"#ffffff",imgGenerator::position_left_top,"1/15", $authorTextPadding)
+        ->seTextShadow('#000000', 75, 1, 2, 2)
+        ->setText('Мария Сакрытина', "#ffffff", imgGenerator::position_left_top, "1/15", $authorTextPadding)
         ->setFont($_SERVER["DOCUMENT_ROOT"] . '/wp-content/themes/storefront-child/inc/assets/fonts/Robotoslabregular.ttf');
     $titleGenerator = new imgTextGenerator();
     $title = $titleGenerator
         ->setCaptionPosition(imgGenerator::position_left_center)
-        ->seTextShadow('#000000',75, 1, 2, 2)
-        ->setText(get_the_title(),"#ffffff",imgGenerator::position_left_top,"1/8", $titleTextPadding)
+        ->seTextShadow('#000000', 75, 1, 2, 2)
+        ->setText(get_the_title(), "#ffffff", imgGenerator::position_left_top, "1/8", $titleTextPadding)
         ->setLinesBeforeTrim(3)
         ->setFont($_SERVER["DOCUMENT_ROOT"] . '/wp-content/themes/storefront-child/inc/assets/fonts/Robotoslabregular.ttf');
     $generator = new imgGenerator();
@@ -1090,7 +1099,7 @@ function changeOGImage($img, $size = 'autodetect', $secure = false)
         ->addText($author)
         ->addText($title)
         ->addOverlay(0.5, '#000000')
-        ->setLogo($file_path, imgGenerator::position_left_bottom, ["10%","0%","10%","5%",],'auto')
+        ->setLogo($file_path, imgGenerator::position_left_bottom, ["10%", "0%", "10%", "5%",], 'auto')
         ->fromImg($file_path)
         ->resizeFor($size)
         ->getPath();
@@ -1105,7 +1114,7 @@ add_filter('wpseo_og_og_image_width', function ($width) {
     if (!is_product()) {
         return $width;
     }
-    if(!extension_loaded('imagick')) {
+    if (!extension_loaded('imagick')) {
         return $width;
     }
     require_once __DIR__ . '/evaSocialImgGenerator/evaSocialImgGenerator.php';
@@ -1116,15 +1125,16 @@ add_filter('wpseo_og_og_image_height', function ($height) {
     if (!is_product()) {
         return $height;
     }
-    if(!extension_loaded('imagick')) {
+    if (!extension_loaded('imagick')) {
         return $height;
     }
     require_once __DIR__ . '/evaSocialImgGenerator/evaSocialImgGenerator.php';
     return imgGenerator::getHeight();
 });
 
-function admin_templ($atts ){
+function admin_templ($atts)
+{
     include 'page-remplates/dashboard.php';
 }
 
-add_shortcode( 'dashboard', 'admin_templ' );
+add_shortcode('dashboard', 'admin_templ');
