@@ -197,6 +197,7 @@ if ($isVariable && isset($variations['abook'])) {
                                value="<?= (isset($variations['abook'])) ? $variations['abook']['variation_id'] : '' ?>">
                         <p>Аудиокнига</p>
                     </div>
+
                     <p class="<?php echo esc_attr(apply_filters('woocommerce_product_price_class', 'price')); ?>"><?php
                         if (!$externalABook && isset($variations['abook'])) {
                             echo $aBookPriceHtml;
@@ -214,7 +215,13 @@ if ($isVariable && isset($variations['abook'])) {
                             <div>
                                 <p class="<?php echo esc_attr(apply_filters('woocommerce_product_price_class', 'price')); ?>"><?php echo $eBookPriceHtml ?></p>
                             </div>
-                            <?php do_action('woocommerce_single_variation'); ?>
+                            <?php if (isset($variations['ebook'])) {
+                                $GLOBALS['variationId'] = $variations['ebook']['variation_id'];
+                            }
+                            do_action('woocommerce_single_variation');
+                            if (isset($variations['ebook'])) {
+                                unset($GLOBALS['variationId']);
+                            } ?>
                         </div>
                         <hr>
                         <p><span>Как купить?</span> Добавьте книгу в корзину и оформите заказ. Оплата осуществляется с
@@ -291,7 +298,13 @@ if ($isVariable && isset($variations['abook'])) {
                                 <div>
                                     <p class="<?php echo esc_attr(apply_filters('woocommerce_product_price_class', 'price')); ?>"><?php echo $aBookPriceHtml ?></p>
                                 </div>
-                                <?php do_action('woocommerce_single_variation'); ?>
+                                <?php if (isset($variations['abook'])) {
+                                    $GLOBALS['variationId'] = $variations['abook']['variation_id'];
+                                }
+                                do_action('woocommerce_single_variation');
+                                if (isset($variations['abook'])) {
+                                    unset($GLOBALS['variationId']);
+                                } ?>
                             </div>
                             <hr>
 
