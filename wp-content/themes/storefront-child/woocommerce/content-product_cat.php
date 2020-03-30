@@ -58,14 +58,16 @@ $j = 0;
 ?>
 <div id="<?= $category->slug ?>" class="swiper-container <?= $productCount > 3 ? 'loop' : '' ?> carousel-books"
      data-ride="carousel">
-    <div class="carousel-books-control carousel-books-control__mobile" data-href="<?= $category->slug ?>">
+    <?php if ($productCount > 1): ?>
+        <div class="carousel-books-control carousel-books-control__mobile" data-href="<?= $category->slug ?>">
         <span class="carousel-books-control-prev <?= $category->slug ?>">
             <img src="/wp-content/themes/storefront-child/svg/svg-books-prev.svg" alt="books-prev">
         </span>
-        <span class="carousel-books-control-next <?= $category->slug ?>">
+            <span class="carousel-books-control-next <?= $category->slug ?>">
              <img src="/wp-content/themes/storefront-child/svg/svg-books-next.svg" alt="books-next">
         </span>
-    </div>
+        </div>
+    <?php endif; ?>
     <div class="swiper-wrapper">
         <?php $i = 0; ?>
         <div class="swiper-slide">

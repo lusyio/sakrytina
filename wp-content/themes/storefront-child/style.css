@@ -3,7 +3,7 @@ Theme Name:   	Richbee
 Author:       	Richbee
 Template:     	storefront
 Description:  	Дочерняя тема для storefront
-Version:      	1.0.19
+Version:      	1.0.20
 Theme URI:    https://richbee.ru/
 Author URI:   https://richbee.ru/
 
@@ -19,7 +19,7 @@ html header, html body, html footer {
     font-family: 'Roboto Slab', sans-serif;
 }
 
-html body .woocommerce-Price-currencySymbol, html body #inputDonateText:after{
+html body .woocommerce-Price-currencySymbol, html body #inputDonateText:after {
     font-family: 'Roboto', sans-serif !important;
 }
 
@@ -1541,7 +1541,7 @@ body a:hover {
     padding: 25px 35px 15px;
 }
 
-.card-payment__body .price{
+.card-payment__body .price {
     display: none;
 }
 
@@ -1642,13 +1642,13 @@ body a:hover {
     margin-bottom: 0;
 }
 
-.card-payment-info__content a{
+.card-payment-info__content a {
     position: relative;
     display: inline-block;
     text-decoration: underline dashed;
 }
 
-.card-payment-info__content a:hover{
+.card-payment-info__content a:hover {
     text-decoration: none;
 }
 
@@ -3001,14 +3001,6 @@ ul.products li.product:hover {
     transition: transform 135ms cubic-bezier(.4, 0, .2, 1);
 }
 
-.woocommerce-loop-product__link:hover > img {
-    transform: scale(1.02);
-}
-
-.woocommerce-LoopProduct-link.woocommerce-loop-product__link:hover .woocommerce-placeholder.wp-post-image {
-    transform: scale(1.02);
-}
-
 .product-label {
     display: none;
 }
@@ -3372,6 +3364,14 @@ and (min-width: 1200px) {
 
 @media screen
 and (min-width: 768px) {
+    .woocommerce-loop-product__link:hover > img {
+        transform: scale(1.02);
+    }
+
+    .woocommerce-LoopProduct-link.woocommerce-loop-product__link:hover .woocommerce-placeholder.wp-post-image {
+        transform: scale(1.02);
+    }
+
     .col-full {
         max-width: 69.498938em;
     }
@@ -3385,6 +3385,19 @@ and (min-width: 768px) {
         padding-bottom: 30px;
         margin: 0;
     }
+}
+
+@media screen and (max-width: 1450px) {
+    #commentModal .modal-body > div {
+        padding-right: 65px;
+        max-height: 400px;
+        overflow: auto;
+    }
+
+    #commentModal {
+        margin: 5% auto;
+    }
+
 }
 
 @media screen
@@ -3452,15 +3465,15 @@ and (max-width: 1199px) {
 @media screen
 and (max-width: 991px) {
 
-    .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword{
+    .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword {
         padding: 27px 20px 50px;
     }
 
-    .register{
+    .register {
         width: 100%;
     }
 
-    .oneall_social_login{
+    .oneall_social_login {
         width: 50%;
     }
 
@@ -3725,7 +3738,7 @@ and (max-width: 768px) {
         max-width: 100%;
     }
 
-    .card-payment-info__content .btn{
+    .card-payment-info__content .btn {
         width: 100%;
     }
 
@@ -4030,12 +4043,12 @@ and (max-width: 768px) {
         padding: 0px 22px 25px;
     }
 
-    .card-payment__body .price{
+    .card-payment__body .price {
         margin-bottom: 0;
         align-items: center;
     }
 
-    .card-payment__body .woocommerce-Price-amount.amount{
+    .card-payment__body .woocommerce-Price-amount.amount {
         font-weight: bold;
         font-size: 16px;
         line-height: 21px;
@@ -4064,7 +4077,7 @@ and (max-width: 768px) {
         font-size: 22px;
     }
 
-    .carousel-books .woocommerce-loop-product__title{
+    .carousel-books .woocommerce-loop-product__title {
         background: #f9f9f9;
     }
 }
@@ -4072,7 +4085,7 @@ and (max-width: 768px) {
 @media screen
 and (max-width: 576px) {
 
-    .carousel-books .item-book{
+    .carousel-books .item-book {
         background: #f9f9f9;
     }
 
