@@ -181,7 +181,7 @@ jQuery(function ($) {
         }
     });
 
-    if (document.documentElement.clientWidth < 991){
+    if (document.documentElement.clientWidth < 768){
         $('.card-payment:not(".disabled")').on('click', function () {
             let input = $(this).find('input');
             let target = input.data('target');
@@ -216,7 +216,7 @@ jQuery(function ($) {
     const bookBlock = $('.popular-block-card');
     const carouselHover = $('#carouselHover');
 
-    if (document.documentElement.clientWidth >= 991) {
+    if (document.documentElement.clientWidth >= 768) {
         bookBlock.mouseenter(function () {
             let blockId = $(this).data('active')
             $(`#${blockId}`).addClass('active')
