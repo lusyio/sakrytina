@@ -209,8 +209,32 @@ if ($isVariable && isset($variations['abook'])) {
         <div class="col-12 pr-lg-0 pr-unset">
             <div class="card-payment-info">
                 <div class="card-payment-info__body">
-                    <div id="ebookTarget" class="card-payment-info__content"
-                         <?= ($activeTab == 'ebook') ? $styleDBlock : $styleDNone; ?>>
+                    <div id="ebookTarget" class="card-payment-info__content" <?= ($activeTab == 'ebook') ? $styleDBlock : $styleDNone; ?>>
+                        <?php
+                        $downloads = array();
+                        $user_id = get_current_user_id();
+                        $downloads = wc_get_customer_available_downloads($user_id);
+                        $hasDownloads = false;
+                        $isFirstBook = true;
+                        if (!empty($downloads)) {
+                            foreach ($downloads as $download) {
+                                if ($download['product_id'] == $product->get_id() || (isset($variations['ebook']) && $download['product_id'] == $variations['ebook']['variation_id'])) { ?>
+                                    <?php if ($isFirstBook): ?>
+                                    <?php $isFirstBook = false; ?>
+                                    <p>Книга оплачена и доступна для скачивания:</p>
+                                    <hr>
+                                    <?php endif; ?>
+                                    <div class="download-block">
+                                        <a class="download-link" href="<?php echo $download['download_url'] ?>">Скачать в
+                                            формате <?php echo mb_strtoupper($download['file']['name']); ?></a>
+                                    </div>
+                                    <?php
+                                    $hasDownloads = true;
+                                }
+                            }
+                        }
+                        ?>
+                        <?php if(!$hasDownloads): ?>
                         <div class="d-flex justify-content-between">
                             <div>
                                 <p class="<?php echo esc_attr(apply_filters('woocommerce_product_price_class', 'price')); ?>"><?php echo $eBookPriceHtml ?></p>
@@ -240,6 +264,7 @@ if ($isVariable && isset($variations['abook'])) {
                                 } ?></p>
                         <?php else: ?>
                             <p>Файлы не загружены</p>
+                        <?php endif; ?>
                         <?php endif; ?>
                     </div>
                     <div id="bookTarget" class="card-payment-info__content"
@@ -294,43 +319,64 @@ if ($isVariable && isset($variations['abook'])) {
                     <div id="audiobookTarget" class="card-payment-info__content"
                          <?= ($activeTab == 'abook') ? $styleDBlock : $styleDNone; ?>>
                         <?php if (!$externalABook) : ?>
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <p class="<?php echo esc_attr(apply_filters('woocommerce_product_price_class', 'price')); ?>"><?php echo $aBookPriceHtml ?></p>
-                                </div>
-                                <?php if (isset($variations['abook'])) {
-                                    $GLOBALS['variationId'] = $variations['abook']['variation_id'];
+                            <?php
+                            $downloads = array();
+                            $user_id = get_current_user_id();
+                            $downloads = wc_get_customer_available_downloads($user_id);
+                            $hasDownloads = false;
+                            $isFirstBook = true;
+                            if (!empty($downloads)) {
+                                foreach ($downloads as $download) {
+                                    if ($download['product_id'] == $product->get_id() || (isset($variations['abook']) && $download['product_id'] == $variations['abook']['variation_id'])) { ?>
+                                        <?php if ($isFirstBook): ?>
+                                            <?php $isFirstBook = false; ?>
+                                            <p>Книга оплачена и доступна для скачивания:</p>
+                                            <hr>
+                                        <?php endif; ?>
+                                        <div class="download-block">
+                                            <a class="download-link" href="<?php echo $download['download_url'] ?>">Скачать в
+                                                формате <?php echo $download['file']['name']; ?></a>
+                                        </div>
+                                        <?php
+                                        $hasDownloads = true;
+                                    }
                                 }
-                                do_action('woocommerce_single_variation');
-                                if (isset($variations['abook'])) {
-                                    unset($GLOBALS['variationId']);
-                                } ?>
-                            </div>
-                            <hr>
-
-
-                            <p><span>Как купить?</span> Добавьте книгу в корзину и оформите заказ. Оплата осуществляется
-                                с
-                                помощью
-                                банковской
-                                карты. Книга будет отправлена вам на элекронную почту сразу же после оплаты.
-                            </p>
-
-
-                            <?php if ($aBookDownloads): ?>
-                                <p>Книга доступна в форматах:
-                                    <?php foreach ($aBookDownloads as $key => $aBookDownload) {
-                                        echo $aBookDownload->get_name();
-                                        if ($key === array_key_last($aBookDownloads)) {
-                                            echo '';
-                                        } else {
-                                            echo ', ';
-                                        }
-                                    } ?></p>
-                            <?php else: ?>
-                                <p>Файлы не загружены</p>
+                            }
+                            ?>
+                            <?php if (!$hasDownloads): ?>
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <p class="<?php echo esc_attr(apply_filters('woocommerce_product_price_class', 'price')); ?>"><?php echo $aBookPriceHtml ?></p>
+                                    </div>
+                                    <?php if (isset($variations['abook'])) {
+                                        $GLOBALS['variationId'] = $variations['abook']['variation_id'];
+                                    }
+                                    do_action('woocommerce_single_variation');
+                                    if (isset($variations['abook'])) {
+                                        unset($GLOBALS['variationId']);
+                                    } ?>
+                                </div>
+                                <hr>
+                                <p><span>Как купить?</span> Добавьте книгу в корзину и оформите заказ. Оплата осуществляется
+                                    с
+                                    помощью
+                                    банковской
+                                    карты. Книга будет отправлена вам на элекронную почту сразу же после оплаты.
+                                </p>
+                                <?php if ($aBookDownloads): ?>
+                                    <p>Книга доступна в форматах:
+                                        <?php foreach ($aBookDownloads as $key => $aBookDownload) {
+                                            echo $aBookDownload->get_name();
+                                            if ($key === array_key_last($aBookDownloads)) {
+                                                echo '';
+                                            } else {
+                                                echo ', ';
+                                            }
+                                        } ?></p>
+                                <?php else: ?>
+                                    <p>Файлы не загружены</p>
+                                <?php endif; ?>
                             <?php endif; ?>
-
                         <?php else : ?>
                             <div class="audioTarget">
                                 <p>Аудио версию книги вы можете приобрести в
@@ -338,12 +384,8 @@ if ($isVariable && isset($variations['abook'])) {
                                 <div class="bookTarget__where">
                                     <p><a href="<?= $externalABook; ?>" target="_blank">Купить аудио версию</a></p>
                                 </div>
-
                             </div>
-
                         <?php endif; ?>
-
-
                     </div>
                     <div id="litnetTarget" class="book-target card-payment-info__content"
                          <?= ($activeTab == 'litnet' && $litnetLink != '') ? $styleDBlock : $styleDNone; ?>>
