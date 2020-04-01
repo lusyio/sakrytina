@@ -3,7 +3,7 @@ Theme Name:   	Richbee
 Author:       	Richbee
 Template:     	storefront
 Description:  	Дочерняя тема для storefront
-Version:      	1.0.24
+Version:      	1.0.25
 Theme URI:    https://richbee.ru/
 Author URI:   https://richbee.ru/
 
@@ -21,6 +21,14 @@ html header, html body, html footer {
 
 html body .woocommerce-Price-currencySymbol, html body #inputDonateText:after {
     font-family: 'Roboto', sans-serif !important;
+}
+
+.checkout-modal .checkout-modal__close{
+    width: 53px;
+}
+
+.checkout-modal .checkout-modal__container{
+    margin-top: 70px;
 }
 
 body {

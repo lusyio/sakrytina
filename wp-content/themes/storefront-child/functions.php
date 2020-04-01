@@ -1143,3 +1143,29 @@ add_action( 'woocommerce_before_checkout_form', 'remove_checkout_coupon_form', 9
 function remove_checkout_coupon_form(){
     remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
 }
+
+add_filter('woocommerce_thankyou_order_received_text', 'woo_change_order_received_text', 10, 2 );
+function woo_change_order_received_text( $str, $order ) {
+    return 'Спасибо. Ваш заказ был оплачен, теперь вам доступны файлы книг.';
+}
+
+
+add_filter('the_title', 'woo_personalize_order_received_title', 10, 2);
+function woo_personalize_order_received_title($title, $id)
+{
+    if (is_order_received_page() && get_the_ID() === $id) {
+        global $wp;
+        $order_id = apply_filters('woocommerce_thankyou_order_id', absint($wp->query_vars['order-received']));
+        $order_key = apply_filters('woocommerce_thankyou_order_key', empty($_GET['key']) ? '' : wc_clean($_GET['key']));
+        if ($order_id > 0) {
+            $order = wc_get_order($order_id);
+            if ($order->get_order_key() != $order_key) {
+                $order = false;
+            }
+        }
+        if (isset ($order)) {
+            $title = 'Заказ оплачен';
+        }
+    }
+    return $title;
+}
