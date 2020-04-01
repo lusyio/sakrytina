@@ -3,7 +3,7 @@ Theme Name:   	Richbee
 Author:       	Richbee
 Template:     	storefront
 Description:  	Дочерняя тема для storefront
-Version:      	1.0.23
+Version:      	1.0.24
 Theme URI:    https://richbee.ru/
 Author URI:   https://richbee.ru/
 
@@ -1701,6 +1701,14 @@ body .woocommerce-form-coupon input[type='text'] {
     line-height: 16px;
     color: #5E5E5E;
     margin-bottom: 12px;
+}
+
+.woocommerce-notice.woocommerce-notice--success.woocommerce-thankyou-order-received{
+    margin-bottom: 30px;
+}
+
+.thank-you-page h1.entry-title{
+    margin-bottom: 30px;
 }
 
 .card-payment-info__content p > span {

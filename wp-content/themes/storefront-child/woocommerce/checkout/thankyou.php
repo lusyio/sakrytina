@@ -18,13 +18,13 @@
 defined('ABSPATH') || exit;
 ?>
 
+<?php if ($order): ?>
+    <p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received"><?php echo apply_filters('woocommerce_thankyou_order_received_text', esc_html__('Спасибо. Ваш заказ был оплачен, теперь вам доступны файлы книг.', 'woocommerce'), null); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+<?php endif; ?>
+
 <div class="woocommerce-order woocommerce-order-card">
     <div class="woocommerce-order-card__body">
 
-        <?php if ($order): ?>
-
-            <p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received"><?php echo apply_filters('woocommerce_thankyou_order_received_text', esc_html__('Спасибо. Ваш заказ был оплачен, теперь вы получите доступ к файлам книг.', 'woocommerce'), null); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-        <?php endif; ?>
         <?php if ($order) :
 
             do_action('woocommerce_thankyou', $order->get_id());

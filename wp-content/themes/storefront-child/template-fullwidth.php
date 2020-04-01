@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-    <div id="primary" class="content-area col-sm-12 <?= is_cart() ? 'p-0 pl-lg-3 pr-lg-3' : '' ?>">
+    <div id="primary" class="content-area  col-sm-12 <?= is_cart() ? 'p-0 pl-lg-3 pr-lg-3' : '' ?> <?= (is_checkout() && !empty( is_wc_endpoint_url('order-received'))) ? 'thank-you-page' : '' ?>">
         <main id="main" class="site-main" role="main">
 
             <?php
