@@ -3,7 +3,7 @@ Theme Name:   	Richbee
 Author:       	Richbee
 Template:     	storefront
 Description:  	Дочерняя тема для storefront
-Version:      	1.0.22
+Version:      	1.0.23
 Theme URI:    https://richbee.ru/
 Author URI:   https://richbee.ru/
 
@@ -912,6 +912,10 @@ body a:hover {
     -ms-transform: matrix(0.99, 0.16, -0.16, 0.99, 5, -5);
     -webkit-transform: matrix(0.99, 0.16, -0.16, 0.99, 5, -5);
     transition: all 0.5s ease-in-out;
+}
+
+.woocommerce-order-card__body ul.order_details{
+    margin: 0.706326em 0;
 }
 
 
