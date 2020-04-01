@@ -3,7 +3,7 @@ Theme Name:   	Richbee
 Author:       	Richbee
 Template:     	storefront
 Description:  	Дочерняя тема для storefront
-Version:      	1.0.21
+Version:      	1.0.22
 Theme URI:    https://richbee.ru/
 Author URI:   https://richbee.ru/
 
@@ -1288,6 +1288,63 @@ body a:hover {
 
 .woocommerce-loop-category__title > mark {
     display: none;
+}
+
+.woocommerce-form-coupon {
+    background: #fff;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.woocommerce-form-coupon button:hover {
+    background: #357C64;
+}
+
+button:hover, input[type='button']:hover, input[type='reset']:hover, input[type='submit']:hover, .button:hover, .wc-block-grid__products .wc-block-grid__product .wp-block-button__link:hover, .added_to_cart:hover{
+    color: #40866E;
+}
+
+.new-checkout__info > ul{
+    box-shadow: none;
+    border: 1px solid #D8D8D8 !important;
+    border-radius: 10px !important;
+}
+
+.woocommerce-form-coupon-toggle p{
+    font-size: 14px;
+    line-height: 18px;
+    color: #1C1C1C;
+    margin-bottom: 30px;
+}
+
+.showcoupon{
+    color: #40866E;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.woocommerce-form-coupon button {
+    width: 100%;
+    background: #40866E;
+    border-radius: 10px;
+    padding: 14px 23px;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 21px;
+    color: #FFFFFF;
+    height: 56px;
+    border: none;
+    min-height: 50px;
+    transition: 145ms cubic-bezier(.4, 0, .2, 1);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+body .woocommerce-form-coupon input[type='text'] {
+    margin-bottom: 0;
+    height: 56px;
+    border-bottom-right-radius: 0 !important;
+    border-top-right-radius: 0 !important;
 }
 
 .carousel-books-control .carousel-books-control-prev {
@@ -2868,6 +2925,7 @@ footer.site-footer p {
 
 .new-checkout__info {
     padding: 90px 0 80px 70px;
+    position: relative;
 }
 
 .new-checkout__info > p:last-of-type {

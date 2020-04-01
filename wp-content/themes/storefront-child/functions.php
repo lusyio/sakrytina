@@ -1138,3 +1138,8 @@ function admin_templ($atts)
 }
 
 add_shortcode('dashboard', 'admin_templ');
+
+add_action( 'woocommerce_before_checkout_form', 'remove_checkout_coupon_form', 9 );
+function remove_checkout_coupon_form(){
+    remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
+}

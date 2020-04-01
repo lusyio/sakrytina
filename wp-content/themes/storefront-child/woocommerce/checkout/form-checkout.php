@@ -71,6 +71,27 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
                 </div>
                 <div class="col-lg-6 col-12">
                     <div class="new-checkout__info">
+                        <?php
+                        if (wc_coupons_enabled()): ?>
+                        <div class="woocommerce-form-coupon-toggle">
+                            <p>У вас есть купон? <a href="#" class="showcoupon">Нажмите здесь для введения кода</a></p>
+                        </div>
+
+                        <form class="checkout_coupon woocommerce-form-coupon" method="post" style="display:none">
+
+                            <div class="input-group">
+                                <input type="text" name="coupon_code" class="input-text"
+                                       placeholder="<?php esc_attr_e('Coupon code', 'woocommerce'); ?>"
+                                       id="coupon_code" value=""/>
+                                <div class="input-group-append">
+                                    <button type="submit" class="button" name="apply_coupon"
+                                            value="<?php esc_attr_e('Apply coupon', 'woocommerce'); ?>">Применить</button>
+                                </div>
+                            </div>
+
+                            <div class="clear"></div>
+                        </form>
+                        <?php endif; ?>
                         <p>Нажимая кнопку “Перейти к оплате” вы даете согласие на обработку
                             своих
                             персональных данных.</p>
