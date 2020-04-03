@@ -1227,3 +1227,16 @@ function get_orders_ids_by_product_id($product_id, $order_status = array('wc-com
 
     return $results;
 }
+
+add_filter('the_content', function ($content) {
+    global $post;
+
+    $terms = get_the_terms( $post->ID, 'product_cat' );
+    foreach ($terms as $term) {
+        if ($term->slug == 'sbornik-rasskazov') {
+            $content = preg_split('~<span id="more-~', $content, '2');
+            return $content[0];
+        }
+    }
+    return $content;
+});
