@@ -19,6 +19,20 @@ if (!defined('ABSPATH')) {
     exit;
 }
 ?>
+<?php if ($gateway->id === 'cod'): ?>
+    <li class="wc_payment_method payment_method_<?php echo esc_attr($gateway->id); ?>">
+        <label for="">
+            <label class="pure-material-radio w-100">
+                <input id="payment_method_<?php echo esc_attr($gateway->id); ?>" type="radio" class="input-radio"
+                       name="payment_method"
+                       value="<?php echo esc_attr($gateway->id); ?>" <?php checked($gateway->chosen, true); ?>
+                       data-order_button_text="<?php echo esc_attr($gateway->order_button_text); ?>"/>
+                <span> PayPal<img src="https://www.paypalobjects.com/webstatic/ru_RU/mktg/business/pages/logo-center/AM_mc_vs_dc_ae.jpg"
+                   alt="paypal"></span>
+            </label>
+        </label>
+    </li>
+<?php else: ?>
 <li class="wc_payment_method payment_method_<?php echo esc_attr($gateway->id); ?>">
     <label for="">
         <label class="pure-material-radio w-100">
@@ -32,3 +46,4 @@ if (!defined('ABSPATH')) {
         </label>
     </label>
 </li>
+<?php endif;

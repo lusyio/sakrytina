@@ -25,7 +25,21 @@ defined('ABSPATH') || exit;
 <div class="woocommerce-order woocommerce-order-card">
     <div class="woocommerce-order-card__body">
 
+        <?php if ($order->get_payment_method() === 'cod'): ?>
+            <p>Если единственно возможным для вас является оплата по PayPal:</p>
+            <ol>
+                <li>Переведите деньги на мой счёт <a href="https://www.paypal.me/sakrytina">https://www.paypal.me/sakrytina</a></li>
+                <li>Скопируйте скрин/сфотографируйте перевод</li>
+                <li>Пришлите его мне на почту sakytina@mail.ru и напишите, за какие книги вы заплатили.</li>
+                <li>В кратчайшие сроки вам будет открыт доступ к книгам. Вы получите об этом письмо на адрес, указанный
+                    при заказе.
+                </li>
+            </ol>
+        <?php endif; ?>
+
+
         <?php if ($order) :
+
 
             do_action('woocommerce_thankyou', $order->get_id());
 
@@ -73,7 +87,7 @@ defined('ABSPATH') || exit;
                 <?php if ($order->get_payment_method_title()) : ?>
                     <li class="woocommerce-order-overview__payment-method method">
                         <?php esc_html_e('Payment method:', 'woocommerce'); ?>
-                        <strong><?php echo wp_kses_post($order->get_payment_method_title()); ?></strong>
+                        <strong><?= $order->get_payment_method() === 'cod' ? 'PayPal' : wp_kses_post($order->get_payment_method_title()) ?></strong>
                     </li>
                 <?php endif; ?>
 
