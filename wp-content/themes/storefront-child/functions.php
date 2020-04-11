@@ -1230,7 +1230,9 @@ function get_orders_ids_by_product_id($product_id, $order_status = array('wc-com
 
 add_filter('the_content', function ($content) {
     global $post;
-
+    if (!is_product()) {
+        return $content;
+    }
     $terms = get_the_terms( $post->ID, 'product_cat' );
     foreach ($terms as $term) {
         if ($term->slug == 'sbornik-rasskazov') {
