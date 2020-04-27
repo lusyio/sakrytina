@@ -3,7 +3,7 @@ Theme Name:   	Richbee
 Author:       	Richbee
 Template:     	storefront
 Description:  	Дочерняя тема для storefront
-Version:      	1.0.26
+Version:      	1.0.27
 Theme URI:    https://richbee.ru/
 Author URI:   https://richbee.ru/
 
@@ -23,11 +23,11 @@ html body .woocommerce-Price-currencySymbol, html body #inputDonateText:after {
     font-family: 'Roboto', sans-serif !important;
 }
 
-.checkout-modal .checkout-modal__close{
+.checkout-modal .checkout-modal__close {
     width: 53px;
 }
 
-.checkout-modal .checkout-modal__container{
+.checkout-modal .checkout-modal__container {
     margin-top: 70px;
 }
 
@@ -922,7 +922,7 @@ body a:hover {
     transition: all 0.5s ease-in-out;
 }
 
-.woocommerce-order-card__body ul.order_details{
+.woocommerce-order-card__body ul.order_details {
     margin: 0.706326em 0;
 }
 
@@ -1312,24 +1312,24 @@ body a:hover {
     background: #357C64;
 }
 
-button:hover, input[type='button']:hover, input[type='reset']:hover, input[type='submit']:hover, .button:hover, .wc-block-grid__products .wc-block-grid__product .wp-block-button__link:hover, .added_to_cart:hover{
+button:hover, input[type='button']:hover, input[type='reset']:hover, input[type='submit']:hover, .button:hover, .wc-block-grid__products .wc-block-grid__product .wp-block-button__link:hover, .added_to_cart:hover {
     color: #40866E;
 }
 
-.new-checkout__info > ul{
+.new-checkout__info > ul {
     box-shadow: none;
     border: 1px solid #D8D8D8 !important;
     border-radius: 10px !important;
 }
 
-.woocommerce-form-coupon-toggle p{
+.woocommerce-form-coupon-toggle p {
     font-size: 14px;
     line-height: 18px;
     color: #1C1C1C;
     margin-bottom: 30px;
 }
 
-.showcoupon{
+.showcoupon {
     color: #40866E;
     font-size: 14px;
     line-height: 18px;
@@ -1587,7 +1587,7 @@ body .woocommerce-form-coupon input[type='text'] {
     font-size: 12px;
     line-height: 16px;
     color: #000000;
-    text-decoration: none!important;
+    text-decoration: none !important;
 }
 
 .card-payment {
@@ -1718,11 +1718,11 @@ body .woocommerce-form-coupon input[type='text'] {
     margin-bottom: 12px;
 }
 
-.woocommerce-notice.woocommerce-notice--success.woocommerce-thankyou-order-received{
+.woocommerce-notice.woocommerce-notice--success.woocommerce-thankyou-order-received {
     margin-bottom: 30px;
 }
 
-.thank-you-page h1.entry-title{
+.thank-you-page h1.entry-title {
     margin-bottom: 30px;
 }
 
@@ -4178,7 +4178,11 @@ and (max-width: 768px) {
 @media screen
 and (max-width: 576px) {
 
-    .footer-menu ul > li{
+    .footer-menu ul {
+        justify-content: center;
+    }
+
+    .footer-menu ul > li {
         margin-right: 15px;
     }
 
