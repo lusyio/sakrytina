@@ -4294,6 +4294,15 @@ and (max-width: 576px) {
 }
 
 @media screen and (max-width: 460px) {
+    .footer-menu ul {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .footer-menu ul > li{
+        margin-right: 25px;
+    }
+
     .bibliography .bibliography__card {
         padding-left: 45px;
     }
