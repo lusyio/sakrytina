@@ -168,7 +168,7 @@ $text_lighter_40 = wc_hex_lighter($text, 40);
     }
 
     .link {
-    color: <?php echo esc_attr($base); ?>;
+    color: #000000;
     }
 
     #header_wrapper {
