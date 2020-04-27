@@ -46,7 +46,6 @@
                 </div><!-- close .site-info -->
             </div>
             <div class="col-12 text-center col-lg-5 m-auto">
-                <div class="row">
                     <?php
                     if ($menu_items = wp_get_nav_menu_items('second')) {
                         $menu_list = '';
@@ -61,7 +60,6 @@
                         echo '</div>';
                     }
                     ?>
-                </div>
             </div>
             <div class="d-flex m-auto justify-content-between">
                 <p class="mb-0 d-lg-none d-block">
